@@ -1,6 +1,56 @@
 body {
+    margin: 0;
     background: #F6F7F8;
+    font-family: 'Inter';
 }
 
-.rememberMe {
+.logo {
+    position: absolute;
+    width: 100.03px;
+    height: 121.97px;
+    top: 80px;
+    left: 77px;
+}
+
+.indexWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+    width: 100vw;
+}
+
+.toSignUp {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%
+}
+
+.logIn {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 652px;
+    height: 493px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background: white;
+}
+
+.logInForm {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.rememberMe {}
+
+footer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
