@@ -1,14 +1,35 @@
+:root {
+    --fontSizeNormal: 20px;
+    --lightGray1: #D1D1D1; 
+}
+
 body {
     margin: 0;
     background: #F6F7F8;
     font-family: 'Inter';
+    font-weight: 400;
+    font-size: var(--fontSizeNormal);
 }
 
 h2 { /* Feldtitel in ADD TASK und Kontaktnamen in CONTACTS */ 
-    font-family: 'Inter';
-    font-size: 20px;
+    font-size: var(--fontSizeNormal);
     font-weight: 400;
     margin: 0;
+    display: flex;
+}
+
+input {
+    border-radius: 10px;
+    border: 1px solid var(--lightGray1);
+    outline: none;
+    font-size: var(--fontSizeNormal);
+    font-weight: 400;
+    padding: 12px 21px;
+}
+
+input::placeholder {
+    color: var(--lightGray1);
+    font-weight: 400;
 }
 
 .logo {
@@ -63,4 +84,9 @@ footer {
 /* ADD TASK */
 .addTaskFormMain {
     display: flex;
+}
+
+.red {
+    color: red;
+    margin: 0;
 }
