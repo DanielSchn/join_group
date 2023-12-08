@@ -253,7 +253,7 @@ footer {
     width: 264px;
     height: 168px;
     border-radius: 30px;
-    /* padding: 38px 58px 38px 58px; */
+    border: none;
 }
 
 .sumUpcoming {
@@ -261,6 +261,7 @@ footer {
     width: 560px;
     height: 168px;
     border-radius: 30px;
+    border: none;
 }
 
 .sumTasks {
@@ -268,6 +269,7 @@ footer {
     width: 168px;
     height: 168px;
     border-radius: 30px;
+    border: none;
 }
 
 .sumTasksPos {
