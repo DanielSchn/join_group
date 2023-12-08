@@ -1,5 +1,6 @@
 :root {
     --fontSizeNormal: 20px;
+    --fontSizeSmall: 16px;
     --lightGray1: #D1D1D1;
 }
 
@@ -11,6 +12,10 @@ body {
     font-size: var(--fontSizeNormal);
 }
 
+p {
+    margin: 0;
+}
+
 h2 {
     /* Feldtitel in ADD TASK und Kontaktnamen in CONTACTS */
     font-size: var(--fontSizeNormal);
@@ -19,9 +24,14 @@ h2 {
     display: flex;
 }
 
+.fontSizeSmall {
+    font-size: var(--fontSizeSmall);
+}
+
 input,
 textarea,
 select {
+    /* max-width statt width, da sonst das Padding zur Breite addiert wird */
     max-width: 100%;
     border-radius: 10px;
     border: 1px solid var(--lightGray1);
@@ -115,11 +125,20 @@ footer {
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 4px;
-    margin-bottom: 16px;
+    gap: 8px;
+    margin-bottom: 32px;
 }
 
 .red {
     color: red;
     margin: 0;
+}
+
+.addTaskBottom {
+    display: flex;
+    justify-content: space-between;
+}
+
+.addTaskBottom div {
+    display: flex;
 }

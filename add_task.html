@@ -46,15 +46,60 @@
 
 
             </div>
+
             <hr>
 
             <div>
-                test
+                <div class="addTaskField">
+                    <label for="due">
+                        <h2>Due date<p class="red">*</p>
+                        </h2>
+                    </label>
+                    <input type="date" name="due">
+                </div>
+
+                <div class="addTaskField">
+                    <label for="prio">
+                        <h2>Prio</h2>
+                    </label>
+                    <div class="addTaskPrioBtns">
+                        <button name="prio">Urgent</button>
+                        <button>Medium</button>
+                        <button>Low</button>
+                    </div>
+                </div>
+
+                <div class="addTaskField">
+                    <label for="due">
+                        <h2>Category<p class="red">*</p>
+                        </h2>
+                    </label>
+                    <select placeholder="test" name="assigned">
+                        <option value="">Select task category</option>
+                        <option value="">CATEGORY 1</option>
+                        <option value="">CATEGORY 2</option>
+                    </select>
+                </div>
+
+                <div class="addTaskField">
+                    <label for="subtasks">
+                        <h2>Subtasks<p class="red">*</p>
+                        </h2>
+                    </label>
+                    <input type="text" placeholder="Add new subtask" name="subtasks">
+                </div>
             </div>
 
         </div>
-        <div class="addTaskFormBottom">
-            bottom
+        <div class="addTaskBottom">
+            <div>
+                <p class="red">*</p>
+                <p class="fontSizeSmall">This field is required</p>
+            </div>
+            <div>
+                <button>Clear</button>
+                <button>Create Task</button>
+            </div>
         </div>
 
 
