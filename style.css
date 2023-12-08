@@ -18,18 +18,19 @@ h2 { /* Feldtitel in ADD TASK und Kontaktnamen in CONTACTS */
     display: flex;
 }
 
-input {
+input,
+textarea {
     border-radius: 10px;
     border: 1px solid var(--lightGray1);
     outline: none;
+    font-family: 'Inter';
     font-size: var(--fontSizeNormal);
-    font-weight: 400;
     padding: 12px 21px;
 }
 
-input::placeholder {
+input::placeholder,
+textarea::placeholder {
     color: var(--lightGray1);
-    font-weight: 400;
 }
 
 .logo {
@@ -84,6 +85,13 @@ footer {
 /* ADD TASK */
 .addTaskFormMain {
     display: flex;
+}
+
+.addTaskField {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 16px;
 }
 
 .red {
