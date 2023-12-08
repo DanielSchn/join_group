@@ -1,6 +1,6 @@
 :root {
     --fontSizeNormal: 20px;
-    --lightGray1: #D1D1D1; 
+    --lightGray1: #D1D1D1;
 }
 
 body {
@@ -11,7 +11,8 @@ body {
     font-size: var(--fontSizeNormal);
 }
 
-h2 { /* Feldtitel in ADD TASK und Kontaktnamen in CONTACTS */ 
+h2 {
+    /* Feldtitel in ADD TASK und Kontaktnamen in CONTACTS */
     font-size: var(--fontSizeNormal);
     font-weight: 400;
     margin: 0;
@@ -19,18 +20,41 @@ h2 { /* Feldtitel in ADD TASK und Kontaktnamen in CONTACTS */
 }
 
 input,
-textarea {
+textarea,
+select {
+    max-width: 100%;
     border-radius: 10px;
     border: 1px solid var(--lightGray1);
     outline: none;
     font-family: 'Inter';
     font-size: var(--fontSizeNormal);
-    padding: 12px 21px;
+}
+
+input,
+textarea {
+    padding: 12px 21px;    
+}
+
+select {
+    padding: 7px 21px;
 }
 
 input::placeholder,
 textarea::placeholder {
     color: var(--lightGray1);
+}
+
+/* Standard-Resizer (Textarea) verstecken */
+::-webkit-resizer {
+    display: none;
+}
+
+/* neuer Resizer als Hintergrundbild */
+textarea {
+    background-image: url(./assets/img/resize-handle.svg);
+    background-size: 19px;
+    background-repeat: no-repeat;
+    background-position: calc(100% - 5px) calc(100% - 4px);
 }
 
 .logo {
@@ -88,6 +112,7 @@ footer {
 }
 
 .addTaskField {
+    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 4px;
