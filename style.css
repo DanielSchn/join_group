@@ -2,6 +2,7 @@
     --fontSizeNormal: 20px;
     --fontSizeSmall: 16px;
     --lightGray1: #D1D1D1;
+    --darkBlue1: #2A3647;
 }
 
 body {
@@ -26,6 +27,26 @@ h2 {
 
 .fontSizeSmall {
     font-size: var(--fontSizeSmall);
+}
+
+button {
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    font-size: var(--fontSizeNormal);
+    padding: 16px;
+}
+
+.btnPrimary {
+   background: var(--darkBlue1);
+   color: white;
+   font-weight: 700; 
+}
+
+.btnSecondary {
+    border: 1px solid var(--darkBlue1);
+    background: none;
+    color: var(--darkBlue1);
 }
 
 input,
@@ -141,4 +162,9 @@ footer {
 
 .addTaskBottom div {
     display: flex;
+    align-items: flex-end;
+}
+
+.addTaskBottom:nth-child(1) {
+    gap: 16px;
 }
