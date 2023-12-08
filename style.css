@@ -1,6 +1,7 @@
 :root {
     --fontSizeNormal: 20px;
     --fontSizeSmall: 16px;
+    --menuBarWidth: 232px;
     --lightGray1: #D1D1D1;
     --darkBlue1: #2A3647;
 }
@@ -11,6 +12,10 @@ body {
     font-family: 'Inter';
     font-weight: 400;
     font-size: var(--fontSizeNormal);
+}
+
+.main {
+    width: calc(100vw - var(--menuBarWidth));
 }
 
 p {
@@ -38,9 +43,9 @@ button {
 }
 
 .btnPrimary {
-   background: var(--darkBlue1);
-   color: white;
-   font-weight: 700; 
+    background: var(--darkBlue1);
+    color: white;
+    font-weight: 700;
 }
 
 .btnSecondary {
@@ -49,10 +54,17 @@ button {
     color: var(--darkBlue1);
 }
 
+ /* vr für "vertical ruler", vertikale Linie */
+.vr {
+    width: 1px;
+    max-height: 100%;
+    background: var(--lightGray1);
+}
+
 input,
 textarea,
 select {
-    /* max-width statt width, da sonst das Padding zur Breite addiert wird */
+    /* "max-width" statt "width", da sonst das Padding zur Breite addiert wird */
     max-width: 100%;
     border-radius: 10px;
     border: 1px solid var(--lightGray1);
@@ -63,7 +75,7 @@ select {
 
 input,
 textarea {
-    padding: 12px 21px;    
+    padding: 12px 21px;
 }
 
 select {
@@ -138,8 +150,23 @@ footer {
 }
 
 /* ADD TASK */
-.addTaskFormMain {
+.addTaskForm {
+    padding: 0 96px;
     display: flex;
+    flex-direction: column;
+}
+
+.addTaskFormMain {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    height: fit-content;
+}
+
+.addTaskFormMainSide {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
 }
 
 .addTaskField {
@@ -147,7 +174,6 @@ footer {
     display: flex;
     flex-direction: column;
     gap: 8px;
-    margin-bottom: 32px;
 }
 
 .red {
@@ -155,7 +181,20 @@ footer {
     margin: 0;
 }
 
+.addTaskPrioBtns {
+    display: flex;
+    gap: 16px;
+}
+
+.addTaskPrioBtns button {
+    min-width: calc((100% - 32px)/3);
+}
+
 .addTaskBottom {
+    /* "flex" für vertikale Größe */
+    flex: 1;
+    margin-top: 32px;
+    width: 100%;
     display: flex;
     justify-content: space-between;
 }
@@ -165,6 +204,6 @@ footer {
     align-items: flex-end;
 }
 
-.addTaskBottom:nth-child(1) {
+.addTaskBottom div:nth-child(2) {
     gap: 16px;
 }

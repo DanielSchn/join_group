@@ -12,100 +12,104 @@
 
 <body>
 
-    <h1>Add Task</h1>
+    <div class="main">
 
-    <form class="addTaskForm" action="">
-        <div class="addTaskFormMain">
 
-            <div>
-                <div class="addTaskField">
-                    <label for="title">
-                        <h2>Title<p class="red">*</p>
-                        </h2>
-                    </label>
-                    <input type="text" placeholder="Enter a title" name="title">
+
+        <form class="addTaskForm" action="">
+            <h1>Add Task</h1>
+            <div class="addTaskFormMain">
+
+                <div class="addTaskFormMainSide">
+                    <div class="addTaskField">
+                        <label for="title">
+                            <h2>Title<p class="red">*</p>
+                            </h2>
+                        </label>
+                        <input type="text" placeholder="Enter a title" name="title">
+                    </div>
+
+                    <div class="addTaskField">
+                        <label for="description">
+                            <h2>Description</h2>
+                        </label>
+                        <textarea placeholder="Enter a description" name="description"></textarea>
+                    </div>
+
+                    <div class="addTaskField">
+                        <label for="assigned">
+                            <h2>Assigned to</h2>
+                        </label>
+                        <select placeholder="test" name="assigned">
+                            <option value="">Select contacts to assign</option>
+                            <option value="">CONTACT 1</option>
+                            <option value="">CONTACT 2</option>
+                        </select>
+                    </div>
+
+
                 </div>
 
-                <div class="addTaskField">
-                    <label for="description">
-                        <h2>Description</h2>
-                    </label>
-                    <textarea placeholder="Enter a description" name="description"></textarea>
-                </div>
+                <div class="vr"></div>
 
-                <div class="addTaskField">
-                    <label for="assigned">
-                        <h2>Assigned to</h2>
-                    </label>
-                    <select placeholder="test" name="assigned">
-                        <option value="">Select contacts to assign</option>
-                        <option value="">CONTACT 1</option>
-                        <option value="">CONTACT 2</option>
-                    </select>
-                </div>
+                <div class="addTaskFormMainSide">
+                    <div class="addTaskField">
+                        <label for="due">
+                            <h2>Due date<p class="red">*</p>
+                            </h2>
+                        </label>
+                        <input type="date" name="due">
+                    </div>
 
+                    <div class="addTaskField">
+                        <label for="prio">
+                            <h2>Prio</h2>
+                        </label>
+                        <div class="addTaskPrioBtns">
+                            <button name="prio">Urgent</button>
+                            <button>Medium</button>
+                            <button>Low</button>
+                        </div>
+                    </div>
 
-            </div>
+                    <div class="addTaskField">
+                        <label for="due">
+                            <h2>Category<p class="red">*</p>
+                            </h2>
+                        </label>
+                        <select placeholder="test" name="assigned">
+                            <option value="">Select task category</option>
+                            <option value="">CATEGORY 1</option>
+                            <option value="">CATEGORY 2</option>
+                        </select>
+                    </div>
 
-            <hr>
-
-            <div>
-                <div class="addTaskField">
-                    <label for="due">
-                        <h2>Due date<p class="red">*</p>
-                        </h2>
-                    </label>
-                    <input type="date" name="due">
-                </div>
-
-                <div class="addTaskField">
-                    <label for="prio">
-                        <h2>Prio</h2>
-                    </label>
-                    <div class="addTaskPrioBtns">
-                        <button name="prio">Urgent</button>
-                        <button>Medium</button>
-                        <button>Low</button>
+                    <div class="addTaskField">
+                        <label for="subtasks">
+                            <h2>Subtasks<p class="red">*</p>
+                            </h2>
+                        </label>
+                        <input type="text" placeholder="Add new subtask" name="subtasks">
                     </div>
                 </div>
 
-                <div class="addTaskField">
-                    <label for="due">
-                        <h2>Category<p class="red">*</p>
-                        </h2>
-                    </label>
-                    <select placeholder="test" name="assigned">
-                        <option value="">Select task category</option>
-                        <option value="">CATEGORY 1</option>
-                        <option value="">CATEGORY 2</option>
-                    </select>
+            </div>
+            <div class="addTaskBottom">
+                <div class="fontSizeSmall">
+                    <p class="red" style="margin-bottom: 3px">*</p>
+                    This field is required
                 </div>
-
-                <div class="addTaskField">
-                    <label for="subtasks">
-                        <h2>Subtasks<p class="red">*</p>
-                        </h2>
-                    </label>
-                    <input type="text" placeholder="Add new subtask" name="subtasks">
+                <div>
+                    <button class="btnSecondary">Clear</button>
+                    <button class="btnPrimary">Create Task</button>
                 </div>
             </div>
 
-        </div>
-        <div class="addTaskBottom">
-            <div>
-                <p class="red">*</p>
-                <p class="fontSizeSmall">This field is required</p>
-            </div>
-            <div>
-                <button class="btnSecondary">Clear</button>
-                <button class="btnPrimary">Create Task</button>
-            </div>
-        </div>
 
 
+        </form>
 
-    </form>
-
+    </div>
 </body>
 
 </html>
