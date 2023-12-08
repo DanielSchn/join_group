@@ -54,7 +54,7 @@ button {
     color: var(--darkBlue1);
 }
 
- /* vr für "vertical ruler", vertikale Linie */
+/* vr für "vertical ruler", vertikale Linie */
 .vr {
     width: 1px;
     max-height: 100%;
@@ -206,4 +206,89 @@ footer {
 
 .addTaskBottom div:nth-child(2) {
     gap: 16px;
+}
+
+
+/* summary site */
+
+.summary {
+    width: 100vw;
+    height: 100vh;
+    background-color: #F6F7F8;
+}
+
+.sumHead {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 30px;
+}
+
+.sumHead p {
+    color: #2A3647;
+    font-size: 27px;
+    font-weight: 400;
+}
+
+.sumHead h1 {
+    margin: 0;
+    font-size: 61px;
+    font-weight: 700;
+}
+
+.sumHeadDash {
+    border-left: 3px solid #29ABE2;
+    height: 59px;
+    border-radius: 3px;
+}
+
+.sumHeadPosition {
+    position: fixed;
+    top: 206px;
+    left: 328px;
+}
+
+.sumToDoDone {
+    background-color: #FFFFFF;
+    width: 264px;
+    height: 168px;
+    border-radius: 30px;
+    /* padding: 38px 58px 38px 58px; */
+}
+
+.sumUpcoming {
+    background-color: #FFFFFF;
+    width: 560px;
+    height: 168px;
+    border-radius: 30px;
+}
+
+.sumTasks {
+    background-color: #FFFFFF;
+    width: 168px;
+    height: 168px;
+    border-radius: 30px;
+}
+
+.sumTasksPos {
+    display: flex;
+    flex-direction: row;
+    gap: 28px;
+}
+
+.sumToDoPos {
+    display: flex;
+    flex-direction: row;
+    gap: 32px;
+}
+
+.dashboard {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    width: 560px;
+    height: 562px;
+    top: 335px;
+    left: 328px;
+    gap: 28px
 }
