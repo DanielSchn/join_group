@@ -4,6 +4,13 @@ body {
     font-family: 'Inter';
 }
 
+h2 { /* Feldtitel in ADD TASK und Kontaktnamen in CONTACTS */ 
+    font-family: 'Inter';
+    font-size: 20px;
+    font-weight: 400;
+    margin: 0;
+}
+
 .logo {
     position: absolute;
     width: 100.03px;
@@ -47,10 +54,13 @@ body {
     flex-direction: column;
 }
 
-.rememberMe {}
-
 footer {
     width: 100%;
     display: flex;
     justify-content: center;
+}
+
+/* ADD TASK */
+.addTaskFormMain {
+    display: flex;
 }
