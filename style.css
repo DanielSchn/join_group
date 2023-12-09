@@ -254,6 +254,11 @@ footer {
     height: 168px;
     border-radius: 30px;
     border: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
 }
 
 .sumUpcoming {
@@ -262,6 +267,10 @@ footer {
     height: 168px;
     border-radius: 30px;
     border: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
 }
 
 .sumTasks {
@@ -270,6 +279,10 @@ footer {
     height: 168px;
     border-radius: 30px;
     border: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
 }
 
 .sumTasksPos {
@@ -293,4 +306,68 @@ footer {
     top: 335px;
     left: 328px;
     gap: 28px
+}
+
+.textToDo {
+    text-align: center;
+}
+
+.img69px {
+    height: 69px;
+    width: 69px;
+}
+
+.font64pxBold {
+    font-size: 64px;
+    font-weight: 600;
+}
+
+.font64pxBold700 {
+    font-size: 64px;
+    font-weight: 700;
+}
+
+.font16px {
+    font-size: 16px;
+}
+
+.font21pxBold {
+    font-size: 21px;
+    font-weight: 700;
+}
+
+.font47pxBold500 {
+    font-size: 47px;
+    font-weight: 500;
+}
+
+.dateDeadline {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+}
+
+.sumUrgentDash {
+    border-left: 2px solid #D1D1D1;
+    height: 102.02px;
+    border-radius: 2px;
+}
+
+.sumLogoUrgent {
+    display: flex;
+    flex-direction: row;
+    gap: 18px;
+    text-align: center;
+}
+
+.greeting {
+    height: 136px;
+    width: 385px;
+    position: fixed;
+    left: 968px;
+    top: 547.5px;
+}
+
+.lightBlue {
+    color: #29ABE2;
 }
