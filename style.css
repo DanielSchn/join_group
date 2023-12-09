@@ -265,6 +265,8 @@ footer {
 .sumToDoDone:hover {
     background-color: #2A3647;
     color: #FFFFFF;
+    scale: 1.1;
+    transition: ease-in-out 125ms;
 }
 
 .sumUpcoming {
@@ -283,6 +285,8 @@ footer {
 .sumUpcoming:hover {
     background-color: #2A3647;
     color: #FFFFFF;
+    scale: 1.1;
+    transition: ease-in-out 125ms;
 }
 
 .sumTasks {
@@ -301,6 +305,8 @@ footer {
 .sumTasks:hover {
     background-color: #2A3647;
     color: #FFFFFF;
+    scale: 1.1;
+    transition: ease-in-out 125ms;
 }
 
 .sumTasksPos {
