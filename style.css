@@ -248,6 +248,27 @@ footer {
     left: 328px;
 }
 
+.sumToDo {
+    background-color: #FFFFFF;
+    width: 264px;
+    height: 168px;
+    border-radius: 30px;
+    border: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+    cursor: pointer;
+}
+
+.sumToDo:hover {
+    background-color: #2A3647;
+    color: #FFFFFF;
+    scale: 1.1;
+    transition: ease-in-out 100ms;
+}
+
 .sumToDoDone {
     background-color: #FFFFFF;
     width: 264px;
@@ -394,4 +415,12 @@ footer {
 
 .lightBlue {
     color: #29ABE2;
+}
+
+.sumToDo:hover .img69px {
+        content: url('assets/img/sum_todo_white.svg');
+}
+
+.sumToDoDone:hover .img69px {
+    content: url('assets/img/sum_done_white.svg');
 }
