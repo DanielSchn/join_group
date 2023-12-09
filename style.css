@@ -259,6 +259,12 @@ footer {
     justify-content: center;
     align-items: center;
     gap: 18px;
+    cursor: pointer;
+}
+
+.sumToDoDone:hover {
+    background-color: #2A3647;
+    color: #FFFFFF;
 }
 
 .sumUpcoming {
@@ -271,6 +277,12 @@ footer {
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
+    cursor: pointer;
+}
+
+.sumUpcoming:hover {
+    background-color: #2A3647;
+    color: #FFFFFF;
 }
 
 .sumTasks {
@@ -283,6 +295,12 @@ footer {
     flex-direction: column;
     justify-content: center;
     text-align: center;
+    cursor: pointer;
+}
+
+.sumTasks:hover {
+    background-color: #2A3647;
+    color: #FFFFFF;
 }
 
 .sumTasksPos {
