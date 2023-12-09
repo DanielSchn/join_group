@@ -266,7 +266,7 @@ footer {
     background-color: #2A3647;
     color: #FFFFFF;
     scale: 1.1;
-    transition: ease-in-out 125ms;
+    transition: ease-in-out 100ms;
 }
 
 .sumUpcoming {
@@ -286,7 +286,7 @@ footer {
     background-color: #2A3647;
     color: #FFFFFF;
     scale: 1.1;
-    transition: ease-in-out 125ms;
+    transition: ease-in-out 100ms;
 }
 
 .sumTasks {
@@ -306,7 +306,7 @@ footer {
     background-color: #2A3647;
     color: #FFFFFF;
     scale: 1.1;
-    transition: ease-in-out 125ms;
+    transition: ease-in-out 100ms;
 }
 
 .sumTasksPos {
