@@ -424,3 +424,228 @@ footer {
 .sumToDoDone:hover .img69px {
     content: url('assets/img/sum_done_white.svg');
 }
+
+/* Header */
+
+header {
+    height: 96px;
+    max-width: 1440px;
+    padding-right: 32px;
+    padding-left: 350px;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
+}
+
+#smalInterface {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+}
+
+#user {
+    box-sizing: border-box;
+    width: 56px;
+    height: 56px;
+    color: #28abe2;
+    font-weight: bold;
+    border: 3px solid #2A3647;
+    border-radius: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Aside Menu */
+
+aside {
+    width: 232px;
+    padding: 62px 0px;
+    background-color: #2a3647;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#menuBox {
+    height: 229px;
+    width: 232px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 15px;
+    position: relative;
+    top: -50px;
+}
+
+.linkAlign {
+    color: #CDCDCD;
+    font-size: 16px;
+    font-weight: 400;
+    height: 46px;
+    padding: 8px 56px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.linkAlign img {
+    height: 30px;
+    width: 30px;
+}
+
+.activ_bg {
+    background-color: #091931;
+}
+
+#infos {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+#infos a {
+    font-size: 16px;
+    font-weight: 400;
+    color: #CDCDCD;
+    text-decoration: none;
+    padding: 8px;
+}
+
+/* Conatcts */
+
+#contacts {
+    width: 456px;
+    background-color: white;
+    overflow-y: scroll;
+    box-shadow: 4px 0px 6px 0 rgba(0, 0, 0, 0.08);
+    z-index: 999;
+    position: fixed;
+    top: 96px;
+    left: 232px;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+#addContactBtnContainer {
+    min-height: 101px;
+    display: flex;
+    align-items: center;
+}
+
+#addContactBtn {
+    width: 352px;
+    color: white;
+    background-color: #2A3647;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+}
+
+#myContactsContainer {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.alphabet {
+    width: 352px;
+    height: 58px;
+    display: flex;
+    align-items: center;
+}
+
+.alphabetLetter {
+    padding-left: 40px;
+}
+
+.seperator {
+    height: 16px;
+    display: flex;
+    justify-content: center;
+}
+
+#myContacts {
+    width: 352px;
+}
+
+.contactCard {
+    height: 78px;
+    padding-left: 40px;
+    display: flex;
+    align-items: center;
+    gap: 35px;
+}
+
+.contactInitials {
+    font-size: 12px;
+    font-weight: 400;
+    color: white;
+    height: 42px;
+    width: 42px;
+    box-sizing: border-box;
+    border: 2px solid white;
+    border-radius: 45px;
+    background-color: #FF7A00;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contactDetails {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.contactName {
+    font-size: 20px;
+}
+
+.mailColor {
+    color: #007CEE;
+    font-size: 16px;
+}
+
+/* Contacts Title Bar */
+
+#contactTitleBar {
+    position: absolute;
+    top: 206px;
+    left: 743px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+#contactsTitle {
+    font-size: 61px;
+    font-weight: 700;
+}
+
+#devider {
+    height: 59px;
+    width: 3px;
+    background-color: #29ABE2;
+
+}
+
+#contactsSlogan {
+    font-size: 27px;
+    font-weight: 400;
+}
