@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Board</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="assets/css/style_board.css">
+    <link rel="stylesheet" href="fonts.css">
+    <script src="script.js"></script>
+</head>
+
+<body onload="includeHTML()">
+    <header w3-include-html="assets/templates/header_template.html">
+
+    </header>
+
+    <aside id="sideMenu" w3-include-html="assets/templates/side_menu_template.html"></aside>
+
+    <section class="boardHeaderContainer">
+        <div class="boardHeader">
+            <div class="boardHeaderMobile">
+                <h1>Board</h1>
+            </div>
+
+            <div class="boardHeaderInteract">
+                <div class="inputWithImg">
+                    <input id="findTask" type="text" placeholder="Find Task" />
+                    <div class="findTaskImg" onclick="searchTask()"><img src="assets/img/menu_icons/search.png"
+                            alt="" /></div>
+                </div>
+                <button class="addTaskDesktop" onclick="addTaskOnBoard('toDoStatus')">
+                    <b>Add task</b>
+                    <img src="assets/img/menu_icons/add.svg" alt="" />
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section class="boardContent">
+
+        <div class="sectionDragArea">
+            <div class="headerDragArea">
+                <h2>To do</h2>
+                <img onclick="addTaskOnBoard('toDoStatus')" class="addTaskToSection addTaskDesktop"
+                    src="assets/img/menu_icons/plus_button.svg" alt="Add Task to to do" />
+            </div>
+            <div id="toDo" class="dragArea" ondrop="moveTo('toDoStatus')" ondragover="allowDrop(event)">
+
+                <div  class="todo" id="">
+                    <div class="toDoCategory"> Category</div>
+
+                    <div>
+                        <div class="toDoTitle"> Kochwelt Page und Recipe Recommender </div>
+                        <div class="toDoDescription"> Was auch immer, wird ja eh bald ersetzt</div>
+                    </div>
+
+                    <div class="toDoSubtasks">
+                        <div class="toDoSubtasksProgress">
+                            <div class="toDoSubtasksProgressFiller">
+                            </div>
+                        </div>
+                        <div class="toDoSubtasksCount">
+                            <div id=""></div>
+                        </div>
+                    </div>
+
+                    <div class="toDoBottom">
+                        <div class="toDoAssignedContainer" ></div>
+                        <div class="toDoPrio"></div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="sectionDragArea">
+            <div class="headerDragArea">
+                <h2>In pogress</h2>
+                <img onclick="addTaskOnBoard('inProgressStatus')" class="addTaskToSection addTaskDesktop"
+                    src="assets/img/menu_icons/plus_button.svg" alt="Add Task to in Progress" />
+            </div>
+            <div id="inProgress" class="draArea" ondrop="moveTo('inProgressStatus')" ondragover="allowDrop(event)">
+            </div>
+        </div>
+
+        <div class="sectionDragArea">
+            <div class="headerDragArea">
+                <h2>Await feedback</h2>
+                <img onclick="addTaskOnBoard('awaitFeedbackStatus')" class="addTaskToSection addTaskDesktop"
+                    src="assets/img/menu_icons/plus_button.svg" alt="Add Task to Await Feedback" />
+            </div>
+            <div id="awaitFeedback" class="draArea" ondrop="moveTo('awaitFeedbackStatus')"
+                ondragover="allowDrop(event)"></div>
+        </div>
+
+        <div class="sectionDragArea">
+            <div class="headerDragArea">
+                <h2>Done</h2>
+            </div>
+            <div id="done" class="dragArea" ondrop="moveTo('doneStatus')" ondragover="allowDrop(event)"></div>
+        </div>
+    </section>
+
+
+</body>
+
+</html>
