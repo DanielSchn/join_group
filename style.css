@@ -453,10 +453,22 @@ header {
     color: #28abe2;
     font-weight: bold;
     border: 3px solid #2A3647;
-    border-radius: 100px;
+    border-radius: 45px;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+#mobileLogo {
+    display: none;
+}
+
+#mobileMenuBox {
+    display: none;
+}
+
+#mobileAddContactBtnContainer {
+    display: none;
 }
 
 /* Aside Menu */
@@ -534,7 +546,6 @@ aside {
     bottom: 0;
     display: flex;
     align-items: center;
-    justify-content: space-between;
     flex-direction: column;
 }
 
@@ -648,4 +659,136 @@ aside {
 #contactsSlogan {
     font-size: 27px;
     font-weight: 400;
+}
+
+/* Contact Title Bar (mobile) */
+
+@media (max-width: 1400px) {
+    #contactTitleBar {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    #devider {
+        height: 3px;
+        width: 59px;
+    }
+}
+
+@media (max-width: 1050px) {
+    #contactTitleBar {
+        display: none;
+    }
+
+    #contacts {
+        width: auto;
+        right: 0;
+    }
+}
+
+@media (max-width: 950px) {
+    header {
+        justify-content: end;
+    }
+
+    #headerName {
+        display: none;
+    }
+
+    #smalInterface img {
+        display: none;
+    }
+}
+
+@media (max-width: 700px) {
+    header {
+        height: 80px;
+        padding: 0px 32px;
+        justify-content: space-between;
+    }
+
+    #mobileLogo {
+        display: block;
+    }
+
+    #user {
+        height: 40px;
+        width: 40px;
+        border: 2px solid #2A3647;
+        font-size: 14px;
+    }
+
+    aside {
+        display: none;
+    }
+
+    #contacts {
+        z-index: -1;
+        padding: 17px 0px;
+        top: 80px;
+        bottom: 80px;
+        left: 0;
+        box-shadow: none;
+    }
+
+    #mobileMenuBox {
+        height: 80px;
+        background-color: #2A3647;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+
+    .linkAlign {
+        height: 76px;
+        width: 80px;
+        padding: 0px;
+        border-radius: 16px;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .linkAlign img {
+        height: 24px;
+    }
+
+    .activ_bg img {
+        filter: brightness(2);
+    }
+
+    .linkAlign a {
+        font-family: Open Sans, sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+    }
+}
+
+@media (max-width: 428px) {
+    #addContactBtnContainer {
+        display: none;
+    }
+
+    #mobileAddContactBtnContainer {
+        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        top: 758px;
+        right: 16px;
+    }
+
+    #mobileAddContactBtn {
+        height: 56px;
+        width: 56px;
+        padding: 0;
+        background-color: #2A3647;
+        border: 1px solid #2A3647;
+        border-radius: 45px;
+        box-shadow: 0px 4px 4px 0 rgba(0, 0, 0, 0.25);
+    }
 }
