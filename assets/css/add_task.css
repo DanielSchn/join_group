@@ -49,6 +49,10 @@
     align-items: center;
 }
 
+.addTaskPrioBtns button:hover {
+    box-shadow: var(--shadowStronger);
+}
+
 .addTaskPrioBtnsSelected {
     color: white;
     font-weight: 600;
@@ -100,9 +104,25 @@ button.addTaskPrio3Selected {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 4px;
+    padding-right: 44px;
 }
 
-.addTaskBottom button img {
-    width: 24px;
+.addTaskBottom .btnPrimary {
+    background-image: url('../img/check_white.svg');
+    background-repeat: no-repeat;
+    background-position: calc(100% - 16px) 50%;
+}
+
+.addTaskBottom .btnSecondary {
+    background-image: url('../img/cancel.svg');
+    background-repeat: no-repeat;
+    background-position: calc(100% - 16px) 50%;
+}
+
+.addTaskBottom .btnSecondary:hover {
+    background-image: url('../img/cancel_hover.svg');
+}
+
+.addTaskBottom .btnSecondary:active {
+    background-image: url('../img/cancel_active.svg');
 }
