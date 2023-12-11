@@ -49,11 +49,23 @@
     align-items: center;
 }
 
-/* nur zu Demonstrationszwecken - später durch JS ersetzen */
-.addTaskPrioBtns button:active {color: white; font-weight: 600; box-shadow: none;}
-#addTaskPrio1:active {background: #FF3D00;}
-#addTaskPrio2:active {background: #FF7A00;}
-#addTaskPrio3:active {background: #7AE229;}
+.addTaskPrioBtnsSelected {
+    color: white;
+    font-weight: 600;
+    box-shadow: none;
+}
+
+button.addTaskPrio1Selected {
+    background: #FF3D00;
+}
+
+button.addTaskPrio2Selected {
+    background: #FF7A00;
+}
+
+button.addTaskPrio3Selected {
+    background: #7AE229;
+}
 
 .addTaskPrioBtns button img {
     width: 20px;
