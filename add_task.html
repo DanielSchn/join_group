@@ -9,10 +9,14 @@
     <link rel="stylesheet" href="./fonts.css">
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./assets/css/add_task.css">
+
+    <script src="./script.js"></script>
 </head>
 
-<body>
-
+<body onload="includeHTML()">
+    <header w3-include-html="assets/templates/header_template.html"></header>
+    <aside id="sideMenu" w3-include-html="assets/templates/side_menu_template.html"></aside>
+    
     <div class="main">
         <form class="addTaskForm" action="">
             <h1>Add Task</h1>

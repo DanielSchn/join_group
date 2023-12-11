@@ -60,7 +60,7 @@
 }
 
 #addTaskSubtasks {
-    background-image: url(./assets/img/plus_icon.svg);
+    background-image: url(../img/plus_icon.svg);
     background-size: 24px;
     background-repeat: no-repeat;
     background-position: calc(100% - 12px) 50%;
