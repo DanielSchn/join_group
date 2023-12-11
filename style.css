@@ -2,6 +2,7 @@
     --fontSizeNormal: 20px;
     --fontSizeSmall: 16px;
     --menuBarWidth: 232px;
+    --shadowSubtle: 1px 1px 4px 2px rgba(0, 0, 0, 3%);
     --lightGray1: #D1D1D1;
     --darkBlue1: #2A3647;
 }
@@ -35,9 +36,11 @@ h2 {
 }
 
 button {
+    cursor: pointer;
     border-radius: 10px;
     border: none;
     outline: none;
+    font-family: 'Inter';
     font-size: var(--fontSizeNormal);
     padding: 16px;
 }
@@ -45,7 +48,7 @@ button {
 .btnPrimary {
     background: var(--darkBlue1);
     color: white;
-    font-weight: 700;
+    font-weight: 600;
 }
 
 .btnSecondary {
@@ -75,11 +78,7 @@ select {
 
 input,
 textarea {
-    padding: 12px 21px;
-}
-
-select {
-    padding: 7px 21px;
+    padding: 12px 16px;
 }
 
 input::placeholder,
@@ -87,17 +86,34 @@ textarea::placeholder {
     color: var(--lightGray1);
 }
 
-/* Standard-Resizer (Textarea) verstecken */
+/* Default-Resizer (Textarea) verstecken */
 ::-webkit-resizer {
     display: none;
 }
 
-/* neuer Resizer als Hintergrundbild */
+/* neuer Resizer */
 textarea {
     background-image: url(./assets/img/resize-handle.svg);
     background-size: 19px;
     background-repeat: no-repeat;
     background-position: calc(100% - 5px) calc(100% - 4px);
+}
+
+select {
+    padding: 12px 12px;
+    /* Default-Pfeil verstecken */
+    -webkit-appearance: none;
+    appearance: none;
+    /* neuer Pfeil */
+    background-image: url(./assets/img/select_icon.svg);
+    background-size: 24px;
+    background-repeat: no-repeat;
+    background-position: calc(100% - 12px) 50%;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    background-image: url(./assets/img/calendar_icon.svg);
+    background-size: 24px;
 }
 
 .logo {
@@ -148,66 +164,6 @@ footer {
     display: flex;
     justify-content: center;
 }
-
-/* ADD TASK */
-.addTaskForm {
-    padding: 0 96px;
-    display: flex;
-    flex-direction: column;
-}
-
-.addTaskFormMain {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    height: fit-content;
-}
-
-.addTaskFormMainSide {
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-}
-
-.addTaskField {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.red {
-    color: red;
-    margin: 0;
-}
-
-.addTaskPrioBtns {
-    display: flex;
-    gap: 16px;
-}
-
-.addTaskPrioBtns button {
-    min-width: calc((100% - 32px)/3);
-}
-
-.addTaskBottom {
-    /* "flex" für vertikale Größe */
-    flex: 1;
-    margin-top: 32px;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-}
-
-.addTaskBottom div {
-    display: flex;
-    align-items: flex-end;
-}
-
-.addTaskBottom div:nth-child(2) {
-    gap: 16px;
-}
-
 
 /* summary site */
 
@@ -418,7 +374,7 @@ footer {
 }
 
 .sumToDo:hover .img69px {
-        content: url('assets/img/sum_todo_white.svg');
+    content: url('assets/img/sum_todo_white.svg');
 }
 
 .sumToDoDone:hover .img69px {
