@@ -405,6 +405,20 @@ footer {
     content: url('assets/img/sum_done_white.svg');
 }
 
+@media (max-height: 905px) {
+    .sumHeadPosition {
+        top: 108px;
+    }
+
+    .dashboard {
+        top: 198px;
+    }
+
+    .greeting {
+        top: 408.5px;
+    }
+}
+
 /* Header */
 
 header {
