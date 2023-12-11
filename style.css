@@ -436,6 +436,22 @@ footer {
     .greeting {
         left: 860px;
     }
+
+    .font47pxBold500 {
+        font-size: 33px;
+        font-weight: 400;
+    }
+
+    .font64pxBold700 {
+        font-size: 50px;
+        font-weight: 500;
+    }
+}
+
+@media (max-width: 1150px) {
+    .greeting {
+        display: none;
+    }
 }
 
 /* Header */
