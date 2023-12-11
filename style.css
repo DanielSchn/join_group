@@ -419,6 +419,26 @@ footer {
     }
 }
 
+@media (max-width: 1360px) {
+    .sumHeadPosition {
+        left: 280px;
+    }
+
+    .dashboard {
+        left: 280px;
+    }
+    .greeting {
+        left: 870px;
+    }
+}
+
+@media (max-width: 1260px) {
+    .greeting {
+        scale: 0.8;
+        left: 820px;
+    }
+}
+
 /* Header */
 
 header {
