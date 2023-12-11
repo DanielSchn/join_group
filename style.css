@@ -454,6 +454,60 @@ footer {
     }
 }
 
+@media (max-width: 920px) {
+    .sumHead h1 {
+        font-size: 47px;
+    }
+
+    .sumHead p {
+        font-size: 20px;
+    }
+
+    .sumHeadDash {
+        transform: rotate(90deg);
+        height: 90px;
+    }
+
+    .sumToDo {
+        width: 186px;
+        height: 110px;
+    }
+
+    .sumToDoDone {
+        width: 186px;
+        height: 110px;
+    }
+
+    .sumUpcoming {
+        width: 396px;
+        height: 110px;
+    }
+
+    .sumTasks {
+        width: 116px;
+        height: 116px;
+    }
+
+    .font64pxBold {
+        font-size: 47px;   
+    }
+
+    .font14pxBold400 {
+        font-size: 14px;
+        font-weight: 400;
+    }
+
+    .font16pxBold700 {
+        font-size: 16px;
+        font-weight: 700;
+    }
+
+    .sumHead {
+        flex-direction: column;
+        gap: 8px;
+    }
+}
+
 /* Header */
 
 header {
