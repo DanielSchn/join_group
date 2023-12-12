@@ -1,4 +1,4 @@
 git pull
 git add .
-git commit -m "%*"
-git push
+git commit -m "added responsive design"
+git pu
