@@ -2,9 +2,12 @@
     --fontSizeNormal: 20px;
     --fontSizeSmall: 16px;
     --menuBarWidth: 232px;
-    --shadowSubtle: 1px 1px 4px 2px rgba(0, 0, 0, 3%);
+    --shadowSubtle: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
+    --shadowStronger: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     --lightGray1: #D1D1D1;
     --darkBlue1: #2A3647;
+    --darkBlue2: #091931;
+    --lightBlue1: #29ABE2;
 }
 
 body {
@@ -17,6 +20,7 @@ body {
 
 .main {
     width: calc(100vw - var(--menuBarWidth));
+    padding-left: var(--menuBarWidth);
 }
 
 p {
@@ -45,16 +49,38 @@ button {
     padding: 16px;
 }
 
+button:hover {
+    box-shadow: var(--shadowStronger);
+}
+
 .btnPrimary {
     background: var(--darkBlue1);
     color: white;
     font-weight: 600;
 }
 
+.btnPrimary:hover {
+    background: var(--lightBlue1);
+}
+
+.btnPrimary:active {
+    background: var(--darkBlue2);
+}
+
 .btnSecondary {
     border: 1px solid var(--darkBlue1);
     background: none;
     color: var(--darkBlue1);
+}
+
+.btnSecondary:hover {
+    border-color: var(--lightBlue1);
+    color: var(--lightBlue1);
+}
+
+.btnSecondary:active {
+    border-color: var(--darkBlue2);
+    color: var(--darkBlue2);
 }
 
 /* vr für "vertical ruler", vertikale Linie */
@@ -84,6 +110,11 @@ textarea {
 input::placeholder,
 textarea::placeholder {
     color: var(--lightGray1);
+}
+
+input:focus,
+textarea:focus {
+    border-color: var(--lightBlue1);
 }
 
 /* Default-Resizer (Textarea) verstecken */
@@ -377,6 +408,109 @@ footer {
 
 .sumToDoDone:hover .img69px {
     content: url('assets/img/sum_done_white.svg');
+}
+
+@media (max-height: 905px) {
+    .sumHeadPosition {
+        top: 108px;
+    }
+
+    .dashboard {
+        top: 198px;
+    }
+
+    .greeting {
+        top: 408.5px;
+    }
+}
+
+@media (max-width: 1360px) {
+    .sumHeadPosition {
+        left: 280px;
+    }
+
+    .dashboard {
+        left: 280px;
+    }
+    .greeting {
+        left: 870px;
+    }
+}
+
+@media (max-width: 1260px) {
+    .greeting {
+        left: 860px;
+    }
+
+    .font47pxBold500 {
+        font-size: 33px;
+        font-weight: 400;
+    }
+
+    .font64pxBold700 {
+        font-size: 50px;
+        font-weight: 500;
+    }
+}
+
+@media (max-width: 1150px) {
+    .greeting {
+        display: none;
+    }
+}
+
+@media (max-width: 920px) {
+    .sumHead h1 {
+        font-size: 47px;
+    }
+
+    .sumHead p {
+        font-size: 20px;
+    }
+
+    .sumHeadDash {
+        transform: rotate(90deg);
+        height: 90px;
+    }
+
+    .sumToDo {
+        width: 186px;
+        height: 110px;
+    }
+
+    .sumToDoDone {
+        width: 186px;
+        height: 110px;
+    }
+
+    .sumUpcoming {
+        width: 396px;
+        height: 110px;
+    }
+
+    .sumTasks {
+        width: 116px;
+        height: 116px;
+    }
+
+    .font64pxBold {
+        font-size: 47px;   
+    }
+
+    .font14pxBold400 {
+        font-size: 14px;
+        font-weight: 400;
+    }
+
+    .font16pxBold700 {
+        font-size: 16px;
+        font-weight: 700;
+    }
+
+    .sumHead {
+        flex-direction: column;
+        gap: 8px;
+    }
 }
 
 /* Header */

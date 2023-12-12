@@ -9,89 +9,15 @@
     <link rel="stylesheet" href="./fonts.css">
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./assets/css/add_task.css">
+
+    <script src="./script.js"></script>
+    <script src="./js/add_task.js"></script>
 </head>
 
-<body>
-
-    <div class="main">
-        <form class="addTaskForm" action="">
-            <h1>Add Task</h1>
-            <div class="addTaskFormMain">
-                <div class="addTaskFormMainSide">
-                    <div class="addTaskField">
-                        <label for="addTaskTitle">
-                            <h2>Title<p class="red">*</p>
-                            </h2>
-                        </label>
-                        <input type="text" placeholder="Enter a title" id="addTaskTitle" required>
-                    </div>
-                    <div class="addTaskField">
-                        <label for="addTaskDescription">
-                            <h2>Description</h2>
-                        </label>
-                        <textarea placeholder="Enter a description" id="addTaskDescription"></textarea>
-                    </div>
-                    <div class="addTaskField">
-                        <label for="addTaskAssigned">
-                            <h2>Assigned to</h2>
-                        </label>
-                        <select placeholder="test" id="addTaskAssigned">
-                            <option value="">Select contacts to assign</option>
-                            <option value="">CONTACT 1</option>
-                            <option value="">CONTACT 2</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="vr"></div>
-                <div class="addTaskFormMainSide">
-                    <div class="addTaskField">
-                        <label for="addTaskDue">
-                            <h2>Due date<p class="red">*</p>
-                            </h2>
-                        </label>
-                        <input type="date" id="addTaskDue" required>
-                    </div>
-                    <div class="addTaskField">
-                            <h2>Prio</h2>
-                        <div class="addTaskPrioBtns">
-                            <button id="addTaskPrio1">Urgent <img src="./assets/img/prio_icons/task_prio_urgent.svg" alt="icon"></button>
-                            <button id="addTaskPrio2">Medium <img src="./assets/img/prio_icons/task_prio_medium.svg" alt="icon"></button>
-                            <button id="addTaskPrio3">Low <img src="./assets/img/prio_icons/task_prio_low.svg" alt="icon"></button>
-                        </div>
-                    </div>
-                    <div class="addTaskField">
-                        <label for="addTaskCategory">
-                            <h2>Category<p class="red">*</p>
-                            </h2>
-                        </label>
-                        <select placeholder="test" id="addTaskCategory" required>
-                            <option value="">Select task category</option>
-                            <option value="">CATEGORY 1</option>
-                            <option value="">CATEGORY 2</option>
-                        </select>
-                    </div>
-                    <div class="addTaskField">
-                        <label for="addTaskSubtasks">
-                            <h2>Subtasks</h2>
-                        </label>
-                        <!-- Für die Funktion dieses Formularfelds scheint es keinen passenden input type zu geben. Evtl. hilft das:
-                        https://www.geeksforgeeks.org/how-to-create-tags-input-box-in-html-css-and-javascript/ -->
-                        <input type="text" placeholder="Add new subtask" id="addTaskSubtasks">
-                    </div>
-                </div>
-            </div>
-            <div class="addTaskBottom">
-                <div class="fontSizeSmall">
-                    <p class="red" style="margin-bottom: 3px">*</p>
-                    This field is required
-                </div>
-                <div>
-                    <button class="btnSecondary">Clear<img src="./assets/img/cancel.svg" alt="icon"></button>
-                    <button class="btnPrimary">Create Task<img src="./assets/img/check_white.svg" alt="icon"></button>
-                </div>
-            </div>
-        </form>
-    </div>
+<body onload="includeHTML()">
+    <header w3-include-html="assets/templates/header_template.html"></header>
+    <aside id="sideMenu" w3-include-html="assets/templates/side_menu_template.html"></aside>
+    <div class="main" w3-include-html="assets/templates/add_task_template.html"></div>
 </body>
 
 </html>

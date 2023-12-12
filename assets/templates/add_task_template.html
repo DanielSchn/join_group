@@ -1,0 +1,100 @@
+<form class="addTaskForm" action="">
+    <h1>Add Task</h1>
+    <div class="addTaskFormMain">
+        <div class="addTaskFormMainSide">
+            <div class="addTaskField">
+                <label for="addTaskTitle">
+                    <h2>Title<p class="red">*</p>
+                    </h2>
+                </label>
+                <input type="text" placeholder="Enter a title" id="addTaskTitle" required>
+            </div>
+            <div class="addTaskField">
+                <label for="addTaskDescription">
+                    <h2>Description</h2>
+                </label>
+                <textarea placeholder="Enter a description" id="addTaskDescription"></textarea>
+            </div>
+            <div class="addTaskField">
+                <label for="addTaskAssigned">
+                    <h2>Assigned to</h2>
+                </label>
+                <select placeholder="test" id="addTaskAssigned">
+                    <option value="">Select contacts to assign</option>
+                    <option value="">CONTACT 1</option>
+                    <option value="">CONTACT 2</option>
+                </select>
+            </div>
+        </div>
+        <div class="vr"></div>
+        <div class="addTaskFormMainSide">
+            <div class="addTaskField">
+                <label for="addTaskDue">
+                    <h2>Due date<p class="red">*</p>
+                    </h2>
+                </label>
+                <input type="date" id="addTaskDue" required>
+            </div>
+            <div class="addTaskField">
+                <h2>Prio</h2>
+                <div class="addTaskPrioBtns">
+                    <button type="button" id="addTaskPrio1" onclick="handlePrioBtnClick(1)">Urgent <img
+                            src="./assets/img/prio_icons/task_prio_urgent.svg" alt="icon" id="addTaskPrio1Img"></button>
+                    <button type="button" id="addTaskPrio2" onclick="handlePrioBtnClick(2)">Medium <img
+                            src="./assets/img/prio_icons/task_prio_medium.svg" alt="icon" id="addTaskPrio2Img"></button>
+                    <button type="button" id="addTaskPrio3" onclick="handlePrioBtnClick(3)">Low <img
+                            src="./assets/img/prio_icons/task_prio_low.svg" alt="icon" id="addTaskPrio3Img"></button>
+                </div>
+            </div>
+            <div class="addTaskField">
+                <label for="addTaskCategory">
+                    <h2>Category<p class="red">*</p>
+                    </h2>
+                </label>
+                <select placeholder="test" id="addTaskCategory" required>
+                    <option value="">Select task category</option>
+                    <option value="">CATEGORY 1</option>
+                    <option value="">CATEGORY 2</option>
+                </select>
+            </div>
+            <div class="addTaskField">
+                <label for="addSubtask">
+                    <h2>Subtasks</h2>
+                </label>
+                <!-- Für die Funktion dieses Formularfelds scheint es keinen passenden input type zu geben. Evtl. hilft das:
+                https://www.geeksforgeeks.org/how-to-create-tags-input-box-in-html-css-and-javascript/ -->
+                <div id="addSubtaskInputContainer">
+                    <input type="text" onclick="event.stopPropagation(); focusInputSubtask()" placeholder="Add new subtask" id="addSubtask">
+                    <div id="addSubtaskIconsPassive">
+                        <button type="button" onclick="event.stopPropagation(); focusInputSubtask()" class="subtasksButton">
+                            <img src="./assets/img/plus_icon.svg" alt="icon" >
+                        </button>
+                    </div>
+                    <div id="addSubtaskIconsActive" style="display: none">
+                        <button type="button" onclick="cancelInputSubtask()" class="subtasksButton">
+                            <img src="./assets/img/cancel.svg" alt="cancel subtask">
+                        </button>
+                        <div class="vr"></div>
+                        <button type="button" class="subtasksButton">
+                            <img src="./assets/img/check.svg" alt="create subtask">
+                        </button>
+                    </div>
+                </div>
+                <ul id="subtasksList">
+                    <li>SUBTASK 1</li>
+                    <li>SUBTASK 2</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="addTaskBottom">
+        <div class="fontSizeSmall">
+            <p class="red" style="margin-bottom: 3px">*</p>
+            This field is required
+        </div>
+        <div>
+            <button type="button" class="btnSecondary">Clear</button>
+            <button type="submit" class="btnPrimary">Create Task</button>
+        </div>
+    </div>
+</form>
