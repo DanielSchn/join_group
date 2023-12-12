@@ -6,6 +6,7 @@
     <title>Contacts</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="fonts.css">
+    <script src="./js/renderContactCard.js"></script>
 </head>
 <body>
     <header>
@@ -48,7 +49,7 @@
             </div>
             <div id="myContacts">
             <div id="myContacts_A">
-                <div class="contactCard">
+                <div class="contactCard" onclick="openContactContainer()">
                     <div class="contactInitials">
                         <span id="user_name">AM</span>
                     </div>
@@ -172,7 +173,7 @@
             <div id="contactsSlogan">Better with a Team</div>
         </div>
 
-        <div id="mainContactDetails">
+        <div id="mainContactDetails" class="d-none">
             <div id="mainContactContainer_1">
                 <div class="initialCircle">
                     <span id="user_initials_0" class="font47">AM</span>

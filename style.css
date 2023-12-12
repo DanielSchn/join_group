@@ -799,6 +799,10 @@ aside {
 
 /* Contact Card */
 
+.d-none {
+    display: none !important;
+}
+
 #mainContactDetails {
     display: flex;
     align-items: start;
@@ -906,16 +910,20 @@ aside {
 @media (max-width: 1400px) {
     #contactTitleBar {
         flex-direction: column;
-        gap: 16px;
+        gap: 8px;
     }
 
     #devider {
         height: 3px;
-        width: 59px;
+        width: 216px;
+    }
+
+    #mainContactDetails {
+        top: 380px;
     }
 }
 
-@media (max-width: 1050px) {
+@media (max-width: 1250px) {
     #contactTitleBar {
         display: none;
     }
