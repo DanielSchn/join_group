@@ -3,16 +3,16 @@
     width: calc(100% - 230px);
     display: flex;
     align-items: center;
-  }
+}
   
-  .boardHeader {
-    width: 1056px;
-    margin-left: 64px;
-    margin-top: 79.5px;
-    margin-bottom: 48px;
-    display: flex;
-    justify-content: space-between;
-  }
+.boardHeader {
+  width: 1056px;
+  margin-left: 64px;
+  margin-top: 79.5px;
+  margin-bottom: 48px;
+  display: flex;
+  justify-content: space-between;
+}
   
   .boardHeader h1 {
     font-size: 61px;
@@ -25,12 +25,12 @@
     border-radius: 0;
   }
   
-  .boardHeaderInteract {
+  .boardHeaderSearch {
     display: flex;
     align-items: center;
   }
   
-  .boardHeaderInteract button {
+  .boardHeaderSearch button {
     background-color: #2a3647;
     border: unset;
     border-radius: 10px;
@@ -41,7 +41,7 @@
     gap: 10px;
     align-items: center;
   }
-  .boardHeaderInteract button:hover {
+  .boardHeaderSearch button:hover {
     background-color: #29abe2;
   }
   
@@ -111,6 +111,15 @@
     height: 24px;
     width: 244px;
   }
+
+  .headerDragArea h2{
+    color: #42526E;
+    font-size: 20px;
+    font-family: Inter;
+    font-weight: 700;
+    line-height: 24px;
+    word-wrap: break-word
+  }
   
   .addTaskToSection {
     width: 24px;
@@ -127,10 +136,15 @@
     /* height: 100%; */
     margin-left: -8px;
     flex: 1;
-    overflow-y: auto;
+    /*overflow-y: auto;*/
  
     max-height: 670px;
   }
+
+  .dragAreaHighlight{
+    background-color: rgba(255, 255, 255)
+  }
+
 
 
 

@@ -1,6 +1,9 @@
 :root {
+    --fontSizeHuge: 61px;
     --fontSizeNormal: 20px;
     --fontSizeSmall: 16px;
+    --fontWeight700: 700;
+    --fontWeight400: 400;
     --menuBarWidth: 232px;
     --shadowSubtle: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
     --shadowStronger: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
@@ -8,6 +11,13 @@
     --darkBlue1: #2A3647;
     --darkBlue2: #091931;
     --lightBlue1: #29ABE2;
+    --black: #000000;
+    --white: #FFFFFF;
+}
+
+a {
+    text-decoration: none;
+    color: var(--black);
 }
 
 body {
@@ -21,9 +31,16 @@ body {
 .main {
     width: calc(100vw - var(--menuBarWidth));
     padding-left: var(--menuBarWidth);
+    display: flex;
+    justify-content: center;
 }
 
 p {
+    margin: 0;
+}
+
+h1 {
+    font-size: var(--fontSizeHuge);
     margin: 0;
 }
 
@@ -69,6 +86,7 @@ button:hover {
 
 .btnSecondary {
     border: 1px solid var(--darkBlue1);
+    box-sizing: border-box;
     background: none;
     color: var(--darkBlue1);
 }
@@ -143,6 +161,10 @@ select {
 }
 
 input[type="date"]::-webkit-calendar-picker-indicator {
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    margin: 0;
     background-image: url(./assets/img/calendar_icon.svg);
     background-size: 24px;
 }
@@ -169,19 +191,55 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     width: 100%
 }
 
-.logIn {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: 652px;
-    height: 493px;
-    margin: auto;
+.inputLogInSignUp {
+    width: 422px;
+    max-height: 48px;
+
+}
+
+.logInInputContainer {
+    border: 1px solid var(--lightGray1);
+    
+}
+
+.logInFormPos {
     display: flex;
     justify-content: center;
+}
+
+.logIn {
+    position: fixed;
+    top: 265.5px;
+    /* bottom: 0; */
+    left: 394px;
+    /* right: 0; */
+    width: 652px;
+    height: 493px;
+    /* margin: auto; */
+    /* display: flex; */
+    /* justify-content: center; */
+    /* flex-direction: column; */
+    background: var(--white);
+    border-radius: 30px;
+}
+
+.logIn h1 {
+    /* text-align: center; */
+    margin-top: 48px;
+}
+
+.loginDash {
+    border-top: 3px solid #29ABE2;
+    width: 150px;
+    
+}
+
+.logInHead {
+    display: flex;
     flex-direction: column;
-    background: white;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 32px;
 }
 
 .logInForm {
@@ -222,7 +280,7 @@ footer {
 }
 
 .sumHeadDash {
-    border-left: 3px solid #29ABE2;
+    border-left: 3px solid;
     height: 59px;
     border-radius: 3px;
 }
@@ -398,6 +456,10 @@ footer {
     top: 547.5px;
 }
 
+.sumHeadDashVertical {
+    display: none;
+}
+
 .lightBlue {
     color: #29ABE2;
 }
@@ -468,9 +530,15 @@ footer {
         font-size: 20px;
     }
 
+    .sumHeadDashVertical {
+        display: block;
+        border-top: 3px solid;
+        width: 90px;
+        margin-top: 8px;
+    }
+
     .sumHeadDash {
-        transform: rotate(90deg);
-        height: 90px;
+        display: none;
     }
 
     .sumToDo {
@@ -510,6 +578,19 @@ footer {
     .sumHead {
         flex-direction: column;
         gap: 8px;
+        align-items: start;
+    }
+}
+
+@media (max-width: 700px) {
+    .dashboard {
+        left: 16px;
+        top: 272px;
+    }
+
+    .sumHeadPosition {
+        left: 16px;
+        top: 128px;
     }
 }
 

@@ -1,7 +1,7 @@
 <form class="addTaskForm" action="">
     <h1>Add Task</h1>
     <div class="addTaskFormMain">
-        <div class="addTaskFormMainSide">
+        <div class="addTaskFormMainSide addTaskFormMainSideOne">
             <div class="addTaskField">
                 <label for="addTaskTitle">
                     <h2>Title<p class="red">*</p>
@@ -27,7 +27,7 @@
             </div>
         </div>
         <div class="vr"></div>
-        <div class="addTaskFormMainSide">
+        <div class="addTaskFormMainSide addTaskFormMainSideTwo">
             <div class="addTaskField">
                 <label for="addTaskDue">
                     <h2>Due date<p class="red">*</p>
@@ -64,10 +64,12 @@
                 <!-- Für die Funktion dieses Formularfelds scheint es keinen passenden input type zu geben. Evtl. hilft das:
                 https://www.geeksforgeeks.org/how-to-create-tags-input-box-in-html-css-and-javascript/ -->
                 <div id="addSubtaskInputContainer">
-                    <input type="text" onclick="event.stopPropagation(); focusInputSubtask()" placeholder="Add new subtask" id="addSubtask">
+                    <input type="text" onclick="event.stopPropagation(); focusInputSubtask()"
+                        placeholder="Add new subtask" id="addSubtask">
                     <div id="addSubtaskIconsPassive">
-                        <button type="button" onclick="event.stopPropagation(); focusInputSubtask()" class="subtasksButton">
-                            <img src="./assets/img/plus_icon.svg" alt="icon" >
+                        <button type="button" onclick="event.stopPropagation(); focusInputSubtask()"
+                            class="subtasksButton">
+                            <img src="./assets/img/plus_icon.svg" alt="icon">
                         </button>
                     </div>
                     <div id="addSubtaskIconsActive" style="display: none">
@@ -80,12 +82,14 @@
                         </button>
                     </div>
                 </div>
-                <ul id="subtasksList">
-                    <li>SUBTASK 1</li>
-                    <li>SUBTASK 2</li>
-                </ul>
             </div>
         </div>
+    </div>
+    <div class="subtasksContainer">
+        <ul id="subtasksList">
+            <li>SUBTASK 1</li>
+            <li>SUBTASK 2</li>
+        </ul>
     </div>
     <div class="addTaskBottom">
         <div class="fontSizeSmall">
