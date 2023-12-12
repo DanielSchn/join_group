@@ -1,5 +1,5 @@
-/** Funktion bestimmt, was bei Klick auf einen der drei Prioritätsbuttons geschieht 
- * 
+/** 
+ * Funktion bestimmt, was bei Klick auf einen der drei Prioritätsbuttons geschieht 
  * @param {number} btnNumber - Laufindex des geklickten Buttons (1: urgent, 2: medium, 3: low) 
  */
 function handlePrioBtnClick(btnNumber) {
@@ -8,8 +8,8 @@ function handlePrioBtnClick(btnNumber) {
     }
 }
 
-/** Button stylen
- * 
+/** 
+ * Button stylen
  * @param {number} index - Laufindex des zu stylenden Buttons
  * @param {*} btnNumber - Laufindex des geklickten Buttons
  */
@@ -26,8 +26,8 @@ function stylePrioBtn(index, btnNumber) {
     }
 }
 
-/** <img> im Button durch Pfadänderung stylen
- * 
+/** 
+ * <img> im Button durch Pfadänderung stylen
  * @param {number} index - Laufindex des Buttons 
  */
 function togglePrioBtnImg(index) {
@@ -40,8 +40,8 @@ function togglePrioBtnImg(index) {
     }
 }
 
-/** <img> im Button bunt färben 
- * 
+/** 
+ * <img> im Button bunt färben
  * @param {number} index - Laufindex des Buttons 
  */
 function colorPrioBtnImg(index) {
@@ -50,4 +50,40 @@ function colorPrioBtnImg(index) {
         let newSrc = img.src.replace('_white', '');
         img.src = newSrc;
     }
+}
+
+/** 
+ * Fokussierung des Input-Feldes für Subtasks
+ */
+function focusInputSubtask() {
+    const container = document.getElementById('addSubtaskInputContainer');
+    const btnsPassive = document.getElementById('addSubtaskIconsPassive');
+    const btnsActive = document.getElementById('addSubtaskIconsActive');
+    container.style.borderColor = 'var(--lightBlue1)';
+    addSubtask.focus();
+    btnsPassive.style.display = 'none';
+    btnsActive.style.display = '';
+    document.addEventListener("click", unfocusInputSubtask); // reagiert auf Clicks abseits des Containers
+}
+
+/**
+ * Fokus aufheben
+ */
+function unfocusInputSubtask() {
+    const container = document.getElementById('addSubtaskInputContainer');
+    container.style.borderColor = 'var(--lightGray1)';
+    if (addSubtask.value == '') {
+        const btnsPassive = document.getElementById('addSubtaskIconsPassive');
+        const btnsActive = document.getElementById('addSubtaskIconsActive');
+        btnsPassive.style.display = '';
+        btnsActive.style.display = 'none';
+    }
+}
+
+/**
+ * Cancel-Button löscht eingetragenen Wert und hebt Fokus auf
+ */
+function cancelInputSubtask() {
+    addSubtask.value = '';
+    unfocusInputSubtask();
 }

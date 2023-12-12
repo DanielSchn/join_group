@@ -112,6 +112,11 @@ textarea::placeholder {
     color: var(--lightGray1);
 }
 
+input:focus,
+textarea:focus {
+    border-color: var(--lightBlue1);
+}
+
 /* Default-Resizer (Textarea) verstecken */
 ::-webkit-resizer {
     display: none;
