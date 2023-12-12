@@ -1,21 +1,36 @@
+:root {
+    --sidePadding: 96px;
+    --top: 110px;
+    --bottom: 80px;
+}
+
 .addTaskForm {
-    padding: 0 96px;
+    padding: var(--top) calc(var(--sidePadding) * 3 / 2) var(--bottom) var(--sidePadding);
     display: flex;
     flex-direction: column;
+    height: calc(100vh - var(--top) - var(--bottom) - 96px);
 }
 
 .addTaskFormMain {
+    padding-top: 48px;
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    gap: calc(var(--sidePadding) / 2);
     height: fit-content;
 }
 
 .addTaskFormMainSide {
-    width: 440px;
+    flex: 1;
     display: flex;
     flex-direction: column;
+}
+
+.addTaskFormMainSideOne {
     gap: 32px;
+}
+
+.addTaskFormMainSideTwo {
+    gap: 24px;
 }
 
 .addTaskForm h2 {
@@ -114,10 +129,19 @@ button.addTaskPrio3Selected {
     display: block;
 }
 
+.subtasksContainer {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+#subtasksList {
+    width: calc(50% - var(--sidePadding));
+}
+
 .addTaskBottom {
     /* "flex" für vertikale Größe */
     flex: 1;
-    margin-top: 32px;
     width: 100%;
     display: flex;
     justify-content: space-between;
