@@ -222,7 +222,7 @@ footer {
 }
 
 .sumHeadDash {
-    border-left: 3px solid #29ABE2;
+    border-left: 3px solid;
     height: 59px;
     border-radius: 3px;
 }
@@ -398,6 +398,10 @@ footer {
     top: 547.5px;
 }
 
+.sumHeadDashVertical {
+    display: none;
+}
+
 .lightBlue {
     color: #29ABE2;
 }
@@ -468,9 +472,15 @@ footer {
         font-size: 20px;
     }
 
+    .sumHeadDashVertical {
+        display: block;
+        border-top: 3px solid;
+        width: 90px;
+        margin-top: 8px;
+    }
+
     .sumHeadDash {
-        transform: rotate(90deg);
-        height: 90px;
+        display: none;
     }
 
     .sumToDo {
@@ -510,6 +520,19 @@ footer {
     .sumHead {
         flex-direction: column;
         gap: 8px;
+        align-items: start;
+    }
+}
+
+@media (max-width: 700px) {
+    .dashboard {
+        left: 16px;
+        top: 272px;
+    }
+
+    .sumHeadPosition {
+        left: 16px;
+        top: 128px;
     }
 }
 
