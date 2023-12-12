@@ -726,9 +726,15 @@ aside {
 .contactCard {
     height: 78px;
     padding-left: 40px;
+    border-radius: 10px;
     display: flex;
     align-items: center;
     gap: 35px;
+}
+
+.contactCard:hover{
+    cursor: pointer;
+    background: linear-gradient(180deg, #F9F9F9 0%, #F0F0F0 100%);
 }
 
 .contactInitials {
@@ -791,7 +797,111 @@ aside {
     font-weight: 400;
 }
 
-/* Contact Title Bar (mobile) */
+/* Contact Card */
+
+#mainContactDetails {
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    gap: 21px;
+    position: fixed;
+    top: 311px;
+    left: 750px;
+}
+
+#mainContactContainer_1 {
+    display: flex;
+    align-items: center;
+    gap: 54px;
+}
+
+.initialCircle {
+    width: 120px;
+    height: 120px;
+    flex-shrink: 0;
+    background-color: #FF7A00;
+    border-radius: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.font47 {
+    font-size: 47px;
+    font-weight: 500;
+}
+
+.initialCircle span {
+    color: white;
+}
+
+#contactSetup {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+#settings {
+    display: flex;
+    gap: 16px;
+}
+
+#settings div {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+#settings div span {
+    color: #2A3647;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+#mainContactContainer_2 {
+    width: 207px;
+    height: 74px;
+    display: flex;
+    align-items: center;
+}
+
+#mainContactContainer_3 {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.contactDataTitle {
+    height: 19px;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.contactData {
+    height: 19px;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.link {
+    color: #007CEE;
+}
+
+.link:hover {
+    cursor: pointer;
+}
+
+#mailContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+ #phoneContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+ }
+/* responsiv Contacts */
 
 @media (max-width: 1400px) {
     #contactTitleBar {
