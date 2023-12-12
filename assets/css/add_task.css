@@ -1,14 +1,16 @@
 :root {
-    --sidePadding: 96px;
+    --sidePadding: 144px;
     --top: 110px;
     --bottom: 80px;
 }
 
 .addTaskForm {
-    padding: var(--top) calc(var(--sidePadding) * 3 / 2) var(--bottom) var(--sidePadding);
+    flex: 1;
+    margin: var(--top) calc(var(--sidePadding) * 3 / 2) var(--bottom) var(--sidePadding);
     display: flex;
     flex-direction: column;
     height: calc(100vh - var(--top) - var(--bottom) - 96px);
+    max-width: 1920px;
 }
 
 .addTaskFormMain {
@@ -97,7 +99,7 @@ button.addTaskPrio3Selected {
     border-radius: 10px;
     border: 1px solid var(--lightGray1);
     padding: 12px 16px;
-} /* focus-Effekt definieren!!! */
+}
 
 #addSubtask {
     flex: 1;
@@ -140,7 +142,6 @@ button.addTaskPrio3Selected {
 }
 
 .addTaskBottom {
-    /* "flex" für vertikale Größe */
     flex: 1;
     width: 100%;
     display: flex;
@@ -182,3 +183,112 @@ button.addTaskPrio3Selected {
 .addTaskBottom .btnSecondary:active {
     background-image: url('../img/cancel_active.svg');
 }
+
+@media (max-height: 905px) {}
+
+@media (max-width: 1920px) {
+    :root {
+        --sidePadding: 128px;
+    }
+}
+
+@media (max-width: 1440px) {
+    :root {
+        --sidePadding: 96px;
+    }
+}
+
+@media (max-width: 1360px) {
+    :root {
+        --sidePadding: 64px;
+        --fontSizeHuge: 54px;
+        --fontSizeNormal: 18px;
+        --fontSizeSmall: 14px;
+        --top: 80px;
+        --bottom: 64px;
+    }
+
+    .addTaskForm {
+        margin-right: var(--sidePadding);
+    }
+
+    .addTaskFormMain {
+        padding-top: 32px;
+    }
+
+    .addTaskFormMainSideOne {
+        gap: 24px;
+    }
+
+    .addTaskFormMainSideTwo {
+        gap: 16px;
+    }
+
+    input,
+    textarea,
+    #addSubtaskInputContainer {
+        padding: 10px 14px;
+
+    }
+}
+
+@media (max-width: 1150px) {
+    :root {
+        --sidePadding: 40px;
+        --fontSizeNormal: 16px;
+        --top: 48px;
+        --bottom: 32px;
+    }
+
+    .addTaskFormMain {
+        gap: calc(var(--sidePadding) * 2/3);
+    }
+
+    .vr {
+        display: none;
+    }
+
+    .addTaskPrioBtns {
+        gap: 12px;
+    }
+}
+
+@media (max-width: 1050px) {
+    .addTaskForm {
+        max-width: 440px;
+    }
+
+    .addTaskFormMain {
+        flex-direction: column;
+    }
+
+    .subtasksContainer {
+        width: 100%;
+        justify-content: flex-start;
+    }
+    
+    #subtasksList {
+        width: auto;
+    }
+
+    .addTaskBottom {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 950px) {}
+
+@media (max-width: 920px) {
+    :root {
+        --fontSizeHuge: 47px;
+    }
+}
+
+@media (max-width: 700px) {
+    .main {
+        width: 100vw;
+        padding: 0;
+    }
+}
+
+@media (max-width: 428px) {}
