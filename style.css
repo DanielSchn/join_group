@@ -9,6 +9,12 @@
     --darkBlue1: #2A3647;
     --darkBlue2: #091931;
     --lightBlue1: #29ABE2;
+    --black: #000000
+}
+
+a {
+    text-decoration: none;
+    color: var(--black);
 }
 
 body {
