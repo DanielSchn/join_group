@@ -270,6 +270,9 @@ footer a {
     font-size: var(--fontSizeSmall);
     font-weight: var(--fontWeight700);
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .signUpBtnHead:hover {
