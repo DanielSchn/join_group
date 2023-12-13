@@ -9,7 +9,7 @@
     margin: var(--top) calc(var(--sidePadding) * 3 / 2) var(--bottom) var(--sidePadding);
     display: flex;
     flex-direction: column;
-    height: calc(100vh - var(--top) - var(--bottom) - 96px);
+    min-height: calc(100vh - var(--top) - var(--bottom) - 96px);
     max-width: 1920px;
 }
 
@@ -184,7 +184,25 @@ button.addTaskPrio3Selected {
     background-image: url('../img/cancel_active.svg');
 }
 
-@media (max-height: 905px) {}
+@media (max-height: 1008px) {
+    :root {
+        --top: 80px;
+    }
+}
+
+@media (max-height: 976px) {
+    :root {
+        --top: 60px;
+        --bottom: 60px;
+    }
+}
+
+@media (max-height: 952px) {
+    :root {
+        --top: 48px;
+        --bottom: 32px;
+    }
+}
 
 @media (max-width: 1920px) {
     :root {
@@ -203,7 +221,6 @@ button.addTaskPrio3Selected {
         --sidePadding: 64px;
         --fontSizeHuge: 54px;
         --fontSizeNormal: 18px;
-        --fontSizeSmall: 14px;
         --top: 80px;
         --bottom: 64px;
     }
@@ -216,19 +233,25 @@ button.addTaskPrio3Selected {
         padding-top: 32px;
     }
 
-    .addTaskFormMainSideOne {
-        gap: 24px;
-    }
-
-    .addTaskFormMainSideTwo {
-        gap: 16px;
-    }
-
     input,
     textarea,
     #addSubtaskInputContainer {
-        padding: 10px 14px;
+        padding: 10px 16px;
 
+    }
+
+    textarea {
+        padding-top: 16px;
+        height: 104px;
+    }
+
+    select {
+        padding: 10px 12px;
+    }
+
+    .addTaskBottom .btnPrimary,
+    .addTaskBottom .btnSecondary {
+        font-size: 20px;
     }
 }
 
@@ -244,22 +267,25 @@ button.addTaskPrio3Selected {
         gap: calc(var(--sidePadding) * 2/3);
     }
 
-    .vr {
+    #formSeperator {
         display: none;
-    }
-
-    .addTaskPrioBtns {
-        gap: 12px;
     }
 }
 
 @media (max-width: 1050px) {
-    .addTaskForm {
-        max-width: 440px;
-    }
-
     .addTaskFormMain {
         flex-direction: column;
+    }
+
+    input,
+    textarea,
+    #addSubtaskInputContainer {
+        padding: 8px 16px;
+    }
+
+    textarea {
+        padding-top: 14px;
+        height: 88px;
     }
 
     .subtasksContainer {
@@ -271,8 +297,8 @@ button.addTaskPrio3Selected {
         width: auto;
     }
 
-    .addTaskBottom {
-        flex-direction: column;
+    .addTaskBottom .btnSecondary {
+        display: none;
     }
 }
 
@@ -285,10 +311,55 @@ button.addTaskPrio3Selected {
 }
 
 @media (max-width: 700px) {
+    :root {
+        --sidePadding: 16px;
+        --bottom: 166px;
+    }
+
     .main {
-        width: 100vw;
+        width: calc(100vw - var(--scrollbarWidth));
         padding: 0;
+    }
+
+    textarea {
+        background-image: none;
+        resize: none;
+    }
+
+    .addTaskBottom {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 80px;
+        width: inherit;
+        background: var(--lightGray2);
+        padding: var(--sidePadding);
+        align-items: center;
     }
 }
 
-@media (max-width: 428px) {}
+@media (max-width: 428px) {
+    :root {
+        --fontSizeSmall: 14px;
+        --sidePadding: 12px;
+    }
+
+    .addTaskPrioBtns {
+        gap: 12px;
+    }
+    
+    .addTaskPrioBtns button {
+        min-width: calc((100% - 24px)/3);
+        gap: 6px;
+        padding: 14px 12px;
+        font-size: var(--fontSizeSmall);
+    }
+
+    .addTaskPrioBtns button img {
+        width: 16px;
+    }
+
+    .addTaskBottom .btnPrimary {
+        font-size: var(--fontSizeNormal);
+    }
+}

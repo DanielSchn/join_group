@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="fonts.css">
     <script src="./js/renderContactCard.js"></script>
 </head>
-<body>
+<body onload="init()">
     <header>
         <img id="mobileLogo" src="./assets/img/menu_icons/Capa 3.svg">
         <div id="headerName">Kanban Project Management Tool</div>
@@ -182,10 +182,10 @@
                     <div id="user_name_0" class="font47">Anton Mayer</div>
                     <div id="settings">
                         <div id="edit">
-                            <img src="./assets/img/edit.svg"><span>Edit</span> <!-- Hover CSS / JS ?? -->
+                            <img id="edit_img" src="./assets/img/contacts/edit.svg"> <!-- Hover CSS / JS ?? -->
                         </div>
-                        <div id="delete">
-                            <img src="./assets/img/delete.svg"><span>Delete</span> <!-- Hover CSS / JS ?? -->
+                        <div id="remove">
+                            <img id="remove_img" src="./assets/img/contacts/remove.svg"> <!-- Hover CSS / JS ?? -->
                         </div>
                     </div>
                 </div>
