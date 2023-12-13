@@ -93,6 +93,7 @@ function cancelInputSubtask() {
 // function createTask() {
 //     Folgende Deklaration muss nicht leer erfolgen, sondern kann direkt die Werte aus dem Formular übernehmen:  
 //     let task = {
+//         id: ,            
 //         title: ,
 //         description: ,
 //         assignedTo : ,
@@ -101,6 +102,7 @@ function cancelInputSubtask() {
 //         category: ,
 //         subtasks: ,
 //         timestamp: ,
+//         status:
 //     };
 //     tasks.push(task);
 // }
