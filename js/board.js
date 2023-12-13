@@ -1,8 +1,8 @@
 let tasks = [{
     'id'            :  0,
-    'titel'         : 'Putzen',
+    'title'         : 'Putzen',
     'description'   : 'Schön bis in die Ecken :D',
-    'assignedTo'   : 'Wilfred',
+    'assignedTo'    : 'Wilfred',
     'due date'      : '11/12/24',
     'prio'          : 'Medium',
     'category'      : 'Category1',
@@ -10,9 +10,9 @@ let tasks = [{
     'status'        : 'toDo',
 }, {
     'id'            : 1,
-    'titel'         : 'Kochen',
+    'title'         : 'Kochen',
     'description'   : 'Was leckeres :D',
-    'assignedTo'   : 'Wilfred',
+    'assignedTo'    : 'Wilfred',
     'due date'      : '11/12/24',
     'prio'          : 'Urgent',
     'category'      : 'Category2',
@@ -20,9 +20,9 @@ let tasks = [{
     'status'        : 'inProgress',
 }, {
     'id'            : 2,
-    'titel'         : 'Kochen',
+    'title'         : 'Kochen',
     'description'   : 'Was leckeres :D',
-    'assignedTo'   : 'Wilfred',
+    'assignedTo'    : 'Wilfred',
     'due date'      : '11/12/24',
     'prio'          : 'Urgent',
     'category'      : 'Category2',
@@ -30,9 +30,9 @@ let tasks = [{
     'status'        : 'inProgress',
 }, {
     'id'            : 3,
-    'titel'         : 'Kochen',
+    'title'         : 'Kochen',
     'description'   : 'Was leckeres :D',
-    'assignedTo'   : 'Wilfred',
+    'assignedTo'    : 'Wilfred',
     'due date'      : '11/12/24',
     'prio'          : 'Urgent',
     'category'      : 'Category2',
@@ -102,11 +102,11 @@ function startDragging(id){
 
 function generateTask(element) {
     return `
-    <div draggable="true" ondragstart="startDragging(${element['id']})" class="todo">
+    <div draggable="true" ondragstart="startDragging(${element['id']})" onclick="inittest()" class="todo">
         <div class="toDoCategory"> ${element['category']} </div>
 
         <div>
-            <div class="toDoTitle"> ${element['titel']} </div>
+            <div class="toDoTitle"> ${element['title']} </div>
             <div class="toDoDescription"> ${element['description']}</div>
         </div>
 
@@ -125,6 +125,61 @@ function generateTask(element) {
         </div>
     </div>`
 }
+
+function inittest(){
+    document.getElementById('test').innerHTML = generateTaskCard(tasks[0], 0);
+}
+
+function generateTaskCard(task, id){
+    return `    
+    <div id="taskContainer" onclick="closeTask()">
+        <div id="taskCard" class="taskCard showTaskCard" onclick="event.stopPropagation()">
+            <div class="taskCardHeader">
+                <div class="taskCardCategory" id="taskCardCategory${id}"> ${task["category"]}</div>
+                <div onclick="closeTask()">
+                    <img class="closeTask" src="./assets/img/cancel.svg" alt="Close">
+                </div>
+            </div>
+            <div class="taskTitle"> ${task["title"]}</div>
+            <div class="taskDescription"> ${task["description"]}</div>
+            <div class="taskDate">
+              <div class="taskSection">Due date:</div>
+              <div id="taskDate${id}">${task["due date"]}</div>
+            </div>
+            <div class="taskPrio" id="">
+                <div class="taskSection">Priority:</div>
+                <div class="taskPrioText">${task["prio"]}</div>
+                <div class="taskPrioIcon" id="taskPrio${id}"></div>
+            </div>
+
+            <div class="taskAssignedContainer">
+                <div class="taskSection">Assigned To:</div>
+                <div class="taskAssigned" id="taskAssigned${id}"></div>
+            </div>
+
+
+            <div class="subtasksContainer">
+                <div class="taskSection">Subtasks</div>
+                <div class="subtasks" id="subtasks${id}"></div>
+            </div>
+            <div class="taskFooter">
+
+                <div onclick="deleteTask(${id})" class="deleteTask">
+                    <img class="deleteTaskImg" src="./assets/img/delete.svg" alt="">
+                    <div>Delete</div>
+                </div>
+                <div class="taskFooterSeparator"></div>
+                <div onclick="editTask(${id})" class="editTask"> <img class="editTaskImg" src="./assets/img/edit.svg">
+                    <div>Edit</div>
+                </div>
+            </div>
+
+        </div>
+    </div>`
+}
+
+
+
 
 function allowDrop(ev) {
     ev.preventDefault();

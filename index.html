@@ -7,46 +7,49 @@
     <title>Document</title>
 
     <link rel="stylesheet" href="fonts.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="assets/css/login_signup.css">
+    <script src="script.js" defer></script>
 </head>
 
 <body>
-    <img class="logo" src="assets/img/logo.svg" alt="JOIN">
+    <img id="startLogo" class="logo" style="top:345px; left: 583px;" src="assets/img/logo.svg" alt="JOIN">
+    <div id="mainBody" style="display: none;">
+        <div class="indexWrapper">
+            <div class="toSignUp">
+                <p>Not a Join user?</p>
+                <a href="signup.html" class="signUpBtnHead">Sign up</a>
+            </div>
 
-    <div class="indexWrapper">
-        <div class="toSignUp">
-            Not a Join user?
-            <button>Sign up</button>
+            <footer>
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="legal.html">Legal Notice</a>
+            </footer>
+
         </div>
 
-        <footer>
-            <a href="#">Privacy Policy</a>
-            <a href="#">Legal Notice</a>
-        </footer>
 
-    </div>
-
-
-    <div class="logIn">
-        <div class="logInHead">
-            <h1>Log in</h1>
-            <div class="loginDash"></div>
-        </div>
-        <div class="logInFormPos">
-            <form class="logInForm" action="">
+        <div class="logIn">
+            <div class="logInHead">
+                <h1>Log in</h1>
+                <div class="loginDash"></div>
+            </div>
+            <div class="logInFormPos">
+                <form class="logInForm" action="">
                     <input class="mailIcon inputLogInSignUp" type="email" placeholder="Email">
                     <input class=" passwordIcon inputLogInSignUp" type="text" placeholder="Password">
-                <div class="rememberMe">
-                    <input type="checkbox">
-                    Remember me
-                </div>
-                <div class="logInBtns">
-                    <button>Log in</button>
-                    <button>Guest Log in</button>
-                </div>
-            </form>
+                    <div class="rememberMe">
+                        <input type="checkbox">
+                        Remember me
+                    </div>
+                    <div class="logInBtns">
+                        <button class="logInButton">Log in</button>
+                        <button class="guestLogInButton">Guest Log in</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
+
 
 
 
