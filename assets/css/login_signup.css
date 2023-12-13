@@ -55,14 +55,6 @@ input::placeholder {
     color: var(--lightGray1);
 }
 
-.logo {
-    position: fixed;
-    width: 100.03px;
-    height: 121.97px;
-    top: 80px;
-    left: 77px;
-}
-
 .indexWrapper {
     display: flex;
     flex-direction: column;
@@ -265,4 +257,18 @@ footer a {
     height: 32px;
     position: fixed;
     margin: 16px 0 0 48px;
+}
+
+#startLogo {
+    /* z-index: 1; */
+    transform: translate(720px, 512px) scale(2);
+    transition: all 500ms ease;
+}
+
+.logo {
+    position: fixed;
+    width: 100.03px;
+    height: 121.97px;
+    top: 80px;
+    left: 77px;
 }
