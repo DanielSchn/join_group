@@ -708,6 +708,18 @@ aside {
     width: 30px;
 }
 
+.menuLink {
+    color: #CDCDCD;
+}
+
+.activMenuLink {
+    color: white;
+}
+
+.activMenuIcon {
+    filter: brightness(2);
+}
+
 .activ_bg {
     background-color: #091931;
 }
@@ -884,6 +896,16 @@ aside {
     display: none !important;
 }
 
+@keyframes swipeInFromRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {transform: translateX(0);
+        opacity: 1;
+    }
+}
+
 #mainContactDetails {
     display: flex;
     align-items: start;
@@ -892,6 +914,7 @@ aside {
     position: fixed;
     top: 311px;
     left: 750px;
+    animation: swipeInFromRight 100ms ease-in-out;
 }
 
 #mainContactContainer_1 {
