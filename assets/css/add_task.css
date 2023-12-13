@@ -7,9 +7,10 @@
 .addTaskForm {
     flex: 1;
     margin: var(--top) calc(var(--sidePadding) * 3 / 2) var(--bottom) var(--sidePadding);
+    padding-bottom: var(--bottom);
     display: flex;
     flex-direction: column;
-    height: calc(100vh - var(--top) - var(--bottom) - 96px);
+    min-height: calc(100vh - var(--top) - var(--bottom) - 96px);
     max-width: 1920px;
 }
 
@@ -203,7 +204,6 @@ button.addTaskPrio3Selected {
         --sidePadding: 64px;
         --fontSizeHuge: 54px;
         --fontSizeNormal: 18px;
-        --fontSizeSmall: 14px;
         --top: 80px;
         --bottom: 64px;
     }
@@ -216,19 +216,25 @@ button.addTaskPrio3Selected {
         padding-top: 32px;
     }
 
-    .addTaskFormMainSideOne {
-        gap: 24px;
-    }
-
-    .addTaskFormMainSideTwo {
-        gap: 16px;
-    }
-
     input,
     textarea,
     #addSubtaskInputContainer {
-        padding: 10px 14px;
+        padding: 10px 16px;
 
+    }
+
+    textarea {
+        padding-top: 16px;
+        height: 104px;
+    }
+
+    select {
+        padding: 10px 12px;
+    }
+
+    .addTaskBottom .btnPrimary,
+    .addTaskBottom .btnSecondary {
+        font-size: 20px;
     }
 }
 
@@ -244,22 +250,25 @@ button.addTaskPrio3Selected {
         gap: calc(var(--sidePadding) * 2/3);
     }
 
-    .vr {
+    #formSeperator {
         display: none;
-    }
-
-    .addTaskPrioBtns {
-        gap: 12px;
     }
 }
 
 @media (max-width: 1050px) {
-    .addTaskForm {
-        max-width: 440px;
-    }
-
     .addTaskFormMain {
         flex-direction: column;
+    }
+
+    input,
+    textarea,
+    #addSubtaskInputContainer {
+        padding: 8px 16px;
+    }
+
+    textarea {
+        padding-top: 14px;
+        height: 88px;
     }
 
     .subtasksContainer {
@@ -271,8 +280,8 @@ button.addTaskPrio3Selected {
         width: auto;
     }
 
-    .addTaskBottom {
-        flex-direction: column;
+    .addTaskBottom .btnSecondary {
+        display: none;
     }
 }
 
@@ -285,9 +294,29 @@ button.addTaskPrio3Selected {
 }
 
 @media (max-width: 700px) {
+    :root {
+        --sidePadding: 16px;
+    }
+
     .main {
-        width: 100vw;
+        width: calc(100vw - var(--scrollbarWidth));
         padding: 0;
+    }
+
+    textarea {
+        background-image: none;
+        resize: none;
+    }
+
+    .addTaskBottom {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 80px;
+        width: inherit;
+        background: var(--lightGray2);
+        padding: var(--sidePadding);
+        align-items: center;
     }
 }
 
