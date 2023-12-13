@@ -230,6 +230,14 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     border-radius: 30px;
 }
 
+.mailIcon {
+    background: url('assets/img/login_signup_icons/mail.svg') no-repeat right center;
+}
+
+.passwordIcon {
+    background: url('assets/img/login_signup_icons/lock.svg') no-repeat right center;
+}
+
 .logIn h1 {
     /* text-align: center; */
     margin-top: 48px;
