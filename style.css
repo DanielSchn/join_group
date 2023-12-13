@@ -2,6 +2,7 @@
     --fontSizeHuge: 61px;
     --fontSizeNormal: 20px;
     --fontSizeSmall: 16px;
+    --fontSize21px: 21px;
     --fontWeight700: 700;
     --fontWeight400: 400;
     --menuBarWidth: 232px;
@@ -10,6 +11,7 @@
     --scrollbarWidth: 17px;
     --lightGray1: #D1D1D1;
     --lightGray2: #F6F7F8;
+    --lightGray3: #A8A8A8;
     --darkBlue1: #2A3647;
     --darkBlue2: #091931;
     --lightBlue1: #29ABE2;
@@ -174,93 +176,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     margin: 0;
     background-image: url(./assets/img/calendar_icon.svg);
     background-size: 24px;
-}
-
-.logo {
-    position: absolute;
-    width: 100.03px;
-    height: 121.97px;
-    top: 80px;
-    left: 77px;
-}
-
-.indexWrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    min-height: 100vh;
-    width: 100vw;
-}
-
-.toSignUp {
-    display: flex;
-    justify-content: flex-end;
-    width: 100%
-}
-
-.inputLogInSignUp {
-    width: 422px;
-    max-height: 48px;
-
-}
-
-.logInInputContainer {
-    border: 1px solid var(--lightGray1);
-    
-}
-
-.logInFormPos {
-    display: flex;
-    justify-content: center;
-}
-
-.logIn {
-    position: fixed;
-    top: 265.5px;
-    /* bottom: 0; */
-    left: 394px;
-    /* right: 0; */
-    width: 652px;
-    height: 493px;
-    /* margin: auto; */
-    /* display: flex; */
-    /* justify-content: center; */
-    /* flex-direction: column; */
-    background: var(--white);
-    border-radius: 30px;
-}
-
-.mailIcon {
-    background: url('assets/img/login_signup_icons/mail.svg') no-repeat right center;
-}
-
-.passwordIcon {
-    background: url('assets/img/login_signup_icons/lock.svg') no-repeat right center;
-}
-
-.logIn h1 {
-    /* text-align: center; */
-    margin-top: 48px;
-}
-
-.loginDash {
-    border-top: 3px solid #29ABE2;
-    width: 150px;
-    
-}
-
-.logInHead {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 16px;
-    margin-bottom: 32px;
-}
-
-.logInForm {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
 }
 
 footer {
