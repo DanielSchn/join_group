@@ -7,7 +7,6 @@
 .addTaskForm {
     flex: 1;
     margin: var(--top) calc(var(--sidePadding) * 3 / 2) var(--bottom) var(--sidePadding);
-    padding-bottom: var(--bottom);
     display: flex;
     flex-direction: column;
     min-height: calc(100vh - var(--top) - var(--bottom) - 96px);
@@ -185,7 +184,25 @@ button.addTaskPrio3Selected {
     background-image: url('../img/cancel_active.svg');
 }
 
-@media (max-height: 905px) {}
+@media (max-height: 1008px) {
+    :root {
+        --top: 80px;
+    }
+}
+
+@media (max-height: 976px) {
+    :root {
+        --top: 60px;
+        --bottom: 60px;
+    }
+}
+
+@media (max-height: 952px) {
+    :root {
+        --top: 48px;
+        --bottom: 32px;
+    }
+}
 
 @media (max-width: 1920px) {
     :root {
@@ -296,6 +313,7 @@ button.addTaskPrio3Selected {
 @media (max-width: 700px) {
     :root {
         --sidePadding: 16px;
+        --bottom: 166px;
     }
 
     .main {
@@ -320,4 +338,28 @@ button.addTaskPrio3Selected {
     }
 }
 
-@media (max-width: 428px) {}
+@media (max-width: 428px) {
+    :root {
+        --fontSizeSmall: 14px;
+        --sidePadding: 12px;
+    }
+
+    .addTaskPrioBtns {
+        gap: 12px;
+    }
+    
+    .addTaskPrioBtns button {
+        min-width: calc((100% - 24px)/3);
+        gap: 6px;
+        padding: 14px 12px;
+        font-size: var(--fontSizeSmall);
+    }
+
+    .addTaskPrioBtns button img {
+        width: 16px;
+    }
+
+    .addTaskBottom .btnPrimary {
+        font-size: var(--fontSizeNormal);
+    }
+}

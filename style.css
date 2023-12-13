@@ -88,7 +88,7 @@ button:hover {
 
 .btnSecondary {
     border: 1px solid var(--darkBlue1);
-    box-sizing: border-box;
+    padding: 15px 16px;
     background: none;
     color: var(--darkBlue1);
 }
