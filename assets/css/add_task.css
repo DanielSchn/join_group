@@ -115,7 +115,7 @@ button.addTaskPrio3Selected {
 }
 
 .subtasksButton {
-    border-radius: 0;
+    border-radius: 50%;
     background: none;
     padding: 0;
     margin: 0;
@@ -124,6 +124,11 @@ button.addTaskPrio3Selected {
 
 .subtasksButton:hover {
     box-shadow: none;
+    background: var(--lightGray4);
+}
+
+.subtasksButton:active {
+    background: var(--lightGray2);
 }
 
 .subtasksButton img {
@@ -139,6 +144,20 @@ button.addTaskPrio3Selected {
 
 #subtasksList {
     width: calc(50% - var(--sidePadding));
+}
+
+#subtasksList li {
+    border-radius: 10px;
+    display: flex;
+}
+
+#subtasksList li span {
+    flex: 1;
+}
+
+#subtasksList li:hover {
+    border-radius: 10px;
+    background: var(--lightGray4);
 }
 
 .addTaskBottom {

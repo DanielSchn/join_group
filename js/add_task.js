@@ -1,3 +1,30 @@
+let newTask = {
+    id: -1,
+    title: '',
+    description: '',
+    assignedTo: [],
+    due: '',
+    prio: '',
+    category: '',
+    subtasks: [],
+    timestamp: 0,
+    status: ''
+};
+
+function renderAddTaskForm() {
+    renderSubtasks();
+}
+
+function renderSubtasks() {
+    const subtasks = newTask['subtasks'];
+    const list = document.getElementById('subtasksList');
+    list.innerHTML = '';
+    for (let i = 0; i < subtasks.length; i++) {
+        let subtask = subtasks[i];
+        list.innerHTML += subtaskHTML(subtask, i);
+    }
+}
+
 /** 
  * Funktion bestimmt, was bei Klick auf einen der drei Prioritätsbuttons geschieht 
  * @param {number} btnNumber - Laufindex des geklickten Buttons (1: urgent, 2: medium, 3: low) 
@@ -88,6 +115,32 @@ function cancelInputSubtask() {
     unfocusInputSubtask();
 }
 
+/**
+ * Check-Button erzeugt Subtask, falls Wert eingetragen
+ */
+function createInputSubtask() {
+    if (addSubtask.value) {
+        newTask['subtasks'].push(addSubtask.value);
+        renderSubtasks();
+    }
+    cancelInputSubtask();
+}
+
+function editSubtask(index) {
+    let subtasks = newTask['subtasks'];
+    let subtask = subtasks[index];
+}
+
+/**
+ * Subtask aus Liste und Daten entfernen
+ * @param {number} index - Laufindex innerhalb des subtasks-Array 
+ */
+function removeSubtask(index) {
+    let subtasks = newTask['subtasks'];
+    subtasks.splice(index, 1);
+    renderSubtasks();
+}
+
 
 
 // function createTask() {
@@ -106,3 +159,16 @@ function cancelInputSubtask() {
 //     };
 //     tasks.push(task);
 // }
+
+function subtaskHTML(subtask, index) {
+    return /* html */`
+        <li id="subtask${index}">
+            <span>${subtask}</span>
+            <button type="button" onclick="editSubtask(${index})" class="subtasksButton">
+                <img src="./assets/img/edit.svg" alt="edit subtask">
+            </button>
+            <button type="button" onclick="removeSubtask(${index})" class="subtasksButton">
+                <img src="./assets/img/remove.svg" alt="remove subtask">
+            </button>
+        </li>`;
+}
