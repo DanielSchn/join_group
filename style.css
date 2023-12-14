@@ -885,9 +885,40 @@ aside {
 
 #settings div {
     display: flex;
-    justify-content: end;
+    justify-content: center;
     align-items: center;
     gap: 8px;
+}
+
+#edit {
+    width: 62px;
+}
+
+#remove {
+    width: 81px;
+}
+
+#settings span {
+    font-size: 16px;
+    color: #2A3647;
+}
+
+#edit:hover img {
+    content: url('./assets/img/contacts/edit_pen_blue.svg');
+}
+
+#edit:hover span {
+    font-weight: 700;
+    color: #29ABE2;
+}
+
+#remove:hover img {
+    content: url('./assets/img/contacts/delete_bin_blue.svg');
+}
+
+#remove:hover span {
+    font-weight: 700;
+    color: #29ABE2;
 }
 
 #edit:hover {
