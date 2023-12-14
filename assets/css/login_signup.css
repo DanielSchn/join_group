@@ -271,3 +271,9 @@ footer a {
     top: 80px;
     left: 77px;
 }
+
+.errorMessage {
+    margin-bottom: 16px;
+    color: red;
+    font-size: var(--fontSizeSmall);
+}

@@ -9,9 +9,10 @@
     <link rel="stylesheet" href="fonts.css">
     <link rel="stylesheet" href="assets/css/login_signup.css">
     <script src="js/register.js" defer></script>
+    <script src="js/storage.js" defer></script>
 </head>
 
-<body>
+<body onload="init()">
     <img class="logo" src="assets/img/logo.svg" alt="JOIN">
 
     <div class="indexWrapper">
@@ -32,19 +33,20 @@
             <div class="loginDash"></div>
         </div>
         <div class="logInFormPos">
-            <form class="logInForm" action="">
-                <input class="nameIcon inputLogInSignUp" type="text" placeholder="Name">
-                <input class="mailIcon inputLogInSignUp" type="email" placeholder="Email">
-                <input class=" passwordIcon inputLogInSignUp" type="text" placeholder="Password">
-                <input class=" passwordIcon inputLogInSignUp" type="text" placeholder="Confirm Password">
+            <form class="logInForm" onsubmit="register(); return false;">
+                <input required class="nameIcon inputLogInSignUp" type="text" placeholder="Name" id="signUpName">
+                <input required class="mailIcon inputLogInSignUp" type="email" placeholder="Email" id="signUpEmail">
+                <input required class=" passwordIcon inputLogInSignUp" type="password" placeholder="Password" id="signUpPassword">
+                <input required class=" passwordIcon inputLogInSignUp" type="password" placeholder="Confirm Password" id="signUpPasswordConfirm">
+                <div class="errorMessage"></div>
                 <div class="acceptPrivacy">
-                    <input type="checkbox">
+                    <input required type="checkbox" id="checkboxSignUp">
                     I accept the <a href="privacy.html">Privacy policy</a>
                 </div>
                 <div class="logInBtns">
-                    <button class="signUpButton">Sign up</button>
+                    <button id="registerBtn" class="signUpButton">Sign up</button>
                 </div>
-                <div class="error-message" style="color: red;"></div>
+                
             </form>
         </div>
     </div>
