@@ -33,6 +33,23 @@ async function register() {
     resetForm();
 }
 
+
+function showOverlaySignedUp() {
+    let overlay = document.querySelector('.signedUpOverlay');
+    overlay.classList.toggle('dNone');
+    let body = document.querySelector('.opacity');
+    body.classList.toggle('signUpFormBody');
+    goToLogin();
+}
+
+
+function goToLogin() {
+    window.setTimeout(function(){
+        window.location.href = "index.html";
+    }, 2000);
+}
+
+
 /**
  * Reset Input Form
  */
@@ -45,22 +62,26 @@ function resetForm() {
     registerBtn.disabled = false;
 }
 
+
 /**
  * Check passwords are the same
  */
 document.addEventListener('DOMContentLoaded', function () {
-    let signUpButton = document.querySelector('.signUpButton');
-    let passwordInput = document.querySelector('input[placeholder="Password"]');
-    let confirmPasswordInput = document.querySelector('input[placeholder="Confirm Password"]');
-    let errorMessage = document.querySelector('.errorMessage');
-    function toggleSignUpButton() {
-        let passwordsMatch = passwordInput.value === confirmPasswordInput.value;
-        signUpButton.disabled = !passwordsMatch;
-        errorMessage.textContent = passwordsMatch ? "" : "Ups! Your password don't match";
+    let signUpPageElement = document.querySelector('.signedUpOverlay');
+    if (signUpPageElement) {
+        let signUpButton = document.querySelector('.signUpButton');
+        let passwordInput = document.querySelector('input[placeholder="Password"]');
+        let confirmPasswordInput = document.querySelector('input[placeholder="Confirm Password"]');
+        let errorMessage = document.querySelector('.errorMessage');
+        function toggleSignUpButton() {
+            let passwordsMatch = passwordInput.value === confirmPasswordInput.value;
+            signUpButton.disabled = !passwordsMatch;
+            errorMessage.textContent = passwordsMatch ? "" : "Ups! Your passwords don't match";
+        }
+        confirmPasswordInput.addEventListener('input', toggleSignUpButton);
+        toggleSignUpButton();
+        errorMessage.textContent = "";
     }
-    confirmPasswordInput.addEventListener('input', toggleSignUpButton);
-    toggleSignUpButton();
-    errorMessage.textContent = "";
 });
 
 

@@ -55,6 +55,10 @@ input::placeholder {
     color: var(--lightGray1);
 }
 
+.dNone {
+    display: none !important;
+}
+
 .indexWrapper {
     display: flex;
     flex-direction: column;
@@ -114,28 +118,35 @@ input::placeholder {
     background-position: calc(100% - 21px) center;
 }
 
-/* .passwordIcon {
-    background: url('../img/login_signup_icons/lock.svg') no-repeat;
-    background-position: calc(100% - 21px) center;
-}
-
-.passwordShowIcon {
-    background: url('../img/login_signup_icons/visibility_off.svg') no-repeat;
-    background-position: calc(100% - 21px) center;
-}
-
-.passwordHideIcon {
-    background: url('../img/login_signup_icons/visibility.svg') no-repeat;
-    background-position: calc(100% - 21px) center;
-} */
-
 .nameIcon {
     background: url('../img/login_signup_icons/person.svg') no-repeat;
     background-position: calc(100% - 21px) center;
 }
 
-.dNone {
-    display: none;
+.successfullSignUp {
+    width: 312px;
+    height: 74px;
+    border-radius: 20px;
+    outline: none;
+    color: var(--white);
+    background-color: var(--darkBlue1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.signedUpOverlay {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.signUpFormBody {
+    opacity: 0.3;
 }
 
 .visibilityIcon {

@@ -14,6 +14,11 @@
 
 <body onload="init()">
 
+    <div class="dNone signedUpOverlay">
+        <div class="successfullSignUp">You Signed Up successfully</div>
+    </div>
+
+<div class="opacity">
     <img class="logo" src="assets/img/logo.svg" alt="JOIN">
 
     <div class="indexWrapper">
@@ -34,7 +39,7 @@
             <div class="loginDash"></div>
         </div>
         <div class="logInFormPos">
-            <form class="logInForm" onsubmit="register(); return false;">
+            <form class="logInForm" onsubmit="register(); showOverlaySignedUp(); return false;">
                 <div class="inputContainer">
                     <input required class="nameIcon inputLogInSignUp" type="text" placeholder="Name" id="signUpName">
                 </div>
@@ -69,7 +74,7 @@
             </form>
         </div>
     </div>
-
+</div>
 </body>
 
 </html>
