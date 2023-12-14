@@ -45,16 +45,16 @@
 
                 <div class="inputContainer">
                     <img src="assets/img/login_signup_icons/lock.svg" alt="Lock" class="passwordIcon">
-                    <img src="assets/img/login_signup_icons/visibility_off.svg" alt="Visibility" class="visibilityIcon dNone">
+                    <img src="assets/img/login_signup_icons/visibility_off.svg" alt="Visibility" class="visibilityIcon dNone" onclick="showPassword('signUpPassword')">
                     <input required class="inputLogInSignUp" type="password" placeholder="Password" id="signUpPassword"
-                        oninput="togglePasswordIcon(this)">
+                        oninput="togglePasswordIcon('signUpPassword')">
                 </div>
 
                 <div class="inputContainer">
                     <img src="assets/img/login_signup_icons/lock.svg" alt="Lock" class="passwordIcon">
-                    <img src="assets/img/login_signup_icons/visibility_off.svg" alt="Visibility" class="visibilityIcon dNone">
+                    <img src="assets/img/login_signup_icons/visibility_off.svg" alt="Visibility" class="visibilityIcon dNone" onclick="showPassword('signUpPasswordConfirm')">
                     <input required class="inputLogInSignUp" type="password" placeholder="Confirm Password"
-                        id="signUpPasswordConfirm" oninput="togglePasswordIcon(this)">
+                        id="signUpPasswordConfirm" oninput="togglePasswordIcon('signUpPasswordConfirm')">
                 </div>
 
                 <div class="errorMessage"></div>

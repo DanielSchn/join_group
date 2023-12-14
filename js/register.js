@@ -63,13 +63,27 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-// function togglePasswordIcon(inputField) {
-//     if (inputField.value.length > 0) {
-//         var showIcon = inputField.type === 'password'; // Hier anpassen, wie du entscheidest, welches Icon angezeigt werden soll
-//         inputField.classList.remove('passwordIcon');
-//         inputField.classList.add('passwordShowIcon');
-//     } else {
-//         inputField.classList.remove('passwordShowIcon');
-//         inputField.classList.add('passwordIcon');
-//     }
-// }
+function togglePasswordIcon(inputId) {
+    let container = document.getElementById(inputId).closest('.inputContainer');
+    let passwordIcon = container.querySelector('.passwordIcon');
+    let visibilityIcon = container.querySelector('.visibilityIcon');
+    let inputField = document.getElementById(inputId);
+    if (inputField.value.length > 0) {
+        passwordIcon.classList.add('dNone');
+        visibilityIcon.classList.remove('dNone');
+    } else {
+        passwordIcon.classList.remove('dNone');
+        visibilityIcon.classList.add('dNone');
+    }
+}
+
+
+function showPassword(inputId) {
+    const inputField = document.getElementById(inputId);
+
+    if (inputField.type === 'password') {
+        inputField.type = 'text';
+    } else {
+        inputField.type = 'password';
+    }
+}
