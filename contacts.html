@@ -6,36 +6,12 @@
     <title>Contacts</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="fonts.css">
+    <script src="./script.js"></script>
     <script src="./js/renderContactCard.js"></script>
 </head>
-<body onload="init()">
-    <header>
-        <img id="mobileLogo" src="./assets/img/menu_icons/Capa 3.svg">
-        <div id="headerName">Kanban Project Management Tool</div>
-        <div id="smalInterface">
-            <div id="help">
-                <img src="./assets/img/menu_icons/help.svg">
-            </div>
-            <div id="user">
-                <span id="use_name">SM</span>
-            </div>
-        </div>
-    </header>
-    <aside id="sideMenu">
-        <div id="logo">
-            <img src="./assets/img/menu_icons/white_logo.svg">
-        </div>
-        <div id="menuBox">
-            <div class="linkAlign menuHover"><img src="./assets/img/menu_icons/summary.svg"><a class="menuLink">Summary</a></div>
-            <div class="linkAlign menuHover"><img src="./assets/img/menu_icons/add_task.svg"><a class="menuLink">Add Task</a></div>
-            <div class="linkAlign menuHover"><img src="./assets/img/menu_icons/board.svg"><a class="menuLink">Board</a></div>
-            <div class="linkAlign activ_bg"><img class="activMenuIcon" src="./assets/img/menu_icons/contacts.svg"><a class="activMenuLink">Contacts</a></div>
-        </div>
-        <div id="infos">
-            <a href="">Privacy Policy</a>
-            <a href="">Legal notice</a>
-        </div>
-    </aside>
+<body onload="includeHTML()">
+    <header w3-include-html="assets/templates/header_template.html"></header>
+    <aside id="sideMenu" w3-include-html="assets/templates/side_menu_template.html"></aside>
 
     <section id="contacts">
         <div id="addContactBtnContainer"><button id="addContactBtn">Add new contact<img src="./assets/img/menu_icons/person_add.svg"></button></div>
@@ -181,11 +157,11 @@
                 <div id="contactSetup">
                     <div id="user_name_0" class="font47">Anton Mayer</div>
                     <div id="settings">
-                        <div id="edit">
-                            <img id="edit_img" src="./assets/img/contacts/edit.svg"> <!-- Hover CSS / JS ?? -->
+                        <div id="edit" class="settingsBtn">
+                            <img id="edit_img" src="./assets/img/contacts/edit_pen.svg"><span>Edit</span> <!-- Hover CSS / JS ?? -->
                         </div>
-                        <div id="remove">
-                            <img id="remove_img" src="./assets/img/contacts/remove.svg"> <!-- Hover CSS / JS ?? -->
+                        <div id="remove" class="settingsBtn">
+                            <img id="remove_img" src="./assets/img/contacts/delete_bin.svg"><span>Delete</span> <!-- Hover CSS / JS ?? -->
                         </div>
                     </div>
                 </div>
@@ -210,12 +186,7 @@
 
      <!-- Mobile -->
 
-     <div id="mobileMenuBox">
-        <div class="linkAlign"><img src="./assets/img/menu_icons/summary.svg"><a>Summary</a></div>
-        <div class="linkAlign"><img src="./assets/img/menu_icons/add_task.svg"><a>Add Task</a></div>
-        <div class="linkAlign"><img src="./assets/img/menu_icons/board.svg"><a>Board</a></div>
-        <div class="linkAlign activ_bg"><img src="./assets/img/menu_icons/contacts.svg"><a>Contacts</a></div>
-    </div>
+     <div id="mobileMenuBox" w3-include-html="assets/templates/mobile_side_menu.html"></div>
 
     <div id="mobileAddContactBtnContainer">
         <button id="mobileAddContactBtn"><img src="./assets/img/menu_icons/person_add.svg"></button>

@@ -8,9 +8,12 @@
 
     <link rel="stylesheet" href="fonts.css">
     <link rel="stylesheet" href="assets/css/login_signup.css">
+    <script src="js/register.js" defer></script>
+    <script src="js/storage.js" defer></script>
 </head>
 
-<body>
+<body onload="init()">
+
     <img class="logo" src="assets/img/logo.svg" alt="JOIN">
 
     <div class="indexWrapper">
@@ -31,23 +34,41 @@
             <div class="loginDash"></div>
         </div>
         <div class="logInFormPos">
-            <form class="logInForm" action="">
-                <input class="nameIcon inputLogInSignUp" type="text" placeholder="Name">
-                <input class="mailIcon inputLogInSignUp" type="email" placeholder="Email">
-                <input class=" passwordIcon inputLogInSignUp" type="text" placeholder="Password">
-                <input class=" passwordIcon inputLogInSignUp" type="text" placeholder="Confirm Password">
+            <form class="logInForm" onsubmit="register(); return false;">
+                <div class="inputContainer">
+                    <input required class="nameIcon inputLogInSignUp" type="text" placeholder="Name" id="signUpName">
+                </div>
+
+                <div class="inputContainer">
+                    <input required class="mailIcon inputLogInSignUp" type="email" placeholder="Email" id="signUpEmail">
+                </div>
+
+                <div class="inputContainer">
+                    <img src="assets/img/login_signup_icons/lock.svg" alt="Lock" class="passwordIcon">
+                    <img src="assets/img/login_signup_icons/visibility_off.svg" alt="Visibility Off" class="visibilityIcon dNone" id="visibilityOffIcon1" onclick="togglePasswordVisibility('signUpPassword', 'visibilityIcon1', 'visibilityOffIcon1')">
+                    <img src="assets/img/login_signup_icons/visibility.svg" alt="Visibility" class="visibilityIcon dNone" id="visibilityIcon1" onclick="togglePasswordVisibility('signUpPassword', 'visibilityIcon1', 'visibilityOffIcon1')">
+                    <input required class="inputLogInSignUp" type="password" placeholder="Password" id="signUpPassword" oninput="togglePasswordIcon('signUpPassword', 'visibilityIcon1', 'visibilityOffIcon1')">
+                </div>
+
+                <div class="inputContainer">
+                    <img src="assets/img/login_signup_icons/lock.svg" alt="Lock" class="passwordIcon" >
+                    <img src="assets/img/login_signup_icons/visibility_off.svg" alt="Visibility Off" class="visibilityIcon dNone" id="visibilityOffIcon2" onclick="togglePasswordVisibility('signUpPasswordConfirm', 'visibilityIcon2', 'visibilityOffIcon2')">
+                    <img src="assets/img/login_signup_icons/visibility.svg" alt="Visibility" class="visibilityIcon dNone" id="visibilityIcon2" onclick="togglePasswordVisibility('signUpPasswordConfirm', 'visibilityIcon2', 'visibilityOffIcon2')">
+                    <input required class="inputLogInSignUp" type="password" placeholder="Confirm Password" id="signUpPasswordConfirm" oninput="togglePasswordIcon('signUpPasswordConfirm', 'visibilityIcon2', 'visibilityOffIcon2')">
+                </div>
+
+                <div class="errorMessage"></div>
                 <div class="acceptPrivacy">
-                    <input type="checkbox">
+                    <input required type="checkbox" id="checkboxSignUp">
                     I accept the <a href="privacy.html">Privacy policy</a>
                 </div>
                 <div class="logInBtns">
-                    <button class="signUpButton">Sign up</button>
+                    <button id="registerBtn" class="signUpButton">Sign up</button>
                 </div>
+
             </form>
         </div>
     </div>
-
-
 
 </body>
 

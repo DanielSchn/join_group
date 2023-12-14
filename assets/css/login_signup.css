@@ -75,12 +75,11 @@ input::placeholder {
 .inputLogInSignUp {
     width: 422px;
     max-height: 48px;
-    margin-bottom: 32px;
 }
 
 .logInInputContainer {
     border: 1px solid var(--lightGray1);
-    
+
 }
 
 .logInFormPos {
@@ -115,20 +114,59 @@ input::placeholder {
     background-position: calc(100% - 21px) center;
 }
 
-.passwordIcon {
+/* .passwordIcon {
     background: url('../img/login_signup_icons/lock.svg') no-repeat;
     background-position: calc(100% - 21px) center;
 }
+
+.passwordShowIcon {
+    background: url('../img/login_signup_icons/visibility_off.svg') no-repeat;
+    background-position: calc(100% - 21px) center;
+}
+
+.passwordHideIcon {
+    background: url('../img/login_signup_icons/visibility.svg') no-repeat;
+    background-position: calc(100% - 21px) center;
+} */
 
 .nameIcon {
     background: url('../img/login_signup_icons/person.svg') no-repeat;
     background-position: calc(100% - 21px) center;
 }
 
+.dNone {
+    display: none;
+}
+
+.visibilityIcon {
+    height: 24px;
+    width: 24px;
+    position: absolute;
+    top: 50%;
+    right: 21px;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.passwordIcon {
+    height: 24px;
+    width: 24px;
+    position: absolute;
+    top: 50%;
+    right: 21px;
+    transform: translateY(-50%);
+}
+
+.inputContainer {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 32px;
+}
+
 .loginDash {
     border-top: 3px solid #29ABE2;
     width: 150px;
-    
+
 }
 
 .logInHead {
@@ -162,8 +200,8 @@ footer a {
 }
 
 .acceptPrivacy {
-        margin: 0 0 32px 39px;
-        color: var(--lightGray3);
+    margin: 0 0 32px 39px;
+    color: var(--lightGray3);
 }
 
 .acceptPrivacy a {
@@ -270,4 +308,10 @@ footer a {
     height: 121.97px;
     top: 80px;
     left: 77px;
+}
+
+.errorMessage {
+    margin-bottom: 16px;
+    color: red;
+    font-size: var(--fontSizeSmall);
 }
