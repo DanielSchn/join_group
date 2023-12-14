@@ -45,16 +45,16 @@
 
                 <div class="inputContainer">
                     <img src="assets/img/login_signup_icons/lock.svg" alt="Lock" class="passwordIcon">
-                    <img src="assets/img/login_signup_icons/visibility_off.svg" alt="Visibility" class="visibilityIcon dNone" onclick="showPassword('signUpPassword')">
-                    <input required class="inputLogInSignUp" type="password" placeholder="Password" id="signUpPassword"
-                        oninput="togglePasswordIcon('signUpPassword')">
+                    <img src="assets/img/login_signup_icons/visibility_off.svg" alt="Visibility Off" class="visibilityIcon dNone" id="visibilityOffIcon1" onclick="togglePasswordVisibility('signUpPassword', 'visibilityIcon1', 'visibilityOffIcon1')">
+                    <img src="assets/img/login_signup_icons/visibility.svg" alt="Visibility" class="visibilityIcon dNone" id="visibilityIcon1" onclick="togglePasswordVisibility('signUpPassword', 'visibilityIcon1', 'visibilityOffIcon1')">
+                    <input required class="inputLogInSignUp" type="password" placeholder="Password" id="signUpPassword" oninput="togglePasswordIcon('signUpPassword', 'visibilityIcon1', 'visibilityOffIcon1')">
                 </div>
 
                 <div class="inputContainer">
-                    <img src="assets/img/login_signup_icons/lock.svg" alt="Lock" class="passwordIcon">
-                    <img src="assets/img/login_signup_icons/visibility_off.svg" alt="Visibility" class="visibilityIcon dNone" onclick="showPassword('signUpPasswordConfirm')">
-                    <input required class="inputLogInSignUp" type="password" placeholder="Confirm Password"
-                        id="signUpPasswordConfirm" oninput="togglePasswordIcon('signUpPasswordConfirm')">
+                    <img src="assets/img/login_signup_icons/lock.svg" alt="Lock" class="passwordIcon" >
+                    <img src="assets/img/login_signup_icons/visibility_off.svg" alt="Visibility Off" class="visibilityIcon dNone" id="visibilityOffIcon2" onclick="togglePasswordVisibility('signUpPasswordConfirm', 'visibilityIcon2', 'visibilityOffIcon2')">
+                    <img src="assets/img/login_signup_icons/visibility.svg" alt="Visibility" class="visibilityIcon dNone" id="visibilityIcon2" onclick="togglePasswordVisibility('signUpPasswordConfirm', 'visibilityIcon2', 'visibilityOffIcon2')">
+                    <input required class="inputLogInSignUp" type="password" placeholder="Confirm Password" id="signUpPasswordConfirm" oninput="togglePasswordIcon('signUpPasswordConfirm', 'visibilityIcon2', 'visibilityOffIcon2')">
                 </div>
 
                 <div class="errorMessage"></div>

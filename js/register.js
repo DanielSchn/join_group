@@ -33,9 +33,8 @@ async function register() {
     resetForm();
 }
 
-
 /**
- * This is a function to reset the input form in the html code
+ * Reset Input Form
  */
 function resetForm() {
     signUpName.value = '';
@@ -46,7 +45,9 @@ function resetForm() {
     registerBtn.disabled = false;
 }
 
-
+/**
+ * Check passwords are the same
+ */
 document.addEventListener('DOMContentLoaded', function () {
     let signUpButton = document.querySelector('.signUpButton');
     let passwordInput = document.querySelector('input[placeholder="Password"]');
@@ -58,31 +59,40 @@ document.addEventListener('DOMContentLoaded', function () {
         errorMessage.textContent = passwordsMatch ? "" : "Ups! Your password don't match";
     }
     confirmPasswordInput.addEventListener('input', toggleSignUpButton);
-    toggleSignUpButton(); // Initial aufrufen, um den Button beim Laden der Seite zu deaktivieren
-    errorMessage.textContent = ""; // Leere die Fehlermeldung beim Laden der Seite
+    toggleSignUpButton();
+    errorMessage.textContent = "";
 });
 
 
-function togglePasswordIcon(inputId) {
-    let container = document.getElementById(inputId).closest('.inputContainer');
-    let passwordIcon = container.querySelector('.passwordIcon');
-    let visibilityIcon = container.querySelector('.visibilityIcon');
-    let inputField = document.getElementById(inputId);
+function togglePasswordIcon(inputId, visibilityIconId, visibilityOffIconId) {
+    const container = document.getElementById(inputId).closest('.inputContainer'); //Mit dem closest kann man den .inputContainer der am nächsten innerhalb des Containers ist finden
+    const passwordIcon = container.querySelector('.passwordIcon');
+    const visibilityIcon = container.querySelector(`#${visibilityIconId}`);
+    const visibilityOffIcon = container.querySelector(`#${visibilityOffIconId}`);
+    const inputField = document.getElementById(inputId);
     if (inputField.value.length > 0) {
         passwordIcon.classList.add('dNone');
         visibilityIcon.classList.remove('dNone');
+        visibilityOffIcon.classList.add('dNone');
     } else {
         passwordIcon.classList.remove('dNone');
         visibilityIcon.classList.add('dNone');
+        visibilityOffIcon.classList.add('dNone');
     }
 }
 
 
-function showPassword(inputId) {
+function togglePasswordVisibility(inputId, visibilityIconId, visibilityOffIconId) {
     const inputField = document.getElementById(inputId);
+    const visibilityIcon = document.getElementById(visibilityIconId);
+    const visibilityOffIcon = document.getElementById(visibilityOffIconId);
     if (inputField.type === 'password') {
         inputField.type = 'text';
+        visibilityIcon.classList.add('dNone');
+        visibilityOffIcon.classList.remove('dNone');
     } else {
         inputField.type = 'password';
+        visibilityIcon.classList.remove('dNone');
+        visibilityOffIcon.classList.add('dNone');
     }
 }
