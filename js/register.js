@@ -80,7 +80,6 @@ function togglePasswordIcon(inputId) {
 
 function showPassword(inputId) {
     const inputField = document.getElementById(inputId);
-
     if (inputField.type === 'password') {
         inputField.type = 'text';
     } else {
