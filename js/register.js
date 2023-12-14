@@ -1,19 +1,19 @@
 let users = [];
 
 
-async function init(){
-     loadUsers();
- }
+async function init() {
+    loadUsers();
+}
 
 
 /**
  * This is the function to load the Data from the remot storage and convert it into a JSON Array
  * If there are no Data we get an error log into the console
  */
-async function loadUsers(){
+async function loadUsers() {
     try {
         users = JSON.parse(await getItem('users'));
-    } catch(e){
+    } catch (e) {
         console.error('Loading error:', e);
     }
 }
@@ -61,3 +61,15 @@ document.addEventListener('DOMContentLoaded', function () {
     toggleSignUpButton(); // Initial aufrufen, um den Button beim Laden der Seite zu deaktivieren
     errorMessage.textContent = ""; // Leere die Fehlermeldung beim Laden der Seite
 });
+
+
+// function togglePasswordIcon(inputField) {
+//     if (inputField.value.length > 0) {
+//         var showIcon = inputField.type === 'password'; // Hier anpassen, wie du entscheidest, welches Icon angezeigt werden soll
+//         inputField.classList.remove('passwordIcon');
+//         inputField.classList.add('passwordShowIcon');
+//     } else {
+//         inputField.classList.remove('passwordShowIcon');
+//         inputField.classList.add('passwordIcon');
+//     }
+// }

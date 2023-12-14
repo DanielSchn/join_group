@@ -13,6 +13,7 @@
 </head>
 
 <body onload="init()">
+
     <img class="logo" src="assets/img/logo.svg" alt="JOIN">
 
     <div class="indexWrapper">
@@ -34,10 +35,28 @@
         </div>
         <div class="logInFormPos">
             <form class="logInForm" onsubmit="register(); return false;">
-                <input required class="nameIcon inputLogInSignUp" type="text" placeholder="Name" id="signUpName">
-                <input required class="mailIcon inputLogInSignUp" type="email" placeholder="Email" id="signUpEmail">
-                <input required class=" passwordIcon inputLogInSignUp" type="password" placeholder="Password" id="signUpPassword">
-                <input required class=" passwordIcon inputLogInSignUp" type="password" placeholder="Confirm Password" id="signUpPasswordConfirm">
+                <div class="inputContainer">
+                    <input required class="nameIcon inputLogInSignUp" type="text" placeholder="Name" id="signUpName">
+                </div>
+
+                <div class="inputContainer">
+                    <input required class="mailIcon inputLogInSignUp" type="email" placeholder="Email" id="signUpEmail">
+                </div>
+
+                <div class="inputContainer">
+                    <img src="assets/img/login_signup_icons/lock.svg" alt="Lock" class="passwordIcon">
+                    <img src="assets/img/login_signup_icons/visibility_off.svg" alt="Visibility" class="visibilityIcon dNone">
+                    <input required class="inputLogInSignUp" type="password" placeholder="Password" id="signUpPassword"
+                        oninput="togglePasswordIcon(this)">
+                </div>
+
+                <div class="inputContainer">
+                    <img src="assets/img/login_signup_icons/lock.svg" alt="Lock" class="passwordIcon">
+                    <img src="assets/img/login_signup_icons/visibility_off.svg" alt="Visibility" class="visibilityIcon dNone">
+                    <input required class="inputLogInSignUp" type="password" placeholder="Confirm Password"
+                        id="signUpPasswordConfirm" oninput="togglePasswordIcon(this)">
+                </div>
+
                 <div class="errorMessage"></div>
                 <div class="acceptPrivacy">
                     <input required type="checkbox" id="checkboxSignUp">
@@ -46,7 +65,7 @@
                 <div class="logInBtns">
                     <button id="registerBtn" class="signUpButton">Sign up</button>
                 </div>
-                
+
             </form>
         </div>
     </div>
