@@ -136,7 +136,9 @@ function editSubtask(index) {
     li.innerHTML = editSubtaskHTML(subtask, index);
     li.classList.add('editSubtask');
     const input = document.getElementById('editSubtaskInput');
+    const length = input.value.length;
     input.focus();
+    input.setSelectionRange(length, length);
     document.addEventListener("click", renderSubtasks); // Klick neben Liste wird als Abbruch der Bearbeitung gewertet
 }
 
@@ -187,30 +189,27 @@ function removeSubtask(index) {
 function subtaskHTML(subtask, index) {
     return /* html */`
         <li id="subtask${index}">
-            <div class="subtasksLiContainer">
-                <span ondblclick="editSubtask(${index})">${subtask}</span>
-                <button type="button" onclick="event.stopPropagation(); editSubtask(${index})" class="subtasksButton">
-                    <img src="./assets/img/edit.svg" alt="edit subtask">
-                </button>
-                <div class="vr"></div>
-                <button type="button" onclick="removeSubtask(${index})" class="subtasksButton">
-                    <img src="./assets/img/remove.svg" alt="remove subtask">
-                </button>
-            </div>
+            &bull;
+            <span ondblclick="editSubtask(${index})">${subtask}</span>
+            <button type="button" onclick="event.stopPropagation(); editSubtask(${index})" class="subtasksButton">
+                <img src="./assets/img/edit.svg" alt="edit subtask">
+            </button>
+            <div class="vr"></div>
+            <button type="button" onclick="removeSubtask(${index})" class="subtasksButton">
+                <img src="./assets/img/remove.svg" alt="remove subtask">
+            </button>
         </li>`;
 }
 
 function editSubtaskHTML(subtask, index) {
     return /* html */`
-        <div class="subtasksLiContainer">
-            <input id="editSubtaskInput" onclick="event.stopPropagation()" type="text" value="${subtask}">    
-            <button type="button" onclick="event.stopPropagation(); removeSubtask(${index})" class="subtasksButton">
-                <img src="./assets/img/remove.svg" alt="remove subtask">
-            </button>
-            <div class="vr"></div>
-            <button type="button" onclick="event.stopPropagation(); confirmSubtaskEdit(${index})" class="subtasksButton">
-                <img src="./assets/img/check.svg" alt="confirm subtask edit">
-            </button>
-        </div>
+        <input id="editSubtaskInput" onclick="event.stopPropagation()" type="text" value="${subtask}">    
+        <button type="button" onclick="event.stopPropagation(); removeSubtask(${index})" class="subtasksButton">
+            <img src="./assets/img/remove.svg" alt="remove subtask">
+        </button>
+        <div class="vr"></div>
+        <button type="button" onclick="event.stopPropagation(); confirmSubtaskEdit(${index})" class="subtasksButton">
+            <img src="./assets/img/check.svg" alt="confirm subtask edit">
+        </button>
     `;
 }
