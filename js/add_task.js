@@ -82,7 +82,7 @@ function colorPrioBtnImg(index) {
 /** 
  * Fokussierung des Input-Feldes für Subtasks
  */
-function focusInputSubtask() {
+function focusSubtask() {
     const container = document.getElementById('addSubtaskInputContainer');
     const btnsPassive = document.getElementById('addSubtaskIconsPassive');
     const btnsActive = document.getElementById('addSubtaskIconsActive');
@@ -90,13 +90,13 @@ function focusInputSubtask() {
     addSubtask.focus();
     btnsPassive.style.display = 'none';
     btnsActive.style.display = '';
-    document.addEventListener("click", unfocusInputSubtask); // reagiert auf Clicks abseits des Containers
+    document.addEventListener("click", unfocusSubtask); // reagiert auf Clicks abseits des Containers
 }
 
 /**
  * Fokus aufheben
  */
-function unfocusInputSubtask() {
+function unfocusSubtask() {
     const container = document.getElementById('addSubtaskInputContainer');
     container.style.borderColor = 'var(--lightGray1)';
     if (addSubtask.value == '') {
@@ -110,25 +110,48 @@ function unfocusInputSubtask() {
 /**
  * Cancel-Button löscht eingetragenen Wert und hebt Fokus auf
  */
-function cancelInputSubtask() {
+function cancelSubtask() {
     addSubtask.value = '';
-    unfocusInputSubtask();
+    unfocusSubtask();
 }
 
 /**
  * Check-Button erzeugt Subtask, falls Wert eingetragen
  */
-function createInputSubtask() {
+function createSubtask() {
     if (addSubtask.value) {
         newTask['subtasks'].push(addSubtask.value);
         renderSubtasks();
     }
-    cancelInputSubtask();
+    cancelSubtask();
 }
 
+/**
+ * erstellt Input-Feld in Subtasks-Liste, um Subtask zu bearbeiten
+ * @param {number} index - Laufindex innerhalb des subtasks-Array 
+ */
 function editSubtask(index) {
+    let subtask = newTask['subtasks'][index];
+    const li = document.getElementById(`subtask${index}`);
+    li.innerHTML = editSubtaskHTML(subtask, index);
+    const input = document.getElementById('editSubtaskInput');
+    input.focus();
+    document.addEventListener("click", renderSubtasks); // Klick neben Liste wird als Abbruch der Bearbeitung gewertet
+}
+
+/**
+ * Bestätigung der Subtask-Bearbeitung
+ * @param {number} index - Laufindex innerhalb des subtasks-Array 
+ */
+function confirmSubtaskEdit(index) {
+    const input = document.getElementById('editSubtaskInput');
     let subtasks = newTask['subtasks'];
-    let subtask = subtasks[index];
+    if (input.value) {
+        subtasks[index] = input.value;
+    } else {
+        subtasks.splice(index, 1);
+    }
+    renderSubtasks();
 }
 
 /**
@@ -163,12 +186,26 @@ function removeSubtask(index) {
 function subtaskHTML(subtask, index) {
     return /* html */`
         <li id="subtask${index}">
-            <span>${subtask}</span>
-            <button type="button" onclick="editSubtask(${index})" class="subtasksButton">
+            <span onclick="editSubtask(${index})">${subtask}</span>
+            <button type="button" onclick="event.stopPropagation(); editSubtask(${index})" class="subtasksButton">
                 <img src="./assets/img/edit.svg" alt="edit subtask">
             </button>
+            <div class="vr"></div>
             <button type="button" onclick="removeSubtask(${index})" class="subtasksButton">
                 <img src="./assets/img/remove.svg" alt="remove subtask">
             </button>
         </li>`;
+}
+
+function editSubtaskHTML(subtask, index) {
+    return /* html */`
+        <input id="editSubtaskInput" type="text" placeholder="${subtask}">
+        <button type="button" onclick="event.stopPropagation(); removeSubtask(${index})" class="subtasksButton">
+            <img src="./assets/img/remove.svg" alt="remove subtask">
+        </button>
+        <div class="vr"></div>
+        <button type="button" onclick="event.stopPropagation(); confirmSubtaskEdit(${index})" class="subtasksButton">
+            <img src="./assets/img/check.svg" alt="confirm subtask edit">
+        </button>
+    `;
 }

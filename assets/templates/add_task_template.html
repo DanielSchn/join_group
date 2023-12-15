@@ -64,20 +64,20 @@
                 <!-- Für die Funktion dieses Formularfelds scheint es keinen passenden input type zu geben. Evtl. hilft das:
                 https://www.geeksforgeeks.org/how-to-create-tags-input-box-in-html-css-and-javascript/ -->
                 <div id="addSubtaskInputContainer">
-                    <input type="text" onclick="event.stopPropagation(); focusInputSubtask()"
+                    <input type="text" onclick="event.stopPropagation(); focusSubtask()"
                         placeholder="Add new subtask" id="addSubtask">
                     <div id="addSubtaskIconsPassive">
-                        <button type="button" onclick="event.stopPropagation(); focusInputSubtask()"
+                        <button type="button" onclick="event.stopPropagation(); focusSubtask()"
                             class="subtasksButton">
                             <img src="./assets/img/plus_icon.svg" alt="icon">
                         </button>
                     </div>
                     <div id="addSubtaskIconsActive" style="display: none">
-                        <button type="button" onclick="cancelInputSubtask()" class="subtasksButton">
+                        <button type="button" onclick="cancelSubtask()" class="subtasksButton">
                             <img src="./assets/img/cancel.svg" alt="cancel subtask">
                         </button>
                         <div class="vr"></div>
-                        <button type="button" onclick="createInputSubtask()" class="subtasksButton">
+                        <button type="button" onclick="createSubtask()" class="subtasksButton">
                             <img src="./assets/img/check.svg" alt="create subtask">
                         </button>
                     </div>
@@ -86,10 +86,7 @@
         </div>
     </div>
     <div class="subtasksContainer">
-        <ul id="subtasksList">
-            <li>SUBTASK 1</li>
-            <li>SUBTASK 2</li>
-        </ul>
+        <ul id="subtasksList"></ul>
     </div>
     <div class="addTaskBottom">
         <div class="fontSizeSmall">
