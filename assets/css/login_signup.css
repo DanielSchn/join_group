@@ -55,6 +55,10 @@ input::placeholder {
     color: var(--lightGray1);
 }
 
+.dNone {
+    display: none !important;
+}
+
 .indexWrapper {
     display: flex;
     flex-direction: column;
@@ -75,12 +79,11 @@ input::placeholder {
 .inputLogInSignUp {
     width: 422px;
     max-height: 48px;
-    margin-bottom: 32px;
 }
 
 .logInInputContainer {
     border: 1px solid var(--lightGray1);
-    
+
 }
 
 .logInFormPos {
@@ -115,20 +118,66 @@ input::placeholder {
     background-position: calc(100% - 21px) center;
 }
 
-.passwordIcon {
-    background: url('../img/login_signup_icons/lock.svg') no-repeat;
-    background-position: calc(100% - 21px) center;
-}
-
 .nameIcon {
     background: url('../img/login_signup_icons/person.svg') no-repeat;
     background-position: calc(100% - 21px) center;
 }
 
+.successfullSignUp {
+    width: 312px;
+    height: 74px;
+    border-radius: 20px;
+    outline: none;
+    color: var(--white);
+    background-color: var(--darkBlue1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.signedUpOverlay {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.signUpFormBody {
+    opacity: 0.3;
+}
+
+.visibilityIcon {
+    height: 24px;
+    width: 24px;
+    position: absolute;
+    top: 50%;
+    right: 21px;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.passwordIcon {
+    height: 24px;
+    width: 24px;
+    position: absolute;
+    top: 50%;
+    right: 21px;
+    transform: translateY(-50%);
+}
+
+.inputContainer {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 32px;
+}
+
 .loginDash {
     border-top: 3px solid #29ABE2;
     width: 150px;
-    
+
 }
 
 .logInHead {
@@ -162,8 +211,8 @@ footer a {
 }
 
 .acceptPrivacy {
-        margin: 0 0 32px 39px;
-        color: var(--lightGray3);
+    margin: 0 0 32px 39px;
+    color: var(--lightGray3);
 }
 
 .acceptPrivacy a {
@@ -270,4 +319,10 @@ footer a {
     height: 121.97px;
     top: 80px;
     left: 77px;
+}
+
+.errorMessage {
+    margin-bottom: 16px;
+    color: red;
+    font-size: var(--fontSizeSmall);
 }

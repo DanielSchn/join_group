@@ -30,6 +30,8 @@ function includeHTML() {
  * function for scale Logo by startup
  */
 document.addEventListener("DOMContentLoaded", function () {
+  let indexPage = document.querySelector('.rememberMe');
+    if (indexPage) {
   const logo = document.getElementById('startLogo');
   const body = document.getElementById('mainBody');
   setTimeout(function () {
@@ -37,8 +39,8 @@ document.addEventListener("DOMContentLoaded", function () {
     logo.style.top = '';
     logo.style.left = '';
   }, 500);
-
   logo.addEventListener("transitionend", function () {
     body.style.display = 'block';
   });
+}
 });
