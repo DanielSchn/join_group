@@ -199,7 +199,7 @@ function subtaskHTML(subtask, index) {
 
 function editSubtaskHTML(subtask, index) {
     return /* html */`
-        <input id="editSubtaskInput" type="text" placeholder="${subtask}">
+        <input id="editSubtaskInput" onclick="event.stopPropagation()" type="text" placeholder="${subtask}">
         <button type="button" onclick="event.stopPropagation(); removeSubtask(${index})" class="subtasksButton">
             <img src="./assets/img/remove.svg" alt="remove subtask">
         </button>
