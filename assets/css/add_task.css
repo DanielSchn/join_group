@@ -11,7 +11,7 @@
     margin: var(--top) calc(var(--sidePadding) * 3 / 2) var(--bottom) var(--sidePadding);
     display: flex;
     flex-direction: column;
-    min-height: calc(100vh - var(--top) - var(--bottom) - 96px);
+    height: calc(100vh - var(--top) - var(--bottom) - 96px);
     max-width: 1920px;
 }
 
@@ -20,7 +20,6 @@
     width: 100%;
     display: flex;
     gap: calc(var(--sidePadding) / 2);
-    height: fit-content;
 }
 
 .addTaskFormMainSide {
@@ -142,18 +141,21 @@ button.addTaskPrio3Selected {
     width: 100%;
     display: flex;
     justify-content: flex-end;
+    overflow-y: auto;
+    margin: var(--subtasksLiVerticalMargin) 0;
+    flex: 1;
 }
 
 #subtasksList {
-    width: calc(50% - var(--sidePadding) * 1/2 + 2px);
-    margin-top: 0;
+    width: calc(50% - var(--sidePadding) * 1/2);
+    margin: 0;
     padding: 0;
 }
 
 #subtasksList li {
     font-size: var(--fontSizeSmall);
     border-radius: 10px;
-    margin: var(--subtasksLiVerticalMargin) 0;
+    margin: 0 0 calc(var(--subtasksLiVerticalMargin) * 2) 0;
     padding: 0 16px;
     display: flex;
     gap: 2px;
@@ -210,7 +212,6 @@ button.addTaskPrio3Selected {
 }
 
 .addTaskBottom {
-    flex: 1;
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -338,11 +339,19 @@ button.addTaskPrio3Selected {
     #formSeperator {
         display: none;
     }
+    
+    #subtasksList {
+        width: calc(50% - var(--sidePadding) * 1/3);
+    }
 }
 
 @media (max-width: 1050px) {
     .addTaskFormMain {
         flex-direction: column;
+    }
+
+    .addTaskForm {
+        height: auto;
     }
 
     input,
@@ -362,7 +371,8 @@ button.addTaskPrio3Selected {
     }
     
     #subtasksList {
-        width: auto;
+        width: 100%;
+        overflow-y: visible;
     }
 
     .addTaskBottom .btnSecondary {

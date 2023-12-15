@@ -167,8 +167,6 @@ function removeSubtask(index) {
     renderSubtasks();
 }
 
-
-
 // function createTask() {
 //     Folgende Deklaration muss nicht leer erfolgen, sondern kann direkt die Werte aus dem Formular übernehmen:  
 //     let task = {
