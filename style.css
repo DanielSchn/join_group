@@ -6,6 +6,7 @@
     --fontWeight700: 700;
     --fontWeight400: 400;
     --menuBarWidth: 232px;
+    --mainWidth: calc(100vw - var(--menuBarWidth));
     --shadowSubtle: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
     --shadowStronger: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     --scrollbarWidth: 17px;
@@ -34,7 +35,7 @@ body {
 }
 
 .main {
-    width: calc(100vw - var(--menuBarWidth));
+    width: var(--mainWidth);
     padding-left: var(--menuBarWidth);
     display: flex;
     justify-content: center;

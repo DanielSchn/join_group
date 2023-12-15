@@ -64,11 +64,10 @@
                 <!-- Für die Funktion dieses Formularfelds scheint es keinen passenden input type zu geben. Evtl. hilft das:
                 https://www.geeksforgeeks.org/how-to-create-tags-input-box-in-html-css-and-javascript/ -->
                 <div id="addSubtaskInputContainer">
-                    <input type="text" onclick="event.stopPropagation(); focusSubtask()"
-                        placeholder="Add new subtask" id="addSubtask">
+                    <input type="text" onclick="event.stopPropagation(); focusSubtask()" placeholder="Add new subtask"
+                        id="addSubtask">
                     <div id="addSubtaskIconsPassive">
-                        <button type="button" onclick="event.stopPropagation(); focusSubtask()"
-                            class="subtasksButton">
+                        <button type="button" onclick="event.stopPropagation(); focusSubtask()" class="subtasksButton">
                             <img src="./assets/img/plus_icon.svg" alt="icon">
                         </button>
                     </div>
@@ -86,7 +85,10 @@
         </div>
     </div>
     <div class="subtasksContainer">
-        <ul id="subtasksList"></ul>
+        <div id="subtasksLeftMargin"></div>
+        <div class="subtasksListContainer">
+            <ul id="subtasksList"></ul>
+        </div>
     </div>
     <div class="addTaskBottom">
         <div class="fontSizeSmall">

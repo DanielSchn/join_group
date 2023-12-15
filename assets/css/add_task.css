@@ -4,6 +4,7 @@
     --bottom: 80px;
     --subtasksLiHeight: 32px;
     --subtasksLiVerticalMargin: 6px;
+    --absoluteContentWidth: calc(100vw - var(--menuBarWidth) - calc(var(--sidePadding) * 5 / 2));
 }
 
 .addTaskForm {
@@ -140,14 +141,21 @@ button.addTaskPrio3Selected {
 .subtasksContainer {
     width: 100%;
     display: flex;
-    justify-content: flex-end;
+    flex: 1;
     overflow-y: auto;
     margin: var(--subtasksLiVerticalMargin) 0;
+}
+
+#subtasksLeftMargin {
+    width: calc((var(--absoluteContentWidth) - 1px + var(--sidePadding)) / 2);
+}
+
+.subtasksListContainer {
     flex: 1;
+    min-height: 0;
 }
 
 #subtasksList {
-    width: calc(50% - var(--sidePadding) * 1/2);
     margin: 0;
     padding: 0;
 }
