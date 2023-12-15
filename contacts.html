@@ -152,15 +152,16 @@
             <div id="contactsTitle">Contacts</div>
             <div id="devider"></div>
             <div id="contactsSlogan">Better with a Team</div>
+            <div id="devider2" class="d-none"></div>
         </div>
 
         <div id="mainContactDetails" class="d-none">
             <div id="mainContactContainer_1">
                 <div class="initialCircle">
-                    <span id="user_initials_0" class="font47">AM</span>
+                    <span id="user_initials_0" class="userNameFontSize">AM</span>
                 </div>
                 <div id="contactSetup">
-                    <div id="user_name_0" class="font47">Anton Mayer</div>
+                    <div id="user_name_0" class="userNameFontSize responsiveUserNameFontSize">Anton Mayer</div>
                     <div id="settings">
                         <div id="edit" class="settingsBtn">
                             <img id="edit_img" src="./assets/img/contacts/edit_pen.svg"><span>Edit</span> <!-- Hover CSS / JS ?? -->
@@ -192,8 +193,16 @@
      <!-- Mobile -->
      <div id="mobileMenuBox" w3-include-html="assets/templates/mobile_side_menu.html"></div>
 
-    <div id="mobileAddContactBtnContainer">
+     <div id="mobileAddContactBtnContainer">
         <button id="mobileAddContactBtn"><img src="./assets/img/menu_icons/person_add.svg"></button>
+    </div>
+
+     <div id="backArrow" onclick="closeWindow()">
+        
+     </div>
+
+    <div id="mobileSettingBtnContainer" class="mobile-d-none">
+        <button id="mobileSettingBtn"><img src="./assets/img/contacts/more_vert.svg"></button>
     </div>
 
 </body>
