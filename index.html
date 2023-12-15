@@ -36,9 +36,9 @@
                 <div class="loginDash"></div>
             </div>
             <div class="logInFormPos">
-                <form class="logInForm" action="">
+                <form class="logInForm" action="" onsubmit="login(); return false;">
                     <div class="inputContainer">
-                        <input required class="mailIcon inputLogInSignUp" type="email" placeholder="Email">
+                        <input required class="mailIcon inputLogInSignUp" type="email" placeholder="Email" id="email">
                     </div>
                     <div class="inputContainer">
                         <img src="assets/img/login_signup_icons/lock.svg" alt="Lock" class="passwordIcon">
@@ -54,7 +54,10 @@
                         <button class="logInButton">Log in</button>
                         <button class="guestLogInButton">Guest Log in</button>
                     </div>
+                    <br>
+                    <div id="userNotFound" class="errorMessage" style="display: none;">User not found or password wrong</div>
                 </form>
+                
             </div>
         </div>
     </div>

@@ -51,7 +51,7 @@ function showOverlaySignedUp() {
  * This function open the index.html after 2000ms after the successfull registration
  */
 function goToLogin() {
-    window.setTimeout(function(){
+    window.setTimeout(function () {
         window.location.href = "index.html";
     }, 2000);
 }
@@ -136,5 +136,23 @@ function togglePasswordVisibility(inputId, visibilityIconId, visibilityOffIconId
         inputField.type = 'password';
         visibilityIcon.classList.remove('dNone');
         visibilityOffIcon.classList.add('dNone');
+    }
+}
+
+
+/**
+ * Login function and go to summary page when login User and password are match
+ */
+function login() {
+    let email = document.getElementById('email');
+    let password = document.getElementById('signUpPassword');
+    let user = users.find(u => u.email == email.value && u.password == password.value);
+    console.log(user);
+    if(user) {
+        window.setTimeout(function () {
+            window.location.href = "summary.html";
+        }, 1000);
+    } else {
+        document.getElementById('userNotFound').style.display = 'block';
     }
 }
