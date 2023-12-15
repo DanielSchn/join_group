@@ -25,7 +25,7 @@
             </div>
             <div id="myContacts">
             <div id="myContacts_A">
-                <div class="contactCard" onclick="openContactContainer()">
+                <div class="contactCard" onclick="cardWindow()">
                     <div class="contactInitials">
                         <span id="user_name">AM</span>
                     </div>
@@ -142,8 +142,13 @@
         </div>
     </section>
 
-    <section id="mainContactCard">
+    <div id="mainContactCard_Bg" class="d-none"></div>
+    <div id="closeWindowLayer" class="d-none" onclick="closeWindow()"></div>
+        <div id="mainContactContainer" class="mobile-d-none">
+
         <div id="contactTitleBar">
+            <div id="closeWindowBtn" onclick="closeWindow()">
+            </div>
             <div id="contactsTitle">Contacts</div>
             <div id="devider"></div>
             <div id="contactsSlogan">Better with a Team</div>
@@ -182,10 +187,9 @@
                 </div>
             </div>
         </div>
-    </section>
+        </div>
 
      <!-- Mobile -->
-
      <div id="mobileMenuBox" w3-include-html="assets/templates/mobile_side_menu.html"></div>
 
     <div id="mobileAddContactBtnContainer">
