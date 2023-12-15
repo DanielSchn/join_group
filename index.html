@@ -8,6 +8,7 @@
 
     <link rel="stylesheet" href="fonts.css">
     <link rel="stylesheet" href="assets/css/login_signup.css">
+    <link rel="stylesheet" href="assets/css/login_signup_query.css">
     <script src="script.js" defer></script>
     <script src="js/register.js" defer></script>
     <script src="js/storage.js" defer></script>
@@ -45,6 +46,7 @@
                         <img src="assets/img/login_signup_icons/visibility_off.svg" alt="Visibility Off" class="visibilityIcon dNone" id="visibilityOffIcon1" onclick="togglePasswordVisibility('signUpPassword', 'visibilityIcon1', 'visibilityOffIcon1')">
                         <img src="assets/img/login_signup_icons/visibility.svg" alt="Visibility" class="visibilityIcon dNone" id="visibilityIcon1" onclick="togglePasswordVisibility('signUpPassword', 'visibilityIcon1', 'visibilityOffIcon1')">
                         <input required class="inputLogInSignUp" type="password" placeholder="Password" id="signUpPassword" oninput="togglePasswordIcon('signUpPassword', 'visibilityIcon1', 'visibilityOffIcon1')">
+                        <p id="userNotFound" class="errorMessage" style="display: none;">Wrong password Ups! Try again.</p>
                     </div>
                     <div class="rememberMe">
                         <input type="checkbox">
@@ -54,8 +56,7 @@
                         <button class="logInButton">Log in</button>
                         <button class="guestLogInButton">Guest Log in</button>
                     </div>
-                    <br>
-                    <div id="userNotFound" class="errorMessage" style="display: none;">User not found or password wrong</div>
+                    
                 </form>
                 
             </div>

@@ -326,3 +326,8 @@ footer a {
     color: red;
     font-size: var(--fontSizeSmall);
 }
+
+#userNotFound {
+    margin: 8px 0 16px 0;
+    position: fixed;
+}
