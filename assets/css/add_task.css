@@ -2,6 +2,8 @@
     --sidePadding: 144px;
     --top: 110px;
     --bottom: 80px;
+    --subtasksLiHeight: 32px;
+    --subtasksLiVerticalMargin: 6px;
 }
 
 .addTaskForm {
@@ -144,20 +146,67 @@ button.addTaskPrio3Selected {
 
 #subtasksList {
     width: calc(50% - var(--sidePadding));
+    margin-top: 0;
 }
 
-#subtasksList li {
+.subtasksLiContainer {
+    font-size: var(--fontSizeSmall);
     border-radius: 10px;
+    margin: var(--subtasksLiVerticalMargin) 0;
     display: flex;
+    gap: 2px;
+    align-items: center;
+    height: var(--subtasksLiHeight);
+}
+
+.subtasksLiContainer:hover {
+    background: var(--lightGray4);
 }
 
 #subtasksList li span {
     flex: 1;
+} 
+
+#subtasksList li button,
+#subtasksList li .vr {
+    display: none;
 }
 
-#subtasksList li:hover {
-    border-radius: 10px;
-    background: var(--lightGray4);
+#subtasksList li:hover button,
+#subtasksList li:hover .vr,
+#subtasksList .editSubtask button,
+#subtasksList .editSubtask .vr {
+    display: initial;
+}
+
+#subtasksList .editSubtask {
+    border-radius: 0;
+    border-bottom: 1px solid var(--lightBlue1);
+    height: calc(var(--subtasksLiHeight) - 1px);
+    margin: var(--subtasksLiVerticalMargin) 0;
+    background: white;
+    display: flex;
+    align-items: center;
+    width: calc(100% + 32px);
+    position: relative;
+    right: 32px;
+}
+
+#subtasksList .editSubtask .subtasksLiContainer {
+    width: inherit;
+    border-radius: 0;    
+    background: none;
+}
+
+#subtasksList li input {
+    flex: 1;
+    font-size: var(--fontSizeSmall);
+    background: none;
+    border: none;
+}
+
+#subtasksList .vr {
+    height: 24px;
 }
 
 .addTaskBottom {
