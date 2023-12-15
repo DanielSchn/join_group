@@ -31,18 +31,25 @@ async function register() {
     });
     await setItem('users', JSON.stringify(users));
     resetForm();
+    showOverlaySignedUp();
 }
 
 
+/**
+ * This function shows the successfully sign up Message after the Data was successfull write to the remote storage
+ */
 function showOverlaySignedUp() {
     let overlay = document.querySelector('.signedUpOverlay');
-    overlay.classList.toggle('dNone');
     let body = document.querySelector('.opacity');
+    overlay.classList.toggle('dNone');
     body.classList.toggle('signUpFormBody');
     goToLogin();
 }
 
 
+/**
+ * This function open the index.html after 2000ms after the successfull registration
+ */
 function goToLogin() {
     window.setTimeout(function(){
         window.location.href = "index.html";
@@ -51,7 +58,7 @@ function goToLogin() {
 
 
 /**
- * Reset Input Form
+ * Reset the Input Form after 
  */
 function resetForm() {
     signUpName.value = '';
@@ -64,7 +71,7 @@ function resetForm() {
 
 
 /**
- * Check passwords are the same
+ * This function checks the input from the password fields and give a Message when the password and password confirm don't match
  */
 document.addEventListener('DOMContentLoaded', function () {
     let signUpPageElement = document.querySelector('.signedUpOverlay');
@@ -85,6 +92,13 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
+/**
+ * This function toggle the icon for the Password. When the User fill the input field, the function will work and show an icon to change the visibility from the password.
+ * 
+ * @param {string} inputId - Selector for the password or confirm password input field icon
+ * @param {string} visibilityIconId - Selector for the visibilityICon for the password or confirm password input field icon
+ * @param {string} visibilityOffIconId - Selector for the visibilityOffICon for the password or confirm password input field icon
+ */
 function togglePasswordIcon(inputId, visibilityIconId, visibilityOffIconId) {
     const container = document.getElementById(inputId).closest('.inputContainer'); //Mit dem closest kann man den .inputContainer der am nächsten innerhalb des Containers ist finden
     const passwordIcon = container.querySelector('.passwordIcon');
@@ -103,6 +117,13 @@ function togglePasswordIcon(inputId, visibilityIconId, visibilityOffIconId) {
 }
 
 
+/**
+ * This function will toggle the password input visibility from 'password' and 'text'
+ * 
+ * @param {string} inputId - Selector for which field will be toggle the password in 'text' or 'password'
+ * @param {string} visibilityIconId - Selector for which field will be toggle the password in 'text' or 'password'
+ * @param {string} visibilityOffIconId - Selector for which field will be toggle the password in 'text' or 'password'
+ */
 function togglePasswordVisibility(inputId, visibilityIconId, visibilityOffIconId) {
     const inputField = document.getElementById(inputId);
     const visibilityIcon = document.getElementById(visibilityIconId);
