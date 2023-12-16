@@ -189,7 +189,7 @@ function subtaskHTML(subtask, index) {
         <li id="subtask${index}">
             &bull;
             <span ondblclick="editSubtask(${index})">${subtask}</span>
-            <button type="button" onclick="event.stopPropagation(); editSubtask(${index})" class="subtasksButton">
+            <button type="button" onclick="event.stopPropagation(); editSubtask(${index})" class="subtasksButton subtasksButtonEdit">
                 <img src="./assets/img/edit.svg" alt="edit subtask">
             </button>
             <div class="vr"></div>

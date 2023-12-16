@@ -31,16 +31,27 @@ function includeHTML() {
  */
 document.addEventListener("DOMContentLoaded", function () {
   let indexPage = document.querySelector('.rememberMe');
-    if (indexPage) {
-  const logo = document.getElementById('startLogo');
-  const body = document.getElementById('mainBody');
-  setTimeout(function () {
-    logo.style.transform = "translate(0%, 0%) scale(1)";
-    logo.style.top = '';
-    logo.style.left = '';
-  }, 500);
-  logo.addEventListener("transitionend", function () {
-    body.style.display = 'block';
-  });
-}
+  if (indexPage) {
+    const logo = document.getElementById('startLogo');
+    const body = document.getElementById('mainBody');
+    setTimeout(function () {
+      logo.style.transform = "translate(0%, 0%) scale(1)";
+      logo.style.top = '';
+      logo.style.left = '';
+    }, 500);
+    logo.addEventListener("transitionend", function () {
+      body.style.display = 'block';
+    });
+  }
 });
+
+
+function toggleSelectArrow(id) {
+  const select = document.getElementById(id);
+  let arrowImgSrc = 'url(./assets/img/select_icon.svg)';
+  if (select.style.backgroundImage.includes('select_icon.svg')) {
+    select.style.backgroundImage = arrowImgSrc.replace('.svg', '_active.svg');
+  } else {
+    select.style.backgroundImage = arrowImgSrc;
+  }
+}
