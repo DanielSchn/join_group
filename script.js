@@ -45,13 +45,16 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-
+/**
+ * Definiert Pfeilrichtung in select-Elementen, wird dort per Klick aufgerufen
+ * @param {string} id - ID des zu stylenden select-Elements
+ */
 function toggleSelectArrow(id) {
   const select = document.getElementById(id);
   let arrowImgSrc = 'url(./assets/img/select_icon.svg)';
-  if (select.style.backgroundImage.includes('select_icon.svg')) {
-    select.style.backgroundImage = arrowImgSrc.replace('.svg', '_active.svg');
+  if (select.style.backgroundImage.includes('select_icon.svg')) { // FALLS Pfeil nach unten
+    select.style.backgroundImage = arrowImgSrc.replace('.svg', '_active.svg'); // Pfeil nach oben
   } else {
-    select.style.backgroundImage = arrowImgSrc;
+    select.style.backgroundImage = arrowImgSrc; // SONST Pfeil nach unten
   }
 }
