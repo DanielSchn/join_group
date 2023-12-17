@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input-Feld Klick</title>
+</head>
+<body>
+
+<input type="text" id="meinInput" onmousedown="meineFunktion(event)" placeholder="Klicke hier">
+
+<script>
+    function meineFunktion(event) {
+        // alert('Die Funktion wurde ausgeführt!');
+        // Hier kannst du den Code für deine Funktion einfügen
+
+        // Das Standardverhalten (Fokus erhalten) wird verhindert
+        event.preventDefault();
+    }
+</script>
+
+</body>
+</html>

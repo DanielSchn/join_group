@@ -49,12 +49,53 @@ document.addEventListener("DOMContentLoaded", function () {
  * Definiert Pfeilrichtung in select-Elementen, wird dort per Klick aufgerufen
  * @param {string} id - ID des zu stylenden select-Elements
  */
-function toggleSelectArrow(id) {
-  const select = document.getElementById(id);
-  let arrowImgSrc = 'url(./assets/img/select_icon.svg)';
-  select.style.backgroundImage = arrowImgSrc.replace('.svg', '_active.svg'); // Pfeil nach oben
-  document.addEventListener("mouseup", function resetArrow() { // Listener für weiteren Click
-    select.style.backgroundImage = arrowImgSrc; // Pfeil nach oben
-    document.removeEventListener("mouseup", resetArrow); // Listener entfernen
+// function showDropdown(id) {
+//   const icon = document.getElementById(id + 'Icon');
+//   const menu = document.getElementById(id + 'Menu');
+//   event.preventDefault();
+//   if (!icon.src.includes('active')) {
+//     let iconSrc = icon.src;
+//     icon.src = iconSrc.replace('.svg', '_active.svg'); // Pfeil nach oben
+//     menu.style.display = 'initial';
+//     document.addEventListener("mouseup", function hideDropdown() { // Listener für weiteren Click
+//       icon.src = iconSrc.replace('_active', ''); // Pfeil nach oben
+//       menu.style.display = 'none';
+//       document.removeEventListener("mouseup", hideDropdown); // Listener entfernen
+//     });
+//   }
+// }
+
+function toggleDropdown(id) {
+  const menu = document.getElementById(id + 'Menu');
+  if(menu.style.display == 'none') {
+    showDropdown(id);
+  } else {
+    hideDropdown(id);
+  }
+}
+
+function showDropdown(id) {
+  const container = document.getElementById(id + 'InputContainer');
+  const btnPassive = document.getElementById(id + 'BtnPassive');
+  const btnActive = document.getElementById(id + 'BtnActive');
+  const menu = document.getElementById(id + 'Menu');
+  container.style.borderColor = 'var(--lightBlue1)';
+  menu.style.display = '';
+  btnPassive.style.display = 'none';
+  btnActive.style.display = '';
+  document.addEventListener("click", function clickedElsewhere() {
+    hideDropdown(id);
+    document.removeEventListener("click", clickedElsewhere);
   });
+}
+
+function hideDropdown(id) {
+  const container = document.getElementById(id + 'InputContainer');
+  const btnPassive = document.getElementById(id + 'BtnPassive');
+  const btnActive = document.getElementById(id + 'BtnActive');
+  const menu = document.getElementById(id + 'Menu');
+  container.style.borderColor = '';
+  menu.style.display = 'none';
+  btnPassive.style.display = '';
+  btnActive.style.display = 'none';
 }

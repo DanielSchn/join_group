@@ -94,7 +94,7 @@ button.addTaskPrio3Selected {
     width: 20px;
 }
 
-#addSubtaskInputContainer {
+.extendedInput {
     display: flex;
     align-items: center;
     background: white;
@@ -312,9 +312,8 @@ button.addTaskPrio3Selected {
 
     input,
     textarea,
-    #addSubtaskInputContainer {
+    .extendedInput {
         padding: 10px 16px;
-
     }
 
     textarea {
@@ -364,7 +363,7 @@ button.addTaskPrio3Selected {
 
     input,
     textarea,
-    #addSubtaskInputContainer {
+    .extendedInput {
         padding: 8px 16px;
     }
 

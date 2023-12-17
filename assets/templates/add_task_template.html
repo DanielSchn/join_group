@@ -19,9 +19,12 @@
                 <label for="addTaskAssigned">
                     <h2>Assigned to</h2>
                 </label>
-                <select placeholder="test" id="addTaskAssigned" onclick="toggleSelectArrow('addTaskAssigned')" style="background-image: url(./assets/img/select_icon.svg);">
+                <select id="addTaskAssigned" onclick="toggleSelectArrow('addTaskAssigned')"
+                    style="background-image: url(./assets/img/select_icon.svg);">
                     <option value="">Select contacts to assign</option>
-                    <option value="">CONTACT 1</option>
+                    <option value="" class="optionContainer">
+                        <p class="optionContent">test</p>
+                    </option>
                     <option value="">CONTACT 2</option>
                 </select>
             </div>
@@ -47,15 +50,24 @@
                 </div>
             </div>
             <div class="addTaskField">
-                <label for="addTaskCategory">
+                <label for="addTaskCategory" onclick="event.preventDefault()">
                     <h2>Category<p class="red">*</p>
                     </h2>
                 </label>
-                <select placeholder="test" id="addTaskCategory" required onclick="toggleSelectArrow('addTaskCategory')" style="background-image: url(./assets/img/select_icon.svg);">
-                    <option value="">Select task category</option>
-                    <option value="">CATEGORY 1</option>
-                    <option value="">CATEGORY 2</option>
-                </select>
+                <div id="addTaskCategoryInputContainer" class="extendedInput" onclick="event.stopPropagation(); toggleDropdown('addTaskCategory')">
+                <input class="dropdownBtn" type="text" placeholder="Select Task Category" id="addTaskCategory" required
+                    onmousedown="event.preventDefault()">
+                    <button type="button" id="addTaskCategoryBtnPassive" class="subtasksButton">
+                        <img src="./assets/img/select_icon.svg" alt="icon">
+                    </button>
+                    <button type="button" id="addTaskCategoryBtnActive" class="subtasksButton" style="display: none">
+                        <img src="./assets/img/select_icon_active.svg" alt="icon">
+                    </button>
+                </div>
+                <ul class="dropdownMenu" id="addTaskCategoryMenu" style="display: none">
+                    <li>CATEGORY 1</li>
+                    <li>CATEGORY 2</li>
+                </ul>
             </div>
             <div class="addTaskField">
                 <label for="addSubtask">
@@ -63,7 +75,7 @@
                 </label>
                 <!-- Für die Funktion dieses Formularfelds scheint es keinen passenden input type zu geben. Evtl. hilft das:
                 https://www.geeksforgeeks.org/how-to-create-tags-input-box-in-html-css-and-javascript/ -->
-                <div id="addSubtaskInputContainer">
+                <div id="addSubtaskInputContainer" class="extendedInput">
                     <input type="text" onclick="event.stopPropagation(); focusSubtask()" placeholder="Add new subtask"
                         id="addSubtask">
                     <div id="addSubtaskIconsPassive">
@@ -96,7 +108,7 @@
             This field is required
         </div>
         <div>
-            <button type="button" class="btnSecondary">Clear</button>
+            <button type="reset" class="btnSecondary">Clear</button>
             <button type="submit" class="btnPrimary">Create Task</button>
         </div>
     </div>

@@ -147,6 +147,14 @@ select:focus {
     border-color: var(--lightBlue1);
 }
 
+.optionContainer:hover {
+    background-color: var(--lightGray4);
+}
+
+.optionContent {
+    color: red;
+}
+
 /* Default-Resizer (Textarea) verstecken */
 ::-webkit-resizer {
     display: none;
