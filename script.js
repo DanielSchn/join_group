@@ -53,8 +53,8 @@ function toggleSelectArrow(id) {
   const select = document.getElementById(id);
   let arrowImgSrc = 'url(./assets/img/select_icon.svg)';
   select.style.backgroundImage = arrowImgSrc.replace('.svg', '_active.svg'); // Pfeil nach oben
-  document.addEventListener("mousedown", function resetArrow() { // Listener für weiteren Click
+  document.addEventListener("mouseup", function resetArrow() { // Listener für weiteren Click
     select.style.backgroundImage = arrowImgSrc; // Pfeil nach oben
-    document.removeEventListener("mousedown", resetArrow); // Listener entfernen
+    document.removeEventListener("mouseup", resetArrow); // Listener entfernen
   });
 }
