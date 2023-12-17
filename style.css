@@ -142,7 +142,8 @@ textarea::placeholder {
 }
 
 input:focus,
-textarea:focus {
+textarea:focus,
+select:focus {
     border-color: var(--lightBlue1);
 }
 

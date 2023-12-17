@@ -52,9 +52,9 @@ document.addEventListener("DOMContentLoaded", function () {
 function toggleSelectArrow(id) {
   const select = document.getElementById(id);
   let arrowImgSrc = 'url(./assets/img/select_icon.svg)';
-  if (select.style.backgroundImage.includes('select_icon.svg')) { // FALLS Pfeil nach unten
-    select.style.backgroundImage = arrowImgSrc.replace('.svg', '_active.svg'); // Pfeil nach oben
-  } else {
-    select.style.backgroundImage = arrowImgSrc; // SONST Pfeil nach unten
-  }
+  select.style.backgroundImage = arrowImgSrc.replace('.svg', '_active.svg'); // Pfeil nach oben
+  document.addEventListener("mousedown", function resetArrow() { // Listener für weiteren Click
+    select.style.backgroundImage = arrowImgSrc; // Pfeil nach oben
+    document.removeEventListener("mousedown", resetArrow); // Listener entfernen
+  });
 }
