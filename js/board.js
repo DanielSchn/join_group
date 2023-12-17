@@ -30,6 +30,7 @@ function updateInProgress(){
     for (let i = 0; i < inprogress.length; i++) {
         const element = inprogress[i];
         document.getElementById('inProgress').innerHTML += generateTask(element);
+        generateSubtask(element);
     }
 }
 
@@ -41,6 +42,7 @@ function updateAwaitFeedback(){
     for (let i = 0; i < feedback.length; i++) {
         const element = feedback[i];
         document.getElementById('awaitFeedback').innerHTML += generateTask(element);
+        generateSubtask(element);
     }
 }
 
@@ -52,6 +54,7 @@ function updateDone(){
     for (let i = 0; i < done.length; i++) {
         const element = done[i];
         document.getElementById('done').innerHTML += generateTask(element);
+        generateSubtask(element);
     }
 }
 
@@ -173,7 +176,7 @@ function generateSubtask(element) {
     let doneSubtasksDiv = document.getElementById(`toDoSubtasksDone${element['id']}`);
     let progressbarFillerDiv = document.getElementById(`toDoSubtasksProgressFiller${element['id']}`);
 
-    if (subtasks.length === 0) {
+    if (subtasks.length == 0) {
         subtasksDiv.classList.add("d-none");
     } else {
         updateProgressBar(subtasks, doneSubtasksDiv, progressbarFillerDiv);
