@@ -1,3 +1,6 @@
+const userName = [];
+
+
 function initSummary() {
     setDaytime();
     renderUserName();
@@ -24,7 +27,40 @@ function setDaytime() {
 }
 
 
+function fillInGuest() {
+    document.getElementById('email').value = 'guest@guest.de';
+    document.getElementById('signUpPassword').value = 'guest';
+    login();
+}
+
+
+/**
+ * Login function and go to summary page when login User and password are match
+ */
+function login() {
+    let email = document.getElementById('email');
+    let password = document.getElementById('signUpPassword');
+    let user = users.find(u => u.email == email.value && u.password == password.value);
+    let guest = guests.find(u => u.email == email.value && u.password == password.value);
+    console.log(user || guest);
+    if(user || guest) {
+        window.setTimeout(function () {
+            window.location.href = "summary.html";
+            if(user) {
+                localStorage.setItem('userName', user.name);
+            } else if(guest) {
+                localStorage.setItem('userName', guest.name);
+            }
+        }, 1000);
+    } else {
+        document.getElementById('userNotFound').style.display = 'block';
+    }
+}
+
+
 function renderUserName() {
-    let userName = document.getElementById('userNameSummary');
-    userName.innerHTML = `Dear Guest`;
+    let loadedUserName = localStorage.getItem('userName');
+    let renderUserName = document.getElementById('userNameSummary');
+    let capitalized = loadedUserName.charAt(0).toUpperCase() + loadedUserName.slice(1);
+    renderUserName.innerHTML = capitalized;
 }
