@@ -207,7 +207,6 @@ button.addTaskPrio3Selected {
     border-bottom: 1px solid var(--lightBlue1);
     box-sizing: border-box;
     height: calc(var(--subtasksLiHeight));
-    margin: calc(2*var(--subtasksLiVerticalMargin)) 0;
     background: white;
     display: flex;
     align-items: center;
