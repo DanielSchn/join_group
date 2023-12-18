@@ -102,6 +102,11 @@ function hideDropdown(id) {
   menu.style.display = 'none';
 }
 
+/**
+ * beim Dropdown-Menü richtiges Icon (Pfeilspitze) anzeigen
+ * @param {string} id - ID des Dropdown-Menüs (muss zu umgebenden IDs passen) 
+ * @param {boolean} show - signalisiert, ob Menü gezeigt oder verborgen wird
+ */
 function toggleDropdownIcon(id, show) {
   const icon = document.getElementById(id + 'Icon');
   let iconSrc = icon.src;
@@ -109,7 +114,7 @@ function toggleDropdownIcon(id, show) {
     if (!iconSrc.includes('active')) {
       icon.src = iconSrc.replace('.svg', '_active.svg');
     }
-  } else { // keine weitere Bedingung nötig, da replace-Methode NUR wirksam, FALLS 'active' ohnehin in Dateipfad vorhanden ist
-    icon.src = iconSrc.replace('_active', '');
+  } else { // keine weitere Bedingung nötig, denn...
+    icon.src = iconSrc.replace('_active', ''); // ...replace-Methode NUR wirksam, FALLS 'active' ohnehin in Dateipfad vorhanden ist
   }
 }
