@@ -12,60 +12,81 @@ function updateHTML() {
 
 function updateToDo() {
     let todo = tasks.filter(t => t['status'] == 'toDo');
+    let status = 'to do';
 
     document.getElementById('toDo').innerHTML = '';
 
-    for (let i = 0; i < todo.length; i++) {
-        const element = todo[i];
-        document.getElementById('toDo').innerHTML += generateTask(element);
-        generateSubtask(element);
-    }
+    if (todo.length == 0) {
+        document.getElementById('toDo').innerHTML = generateNoTask(status);
+    } else
+
+        for (let i = 0; i < todo.length; i++) {
+            const element = todo[i];
+            document.getElementById('toDo').innerHTML += generateTask(element);
+            generateSubtask(element);
+        }
 }
 
-function updateInProgress(){
+function updateInProgress() {
     let inprogress = tasks.filter(t => t['status'] == 'inProgress')
+    let status = 'in progress';
 
     document.getElementById('inProgress').innerHTML = '';
 
-    for (let i = 0; i < inprogress.length; i++) {
-        const element = inprogress[i];
-        document.getElementById('inProgress').innerHTML += generateTask(element);
-        generateSubtask(element);
-    }
+    if (inprogress.length == 0) {
+        document.getElementById('inProgress').innerHTML = generateNoTask(status);
+    } else
+
+        for (let i = 0; i < inprogress.length; i++) {
+            const element = inprogress[i];
+            document.getElementById('inProgress').innerHTML += generateTask(element);
+            generateSubtask(element);
+        }
 }
 
-function updateAwaitFeedback(){
+function updateAwaitFeedback() {
     let feedback = tasks.filter(t => t['status'] == 'awaitFeedback');
+    let status = 'await Feedback';
 
     document.getElementById('awaitFeedback').innerHTML = '';
 
-    for (let i = 0; i < feedback.length; i++) {
-        const element = feedback[i];
-        document.getElementById('awaitFeedback').innerHTML += generateTask(element);
-        generateSubtask(element);
-    }
+    if (feedback.length == 0) {
+        document.getElementById('awaitFeedback').innerHTML = generateNoTask(status);
+    } else
+
+        for (let i = 0; i < feedback.length; i++) {
+            const element = feedback[i];
+            document.getElementById('awaitFeedback').innerHTML += generateTask(element);
+            generateSubtask(element);
+        }
+    
 }
 
-function updateDone(){
+function updateDone() {
     let done = tasks.filter(t => t['status'] == 'done')
+    let status = 'done';
 
     document.getElementById('done').innerHTML = '';
 
-    for (let i = 0; i < done.length; i++) {
-        const element = done[i];
-        document.getElementById('done').innerHTML += generateTask(element);
-        generateSubtask(element);
-    }
+    if (done.length == 0) {
+        document.getElementById('done').innerHTML = generateNoTask(status);
+    } else
+
+        for (let i = 0; i < done.length; i++) {
+            const element = done[i];
+            document.getElementById('done').innerHTML += generateTask(element);
+            generateSubtask(element);
+        }
 }
 
-function startDragging(id){
+function startDragging(id) {
     currentDraggedElement = id;
 }
 
 function generateTask(element) {
     return `
-    <div draggable="true" ondragstart="startDragging(${element['id']})" onclick="inittest()" class="todo">
-        <div class="toDoCategory"> ${categories[element['category']]} </div>
+    <div draggable="true" ondragstart="startDragging(${element['id']})" onclick="showTaskCard(tasks[${element['id']}], ${element['id']})" class="todo">
+        <div class="toDoCategory${element['category']}"> ${categories[element['category']]} </div>
 
         <div>
             <div class="toDoTitle"> ${element['title']} </div>
@@ -87,17 +108,26 @@ function generateTask(element) {
 
         <div class="toDoBottom">
             <div class="toDoAssignedContainer"> ${element['assignedTo']} </div>
-            <div class="toDoPrio">${element['prio']}</div>
+            <div class="toDoPrio">
+                <img src="./assets/img/prio_icons/task_prio_${element['prio']}.svg" alt="icon">
+            </div>
         </div>
     </div>`
 
 }
 
-function inittest(){
-    document.getElementById('test').innerHTML = generateTaskCard(tasks[0], 0);
+function generateNoTask(status){
+         return `
+            <div class="noTaskContainer">
+                <div class="noTask">No tasks ${status}</div>
+            </div>`
 }
 
-function generateTaskCard(task, id){
+function showTaskCard(element, id) {
+    document.getElementById('taskCard').innerHTML = generateTaskCard(element, id);
+}
+
+function generateTaskCard(task, id) {
     return `    
     <div id="taskContainer" onclick="closeTask()">
         <div id="taskCard" class="taskCard showTaskCard" onclick="event.stopPropagation()">
@@ -152,16 +182,16 @@ function allowDrop(ev) {
     ev.preventDefault();
 }
 
-function moveTo(status){
+function moveTo(status) {
     tasks[currentDraggedElement]['status'] = status;
     updateHTML();
 }
 
-function highlight(id){
+function highlight(id) {
     document.getElementById(id).classList.add('dragAreaHighlight');
 }
 
-function removeHighlight(id){
+function removeHighlight(id) {
     document.getElementById(id).classList.remove('dragAreaHighlight');
 }
 
@@ -181,8 +211,8 @@ function generateSubtask(element) {
     } else {
         updateProgressBar(subtasks, doneSubtasksDiv, progressbarFillerDiv);
         let trueCount = 0;
-        for (let i=0; i<subtasks.length; i++){
-            if (subtasks[i]['status'] == 'done'){
+        for (let i = 0; i < subtasks.length; i++) {
+            if (subtasks[i]['status'] == 'done') {
                 trueCount++;
             }
         }
@@ -193,10 +223,10 @@ function generateSubtask(element) {
     }
 }
 
-function updateProgressBar (subtasks, doneSubtasksDiv, progressbarFillerDiv)  {
+function updateProgressBar(subtasks, doneSubtasksDiv, progressbarFillerDiv) {
     let trueCount = 0;
-    for (let i=0; i<subtasks.length; i++){
-        if (subtasks[i]['status'] == 'done'){
+    for (let i = 0; i < subtasks.length; i++) {
+        if (subtasks[i]['status'] == 'done') {
             trueCount++;
         }
     }
