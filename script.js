@@ -102,3 +102,16 @@ function toggleDropdownIcon(id, show) {
     icon.src = iconSrc.replace('_active', ''); // ...replace-Methode NUR wirksam, FALLS 'active' ohnehin in Dateipfad vorhanden ist
   }
 }
+
+/**
+ * bestimmt automatisch, welche Option im Dropdown-Menü geklickt wurde und weist dem Input-Feld den entsprechenden Wert zu
+ * @param {event} e - bei Funktionsaufruf 'event' als Parameter eintragen 
+ */
+function handleDropdownMenuClick(e) {
+  const selected = e.target // geklicktes list item
+  let id = selected.parentNode.id; // ID des ul-Elements
+  const category = selected.textContent;
+  id = id.replace('Menu', ''); // ergibt ID des zugehörigen Input-Feldes
+  const input = document.getElementById(id);
+  input.value = category;
+}
