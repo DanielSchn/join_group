@@ -86,13 +86,6 @@
         width: 88px;
     }
 
-    .logo {
-        height: 78.03px;
-        width: 64px;
-        left: 38px;
-        top: 37px;
-    }
-
     .rememberMe {
         font-size: var(--fontSizeSmall);
         margin: 0 0 32px 16px;
@@ -144,6 +137,18 @@
         font-size: var(--fontSizeSmall);
         width: 180px;
         height: 51px;
+    }
+
+    #startLogo.logo {
+        left: 110px;
+        top: 250px;
+        transform: translate(100%, 100%) scale(2);
+    }
+
+    #startLogo.logo.transformed {
+        top: 37px;
+        left: 38px;
+        transform: translate(0%, 0%) scale(1);
     }
 }
 

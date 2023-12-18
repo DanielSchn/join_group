@@ -308,17 +308,20 @@ footer a {
     margin: 16px 0 0 48px;
 }
 
-#startLogo {
+#startLogo.logo {
+    position: fixed;
+    width: 100.03px;
+    height: 121.97px;
+    top: 345px;
+    left: 583px;
     transform: translate(50%, 50%) scale(2);
     transition: all 500ms ease-in-out;
 }
 
-.logo {
-    position: fixed;
-    width: 100.03px;
-    height: 121.97px;
+#startLogo.logo.transformed {
     top: 80px;
     left: 77px;
+    transform: translate(0%, 0%) scale(1);
 }
 
 .errorMessage {

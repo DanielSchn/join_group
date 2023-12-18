@@ -55,9 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const logo = document.getElementById('startLogo');
     const body = document.getElementById('mainBody');
     setTimeout(function () {
-      logo.style.transform = "translate(0%, 0%) scale(1)";
-      logo.style.top = '';
-      logo.style.left = '';
+      logo.classList.add('transformed');
     }, 500);
     logo.addEventListener("transitionend", function () {
       body.style.display = 'block';
