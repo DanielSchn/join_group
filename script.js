@@ -67,35 +67,49 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function toggleDropdown(id) {
   const menu = document.getElementById(id + 'Menu');
-  if(menu.style.display == 'none') {
+  if (menu.style.display == 'none') {
     showDropdown(id);
   } else {
     hideDropdown(id);
   }
 }
 
+/**
+ * Dropdown-Menü anzeigen
+ * @param {string} id - ID des Dropdown-Menüs (muss zu umgebenden IDs passen) 
+ */
 function showDropdown(id) {
   const container = document.getElementById(id + 'InputContainer');
-  const btnPassive = document.getElementById(id + 'BtnPassive');
-  const btnActive = document.getElementById(id + 'BtnActive');
   const menu = document.getElementById(id + 'Menu');
+  toggleDropdownIcon(id, true);
   container.style.borderColor = 'var(--lightBlue1)';
   menu.style.display = '';
-  btnPassive.style.display = 'none';
-  btnActive.style.display = '';
   document.addEventListener("click", function clickedElsewhere() {
     hideDropdown(id);
     document.removeEventListener("click", clickedElsewhere);
   });
 }
 
+/**
+ * Dropdown-Menü verbergen
+ * @param {string} id - ID des Dropdown-Menüs (muss zu umgebenden IDs passen) 
+ */
 function hideDropdown(id) {
   const container = document.getElementById(id + 'InputContainer');
-  const btnPassive = document.getElementById(id + 'BtnPassive');
-  const btnActive = document.getElementById(id + 'BtnActive');
   const menu = document.getElementById(id + 'Menu');
+  toggleDropdownIcon(id, false);
   container.style.borderColor = '';
   menu.style.display = 'none';
-  btnPassive.style.display = '';
-  btnActive.style.display = 'none';
+}
+
+function toggleDropdownIcon(id, show) {
+  const icon = document.getElementById(id + 'Icon');
+  let iconSrc = icon.src;
+  if (show) {
+    if (!iconSrc.includes('active')) {
+      icon.src = iconSrc.replace('.svg', '_active.svg');
+    }
+  } else { // keine weitere Bedingung nötig, da replace-Methode NUR wirksam, FALLS 'active' ohnehin in Dateipfad vorhanden ist
+    icon.src = iconSrc.replace('_active', '');
+  }
 }
