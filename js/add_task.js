@@ -11,6 +11,11 @@ let newTask = {
     status: ''
 };
 
+async function initAddTask() {
+    await includeHTML();
+    renderAddTaskForm();
+}
+
 function renderAddTaskForm() {
     console.log('render');
     renderAddTaskAssigned();
