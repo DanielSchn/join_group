@@ -46,25 +46,9 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 /**
- * Definiert Pfeilrichtung in select-Elementen, wird dort per Klick aufgerufen
- * @param {string} id - ID des zu stylenden select-Elements
+ * Dropdown-Menü ein-/ausblenden
+ * @param {string} id - ID des Dropdown-Menüs (muss zu umgebenden IDs passen) 
  */
-// function showDropdown(id) {
-//   const icon = document.getElementById(id + 'Icon');
-//   const menu = document.getElementById(id + 'Menu');
-//   event.preventDefault();
-//   if (!icon.src.includes('active')) {
-//     let iconSrc = icon.src;
-//     icon.src = iconSrc.replace('.svg', '_active.svg'); // Pfeil nach oben
-//     menu.style.display = 'initial';
-//     document.addEventListener("mouseup", function hideDropdown() { // Listener für weiteren Click
-//       icon.src = iconSrc.replace('_active', ''); // Pfeil nach oben
-//       menu.style.display = 'none';
-//       document.removeEventListener("mouseup", hideDropdown); // Listener entfernen
-//     });
-//   }
-// }
-
 function toggleDropdown(id) {
   const menu = document.getElementById(id + 'Menu');
   if (menu.style.display == 'none') {
