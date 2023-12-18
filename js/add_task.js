@@ -31,9 +31,10 @@ function renderAddTaskAssigned() {
     list.innerHTML = '';
     for (let i = 0; i < 3; i++) { // ersetze 3 durch contacts.length
         let contact = contacts[i];
-        list.innerHTML += contactAssignedHTML(contact, i);
+        let checkboxId = 'assignedContact' + i;
+        list.innerHTML += contactAssignedHTML(contact, checkboxId);
         if (assigned.includes(i)) {
-            toggleCheckbox(`assignedContact${i}`);
+            toggleCheckbox(checkboxId);
         }
     }
 }
@@ -190,17 +191,17 @@ function removeSubtask(index) {
     renderAddTaskSubtasks();
 }
 
-function contactAssignedHTML(contact, index) {
+function contactAssignedHTML(contact, id) {
     return /* html */`
-        <li>
+        <li onclick="toggleCheckbox(${id})">
             <div class="contactInitials">
                 <span id="user_name">AM</span>
             </div>
             <div class="contactDetails">
                         <div><span id="name">Anton</span><span id="lastname"> Mayer</span></div>
             </div>
-            <button type="button" onclick="event.stopPropagation()">
-                <img id="assignedCheckbox(${index})" src="./assets/img/checkbox.svg" alt="unchecked">
+            <button type="button" onclick="event.stopPropagation(); toggleCheckbox(${id})">
+                <img id="${id}" src="./assets/img/checkbox.svg" alt="unchecked">
             </button>
         </li>`;
 }

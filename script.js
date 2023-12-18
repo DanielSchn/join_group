@@ -134,10 +134,9 @@ function handleDropdownMenuClick(e) {
   input.value = category;
 }
 
-function toggleCheckbox(id) {
-  const checkbox = document.getElementById(id);
+function toggleCheckbox(checkbox) {
   let checkboxSrc = checkbox.src;
-  if(checkboxSrc.contains('checked')) {
+  if(checkboxSrc.includes('checked')) {
     checkbox.src = checkboxSrc.replace('_checked', '');
     checkbox.alt = 'unchecked';
   } else {
