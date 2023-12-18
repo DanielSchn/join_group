@@ -115,20 +115,15 @@ button:hover {
 }
 
 input,
-textarea,
-select {
+textarea {
     /* "max-width" statt "width", da sonst das Padding zur Breite addiert wird */
     max-width: 100%;
     border-radius: 10px;
     border: 1px solid var(--lightGray1);
+    padding: 12px 16px;
     outline: none;
     font-family: 'Inter';
     font-size: var(--fontSizeNormal);
-}
-
-input,
-textarea {
-    padding: 12px 16px;
 }
 
 textarea {
@@ -142,17 +137,8 @@ textarea::placeholder {
 }
 
 input:focus,
-textarea:focus,
-select:focus {
+textarea:focus {
     border-color: var(--lightBlue1);
-}
-
-.optionContainer:hover {
-    background-color: var(--lightGray4);
-}
-
-.optionContent {
-    color: red;
 }
 
 /* Default-Resizer (Textarea) verstecken */
@@ -166,18 +152,6 @@ textarea {
     background-size: 19px;
     background-repeat: no-repeat;
     background-position: calc(100% - 5px) calc(100% - 4px);
-}
-
-select {
-    padding: 12px 12px;
-    /* Default-Pfeil verstecken */
-    -webkit-appearance: none;
-    appearance: none;
-    /* neuer Pfeil */
-    background-image: url(./assets/img/select_icon.svg);
-    background-size: 24px;
-    background-repeat: no-repeat;
-    background-position: calc(100% - 12px) 50%;
 }
 
 input[type="date"]::-webkit-calendar-picker-indicator {
