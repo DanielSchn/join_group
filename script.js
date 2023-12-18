@@ -89,7 +89,7 @@ function hideDropdown(id) {
 /**
  * beim Dropdown-Menü richtiges Icon (Pfeilspitze) anzeigen
  * @param {string} id - ID des Dropdown-Menüs (muss zu umgebenden IDs passen) 
- * @param {boolean} show - signalisiert, ob Menü gezeigt oder verborgen wird
+ * @param {boolean} show - signalisiert, ob Menü gezeigt (true) oder verborgen (false) wird
  */
 function toggleDropdownIcon(id, show) {
   const icon = document.getElementById(id + 'Icon');

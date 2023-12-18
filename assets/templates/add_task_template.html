@@ -49,16 +49,17 @@
                             src="./assets/img/prio_icons/task_prio_low.svg" alt="icon" id="addTaskPrio3Img"></button>
                 </div>
             </div>
-            <div class="addTaskField">
+            <div class="addTaskField dropdownContainer">
                 <label for="addTaskCategory" onclick="event.preventDefault()">
                     <h2>Category<p class="red">*</p>
                     </h2>
                 </label>
-                <div id="addTaskCategoryInputContainer" class="extendedInput" onclick="event.stopPropagation(); toggleDropdown('addTaskCategory')">
-                <input class="dropdownBtn" type="text" placeholder="Select Task Category" id="addTaskCategory" required
-                    onmousedown="event.preventDefault()">
+                <div id="addTaskCategoryInputContainer" class="extendedInput dropdownInput"
+                    onclick="event.stopPropagation(); toggleDropdown('addTaskCategory')">
+                    <input type="text" placeholder="Select Task Category" id="addTaskCategory" required
+                        onmousedown="event.preventDefault()">
                     <button type="button">
-                        <img src="./assets/img/select_icon.svg" alt="icon" id="addTaskCategoryIcon" >
+                        <img src="./assets/img/select_icon.svg" alt="icon" id="addTaskCategoryIcon">
                     </button>
                 </div>
                 <ul class="dropdownMenu" id="addTaskCategoryMenu" style="display: none">
