@@ -57,7 +57,7 @@
                 <div id="addTaskCategoryInputContainer" class="extendedInput" onclick="event.stopPropagation(); toggleDropdown('addTaskCategory')">
                 <input class="dropdownBtn" type="text" placeholder="Select Task Category" id="addTaskCategory" required
                     onmousedown="event.preventDefault()">
-                    <button type="button" class="extendedInputBtn">
+                    <button type="button">
                         <img src="./assets/img/select_icon.svg" alt="icon" id="addTaskCategoryIcon" >
                     </button>
                 </div>
@@ -76,16 +76,16 @@
                     <input type="text" onclick="event.stopPropagation(); focusSubtask()" placeholder="Add new subtask"
                         id="addSubtask">
                     <div id="addSubtaskIconsPassive">
-                        <button type="button" onclick="event.stopPropagation(); focusSubtask()" class="extendedInputBtn">
+                        <button type="button" onclick="event.stopPropagation(); focusSubtask()">
                             <img src="./assets/img/plus_icon.svg" alt="icon">
                         </button>
                     </div>
                     <div id="addSubtaskIconsActive" style="display: none">
-                        <button type="button" onclick="cancelSubtask()" class="extendedInputBtn">
+                        <button type="button" onclick="cancelSubtask()">
                             <img src="./assets/img/cancel.svg" alt="cancel subtask">
                         </button>
                         <div class="vr"></div>
-                        <button type="button" onclick="createSubtask()" class="extendedInputBtn">
+                        <button type="button" onclick="createSubtask()">
                             <img src="./assets/img/check.svg" alt="create subtask">
                         </button>
                     </div>

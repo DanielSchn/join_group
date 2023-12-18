@@ -180,7 +180,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     padding: 0;
 }
 
-.extendedInputBtn {
+.extendedInput button {
     border-radius: 50%;
     background: none;
     padding: 0;
@@ -188,16 +188,16 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     display: block;
 }
 
-.extendedInputBtn:hover {
+.extendedInput button:hover {
     box-shadow: none;
     background: var(--lightGray4);
 }
 
-.extendedInputBtn:active {
+.extendedInput button:active {
     background: var(--lightGray2);
 }
 
-.extendedInputBtn img {
+.extendedInput button img {
     width: 24px;
     display: block;
 }
