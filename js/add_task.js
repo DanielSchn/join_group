@@ -189,11 +189,11 @@ function subtaskHTML(subtask, index) {
         <li id="subtask${index}">
             &bull;
             <span ondblclick="editSubtask(${index})">${subtask}</span>
-            <button type="button" onclick="event.stopPropagation(); editSubtask(${index})" class="subtasksButton subtasksButtonEdit">
+            <button type="button" onclick="event.stopPropagation(); editSubtask(${index})" class="extendedInputBtn">
                 <img src="./assets/img/edit.svg" alt="edit subtask">
             </button>
             <div class="vr"></div>
-            <button type="button" onclick="removeSubtask(${index})" class="subtasksButton">
+            <button type="button" onclick="removeSubtask(${index})" class="extendedInputBtn">
                 <img src="./assets/img/remove.svg" alt="remove subtask">
             </button>
         </li>`;
@@ -202,11 +202,11 @@ function subtaskHTML(subtask, index) {
 function editSubtaskHTML(subtask, index) {
     return /* html */`
         <input id="editSubtaskInput" onclick="event.stopPropagation()" type="text" value="${subtask}">    
-        <button type="button" onclick="event.stopPropagation(); removeSubtask(${index})" class="subtasksButton">
+        <button type="button" onclick="event.stopPropagation(); removeSubtask(${index})" class="extendedInputBtn">
             <img src="./assets/img/remove.svg" alt="remove subtask">
         </button>
         <div class="vr"></div>
-        <button type="button" onclick="event.stopPropagation(); confirmSubtaskEdit(${index})" class="subtasksButton">
+        <button type="button" onclick="event.stopPropagation(); confirmSubtaskEdit(${index})" class="extendedInputBtn">
             <img src="./assets/img/check.svg" alt="confirm subtask edit">
         </button>
     `;

@@ -116,7 +116,7 @@ button.addTaskPrio3Selected {
     gap: 4px;
 }
 
-.subtasksButton {
+.extendedInputBtn {
     border-radius: 50%;
     background: none;
     padding: 0;
@@ -124,16 +124,16 @@ button.addTaskPrio3Selected {
     display: block;
 }
 
-.subtasksButton:hover {
+.extendedInputBtn:hover {
     box-shadow: none;
     background: var(--lightGray4);
 }
 
-.subtasksButton:active {
+.extendedInputBtn:active {
     background: var(--lightGray2);
 }
 
-.subtasksButton img {
+.extendedInputBtn img {
     width: 24px;
     display: block;
 }
