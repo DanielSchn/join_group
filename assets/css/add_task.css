@@ -53,6 +53,24 @@
     margin: 0;
 }
 
+#addTaskAssignedMenu li {
+    display: flex;
+    gap: 16px;
+}
+
+#addTaskAssignedMenu li:hover {
+    background: var(--darkBlue1);
+    color: white;
+}
+
+#addTaskAssignedMenu li:active {
+    background: var(--darkBlue2);
+}
+
+#addTaskAssignedMenu li .contactDetails {
+    flex: 1;
+}
+
 .addTaskPrioBtns {
     display: flex;
     gap: 16px;

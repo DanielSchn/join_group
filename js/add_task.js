@@ -12,8 +12,26 @@ let newTask = {
 };
 
 function renderAddTaskForm() {
+    console.log('render');
     renderAddTaskAssigned();
     renderAddTaskSubtasks();
+}
+
+function renderAddTaskAssigned() {
+    // const contacts = [LADEN VON USER-DATEN]
+    const assigned = [];
+    const contacts = [0, 1, 2];
+    // const assigned = newTask['assigned']
+    // ...
+    const list = document.getElementById('addTaskAssignedMenu');
+    list.innerHTML = '';
+    for (let i = 0; i < 3; i++) { // ersetze 3 durch contacts.length
+        let contact = contacts[i];
+        list.innerHTML += contactAssignedHTML(contact);
+        if (assigned.includes(i)) {
+            // Kontakt markieren
+        }
+    }
 }
 
 function renderAddTaskSubtasks() {
@@ -168,22 +186,18 @@ function removeSubtask(index) {
     renderAddTaskSubtasks();
 }
 
-// function createTask() {
-//     Folgende Deklaration muss nicht leer erfolgen, sondern kann direkt die Werte aus dem Formular übernehmen:  
-//     let task = {
-//         id: ,            
-//         title: ,
-//         description: ,
-//         assignedTo : ,
-//         due: ,
-//         prio: ,
-//         category: ,
-//         subtasks: ,
-//         timestamp: ,
-//         status:
-//     };
-//     tasks.push(task);
-// }
+function contactAssignedHTML(contact) {
+    return /* html */`
+        <li>
+            <div class="contactInitials">
+                <span id="user_name">AM</span>
+            </div>
+            <div class="contactDetails">
+                        <div><span id="name">Anton</span><span id="lastname"> Mayer</span></div>
+            </div>
+            <input type="checkbox" onclick="event.stopPropagation()">
+        </li>`;
+}
 
 function subtaskHTML(subtask, index) {
     return /* html */`
