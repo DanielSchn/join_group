@@ -13,6 +13,7 @@
     <script src="js/register.js" defer></script>
     <script src="js/storage.js" defer></script>
     <script src="js/login.js" defer></script>
+    <script src="js/render_summary.js"></script>
 </head>
 
 <body onload="initRegister()">
@@ -77,7 +78,7 @@
                     </div>
                     <div class="logInBtns">
                         <button class="logInButton">Log in</button>
-                        <button class="guestLogInButton">Guest Log in</button>
+                        <button type="button" class="guestLogInButton" onclick="fillInGuest()">Guest Log in</button>
                     </div>
                     
                 </form>
