@@ -12,10 +12,11 @@ let newTask = {
 };
 
 function renderAddTaskForm() {
-    renderSubtasks();
+    renderAddTaskAssigned();
+    renderAddTaskSubtasks();
 }
 
-function renderSubtasks() {
+function renderAddTaskSubtasks() {
     const subtasks = newTask['subtasks'];
     const list = document.getElementById('subtasksList');
     list.innerHTML = '';
@@ -121,7 +122,7 @@ function cancelSubtask() {
 function createSubtask() {
     if (addSubtask.value) {
         newTask['subtasks'].push(addSubtask.value);
-        renderSubtasks();
+        renderAddTaskSubtasks();
     }
     cancelSubtask();
 }
@@ -139,7 +140,7 @@ function editSubtask(index) {
     const length = input.value.length;
     input.focus();
     input.setSelectionRange(length, length);
-    document.addEventListener("click", renderSubtasks); // Klick neben Liste wird als Abbruch der Bearbeitung gewertet
+    document.addEventListener("click", renderAddTaskSubtasks); // Klick neben Liste wird als Abbruch der Bearbeitung gewertet
 }
 
 /**
@@ -154,7 +155,7 @@ function confirmSubtaskEdit(index) {
     } else {
         subtasks.splice(index, 1);
     }
-    renderSubtasks();
+    renderAddTaskSubtasks();
 }
 
 /**
@@ -164,7 +165,7 @@ function confirmSubtaskEdit(index) {
 function removeSubtask(index) {
     let subtasks = newTask['subtasks'];
     subtasks.splice(index, 1);
-    renderSubtasks();
+    renderAddTaskSubtasks();
 }
 
 // function createTask() {
@@ -202,11 +203,11 @@ function subtaskHTML(subtask, index) {
 function editSubtaskHTML(subtask, index) {
     return /* html */`
         <input id="editSubtaskInput" onclick="event.stopPropagation()" type="text" value="${subtask}">    
-        <button type="button" onclick="event.stopPropagation(); removeSubtask(${index})">
+        <button type="button" onclick="event.stopPropagation(); removeSubtask(${index})" class="subtasksButton">
             <img src="./assets/img/remove.svg" alt="remove subtask">
         </button>
         <div class="vr"></div>
-        <button type="button" onclick="event.stopPropagation(); confirmSubtaskEdit(${index})">
+        <button type="button" onclick="event.stopPropagation(); confirmSubtaskEdit(${index})" class="subtasksButton">
             <img src="./assets/img/check.svg" alt="confirm subtask edit">
         </button>
     `;

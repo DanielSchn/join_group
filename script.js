@@ -109,8 +109,8 @@ function toggleDropdownIcon(id, show) {
  */
 function handleDropdownMenuClick(e) {
   const selected = e.target // geklicktes list item
-  let id = selected.parentNode.id; // ID des ul-Elements
   const category = selected.textContent;
+  let id = selected.parentNode.id; // ID des übergeordneten (parent) ul-Elements
   id = id.replace('Menu', ''); // ergibt ID des zugehörigen Input-Feldes
   const input = document.getElementById(id);
   input.value = category;

@@ -161,6 +161,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     margin: 0;
     background-image: url(./assets/img/calendar_icon.svg);
     background-size: 24px;
+    cursor: pointer;
 }
 
 .extendedInput {
@@ -228,7 +229,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     z-index: 0;
     top: 12px;
     box-shadow: var(--shadowSubtle);
-    padding: 45px 0 0 0;
+    padding: 48px 0 0 0;
 
 }
 

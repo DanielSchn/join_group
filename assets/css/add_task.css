@@ -139,7 +139,14 @@ button.addTaskPrio3Selected {
 #subtasksList li span {
     flex: 1;
     margin-left: 8px;
-} 
+}
+
+#subtasksList li button {
+    margin: 0;
+    padding: 0;
+    background: none;
+    box-shadow: none;
+}
 
 #subtasksList li button,
 #subtasksList li .vr {
@@ -151,6 +158,11 @@ button.addTaskPrio3Selected {
 #subtasksList .editSubtask button,
 #subtasksList .editSubtask .vr {
     display: initial;
+}
+
+#subtasksList .editSubtask button img:hover {
+    background: var(--lightGray4);
+    border-radius: 50%;
 }
 
 #subtasksList .editSubtask {
