@@ -1,4 +1,11 @@
 let users = [];
+let guests = [
+    {
+        'name': 'guest',
+        'email': 'guest@guest.de',
+        'password': 'guest'
+    },
+];
 
 
 async function initRegister() {
@@ -147,8 +154,9 @@ function login() {
     let email = document.getElementById('email');
     let password = document.getElementById('signUpPassword');
     let user = users.find(u => u.email == email.value && u.password == password.value);
-    console.log(user);
-    if(user) {
+    let guest = guests.find(u => u.email == email.value && u.password == password.value);
+    console.log(user || guest);
+    if(user || guest) {
         window.setTimeout(function () {
             window.location.href = "summary.html";
         }, 1000);
