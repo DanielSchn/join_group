@@ -17,7 +17,6 @@ async function initAddTask() {
 }
 
 function renderAddTaskForm() {
-    console.log('render');
     renderAddTaskAssigned();
     renderAddTaskSubtasks();
 }
