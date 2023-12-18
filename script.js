@@ -133,3 +133,16 @@ function handleDropdownMenuClick(e) {
   const input = document.getElementById(id);
   input.value = category;
 }
+
+function toggleCheckbox(id) {
+  const checkbox = document.getElementById(id);
+  let checkboxSrc = checkbox.src;
+  if(checkboxSrc.contains('checked')) {
+    checkbox.src = checkboxSrc.replace('_checked', '');
+    checkbox.alt = 'unchecked';
+  } else {
+    checkbox.src = checkboxSrc.replace('.svg', '_checked.svg');
+    checkbox.alt = 'checked';
+  }
+  checkbox.classList.toggle('checked');
+}

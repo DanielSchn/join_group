@@ -31,9 +31,9 @@ function renderAddTaskAssigned() {
     list.innerHTML = '';
     for (let i = 0; i < 3; i++) { // ersetze 3 durch contacts.length
         let contact = contacts[i];
-        list.innerHTML += contactAssignedHTML(contact);
+        list.innerHTML += contactAssignedHTML(contact, i);
         if (assigned.includes(i)) {
-            // Kontakt markieren
+            toggleCheckbox(`assignedContact${i}`);
         }
     }
 }
@@ -190,7 +190,7 @@ function removeSubtask(index) {
     renderAddTaskSubtasks();
 }
 
-function contactAssignedHTML(contact) {
+function contactAssignedHTML(contact, index) {
     return /* html */`
         <li>
             <div class="contactInitials">
@@ -199,7 +199,9 @@ function contactAssignedHTML(contact) {
             <div class="contactDetails">
                         <div><span id="name">Anton</span><span id="lastname"> Mayer</span></div>
             </div>
-            <input type="checkbox" onclick="event.stopPropagation()">
+            <button type="button" onclick="event.stopPropagation()">
+                <img id="assignedCheckbox(${index})" src="./assets/img/checkbox.svg" alt="unchecked">
+            </button>
         </li>`;
 }
 

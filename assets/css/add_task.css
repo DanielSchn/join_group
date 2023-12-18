@@ -63,12 +63,27 @@
     color: white;
 }
 
+#addTaskAssignedMenu li:hover button img {
+    content: url('../img/checkbox_white.svg');
+}
+
+#addTaskAssignedMenu li:hover .checked {
+    content: url('../img/checkbox_white_checked.svg');
+}
+
+
 #addTaskAssignedMenu li:active {
     background: var(--darkBlue2);
 }
 
 #addTaskAssignedMenu li .contactDetails {
     flex: 1;
+}
+
+#addTaskAssignedMenu li button {
+    background: none;
+    margin: 0;
+    padding: 0;
 }
 
 .addTaskPrioBtns {
