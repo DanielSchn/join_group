@@ -137,7 +137,7 @@ textarea::placeholder {
 }
 
 .borderHover:hover {
-    border-color: var(--lightGray3); 
+    border-color: #BEBEBE;    
 }
 
 input:focus,

@@ -110,6 +110,7 @@ function focusSubtask() {
     const container = document.getElementById('addSubtaskInputContainer');
     const btnsPassive = document.getElementById('addSubtaskIconsPassive');
     const btnsActive = document.getElementById('addSubtaskIconsActive');
+    unfocusAll();
     container.style.borderColor = 'var(--lightBlue1)';
     addSubtask.focus();
     btnsPassive.style.display = 'none';
@@ -122,7 +123,7 @@ function focusSubtask() {
  */
 function unfocusSubtask() {
     const container = document.getElementById('addSubtaskInputContainer');
-    container.style.borderColor = 'var(--lightGray1)';
+    container.style.borderColor = '';
     if (addSubtask.value == '') {
         const btnsPassive = document.getElementById('addSubtaskIconsPassive');
         const btnsActive = document.getElementById('addSubtaskIconsActive');

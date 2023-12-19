@@ -1,19 +1,19 @@
 async function init() {
   await includeHTML();
-  
+
 }
 
 async function includeHTML() {
-  let includeElements = document.querySelectorAll('[w3-include-html]');   
-  for (let i = 0; i < includeElements.length; i++) {                      
-      const element = includeElements[i];
-      file = element.getAttribute("w3-include-html");
-      let resp = await fetch(file);
-      if (resp.ok) {
-          element.innerHTML = await resp.text();
-      } else {
-          element.innerHTML = 'Page not found';
-      }
+  let includeElements = document.querySelectorAll('[w3-include-html]');
+  for (let i = 0; i < includeElements.length; i++) {
+    const element = includeElements[i];
+    file = element.getAttribute("w3-include-html");
+    let resp = await fetch(file);
+    if (resp.ok) {
+      element.innerHTML = await resp.text();
+    } else {
+      element.innerHTML = 'Page not found';
+    }
   }
 }
 
@@ -70,23 +70,26 @@ document.addEventListener("DOMContentLoaded", function () {
 function toggleDropdown(id) {
   const menu = document.getElementById(id + 'Menu');
   if (menu.style.display == 'none') {
-    unfocusAll();
-    showDropdown(id);
+    unfocusAll(); // aktuellen Fokus aufheben...
+    showDropdown(id); // ...bevor neues Menü angezeigt wird
   } else {
     hideDropdown(id);
   }
 }
 
 /**
- * Fokus sämtlicher Elemente aufheben
+ * aktuellen Fokus aufheben
  */
 function unfocusAll() {
   const dropdownMenus = document.querySelectorAll('.dropdownMenu'); // alle Elemente der Klasse .dropdownMenu
-  document.activeElement.blur(); // Default-Fokus aller Form-Elemente aufheben
-  for (let i = 0; i < dropdownMenus.length; i++) {
+  document.activeElement.blur(); // Fokus aller Default-Form-Elemente aufheben
+  for (let i = 0; i < dropdownMenus.length; i++) { // Fokus aller Dropdown-Menüs aufheben
     const dropdownMenu = dropdownMenus[i];
     let id = dropdownMenu.id;
     hideDropdown(id.replace('Menu', ''));
+  }
+  if (document.getElementById('addSubtask')) { // falls Element mit ID addSubtask vorhanden
+    unfocusSubtask(); // Fokus auf das Element aufheben
   }
 }
 
@@ -150,7 +153,7 @@ function handleDropdownMenuClick(e) {
 
 function toggleCheckbox(checkbox) {
   let checkboxSrc = checkbox.src;
-  if(checkboxSrc.includes('checked')) {
+  if (checkboxSrc.includes('checked')) {
     checkbox.src = checkboxSrc.replace('_checked', '');
     checkbox.alt = 'unchecked';
   } else {
