@@ -95,19 +95,21 @@
     border-radius: 10px;
     border: 1px solid var(--lightGray1);
     box-sizing: border-box;
+    position: relative;
 }
 
 #addTaskDueText {
     border: none;
-    min-width: calc(100% - 88px);
-    z-index: 1;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 48px;
 }
 
 #addTaskDue {
     border: none;
-    min-width: calc(100% - 88px);
-    position: relative;
-    right: calc(100% - 112px);
+    width: 100%;
     cursor: text;
 }
 
