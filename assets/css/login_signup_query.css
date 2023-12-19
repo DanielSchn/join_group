@@ -150,8 +150,11 @@
         left: 38px;
         transform: translate(0%, 0%) scale(1);
     }
+
+    .logo {
+        height: 78.03px;
+        width: 64px;
+        top: 37px;
+        left: 38px;
+    }
 }
-
-@media (max-width: px) {}
-
-@media (max-width: px) {}

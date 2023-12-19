@@ -209,11 +209,11 @@
 }
 
 .sumToDo:hover .img69px {
-    content: url('assets/img/sum_todo_white.svg');
+    content: url('../img/sum_todo_white.svg');
 }
 
 .sumToDoDone:hover .img69px {
-    content: url('assets/img/sum_done_white.svg');
+    content: url('../img/sum_done_white.svg');
 }
 
 @media (max-height: 905px) {
