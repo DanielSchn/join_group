@@ -64,12 +64,12 @@ function unfocusAddTaskDue() {
     document.removeEventListener("mousedown", unfocusAddTaskDue);
 }
 
-function checkAddTaskDueText() {
+function handleAddTaskDueTextInput(e) {
     let value = addTaskDueText.value;
+    const key = e.key;
     const length = value.length;
-    console.log(length);
-    if(length >= 2) {
-        addTaskDueText.value = value.substring(0,2) + '/' + value.substring(4);
+    if (key != 'Backspace' && (length == 2 || length == 5)) { // an den passenden Stellen...
+        addTaskDueText.value = value + '/'; // ...automatisch '/' einfügen
     }
 }
 
@@ -77,11 +77,11 @@ function setAddTaskDueText() {
     const date = new Date(addTaskDue.value);
     const yyyy = date.getFullYear();
     let mm = date.getMonth() + 1; // noch nicht zweistellig formatiert
-    if(mm < 10) { // falls Monat kleiner 10
+    if (mm < 10) { // falls Monat kleiner 10
         mm = '0' + mm; // füge vorher 0 hinzu (als String)
     }
     let dd = date.getDate(); // siehe Monate/mm
-    if(dd < 10) {
+    if (dd < 10) {
         dd = '0' + dd;
     }
     addTaskDueText.value = dd + '/' + mm + '/' + yyyy;
@@ -89,10 +89,12 @@ function setAddTaskDueText() {
 
 function setAddTaskDueDate() {
     const date = addTaskDueText.value;
-    const yyyy = date.substring(6);
-    const mm = date.substring(3,5);
-    const dd = date.substring(0,2);
-    addTaskDue.value = yyyy + '-' + mm + '-' + dd;
+    if (date.length == 10) {
+        const yyyy = date.substring(6);
+        const mm = date.substring(3, 5);
+        const dd = date.substring(0, 2);
+        addTaskDue.value = yyyy + '-' + mm + '-' + dd;
+    }
 }
 
 /** 

@@ -39,7 +39,7 @@
                     </h2>
                 </label>
                 <div id="addTaskDueContainer" class="borderHover" onmousedown="event.stopPropagation()" onclick="focusAddTaskDue()">
-                    <input type="text" id="addTaskDueText" placeholder="dd/mm/yyyy" onkeyup="checkAddTaskDueText()">
+                    <input type="text" id="addTaskDueText" placeholder="dd/mm/yyyy" onkeyup="handleAddTaskDueTextInput(event)">
                     <input type="date" id="addTaskDue" required onchange="setAddTaskDueText()">
                 </div>
             </div>
