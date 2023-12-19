@@ -38,7 +38,10 @@
                     <h2>Due date<p class="red">*</p>
                     </h2>
                 </label>
-                <input type="date" id="addTaskDue" required onkeydown="styleDateInput()" class="borderHover">
+                <div id="addTaskDueContainer" class="borderHover">
+                    <input type="text" id="addTaskDueText" placeholder="dd/mm/yyyy" onmousedown="event.preventDefault()">
+                    <input type="date" id="addTaskDue" required onmousedown="event.preventDefault()">
+                </div>
             </div>
             <div class="addTaskField">
                 <h2>Prio</h2>

@@ -86,6 +86,31 @@
     padding: 0;
 }
 
+#addTaskDueContainer {
+    width: 100%;
+    display: flex;
+    gap: 0;
+    margin: 0;
+    background: white;
+    border-radius: 10px;
+    border: 1px solid var(--lightGray1);
+    box-sizing: border-box;
+}
+
+#addTaskDueText {
+    border: none;
+    min-width: calc(100% - 88px);
+    z-index: 1;
+}
+
+#addTaskDue {
+    border: none;
+    min-width: calc(100% - 88px);
+    position: relative;
+    right: calc(100% - 112px);
+    cursor: text;
+}
+
 .addTaskPrioBtns {
     display: flex;
     gap: 16px;
@@ -199,6 +224,14 @@ button.addTaskPrio3Selected {
 #subtasksList .editSubtask button,
 #subtasksList .editSubtask .vr {
     display: initial;
+}
+
+#subtasksList li:hover button:hover {
+    filter: invert(56%) sepia(80%) saturate(2198%) hue-rotate(166deg) brightness(102%) contrast(77%);
+}
+
+#subtasksList .editSubtask:hover button:hover {
+    filter: none;
 }
 
 #subtasksList .editSubtask button img:hover {
@@ -360,7 +393,7 @@ button.addTaskPrio3Selected {
     #formSeperator {
         display: none;
     }
-    
+
     #subtasksList {
         width: calc(50% - var(--sidePadding) * 1/3);
     }
@@ -390,7 +423,7 @@ button.addTaskPrio3Selected {
         width: 100%;
         justify-content: flex-start;
     }
-    
+
     #subtasksList {
         width: 100%;
         overflow-y: visible;
@@ -446,7 +479,7 @@ button.addTaskPrio3Selected {
     .addTaskPrioBtns {
         gap: 12px;
     }
-    
+
     .addTaskPrioBtns button {
         min-width: calc((100% - 24px)/3);
         gap: 6px;
