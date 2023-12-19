@@ -340,6 +340,20 @@
     width: 100%;
   }
   
+  .taskCardCategory1 {
+    padding: 4px 16px;
+    border-radius: 16px;
+    color: white;
+    background-color: #2a3647;
+  }
+
+  .taskCardCategory0 {
+    padding: 4px 16px;
+    border-radius: 16px;
+    color: white;
+    background-color: #1FD7C1;
+  }
+
   .taskCardCategory {
     font-family: "Open Sans", sans-serif;
     padding: 4px 24px;
@@ -366,8 +380,9 @@
   }
   
   .taskSection {
-    color: #2a3647;
+    color: #4E5D77;
     margin-right: 25px;
+    width: 125px;
   }
   
   .taskDate {

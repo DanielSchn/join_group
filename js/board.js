@@ -125,6 +125,8 @@ function generateNoTask(status){
 
 function showTaskCard(element, id) {
     document.getElementById('taskCard').innerHTML = generateTaskCard(element, id);
+    renderCardPrio(element, id);
+
 }
 
 function generateTaskCard(task, id) {
@@ -132,7 +134,9 @@ function generateTaskCard(task, id) {
     <div id="taskContainer" onclick="closeTask()">
         <div id="taskCard" class="taskCard showTaskCard" onclick="event.stopPropagation()">
             <div class="taskCardHeader">
-                <div class="taskCardCategory" id="taskCardCategory${id}">  ${categories[task['category']]}</div>
+                <div class="taskCardCategory${task['category']}" id="taskCardCategory${id}">
+                    ${categories[task['category']]}
+                </div>
                 <div onclick="closeTask()">
                     <img class="closeTask" src="./assets/img/cancel.svg" alt="Close">
                 </div>
@@ -141,12 +145,14 @@ function generateTaskCard(task, id) {
             <div class="taskDescription"> ${task["description"]}</div>
             <div class="taskDate">
               <div class="taskSection">Due date:</div>
-              <div id="taskDate${id}">${task["due date"]}</div>
+              <div id="taskDate${id}">${task["due"]}</div>
             </div>
             <div class="taskPrio" id="">
                 <div class="taskSection">Priority:</div>
-                <div class="taskPrioText">${task["prio"]}</div>
-                <div class="taskPrioIcon" id="taskPrio${id}"></div>
+                <div class="taskPrioText" id="taskPrio${id}">${task["prio"]}</div>
+                <div class="taskPrioIcon" >
+                <img src="./assets/img/prio_icons/task_prio_${task['prio']}.svg" alt="icon">
+                </div>
             </div>
 
             <div class="taskAssignedContainer">
@@ -156,7 +162,7 @@ function generateTaskCard(task, id) {
 
 
             <div class="subtasksContainer">
-                <div class="taskSection">Subtasks</div>
+                <div class="taskSection">Subtasks:</div>
                 <div class="subtasks" id="subtasks${id}"></div>
             </div>
             <div class="taskFooter">
@@ -234,4 +240,18 @@ function updateProgressBar(subtasks, doneSubtasksDiv, progressbarFillerDiv) {
     doneSubtasksDiv.innerHTML = `${trueCount}`;
     let fillWidth = barWidth * (trueCount / subtasks.length);
     progressbarFillerDiv.style.width = `${fillWidth}px`;
+}
+
+function closeTask(){
+    document.getElementById('taskCard').innerHTML = '';
+}
+
+
+function renderCardAssigned(){}
+function renderCardDate(){}
+function renderCardSubtasks(){}
+function renderCardPrio(task, id){
+    prio = task["prio"];
+    result = prio.charAt(0).toUpperCase() + prio.slice(1);
+    document.getElementById(`taskPrio${id}`).innerHTML = `${result}`;
 }
