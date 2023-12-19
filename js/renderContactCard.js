@@ -1,4 +1,4 @@
-function cardWindow() {
+function contactCardWindow() {
     const cardBg = document.getElementById('mainContactCard_Bg');
     const layer = document.getElementById('closeWindowLayer');
     const contact = document.getElementById('mainContactDetails');
@@ -12,9 +12,17 @@ function cardWindow() {
     mainContactCard.classList.toggle('mobile-d-none');
     arrow.classList.toggle('showBackArrow');
     hideAddBtn.classList.toggle('d-none');
-    showSettingBtn.classList.toggle('mobile-d-none');
+    showSettingBtn.classList.toggle('d-none');
 }
 
 function closeWindow() {
-    cardWindow();
+    contactCardWindow();
+}
+
+function addCardWindow() {
+    const closeAddCardOne = document.getElementById('AddCardOne');
+    const closeAddCard_bg = document.getElementById('addCardBg');
+
+    closeAddCardOne.classList.toggle('d-none');
+    closeAddCard_bg.classList.toggle('d-none');
 }
