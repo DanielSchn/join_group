@@ -49,6 +49,52 @@ function renderAddTaskSubtasks() {
     }
 }
 
+function focusAddTaskDue() {
+    const container = document.getElementById('addTaskDueContainer');
+    unfocusAll();
+    container.style.borderColor = 'var(--lightBlue1)';
+    addTaskDueText.focus();
+    document.addEventListener("mousedown", unfocusAddTaskDue); // reagiert auf Clicks abseits des Containers
+}
+
+function unfocusAddTaskDue() {
+    const container = document.getElementById('addTaskDueContainer');
+    container.style.borderColor = '';
+    setAddTaskDueDate();
+    document.removeEventListener("mousedown", unfocusAddTaskDue);
+}
+
+function checkAddTaskDueText() {
+    let value = addTaskDueText.value;
+    const length = value.length;
+    console.log(length);
+    if(length >= 2) {
+        addTaskDueText.value = value.substring(0,2) + '/' + value.substring(4);
+    }
+}
+
+function setAddTaskDueText() {
+    const date = new Date(addTaskDue.value);
+    const yyyy = date.getFullYear();
+    let mm = date.getMonth() + 1; // noch nicht zweistellig formatiert
+    if(mm < 10) { // falls Monat kleiner 10
+        mm = '0' + mm; // füge vorher 0 hinzu (als String)
+    }
+    let dd = date.getDate(); // siehe Monate/mm
+    if(dd < 10) {
+        dd = '0' + dd;
+    }
+    addTaskDueText.value = dd + '/' + mm + '/' + yyyy;
+}
+
+function setAddTaskDueDate() {
+    const date = addTaskDueText.value;
+    const yyyy = date.substring(6);
+    const mm = date.substring(3,5);
+    const dd = date.substring(0,2);
+    addTaskDue.value = yyyy + '-' + mm + '-' + dd;
+}
+
 /** 
  * Funktion bestimmt, was bei Klick auf einen der drei Prioritätsbuttons geschieht 
  * @param {number} btnNumber - Laufindex des geklickten Buttons (1: urgent, 2: medium, 3: low) 
@@ -130,6 +176,7 @@ function unfocusSubtask() {
         btnsPassive.style.display = '';
         btnsActive.style.display = 'none';
     }
+    document.removeEventListener("click", unfocusSubtask);
 }
 
 /**
