@@ -11,7 +11,7 @@
     <script src="js/render_summary.js" defer></script>
 </head>
 
-<body onload="init(); initSummary();">
+<body onload="init(); initSummary(); setTimeout(renderLogo, 500);">
     <header w3-include-html="assets/templates/header_template.html"></header>
     <aside id="sideMenu" w3-include-html="assets/templates/side_menu_template.html"></aside>
     <div class="summary">

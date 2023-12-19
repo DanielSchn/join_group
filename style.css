@@ -1123,7 +1123,7 @@ aside {
         margin: auto;
         padding: 46px;
         width: max-content;
-        height: fit-content;
+        : fit-content;
         display: flex;
         justify-content: center;
         align-items: center;

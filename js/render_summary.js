@@ -3,8 +3,7 @@ const userName = [];
 
 function initSummary() {
     setDaytime();
-    renderUserName();
-    setTimeout(renderLogo, 500);
+    renderUserName(); 
 }
 
 
