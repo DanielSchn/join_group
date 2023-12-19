@@ -170,6 +170,14 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     cursor: pointer;
 }
 
+input[type="date"]::-webkit-calendar-picker-indicator:hover {
+    background-image: url(./assets/img/calendar_icon_hover.svg);
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator:active {
+    background-image: url(./assets/img/calendar_icon_active.svg);
+}
+
 .extendedInput {
     display: flex;
     align-items: center;

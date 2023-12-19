@@ -1,4 +1,5 @@
-<form class="addTaskForm" action="">
+<form class="addTaskForm" autocomplete="off" action="">
+    <input autocomplete="false" name="hidden" type="text" style="display:none;">
     <h1>Add Task</h1>
     <div class="addTaskFormMain">
         <div class="addTaskFormMainSide addTaskFormMainSideOne">
@@ -21,7 +22,7 @@
                 </label>
                 <div id="addTaskAssignedInputContainer" class="extendedInput dropdownInput borderHover"
                     onclick="event.stopPropagation(); toggleDropdown('addTaskAssigned')">
-                    <input type="text" placeholder="Select contacts to assign" id="addTaskAssigned" required
+                    <input type="text" placeholder="Select contacts to assign" id="addTaskAssigned"
                         onmousedown="event.preventDefault()">
                     <button type="button">
                         <img src="./assets/img/select_icon.svg" alt="icon" id="addTaskAssignedIcon">
@@ -72,9 +73,9 @@
                 <label for="addSubtask">
                     <h2>Subtasks</h2>
                 </label>
-                <div id="addSubtaskInputContainer" class="extendedInput borderHover" onclick="event.stopPropagation(); focusSubtask()">
-                    <input type="text" placeholder="Add new subtask"
-                        id="addSubtask">
+                <div id="addSubtaskInputContainer" class="extendedInput borderHover"
+                    onclick="event.stopPropagation(); focusSubtask()">
+                    <input type="text" placeholder="Add new subtask" id="addSubtask">
                     <div id="addSubtaskIconsPassive">
                         <button type="button">
                             <img src="./assets/img/plus_icon.svg" alt="icon">
