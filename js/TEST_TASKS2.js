@@ -32,7 +32,7 @@ let TEST_TASKS = [
     },
     {
         id: 1,
-        title: 'einkaufen',
+        title: 'Einkaufen',
         description: 'Äpfel, Birnen, Milch, Eier',
         assignedTo: [1],
         due: '2023-12-19',
