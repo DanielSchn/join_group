@@ -12,7 +12,7 @@ let newTask = {
 };
 
 async function initAddTask() {
-    await includeHTML();
+    await init();
     renderAddTaskForm();
 }
 
@@ -65,35 +65,54 @@ function unfocusAddTaskDue() {
 }
 
 function handleAddTaskDueTextInput(e) {
-    let value = addTaskDueText.value;
+    const value = addTaskDueText.value;
     const key = e.key;
     const length = value.length;
-    if (key != 'Backspace' && (length == 2 || length == 5)) { // an den passenden Stellen...
+    addTaskDueText.style.color = '';
+    if (key != ('Backspace' || '/') && (length == 2 || length == 5)) { // an den passenden Stellen...
         addTaskDueText.value = value + '/'; // ...automatisch '/' einfügen
     }
-}
-
-function setAddTaskDueText() {
-    const date = new Date(addTaskDue.value);
-    const yyyy = date.getFullYear();
-    let mm = date.getMonth() + 1; // noch nicht zweistellig formatiert
-    if (mm < 10) { // falls Monat kleiner 10
-        mm = '0' + mm; // füge vorher 0 hinzu (als String)
+    if (length >= 10) {
+        setAddTaskDueDate();
     }
-    let dd = date.getDate(); // siehe Monate/mm
-    if (dd < 10) {
-        dd = '0' + dd;
-    }
-    addTaskDueText.value = dd + '/' + mm + '/' + yyyy;
 }
 
 function setAddTaskDueDate() {
-    const date = addTaskDueText.value;
-    if (date.length == 10) {
-        const yyyy = date.substring(6);
-        const mm = date.substring(3, 5);
-        const dd = date.substring(0, 2);
-        addTaskDue.value = yyyy + '-' + mm + '-' + dd;
+    const value = addTaskDueText.value;
+    let transformedValue = transformDate(value); // String-Format umwandeln
+    let date = new Date(transformedValue); // Date-Objekt erzeugen
+    if (isDateValid(date)) {
+        addTaskDueText.style.color = '';
+        addTaskDue.value = transformedValue;
+    } else {
+        addTaskDueText.style.color = '#FF8190'; // Text rot färben und...
+        addTaskDueText.value = value.substring(0, 10); // ...auf 10 Zeichen begrenzen
+    }
+} 
+
+function transformDate(ddmmyyyy) {
+    const yyyy = ddmmyyyy.substring(6);
+    const mm = ddmmyyyy.substring(3, 5);
+    const dd = ddmmyyyy.substring(0, 2);
+    return yyyy + '-' + mm + '-' + dd;
+}
+
+function isDateValid(date) {
+    return date !== 'Invalid Date' &&
+        Date.now() <= Date.parse(date);
+}
+
+function setAddTaskDueText() {
+    if (addTaskDue.value) {
+        const date = new Date(addTaskDue.value);
+        const yyyy = date.getFullYear();
+        let mm = date.getMonth() + 1;
+        mm = ('0' + mm).slice(-2); // füge vorher 0 hinzu (als String)
+        let dd = date.getDate();
+        dd = ('0' + dd).slice(-2); // füge vorher 0 hinzu (als String)
+        addTaskDueText.value = dd + '/' + mm + '/' + yyyy;
+    } else {
+        addTaskDueText.value = '';
     }
 }
 
