@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="assets/css/summary.css">
     <script src="script.js" defer></script>
     <script src="js/render_summary.js" defer></script>
+    <script src="js/TEST_TASKS2.js" defer></script>
 </head>
 
 <body onload="initSummary();">
@@ -32,7 +33,7 @@
                     <div class="sumToDo">
                         <img src="assets/img/sum_todo.svg" alt="Pencil" class="img69px">
                         <div class="textToDo">
-                            <p class="font64pxBold">1</p>
+                            <p id="toDoDashboard" class="font64pxBold">0</p>
                             <p class="font14pxBold400">To-Do</p>
                         </div>
                     </div>
@@ -41,7 +42,7 @@
                     <div class="sumToDoDone">
                         <img src="assets/img/sum_done.svg" alt="Check" class="img69px">
                         <div class="textToDo">
-                            <p class="font64pxBold">1</p>
+                            <p id="doneTasksDashboard" class="font64pxBold">0</p>
                             <p class="font14pxBold400">Done</p>
                         </div>
                     </div>
@@ -52,7 +53,7 @@
                     <div class="sumLogoUrgent">
                         <img src="assets/img/sum_upcoming.svg" alt="Upcoming">
                         <div>
-                            <p class="font64pxBold">1</p>
+                            <p id="urgentTaskDashboard" class="font64pxBold">0</p>
                             <p class="font16px font14pxBold400">Urgent</p>
                         </div>
                     </div>
@@ -60,7 +61,7 @@
                     <div class="sumUrgentDash"></div>
 
                     <div class="dateDeadline">
-                        <p class="font21pxBold font16pxBold700">October 16, 2022</p>
+                        <p id="deadlineDashboard" class="font21pxBold font16pxBold700">Date</p>
                         <p class="font16px font14pxBold400">Upcoming Deadline</p>
                     </div>
                 </div>
@@ -69,19 +70,19 @@
             <div class="sumTasksPos">
                 <a href="board.html">
                     <div class="sumTasks">
-                        <p class="font64pxBold">5</p>
+                        <p id="tasksInBoardDashboard" class="font64pxBold">0</p>
                         <p class="font14pxBold400">Tasks in<br>Board</p>
                     </div>
                 </a>
                 <a href="board.html">
                     <div class="sumTasks">
-                        <p class="font64pxBold">2</p>
+                        <p id="tasksInProgressDashboard" class="font64pxBold">0</p>
                         <p class="font14pxBold400">Tasks in<br>Progress</p>
                     </div>
                 </a>
                 <a href="board.html">
                     <div class="sumTasks">
-                        <p class="font64pxBold">2</p>
+                        <p id="awaitFeedbackDashboard" class="font64pxBold">0</p>
                         <p class="font14pxBold400">Awaiting<br>Feedback</p>
                     </div>
                 </a>

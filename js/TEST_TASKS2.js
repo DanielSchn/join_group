@@ -30,7 +30,6 @@ let TEST_TASKS = [
         timestamp: 1702645998476,
         status: 'toDo' // toDo, inProcess, awaitFeedback, done
     },
-
     {
         id: 1,
         title: 'einkaufen',
@@ -42,5 +41,29 @@ let TEST_TASKS = [
         subtasks: [],
         timestamp: 1702647192299,
         status: 'inProgress'
+    },
+    {
+        id: 2,
+        title: 'wäsche waschen',
+        description: 'Kochwäsche, Pflegeleicht',
+        assignedTo: [1],
+        due: '2023-12-22',
+        prio: 'low',
+        category: 0, // Index für category-Array
+        subtasks: [],
+        timestamp: 1702647193399,
+        status: 'awaitFeedback'
+    },
+    {
+        id: 3,
+        title: 'essen kochen',
+        description: 'Spaghetti, Brokkoli, Zwiebeln, Sahne',
+        assignedTo: [0],
+        due: '2023-12-24',
+        prio: 'low',
+        category: 0, // Index für category-Array
+        subtasks: [],
+        timestamp: 1702647193451,
+        status: 'done'
     }
 ]
