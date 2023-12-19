@@ -132,7 +132,7 @@ function generateTaskCard(task, id) {
     <div id="taskContainer" onclick="closeTask()">
         <div id="taskCard" class="taskCard showTaskCard" onclick="event.stopPropagation()">
             <div class="taskCardHeader">
-                <div class="taskCardCategory" id="taskCardCategory${id}"> ${task["category"]}</div>
+                <div class="taskCardCategory" id="taskCardCategory${id}">  ${categories[task['category']]}</div>
                 <div onclick="closeTask()">
                     <img class="closeTask" src="./assets/img/cancel.svg" alt="Close">
                 </div>
