@@ -18,34 +18,6 @@ async function includeHTML() {
 }
 
 
-// function includeHTML() {
-//   var z, i, elmnt, file, xhttp;
-//   /* Loop through a collection of all HTML elements: */
-//   z = document.getElementsByTagName("*");
-//   for (i = 0; i < z.length; i++) {
-//     elmnt = z[i];
-//     /*search for elements with a certain atrribute:*/
-//     file = elmnt.getAttribute("w3-include-html");
-//     if (file) {
-//       /* Make an HTTP request using the attribute value as the file name: */
-//       xhttp = new XMLHttpRequest();
-//       xhttp.onreadystatechange = function () {
-//         if (this.readyState == 4) {
-//           if (this.status == 200) { elmnt.innerHTML = this.responseText; }
-//           if (this.status == 404) { elmnt.innerHTML = "Page not found."; }
-//           /* Remove the attribute, and call this function once more: */
-//           elmnt.removeAttribute("w3-include-html");
-//           includeHTML();
-//         }
-//       }
-//       xhttp.open("GET", file, true);
-//       xhttp.send();
-//       /* Exit the function: */
-//       return;
-//     }
-//   }
-// }
-
 /**
  * function for scale Logo by startup
  */
@@ -63,6 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
+
 /**
  * Dropdown-Menü ein-/ausblenden
  * @param {string} id - ID des Dropdown-Menüs (muss zu umgebenden IDs passen) 
@@ -76,6 +49,7 @@ function toggleDropdown(id) {
     hideDropdown(id);
   }
 }
+
 
 /**
  * aktuellen Fokus aufheben
@@ -93,6 +67,7 @@ function unfocusAll() {
   }
 }
 
+
 /**
  * Dropdown-Menü anzeigen
  * @param {string} id - ID des Dropdown-Menüs (muss zu umgebenden IDs passen) 
@@ -109,6 +84,7 @@ function showDropdown(id) {
   });
 }
 
+
 /**
  * Dropdown-Menü verbergen
  * @param {string} id - ID des Dropdown-Menüs (muss zu umgebenden IDs passen) 
@@ -120,6 +96,7 @@ function hideDropdown(id) {
   container.style.borderColor = '';
   menu.style.display = 'none';
 }
+
 
 /**
  * beim Dropdown-Menü richtiges Icon (Pfeilspitze) anzeigen
@@ -138,6 +115,7 @@ function toggleDropdownIcon(id, show) {
   }
 }
 
+
 /**
  * bestimmt automatisch, welche Option im Dropdown-Menü geklickt wurde und weist dem Input-Feld den entsprechenden Wert zu
  * @param {event} e - bei Funktionsaufruf 'event' als Parameter eintragen 
@@ -150,6 +128,7 @@ function handleDropdownMenuClick(e) {
   const input = document.getElementById(id);
   input.value = category;
 }
+
 
 function toggleCheckbox(checkbox) {
   let checkboxSrc = checkbox.src;
@@ -164,6 +143,9 @@ function toggleCheckbox(checkbox) {
 }
 
 
+/**
+ * Renderfunction for the Username Logo in Header
+ */
 function renderLogo() {
   let loadedUserName = localStorage.getItem('userName');
   let capitalized = loadedUserName.charAt(0).toUpperCase();
