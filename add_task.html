@@ -8,13 +8,14 @@
 
     <link rel="stylesheet" href="./fonts.css">
     <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./form.css">
     <link rel="stylesheet" href="./assets/css/add_task.css">
 
     <script src="./script.js"></script>
     <script src="./js/add_task.js"></script>
 </head>
 
-<body onload="includeHTML(); renderAddTaskForm()">
+<body onload="initAddTask()">
     <header w3-include-html="assets/templates/header_template.html"></header>
     <aside id="sideMenu" w3-include-html="assets/templates/side_menu_template.html"></aside>
     <div class="main" w3-include-html="assets/templates/add_task_template.html"></div>
@@ -28,5 +29,4 @@
         <div class="linkAlign activ_bg"><img src="./assets/img/menu_icons/contacts.svg"><a>Contacts</a></div>
     </div>
 </body>
-
 </html>

@@ -1,46 +1,4 @@
-let tasks = [{
-    'id'            :  0,
-    'title'         : 'Putzen',
-    'description'   : 'Schön bis in die Ecken :D',
-    'assignedTo'    : 'Wilfred',
-    'due date'      : '11/12/24',
-    'prio'          : 'Medium',
-    'category'      : 'Category1',
-    'subtasks'      : ['bad', 'flur', 'küche'],
-    'status'        : 'toDo',
-}, {
-    'id'            : 1,
-    'title'         : 'Kochen',
-    'description'   : 'Was leckeres :D',
-    'assignedTo'    : 'Wilfred',
-    'due date'      : '11/12/24',
-    'prio'          : 'Urgent',
-    'category'      : 'Category2',
-    'subtasks'      : ['schnibbeln', 'kochen', 'tisch decken'],
-    'status'        : 'inProgress',
-}, {
-    'id'            : 2,
-    'title'         : 'Kochen',
-    'description'   : 'Was leckeres :D',
-    'assignedTo'    : 'Wilfred',
-    'due date'      : '11/12/24',
-    'prio'          : 'Urgent',
-    'category'      : 'Category2',
-    'subtasks'      : ['schnibbeln', 'kochen', 'tisch decken'],
-    'status'        : 'inProgress',
-}, {
-    'id'            : 3,
-    'title'         : 'Kochen',
-    'description'   : 'Was leckeres :D',
-    'assignedTo'    : 'Wilfred',
-    'due date'      : '11/12/24',
-    'prio'          : 'Urgent',
-    'category'      : 'Category2',
-    'subtasks'      : ['schnibbeln', 'kochen', 'tisch decken'],
-    'status'        : 'done',
-}
-
-];
+let tasks = TEST_TASKS;
 
 let currentDraggedElement;
 
@@ -54,83 +12,122 @@ function updateHTML() {
 
 function updateToDo() {
     let todo = tasks.filter(t => t['status'] == 'toDo');
+    let status = 'to do';
 
     document.getElementById('toDo').innerHTML = '';
 
-    for (let i = 0; i < todo.length; i++) {
-        const element = todo[i];
-        document.getElementById('toDo').innerHTML += generateTask(element);
-    }
+    if (todo.length == 0) {
+        document.getElementById('toDo').innerHTML = generateNoTask(status);
+    } else
+
+        for (let i = 0; i < todo.length; i++) {
+            const element = todo[i];
+            document.getElementById('toDo').innerHTML += generateTask(element);
+            generateSubtask(element);
+        }
 }
 
-function updateInProgress(){
+function updateInProgress() {
     let inprogress = tasks.filter(t => t['status'] == 'inProgress')
+    let status = 'in progress';
 
     document.getElementById('inProgress').innerHTML = '';
 
-    for (let i = 0; i < inprogress.length; i++) {
-        const element = inprogress[i];
-        document.getElementById('inProgress').innerHTML += generateTask(element);
-    }
+    if (inprogress.length == 0) {
+        document.getElementById('inProgress').innerHTML = generateNoTask(status);
+    } else
+
+        for (let i = 0; i < inprogress.length; i++) {
+            const element = inprogress[i];
+            document.getElementById('inProgress').innerHTML += generateTask(element);
+            generateSubtask(element);
+        }
 }
 
-function updateAwaitFeedback(){
+function updateAwaitFeedback() {
     let feedback = tasks.filter(t => t['status'] == 'awaitFeedback');
+    let status = 'await Feedback';
 
     document.getElementById('awaitFeedback').innerHTML = '';
 
-    for (let i = 0; i < feedback.length; i++) {
-        const element = feedback[i];
-        document.getElementById('awaitFeedback').innerHTML += generateTask(element);
-    }
+    if (feedback.length == 0) {
+        document.getElementById('awaitFeedback').innerHTML = generateNoTask(status);
+    } else
+
+        for (let i = 0; i < feedback.length; i++) {
+            const element = feedback[i];
+            document.getElementById('awaitFeedback').innerHTML += generateTask(element);
+            generateSubtask(element);
+        }
+    
 }
 
-function updateDone(){
+function updateDone() {
     let done = tasks.filter(t => t['status'] == 'done')
+    let status = 'done';
 
     document.getElementById('done').innerHTML = '';
 
-    for (let i = 0; i < done.length; i++) {
-        const element = done[i];
-        document.getElementById('done').innerHTML += generateTask(element);
-    }
+    if (done.length == 0) {
+        document.getElementById('done').innerHTML = generateNoTask(status);
+    } else
+
+        for (let i = 0; i < done.length; i++) {
+            const element = done[i];
+            document.getElementById('done').innerHTML += generateTask(element);
+            generateSubtask(element);
+        }
 }
 
-function startDragging(id){
+function startDragging(id) {
     currentDraggedElement = id;
 }
 
 function generateTask(element) {
     return `
-    <div draggable="true" ondragstart="startDragging(${element['id']})" onclick="inittest()" class="todo">
-        <div class="toDoCategory"> ${element['category']} </div>
+    <div draggable="true" ondragstart="startDragging(${element['id']})" onclick="showTaskCard(tasks[${element['id']}], ${element['id']})" class="todo">
+        <div class="toDoCategory${element['category']}"> ${categories[element['category']]} </div>
 
         <div>
             <div class="toDoTitle"> ${element['title']} </div>
             <div class="toDoDescription"> ${element['description']}</div>
         </div>
 
-        <div class="toDoSubtasks">
+        <div class="toDoSubtasks" id="toDoSubtasks${element['id']}">
             <div class="toDoSubtasksProgress">
-                <div class="toDoSubtasksProgressFiller">
+                <div class="toDoSubtasksProgressFiller" id= "toDoSubtasksProgressFiller${element['id']}">
                 </div>
             </div>
-            <div class="toDoSubtasksCount"></div>
-            <div id=""> ${element['subtasks'][0]}, ${element['subtasks'][1]}, ${element['subtasks'][2]} </div>
+            <div class="toDoSubtasksCount">
+                <div id="toDoSubtasksDone${element["id"]}">  
+                </div>
+                /${element['subtasks'].length} Subtask
+            </div>
+            
         </div>
 
         <div class="toDoBottom">
             <div class="toDoAssignedContainer"> ${element['assignedTo']} </div>
-            <div class="toDoPrio">${element['prio']}</div>
+            <div class="toDoPrio">
+                <img src="./assets/img/prio_icons/task_prio_${element['prio']}.svg" alt="icon">
+            </div>
         </div>
     </div>`
+
 }
 
-function inittest(){
-    document.getElementById('test').innerHTML = generateTaskCard(tasks[0], 0);
+function generateNoTask(status){
+         return `
+            <div class="noTaskContainer">
+                <div class="noTask">No tasks ${status}</div>
+            </div>`
 }
 
-function generateTaskCard(task, id){
+function showTaskCard(element, id) {
+    document.getElementById('taskCard').innerHTML = generateTaskCard(element, id);
+}
+
+function generateTaskCard(task, id) {
     return `    
     <div id="taskContainer" onclick="closeTask()">
         <div id="taskCard" class="taskCard showTaskCard" onclick="event.stopPropagation()">
@@ -185,15 +182,56 @@ function allowDrop(ev) {
     ev.preventDefault();
 }
 
-function moveTo(status){
+function moveTo(status) {
     tasks[currentDraggedElement]['status'] = status;
     updateHTML();
 }
 
-function highlight(id){
+function highlight(id) {
     document.getElementById(id).classList.add('dragAreaHighlight');
 }
 
-function removeHighlight(id){
+function removeHighlight(id) {
     document.getElementById(id).classList.remove('dragAreaHighlight');
+}
+
+/**
+ * generate the html with the subtask of the selected task
+ * @param {object} element - Selected Task Object
+ */
+
+function generateSubtask(element) {
+    let subtasks = element['subtasks'];
+    let subtasksDiv = document.getElementById(`toDoSubtasks${element['id']}`);
+    let doneSubtasksDiv = document.getElementById(`toDoSubtasksDone${element['id']}`);
+    let progressbarFillerDiv = document.getElementById(`toDoSubtasksProgressFiller${element['id']}`);
+
+    if (subtasks.length == 0) {
+        subtasksDiv.classList.add("d-none");
+    } else {
+        updateProgressBar(subtasks, doneSubtasksDiv, progressbarFillerDiv);
+        let trueCount = 0;
+        for (let i = 0; i < subtasks.length; i++) {
+            if (subtasks[i]['status'] == 'done') {
+                trueCount++;
+            }
+        }
+        let barWidth = 130;
+        doneSubtasksDiv.innerHTML = `${trueCount}`;
+        let fillWidth = barWidth * (trueCount / subtasks.length);
+        progressbarFillerDiv.style.width = `${fillWidth}px`;
+    }
+}
+
+function updateProgressBar(subtasks, doneSubtasksDiv, progressbarFillerDiv) {
+    let trueCount = 0;
+    for (let i = 0; i < subtasks.length; i++) {
+        if (subtasks[i]['status'] == 'done') {
+            trueCount++;
+        }
+    }
+    let barWidth = document.querySelector('.toDoSubtasksProgress').offsetWidth;
+    doneSubtasksDiv.innerHTML = `${trueCount}`;
+    let fillWidth = barWidth * (trueCount / subtasks.length);
+    progressbarFillerDiv.style.width = `${fillWidth}px`;
 }

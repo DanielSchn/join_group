@@ -1,7 +1,14 @@
 let users = [];
+let guests = [
+    {
+        'name': 'guest',
+        'email': 'guest@guest.de',
+        'password': 'guest'
+    },
+];
 
 
-async function init() {
+async function initRegister() {
     loadUsers();
 }
 
@@ -140,19 +147,3 @@ function togglePasswordVisibility(inputId, visibilityIconId, visibilityOffIconId
 }
 
 
-/**
- * Login function and go to summary page when login User and password are match
- */
-function login() {
-    let email = document.getElementById('email');
-    let password = document.getElementById('signUpPassword');
-    let user = users.find(u => u.email == email.value && u.password == password.value);
-    console.log(user);
-    if(user) {
-        window.setTimeout(function () {
-            window.location.href = "summary.html";
-        }, 1000);
-    } else {
-        document.getElementById('userNotFound').style.display = 'block';
-    }
-}

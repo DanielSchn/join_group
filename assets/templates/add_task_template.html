@@ -1,4 +1,5 @@
-<form class="addTaskForm" action="">
+<form class="addTaskForm" autocomplete="off" action="">
+    <input autocomplete="false" name="hidden" type="text" style="display:none;">
     <h1>Add Task</h1>
     <div class="addTaskFormMain">
         <div class="addTaskFormMainSide addTaskFormMainSideOne">
@@ -7,23 +8,27 @@
                     <h2>Title<p class="red">*</p>
                     </h2>
                 </label>
-                <input type="text" placeholder="Enter a title" id="addTaskTitle" required>
+                <input type="text" placeholder="Enter a title" id="addTaskTitle" required class="borderHover">
             </div>
             <div class="addTaskField">
                 <label for="addTaskDescription">
                     <h2>Description</h2>
                 </label>
-                <textarea placeholder="Enter a description" id="addTaskDescription"></textarea>
+                <textarea placeholder="Enter a description" id="addTaskDescription" class="borderHover"></textarea>
             </div>
-            <div class="addTaskField">
-                <label for="addTaskAssigned">
+            <div class="addTaskField dropdownContainer">
+                <label for="addTaskAssigned" onclick="event.preventDefault()">
                     <h2>Assigned to</h2>
                 </label>
-                <select placeholder="test" id="addTaskAssigned">
-                    <option value="">Select contacts to assign</option>
-                    <option value="">CONTACT 1</option>
-                    <option value="">CONTACT 2</option>
-                </select>
+                <div id="addTaskAssignedInputContainer" class="extendedInput dropdownInput borderHover"
+                    onclick="event.stopPropagation(); toggleDropdown('addTaskAssigned')">
+                    <input type="text" placeholder="Select contacts to assign" id="addTaskAssigned"
+                        onmousedown="event.preventDefault()">
+                    <button type="button">
+                        <img src="./assets/img/select_icon.svg" alt="icon" id="addTaskAssignedIcon">
+                    </button>
+                </div>
+                <ul class="dropdownMenu" id="addTaskAssignedMenu" style="display: none"></ul>
             </div>
         </div>
         <div class="vr" id="formSeperator"></div>
@@ -33,7 +38,10 @@
                     <h2>Due date<p class="red">*</p>
                     </h2>
                 </label>
-                <input type="date" id="addTaskDue" required>
+                <div id="addTaskDueContainer" class="borderHover" onmousedown="event.stopPropagation()" onclick="focusAddTaskDue()">
+                    <input type="text" id="addTaskDueText" placeholder="dd/mm/yyyy" onkeyup="checkAddTaskDueText()">
+                    <input type="date" id="addTaskDue" required onchange="setAddTaskDueText()">
+                </div>
             </div>
             <div class="addTaskField">
                 <h2>Prio</h2>
@@ -46,38 +54,42 @@
                             src="./assets/img/prio_icons/task_prio_low.svg" alt="icon" id="addTaskPrio3Img"></button>
                 </div>
             </div>
-            <div class="addTaskField">
-                <label for="addTaskCategory">
+            <div class="addTaskField dropdownContainer">
+                <label for="addTaskCategory" onclick="event.preventDefault()">
                     <h2>Category<p class="red">*</p>
                     </h2>
                 </label>
-                <select placeholder="test" id="addTaskCategory" required>
-                    <option value="">Select task category</option>
-                    <option value="">CATEGORY 1</option>
-                    <option value="">CATEGORY 2</option>
-                </select>
+                <div id="addTaskCategoryInputContainer" class="extendedInput dropdownInput borderHover"
+                    onclick="event.stopPropagation(); toggleDropdown('addTaskCategory')">
+                    <input type="text" placeholder="Select task category" id="addTaskCategory" required
+                        onmousedown="event.preventDefault()">
+                    <button type="button">
+                        <img src="./assets/img/select_icon.svg" alt="icon" id="addTaskCategoryIcon">
+                    </button>
+                </div>
+                <ul class="dropdownMenu" id="addTaskCategoryMenu" style="display: none">
+                    <li onclick="handleDropdownMenuClick(event)">Technical Task</li>
+                    <li onclick="handleDropdownMenuClick(event)">User Story</li>
+                </ul>
             </div>
             <div class="addTaskField">
                 <label for="addSubtask">
                     <h2>Subtasks</h2>
                 </label>
-                <!-- Für die Funktion dieses Formularfelds scheint es keinen passenden input type zu geben. Evtl. hilft das:
-                https://www.geeksforgeeks.org/how-to-create-tags-input-box-in-html-css-and-javascript/ -->
-                <div id="addSubtaskInputContainer">
-                    <input type="text" onclick="event.stopPropagation(); focusSubtask()"
-                        placeholder="Add new subtask" id="addSubtask">
+                <div id="addSubtaskInputContainer" class="extendedInput borderHover"
+                    onclick="event.stopPropagation(); focusSubtask()">
+                    <input type="text" placeholder="Add new subtask" id="addSubtask">
                     <div id="addSubtaskIconsPassive">
-                        <button type="button" onclick="event.stopPropagation(); focusSubtask()"
-                            class="subtasksButton">
+                        <button type="button">
                             <img src="./assets/img/plus_icon.svg" alt="icon">
                         </button>
                     </div>
                     <div id="addSubtaskIconsActive" style="display: none">
-                        <button type="button" onclick="cancelSubtask()" class="subtasksButton">
+                        <button type="button" onclick="event.stopPropagation(); cancelSubtask()">
                             <img src="./assets/img/cancel.svg" alt="cancel subtask">
                         </button>
                         <div class="vr"></div>
-                        <button type="button" onclick="createSubtask()" class="subtasksButton">
+                        <button type="button" onclick="event.stopPropagation(); createSubtask()">
                             <img src="./assets/img/check.svg" alt="create subtask">
                         </button>
                     </div>
@@ -86,7 +98,10 @@
         </div>
     </div>
     <div class="subtasksContainer">
-        <ul id="subtasksList"></ul>
+        <div id="subtasksLeftMargin"></div>
+        <div class="subtasksListContainer">
+            <ul id="subtasksList"></ul>
+        </div>
     </div>
     <div class="addTaskBottom">
         <div class="fontSizeSmall">
@@ -94,7 +109,7 @@
             This field is required
         </div>
         <div>
-            <button type="button" class="btnSecondary">Clear</button>
+            <button type="reset" class="btnSecondary">Clear</button>
             <button type="submit" class="btnPrimary">Create Task</button>
         </div>
     </div>

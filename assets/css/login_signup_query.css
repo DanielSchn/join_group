@@ -1,0 +1,157 @@
+:root {
+    --fontSizeHuge: 61px;
+    --fontSizeNormal: 20px;
+    --fontSizeSmall: 16px;
+    --fontSize21px: 21px;
+    --fontSize47px: 47px;
+    --fontWeight700: 700;
+    --fontWeight400: 400;
+    --menuBarWidth: 232px;
+    --shadowSubtle: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
+    --shadowStronger: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    --scrollbarWidth: 17px;
+    --lightGray1: #D1D1D1;
+    --lightGray2: #F6F7F8;
+    --lightGray3: #A8A8A8;
+    --darkBlue1: #2A3647;
+    --darkBlue2: #091931;
+    --lightBlue1: #29ABE2;
+    --black: #000000;
+    --white: #FFFFFF;
+}
+
+@media (max-width: 1320px) {
+    .toSignUp {
+        left: 768px;
+    }
+}
+
+@media (max-width: 1050px) {
+    .toSignUp {
+        left: 452px;
+    }
+
+    .logIn {
+        left: 78px;
+    }
+
+    .signUp {
+        left: 78px;
+        top: 228px;
+    }
+
+    footer {
+        left: 281px;
+    }
+}
+
+@media (max-width: 735px) {
+    .logIn {
+        left: 16px;
+        top: 205.5px;
+        width: 396px;
+        height: 515px;
+        padding-top: 0;
+    }
+
+    .inputLogInSignUp {
+        width: 322px;
+    }
+
+    .logInHead {
+        margin-top: 32px;
+    }
+
+    .logInBtns {
+        flex-direction: column;
+        align-items: center;
+        gap: 21px;
+    }
+
+    .logInButton {
+        width: 180px;
+        height: 51px;
+    }
+
+    .guestLogInButton {
+        width: 180px;
+        height: 51px;
+    }
+
+    h1 {
+        font-size: var(--fontSize47px);
+    }
+
+    .loginDash {
+        width: 88px;
+    }
+
+    .rememberMe {
+        font-size: var(--fontSizeSmall);
+        margin: 0 0 32px 16px;
+    }
+
+    .toSignUp {
+        left: 70px;
+        top: 778px;
+    }
+
+    footer {
+        left: 91px;
+        top: 869px;
+    }
+
+    footer a {
+        font-size: var(--fontSizeSmall);
+    }
+
+    .signUpBtnHead {
+        width: 104px;
+    }
+
+    .signUp {
+        height: 595px;
+        width: 396px;
+        padding: 0;
+        left: 16px;
+        top: 165.5px;
+    }
+
+    .arrowLeft {
+        margin: 40px 0 0 24px;
+    }
+
+    .inputContainer {
+        margin-bottom: 24px;
+    }
+
+    .acceptPrivacy {
+        font-size: var(--fontSizeSmall);
+        display: flex;
+        justify-content: center;
+        margin: 0 0 32px 0;
+        gap: 8px;
+    }
+
+    .signUpButton {
+        font-size: var(--fontSizeSmall);
+        width: 180px;
+        height: 51px;
+    }
+
+    #startLogo.logo {
+        left: 110px;
+        top: 250px;
+        transform: translate(100%, 100%) scale(2);
+    }
+
+    #startLogo.logo.transformed {
+        top: 37px;
+        left: 38px;
+        transform: translate(0%, 0%) scale(1);
+    }
+}
+
+@media (max-width: px) {}
+
+@media (max-width: px) {}

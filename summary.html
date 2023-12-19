@@ -4,13 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Summary</title>
+    <title>JOIN - Summary</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="fonts.css">
     <script src="script.js" defer></script>
+    <script src="js/render_summary.js" defer></script>
 </head>
 
-<body onload="includeHTML()">
+<body onload="init(); initSummary(); setTimeout(renderLogo, 500);">
     <header w3-include-html="assets/templates/header_template.html"></header>
     <aside id="sideMenu" w3-include-html="assets/templates/side_menu_template.html"></aside>
     <div class="summary">
@@ -88,8 +89,8 @@
         </div>
 
         <div class="greeting">
-            <p class="font47pxBold500">Good morning,</p>
-            <p class="font64pxBold700 lightBlue">Sofia Müller</p>
+            <p id="greetOnSummary" class="font47pxBold500">Good morning</p> <!-- Good morning, -->
+            <p id="userNameSummary" class="font64pxBold700 lightBlue">Username</p> <!-- Sofia Müller -->
         </div>
 
 

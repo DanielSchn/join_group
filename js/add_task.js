@@ -11,11 +11,35 @@ let newTask = {
     status: ''
 };
 
-function renderAddTaskForm() {
-    renderSubtasks();
+async function initAddTask() {
+    await includeHTML();
+    renderAddTaskForm();
 }
 
-function renderSubtasks() {
+function renderAddTaskForm() {
+    renderAddTaskAssigned();
+    renderAddTaskSubtasks();
+}
+
+function renderAddTaskAssigned() {
+    // const contacts = [LADEN VON USER-DATEN]
+    const assigned = [];
+    const contacts = [0, 1, 2];
+    // const assigned = newTask['assigned']
+    // ...
+    const list = document.getElementById('addTaskAssignedMenu');
+    list.innerHTML = '';
+    for (let i = 0; i < 3; i++) { // ersetze 3 durch contacts.length
+        let contact = contacts[i];
+        let checkboxId = 'assignedContact' + i;
+        list.innerHTML += contactAssignedHTML(contact, checkboxId);
+        if (assigned.includes(i)) {
+            toggleCheckbox(checkboxId);
+        }
+    }
+}
+
+function renderAddTaskSubtasks() {
     const subtasks = newTask['subtasks'];
     const list = document.getElementById('subtasksList');
     list.innerHTML = '';
@@ -23,6 +47,52 @@ function renderSubtasks() {
         let subtask = subtasks[i];
         list.innerHTML += subtaskHTML(subtask, i);
     }
+}
+
+function focusAddTaskDue() {
+    const container = document.getElementById('addTaskDueContainer');
+    unfocusAll();
+    container.style.borderColor = 'var(--lightBlue1)';
+    addTaskDueText.focus();
+    document.addEventListener("mousedown", unfocusAddTaskDue); // reagiert auf Clicks abseits des Containers
+}
+
+function unfocusAddTaskDue() {
+    const container = document.getElementById('addTaskDueContainer');
+    container.style.borderColor = '';
+    setAddTaskDueDate();
+    document.removeEventListener("mousedown", unfocusAddTaskDue);
+}
+
+function checkAddTaskDueText() {
+    let value = addTaskDueText.value;
+    const length = value.length;
+    console.log(length);
+    if(length >= 2) {
+        addTaskDueText.value = value.substring(0,2) + '/' + value.substring(4);
+    }
+}
+
+function setAddTaskDueText() {
+    const date = new Date(addTaskDue.value);
+    const yyyy = date.getFullYear();
+    let mm = date.getMonth() + 1; // noch nicht zweistellig formatiert
+    if(mm < 10) { // falls Monat kleiner 10
+        mm = '0' + mm; // füge vorher 0 hinzu (als String)
+    }
+    let dd = date.getDate(); // siehe Monate/mm
+    if(dd < 10) {
+        dd = '0' + dd;
+    }
+    addTaskDueText.value = dd + '/' + mm + '/' + yyyy;
+}
+
+function setAddTaskDueDate() {
+    const date = addTaskDueText.value;
+    const yyyy = date.substring(6);
+    const mm = date.substring(3,5);
+    const dd = date.substring(0,2);
+    addTaskDue.value = yyyy + '-' + mm + '-' + dd;
 }
 
 /** 
@@ -86,6 +156,7 @@ function focusSubtask() {
     const container = document.getElementById('addSubtaskInputContainer');
     const btnsPassive = document.getElementById('addSubtaskIconsPassive');
     const btnsActive = document.getElementById('addSubtaskIconsActive');
+    unfocusAll();
     container.style.borderColor = 'var(--lightBlue1)';
     addSubtask.focus();
     btnsPassive.style.display = 'none';
@@ -98,13 +169,14 @@ function focusSubtask() {
  */
 function unfocusSubtask() {
     const container = document.getElementById('addSubtaskInputContainer');
-    container.style.borderColor = 'var(--lightGray1)';
+    container.style.borderColor = '';
     if (addSubtask.value == '') {
         const btnsPassive = document.getElementById('addSubtaskIconsPassive');
         const btnsActive = document.getElementById('addSubtaskIconsActive');
         btnsPassive.style.display = '';
         btnsActive.style.display = 'none';
     }
+    document.removeEventListener("click", unfocusSubtask);
 }
 
 /**
@@ -121,7 +193,7 @@ function cancelSubtask() {
 function createSubtask() {
     if (addSubtask.value) {
         newTask['subtasks'].push(addSubtask.value);
-        renderSubtasks();
+        renderAddTaskSubtasks();
     }
     cancelSubtask();
 }
@@ -139,7 +211,7 @@ function editSubtask(index) {
     const length = input.value.length;
     input.focus();
     input.setSelectionRange(length, length);
-    document.addEventListener("click", renderSubtasks); // Klick neben Liste wird als Abbruch der Bearbeitung gewertet
+    document.addEventListener("click", renderAddTaskSubtasks); // Klick neben Liste wird als Abbruch der Bearbeitung gewertet
 }
 
 /**
@@ -154,7 +226,7 @@ function confirmSubtaskEdit(index) {
     } else {
         subtasks.splice(index, 1);
     }
-    renderSubtasks();
+    renderAddTaskSubtasks();
 }
 
 /**
@@ -164,36 +236,34 @@ function confirmSubtaskEdit(index) {
 function removeSubtask(index) {
     let subtasks = newTask['subtasks'];
     subtasks.splice(index, 1);
-    renderSubtasks();
+    renderAddTaskSubtasks();
 }
 
-// function createTask() {
-//     Folgende Deklaration muss nicht leer erfolgen, sondern kann direkt die Werte aus dem Formular übernehmen:  
-//     let task = {
-//         id: ,            
-//         title: ,
-//         description: ,
-//         assignedTo : ,
-//         due: ,
-//         prio: ,
-//         category: ,
-//         subtasks: ,
-//         timestamp: ,
-//         status:
-//     };
-//     tasks.push(task);
-// }
+function contactAssignedHTML(contact, id) {
+    return /* html */`
+        <li onclick="toggleCheckbox(${id})">
+            <div class="contactInitials">
+                <span id="user_name">AM</span>
+            </div>
+            <div class="contactDetails">
+                        <div><span id="name">Anton</span><span id="lastname"> Mayer</span></div>
+            </div>
+            <button type="button" onclick="event.stopPropagation(); toggleCheckbox(${id})">
+                <img id="${id}" src="./assets/img/checkbox.svg" alt="unchecked">
+            </button>
+        </li>`;
+}
 
 function subtaskHTML(subtask, index) {
     return /* html */`
         <li id="subtask${index}">
             &bull;
             <span ondblclick="editSubtask(${index})">${subtask}</span>
-            <button type="button" onclick="event.stopPropagation(); editSubtask(${index})" class="subtasksButton">
+            <button type="button" onclick="event.stopPropagation(); editSubtask(${index})">
                 <img src="./assets/img/edit.svg" alt="edit subtask">
             </button>
             <div class="vr"></div>
-            <button type="button" onclick="removeSubtask(${index})" class="subtasksButton">
+            <button type="button" onclick="removeSubtask(${index})">
                 <img src="./assets/img/remove.svg" alt="remove subtask">
             </button>
         </li>`;
