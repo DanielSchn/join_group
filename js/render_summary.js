@@ -1,7 +1,8 @@
 const userName = [];
 
 
-function initSummary() {
+async function initSummary() {
+    await init();
     setDaytime();
     renderUserName(); 
 }
@@ -66,8 +67,3 @@ function renderUserName() {
 }
 
 
-function renderLogo() {
-    let loadedUserName = localStorage.getItem('userName');
-    let capitalized = loadedUserName.charAt(0).toUpperCase();
-    document.getElementById('use_name').innerHTML = capitalized;
-}

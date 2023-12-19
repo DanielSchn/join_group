@@ -1,6 +1,6 @@
 async function init() {
   await includeHTML();
-
+  renderLogo();
 }
 
 async function includeHTML() {
@@ -161,4 +161,11 @@ function toggleCheckbox(checkbox) {
     checkbox.alt = 'checked';
   }
   checkbox.classList.toggle('checked');
+}
+
+
+function renderLogo() {
+  let loadedUserName = localStorage.getItem('userName');
+  let capitalized = loadedUserName.charAt(0).toUpperCase();
+  document.getElementById('use_name').innerHTML = capitalized;
 }
