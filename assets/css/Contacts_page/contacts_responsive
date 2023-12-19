@@ -1,0 +1,378 @@
+/* responsiv */
+
+@media (max-width: 1400px) {
+    #contactTitleBar {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    #devider {
+        height: 3px;
+        width: 216px;
+    }
+
+    #mainContactDetails {
+        top: 380px;
+    }
+}
+
+@media (max-width: 1250px) {
+
+    .mobile-d-none {
+        display: none !important;
+    }
+
+    #contacts {
+        z-index: -1;
+        width: auto;
+        right: 0;
+    }
+
+    #mainContactCard_Bg {
+        z-index: 2000;
+        position: fixed;
+        top: 96px;
+        bottom: 0;
+        left: 232px;
+        right: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(0, 0, 0, 0.25);
+    }
+
+    #closeWindowLayer {
+        z-index: 2500;
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    }
+
+    #closeWindowBtn {
+        display: block;
+        background-image: url(./assets/img/contacts/close.svg);
+        filter: brightness(0);
+        position: relative;
+        right: -223px;
+        height: 24px;
+        width: 24px;
+    }
+
+    #mainContactContainer {
+        z-index: 3000;
+        box-sizing: border-box;
+        margin: auto;
+        padding: 46px;
+        width: max-content;
+        height: fit-content;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 48px;
+        position: fixed;
+        top: 96px;
+        bottom: 0;
+        left: 232px;
+        right: 0;
+        background-color: white;
+        border-radius: 30px;
+        animation: swipeInFromRight 100ms ease-in-out;
+    }
+
+    #contactTitleBar {
+        position: static;
+    }
+
+    #contactsTitle {
+        font-size: 32px;
+    }
+
+    #devider {
+        width: 124px;
+    }
+
+    #contactsSlogan {
+        font-size: 18px;
+    }
+
+    #mainContactDetails {
+        position: static;
+    }
+}
+
+@media (max-width: 950px) {
+    header {
+        justify-content: end;
+    }
+
+    #headerName {
+        display: none;
+    }
+
+    #smalInterface img {
+        display: none;
+    }
+}
+
+@media (max-width: 850px) {
+
+    #closeWindowBtn {
+        right: -143px;
+    }
+
+    #mainContactContainer {
+        z-index: 3000;
+        box-sizing: border-box;
+        margin: auto;
+        padding: 46px;
+        width: max-content;
+        height: fit-content;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 48px;
+        position: fixed;
+        top: 96px;
+        bottom: 0;
+        left: 232px;
+        right: 0;
+        background-color: white;
+        border-radius: 30px;
+        animation: swipeInFromRight 100ms ease-in-out;
+    }
+
+    #mainContactContainer_1 {
+        gap: 24px;
+    }
+
+    .initialCircle {
+        width: 80px;
+        height: 80px;
+    }
+
+    .userNameFontSize {
+        font-size: 32px;
+    }
+}
+
+@media (max-width: 700px) {
+    header {
+        height: 80px;
+        padding: 0px 32px;
+        justify-content: space-between;
+    }
+
+    #mobileLogo {
+        display: block;
+    }
+
+    #user {
+        height: 40px;
+        width: 40px;
+        border: 2px solid #2A3647;
+        font-size: 14px;
+    }
+
+    aside {
+        display: none;
+    }
+
+    #contacts {
+        z-index: -2;
+        padding: 17px 0px;
+        top: 80px;
+        bottom: 80px;
+        left: 0;
+        box-shadow: none;
+    }
+
+    #mainContactCard_Bg {
+        top: 80px;
+        left: 0;
+    }
+
+    #mainContactContainer {
+        top: 80px;
+        left: 0;
+    }
+
+    #mobileMenuBox {
+        height: 80px;
+        background-color: #2A3647;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+
+    .linkAlign {
+        height: 76px;
+        width: 80px;
+        padding: 0px;
+        border-radius: 16px;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .linkAlign img {
+        height: 24px;
+    }
+
+    .activ_bg img {
+        filter: brightness(2);
+    }
+
+    .linkAlign a {
+        font-family: Open Sans, sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+    }
+}
+
+@media (max-width: 428px) {
+    #addContactBtnContainer {
+        display: none;
+    }
+
+    #mainContactCard_Bg, #closeWindowLayer {
+        display: none;
+    }
+
+    #mainContactContainer {
+        z-index: -1;
+        display: block;
+        top: 80px;
+        left: 0;
+        bottom: 80px;
+        margin: 0;
+        padding: 0;
+        height: auto;
+        width: 100%;
+        border-radius: 0;
+        background-color: #F6F7F8;
+    }
+
+    .showBackArrow {
+        height: 32px;
+        width: 32px;
+        background-image: url('./assets/img/contacts/arrow-left-line.svg');
+        position: fixed;
+        top: 128px;
+        right: 16px;
+    }
+
+    #contactTitleBar {
+        align-items: flex-start;
+        position: fixed;
+        top: 128px;
+        left: 16px;
+    }
+
+    #closeWindowBtn {
+        display: none;
+    }
+
+    #devider {
+        display: none;
+    }
+
+    #contactsTitle {
+        font-size: 47px;
+        height: 56.5px;
+    }
+
+    #devider2 {
+        display: block !important;
+        margin-top: 8px;
+        height: 3px;
+        width: 90px;
+        background-color: #29ABE2;
+        border-radius: 30px;
+    }
+
+    #contactsSlogan {
+        font-size: 20px;
+        height: 24px;
+    }
+
+    #mainContactDetails {
+        position: fixed;
+        top: 280px;
+        left: 16px;
+    }
+
+    #mainContactContainer_1 {
+        gap: 20px;
+    }
+
+    .userNameFontSize {
+        font-size: 27px;
+        font-weight: 400;
+    }
+
+    .responsiveUserNameFontSize {
+        font-size: 36px !important;
+        font-weight: 700 !important;
+    }
+
+    #mainContactContainer_2 {
+        height: 24px;
+    }
+
+    #settings {
+        display: none;
+    }
+
+    #mobileAddContactBtnContainer {
+        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        top: 758px;
+        right: 16px;
+    }
+
+    #mobileAddContactBtn {
+        height: 56px;
+        width: 56px;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #2A3647;
+        border: 1px solid #2A3647;
+        border-radius: 45px;
+        box-shadow: 0px 4px 4px 0 rgba(0, 0, 0, 0.25);
+    }
+
+    #mobileSettingBtnContainer {
+        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        top: 758px;
+        right: 16px;
+    }
+
+    #mobileSettingBtn {
+        height: 56px;
+        width: 56px;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #2A3647;
+        border: 1px solid #2A3647;
+        border-radius: 45px;
+        box-shadow: 0px 4px 4px 0 rgba(0, 0, 0, 0.25);
+    }
+}
