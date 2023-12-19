@@ -136,8 +136,14 @@ textarea::placeholder {
     color: var(--lightGray1);
 }
 
+.borderHover:hover {
+    border-color: var(--lightGray3); 
+}
+
 input:focus,
-textarea:focus {
+textarea:focus,
+.borderHover:focus,
+.borderHover:active {
     border-color: var(--lightBlue1);
 }
 

@@ -127,6 +127,10 @@ button.addTaskPrio3Selected {
     width: 20px;
 }
 
+#addSubtaskInputContainer {
+    cursor: text;
+}
+
 #addSubtaskIconsActive {
     display: flex;
     gap: 4px;

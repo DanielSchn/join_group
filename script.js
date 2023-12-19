@@ -70,9 +70,23 @@ document.addEventListener("DOMContentLoaded", function () {
 function toggleDropdown(id) {
   const menu = document.getElementById(id + 'Menu');
   if (menu.style.display == 'none') {
+    unfocusAll();
     showDropdown(id);
   } else {
     hideDropdown(id);
+  }
+}
+
+/**
+ * Fokus sämtlicher Elemente aufheben
+ */
+function unfocusAll() {
+  const dropdownMenus = document.querySelectorAll('.dropdownMenu'); // alle Elemente der Klasse .dropdownMenu
+  document.activeElement.blur(); // Default-Fokus aller Form-Elemente aufheben
+  for (let i = 0; i < dropdownMenus.length; i++) {
+    const dropdownMenu = dropdownMenus[i];
+    let id = dropdownMenu.id;
+    hideDropdown(id.replace('Menu', ''));
   }
 }
 
