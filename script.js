@@ -182,7 +182,7 @@ document.addEventListener('click', bodyClick);
 
 
 function bodyClick(event) {
-  if (!event.target.closest('#hiddenMenu') && !event.target.closest('#user')) {
+  if (hiddenMenu.style.display !== 'none' && !event.target.closest('#hiddenMenu') && !event.target.closest('#user')) {
     hideHiddenMenu();
   }
 }
@@ -209,12 +209,12 @@ function login() {
   let guest = guests.find(u => u.email == email.value && u.password == password.value);
   console.log(user || guest);
   if (user || guest) {
-      localStorage.setItem('isLoggedIn', 'true');
-      window.setTimeout(function () {
-          redirectToSummaryPage(user || guest);
-      }, 500);
+    localStorage.setItem('isLoggedIn', 'true');
+    window.setTimeout(function () {
+      redirectToSummaryPage(user || guest);
+    }, 500);
   } else {
-      document.getElementById('userNotFound').style.display = 'block';
+    document.getElementById('userNotFound').style.display = 'block';
   }
 }
 
