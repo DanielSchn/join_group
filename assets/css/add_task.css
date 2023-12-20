@@ -180,7 +180,7 @@ button.addTaskPrio3Selected {
 }
 
 #subtasksLeftMargin {
-    width: calc((var(--absoluteContentWidth) - 1px + var(--sidePadding)) / 2);
+    width: calc((var(--absoluteContentWidth) + 1px + var(--sidePadding)) / 2);
 }
 
 .subtasksListContainer {
@@ -341,12 +341,18 @@ button.addTaskPrio3Selected {
 @media (max-width: 1920px) {
     :root {
         --sidePadding: 128px;
+        --absoluteContentWidth: calc(100vw - var(--menuBarWidth) - calc(var(--sidePadding) * 5 / 2));
+    }
+
+    .addTaskForm {
+        max-width: calc(100% - var(--sidePadding) * 5 / 2);
     }
 }
 
 @media (max-width: 1440px) {
     :root {
         --sidePadding: 96px;
+        --absoluteContentWidth: calc(100vw - var(--menuBarWidth) - calc(var(--sidePadding) * 5 / 2));
     }
 }
 
@@ -357,10 +363,12 @@ button.addTaskPrio3Selected {
         --fontSizeNormal: 18px;
         --top: 80px;
         --bottom: 64px;
+        --absoluteContentWidth: calc(100vw - var(--menuBarWidth) - calc(var(--sidePadding) * 2));
     }
 
     .addTaskForm {
-        margin-right: var(--sidePadding);
+        margin: var(--top) var(--sidePadding) var(--bottom) var(--sidePadding);
+        max-width: calc(100% - var(--sidePadding) * 2);
     }
 
     .addTaskFormMain {
@@ -376,10 +384,6 @@ button.addTaskPrio3Selected {
     textarea {
         padding-top: 16px;
         height: 104px;
-    }
-
-    select {
-        padding: 10px 12px;
     }
 
     .addTaskBottom .btnPrimary,
@@ -404,8 +408,8 @@ button.addTaskPrio3Selected {
         display: none;
     }
 
-    #subtasksList {
-        width: calc(50% - var(--sidePadding) * 1/3);
+    #subtasksLeftMargin {
+        width: calc(var(--absoluteContentWidth) / 2 + var(--sidePadding) / 3);
     }
 }
 
@@ -432,6 +436,10 @@ button.addTaskPrio3Selected {
     .subtasksContainer {
         width: 100%;
         justify-content: flex-start;
+    }
+
+    #subtasksLeftMargin {
+        display: none;
     }
 
     #subtasksList {
@@ -470,6 +478,7 @@ button.addTaskPrio3Selected {
 
     .addTaskBottom {
         position: fixed;
+        z-index: 2;
         left: 0;
         right: 0;
         bottom: 80px;
@@ -503,5 +512,11 @@ button.addTaskPrio3Selected {
 
     .addTaskBottom .btnPrimary {
         font-size: var(--fontSizeNormal);
+    }
+}
+
+@media (max-width: 352px) {
+    #addSubtask:focus {
+        width: calc(100% - 100px);
     }
 }

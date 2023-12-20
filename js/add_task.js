@@ -15,8 +15,11 @@ let newTask = {
  * Initialisierung (bei Onload, Body)
  */
 async function initAddTask() {
-    await init();
+    // await init();
+    await includeHTML(); // !!! wenn Ladeprozess implementiert ist, durch await init() ersetzen !!!
     renderAddTaskForm();
+    let today = new Date(); // heutiges Datum
+    addTaskDue.min = today.toISOString().slice(0, -14); // Minimalwert von Date-Input auf heutigen Tag setzen
 }
 
 /**
@@ -49,7 +52,7 @@ function renderAddTaskAssigned() {
 }
 
 /**
- * Subtasks rendern
+ * subtasks rendern
  */
 function renderAddTaskSubtasks() {
     const subtasks = newTask['subtasks'];
@@ -107,7 +110,6 @@ function checkAddTaskDueText() {
         if (isDateValid(transformedValue)) {
             addTaskDueContainer.style.borderColor = 'var(--lightBlue1)';
             addTaskDue.value = transformedValue;
-            setAddTaskDueText();
         } else {
             addTaskDueContainer.style.borderColor = '#FF8190'; // Border rot färben und...
             addTaskDueText.value = value.substring(0, 10); // ...Text auf 10 Zeichen begrenzen
@@ -134,21 +136,22 @@ function transformDate(ddmmyyyy) {
  */
 function isDateValid(yyyymmdd) {
     let date = new Date(yyyymmdd); // Date-Objekt erzeugen
-    const year = date.getFullYear();
+    let year = date.getFullYear();
     let month = date.getMonth() + 1;
     let day = date.getDate();
     return date !== 'Invalid Date' && // keine unerlaubten Zeichen
         Date.now() <= Date.parse(date) && // Datum liegt in Zukunft
-        monthContainsDay(day, month) // Tag in Monat enthalten
+        monthContainsDay(day, month, year) // Tag in Monat enthalten
 }
 
 /**
  * Prüfen, ob der jeweilige Tag sich im Monat befindet (wird durch Default-Methoden für Date-Objekte noch nicht erfüllt)
  * @param {number} day 
- * @param {number} month 
+ * @param {number} month
+ * @param {number} year  
  * @returns TRUE, falls Tag in Monat enthalten, FALSE, falls nicht
  */
-function monthContainsDay(day, month) {
+function monthContainsDay(day, month, year) {
     return (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) || // Monate mit 31 Tagen
     ((month == 4 || month == 6 || month == 9 || month == 11) && day <= 30) || // in bestimmten Monaten kleiner gleich 30
     (month == 2 && year % 4 == 0 && day <= 29) || // in Schaltjahren im Februar kleiner gleich 29
@@ -238,7 +241,7 @@ function focusSubtask() {
     addSubtask.focus();
     btnsPassive.style.display = 'none';
     btnsActive.style.display = '';
-    document.addEventListener("click", unfocusSubtask); // reagiert auf Clicks abseits des Containers
+    document.addEventListener("mousedown", unfocusSubtask); // reagiert auf Clicks abseits des Containers
 }
 
 /**
@@ -253,7 +256,7 @@ function unfocusSubtask() {
         btnsPassive.style.display = '';
         btnsActive.style.display = 'none';
     }
-    document.removeEventListener("click", unfocusSubtask);
+    document.removeEventListener("mousedown", unfocusSubtask);
 }
 
 /**
