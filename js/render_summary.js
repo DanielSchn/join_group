@@ -54,38 +54,6 @@ function fillInGuest() {
 
 
 /**
- * Login function and go to summary page when login User and password are match
- */
-function login() {
-    let email = document.getElementById('email');
-    let password = document.getElementById('signUpPassword');
-    let user = users.find(u => u.email == email.value && u.password == password.value);
-    let guest = guests.find(u => u.email == email.value && u.password == password.value);
-    console.log(user || guest);
-    if (user || guest) {
-        localStorage.setItem('isLoggedIn', 'true');
-        window.setTimeout(function () {
-            redirectToSummaryPage(user || guest);
-        }, 500);
-    } else {
-        document.getElementById('userNotFound').style.display = 'block';
-    }
-}
-
-
-function logout() {
-    localStorage.removeItem("isLoggedIn");
-    window.location.href = "index.html";
-}
-
-
-function redirectToSummaryPage(user) {
-    localStorage.setItem('userName', user.name);
-    window.location.href = "summary.html";
-}
-
-
-/**
  * Renderfunction for the Username at summary dashboard.
  */
 function renderUserName() {
