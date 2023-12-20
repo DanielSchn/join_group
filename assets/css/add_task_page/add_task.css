@@ -58,23 +58,22 @@
     gap: 16px;
 }
 
+#addTaskAssignedMenu button {
+    box-shadow: none;
+}
+
 .addTaskAssignedChecked {
     background: var(--darkBlue1);
     color: white;
 }
 
-.addTaskAssignedChecked:hover {
+#addTaskAssignedMenu .addTaskAssignedChecked:hover {
     background: var(--darkBlue2);
 }
 
-#addTaskAssignedMenu li:hover button img {
-    content: url('../../img/checkbox_white.svg');
-}
-
-#addTaskAssignedMenu li:hover .checked {
+#addTaskAssignedMenu .checked {
     content: url('../../img/checkbox_white_checked.svg');
 }
-
 
 #addTaskAssignedMenu li:active {
     background: var(--darkBlue2);

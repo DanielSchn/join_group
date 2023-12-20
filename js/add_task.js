@@ -51,20 +51,33 @@ function renderAddTaskAssigned() {
     }
 }
 
+
+/**
+ * Kontakt in sichtbarer Assigned-Liste markieren oder Markierung entfernen
+ * @param {element} checkbox - ID/Element der Checkbox 
+ */
 function toggleAssigned(checkbox) {
-    let assigned = newTask['assignedTo'];
     const li = checkbox.parentNode.parentNode; // selektiere li-Element aus Checkbox-ID
     let id = checkbox.id; // erhalte ID-String
     id = id.charAt(id.length - 1); // ID-Zahl ist letztes Zeichen aus String
+    id = parseInt(id); // zu Zahl umwandeln
     li.classList.toggle('addTaskAssignedChecked');
     toggleCheckbox(checkbox);
+    toggleAssignedArray(id);
+}
+
+/**
+ * Kontakt in assignedTo-Array hinzufügen oder entfernen
+ * @param {number} id - Kontakt-ID aus assignedTo-Array
+ */
+function toggleAssignedArray(id) {
+    let assigned = newTask['assignedTo'];
     if (assigned.includes(id)) {
         const index = assigned.indexOf(id);
         assigned.splice(index, 1);
     } else {
         assigned.push(id);
     }
-    console.log(newTask['assignedTo']);
 }
 
 /**
