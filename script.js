@@ -178,11 +178,16 @@ function hideHiddenMenu() {
 }
 
 
-document.addEventListener('click', bodyClick);
+// document.addEventListener('click', bodyClick);
+
+if (document.getElementById('uniqueElement')) {
+} else {
+  document.addEventListener('click', bodyClick);
+}
 
 
 function bodyClick(event) {
-  if (hiddenMenu.style.display !== 'none' && !event.target.closest('#hiddenMenu') && !event.target.closest('#user')) {
+  if (!event.target.closest('#hiddenMenu') && !event.target.closest('#user')) {
     hideHiddenMenu();
   }
 }
