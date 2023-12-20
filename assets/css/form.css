@@ -4,10 +4,17 @@ textarea {
     max-width: 100%;
     border-radius: 10px;
     border: 1px solid var(--lightGray1);
-    padding: 12px 16px;
+    box-sizing: border-box;
+    padding: 0 16px;
     outline: none;
     font-family: 'Inter';
     font-size: var(--fontSizeNormal);
+}
+
+input,
+.extendedInput {
+    height: 48px;
+    padding: 0 16px;
 }
 
 textarea {
@@ -68,7 +75,6 @@ input[type="date"]::-webkit-calendar-picker-indicator:active {
     background: white;
     border-radius: 10px;
     border: 1px solid var(--lightGray1);
-    padding: 12px 16px;
 }
 
 .extendedInput input {
@@ -77,7 +83,6 @@ input[type="date"]::-webkit-calendar-picker-indicator:active {
     background: none;
     border: none;
     padding: 0;
-
 }
 
 .dropdownInput input::placeholder {

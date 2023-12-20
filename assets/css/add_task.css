@@ -376,9 +376,8 @@ button.addTaskPrio3Selected {
     }
 
     input,
-    textarea,
     .extendedInput {
-        padding: 10px 16px;
+        height: 44px;
     }
 
     textarea {
@@ -423,9 +422,8 @@ button.addTaskPrio3Selected {
     }
 
     input,
-    textarea,
     .extendedInput {
-        padding: 8px 16px;
+        height: 40px;
     }
 
     textarea {
