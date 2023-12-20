@@ -126,6 +126,7 @@ function generateNoTask(status){
 function showTaskCard(element, id) {
     document.getElementById('taskCard').innerHTML = generateTaskCard(element, id);
     renderCardPrio(element, id);
+    renderCardSubtasks(element, id)
 
 }
 
@@ -163,7 +164,7 @@ function generateTaskCard(task, id) {
 
             <div class="subtasksContainer">
                 <div class="taskSection">Subtasks:</div>
-                <div class="subtasks" id="subtasks${id}"></div>
+                <div class="subtasks" id="subtasks"></div>
             </div>
             <div class="taskFooter">
 
@@ -246,12 +247,48 @@ function closeTask(){
     document.getElementById('taskCard').innerHTML = '';
 }
 
-
-function renderCardAssigned(){}
-function renderCardDate(){}
-function renderCardSubtasks(){}
 function renderCardPrio(task, id){
     prio = task["prio"];
     result = prio.charAt(0).toUpperCase() + prio.slice(1);
     document.getElementById(`taskPrio${id}`).innerHTML = `${result}`;
+}
+
+function renderCardAssigned(){}
+function renderCardDate(){}
+
+function renderCardSubtasks(task, id){
+    let subtasks = document.getElementById('subtasks');
+    subtasks.innerHTML = '';
+
+    if(task.subtasks.length === 0){
+        subtasks.innerHTML = '<div class="taskCardSubtask"><span>No subtask createt</span></div>'
+    } else
+        for (let i = 0; i < task.subtasks.length; i++){
+            subtasks.innerHTML += `
+            <div class="taskCardSubtask">
+              <input
+                id="checkboxSubtask${i}"
+                type="checkbox"
+                onclick="updateSubtask(${id}, ${i})"
+                ${task.subtasks[i]['status'] === "done" ? "checked" : ""} 
+              />
+              <p onclick="updateSubtask(${id}, ${i})">${task.subtasks[i]['title']}</p>
+            </div>`
+        }
+
+}
+
+function updateSubtask(id, i){
+    tasks[id].subtasks[i].status === 'done' ? 'toDo' : 'done';
+    renderCardSubtasks (tasks[id], id);
+}
+
+function showAddTaskCard(){
+    addtask = document.getElementById('taskCard');
+    addtask.innerHTML = `
+    <div class="addTaskCardContainer" onclick=closeTask()>
+    <div class = "addTaskCard" id="addTaskCard" w3-include-html="assets/templates/add_task_template.html"></div>
+    </div>`;
+
+    init();
 }

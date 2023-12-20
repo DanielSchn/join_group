@@ -9,9 +9,12 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="assets/css/style_board.css">
     <link rel="stylesheet" href="fonts.css">
+    <link rel="stylesheet" href="assets/css/form.css">
+    <link rel="stylesheet" href="assets/css/add_task.css">
     <script src="js/TEST_TASKS2.js"></script>
     <script src="script.js"></script>
     <script src="js/board.js"></script>
+    <script src="js/add_task.js"></script>
     
 </head>
 
@@ -33,7 +36,7 @@
                     <input id="findTask" type="text" placeholder="Find Task" />
                     <div class="findTaskImg" onclick=""><img src="assets/img/menu_icons/search.png" alt="" /></div>
                 </div>
-                <button class="addTaskDesktop" onclick="">
+                <button class="addTaskDesktop" onclick="showAddTaskCard()">
                     <b>Add task</b>
                     <img src="assets/img/menu_icons/add.svg" alt="" />
                 </button>
@@ -45,7 +48,7 @@
         <div class="sectionDragArea">
             <div class="headerDragArea">
                 <h2>To do</h2>
-                <img onclick="" class="addTaskToSection addTaskDesktop" src="assets/img/menu_icons/plus_button.svg"
+                <img onclick="showAddTaskCard()" class="addTaskToSection addTaskDesktop" src="assets/img/menu_icons/plus_button.svg"
                     alt="Add Task to to do" />
             </div>
             <div id="toDo" class="dragArea" ondrop="moveTo('toDo'); removeHighlight('toDo')"
@@ -56,7 +59,7 @@
         <div class="sectionDragArea">
             <div class="headerDragArea">
                 <h2>In pogress</h2>
-                <img onclick="" class="addTaskToSection addTaskDesktop" src="assets/img/menu_icons/plus_button.svg"
+                <img onclick="showAddTaskCard()" class="addTaskToSection addTaskDesktop" src="assets/img/menu_icons/plus_button.svg"
                     alt="Add Task to in Progress" />
             </div>
             <div id="inProgress" class="dragArea" ondrop="moveTo('inProgress'); removeHighlight('inProgress')"
@@ -68,7 +71,7 @@
             <div class="headerDragArea">
                 <h2>Await feedback</h2>
 
-                <img onclick="" class="addTaskToSection addTaskDesktop" src="assets/img/menu_icons/plus_button.svg"
+                <img onclick="showAddTaskCard()" class="addTaskToSection addTaskDesktop" src="assets/img/menu_icons/plus_button.svg"
                     alt="Add Task to Await Feedback" />
             </div>
             <div id="awaitFeedback" class="dragArea" ondrop="moveTo('awaitFeedback'); removeHighlight('awaitFeedback')"

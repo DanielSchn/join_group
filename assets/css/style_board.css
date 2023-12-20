@@ -528,3 +528,32 @@
     margin: 0px 8px;
     background-color: #d1d1d1;
   }
+
+  .taskCardSubtask {
+    display: flex;
+    padding: 7px 16px;
+    align-items: center;
+    align-self: stretch;
+    border-radius: 10px;
+  } 
+
+  .addTaskCardContainer {
+    position: fixed;
+    top:0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 101;
+  }
+
+  .addTaskCard {
+    background-color: white;
+    width: 1116px;
+    height: 870px;
+    border-radius: 30px;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
+  }
