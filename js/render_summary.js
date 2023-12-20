@@ -73,6 +73,12 @@ function login() {
 }
 
 
+function logout() {
+    localStorage.removeItem("isLoggedIn");
+    window.location.href = "index.html";
+}
+
+
 function redirectToSummaryPage(user) {
     localStorage.setItem('userName', user.name);
     window.location.href = "summary.html";
