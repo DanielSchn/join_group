@@ -1,4 +1,5 @@
 let tasks = TEST_TASKS;
+let filteredTasks = tasks;
 
 let currentDraggedElement;
 
@@ -11,7 +12,7 @@ function updateHTML() {
 }
 
 function updateToDo() {
-    let todo = tasks.filter(t => t['status'] == 'toDo');
+    let todo = filteredTasks.filter(t => t['status'] == 'toDo');
     let status = 'to do';
 
     document.getElementById('toDo').innerHTML = '';
@@ -28,7 +29,7 @@ function updateToDo() {
 }
 
 function updateInProgress() {
-    let inprogress = tasks.filter(t => t['status'] == 'inProgress')
+    let inprogress = filteredTasks.filter(t => t['status'] == 'inProgress')
     let status = 'in progress';
 
     document.getElementById('inProgress').innerHTML = '';
@@ -45,7 +46,7 @@ function updateInProgress() {
 }
 
 function updateAwaitFeedback() {
-    let feedback = tasks.filter(t => t['status'] == 'awaitFeedback');
+    let feedback = filteredTasks.filter(t => t['status'] == 'awaitFeedback');
     let status = 'await Feedback';
 
     document.getElementById('awaitFeedback').innerHTML = '';
@@ -59,11 +60,11 @@ function updateAwaitFeedback() {
             document.getElementById('awaitFeedback').innerHTML += generateTask(element);
             generateSubtask(element);
         }
-    
+
 }
 
 function updateDone() {
-    let done = tasks.filter(t => t['status'] == 'done')
+    let done = filteredTasks.filter(t => t['status'] == 'done')
     let status = 'done';
 
     document.getElementById('done').innerHTML = '';
@@ -116,8 +117,8 @@ function generateTask(element) {
 
 }
 
-function generateNoTask(status){
-         return `
+function generateNoTask(status) {
+    return `
             <div class="noTaskContainer">
                 <div class="noTask">No tasks ${status}</div>
             </div>`
@@ -243,24 +244,24 @@ function updateProgressBar(subtasks, doneSubtasksDiv, progressbarFillerDiv) {
     progressbarFillerDiv.style.width = `${fillWidth}px`;
 }
 
-function closeTask(){
+function closeTask() {
     document.getElementById('taskCard').innerHTML = '';
 }
 
-function renderCardPrio(task, id){
+function renderCardPrio(task, id) {
     prio = task["prio"];
     result = prio.charAt(0).toUpperCase() + prio.slice(1);
     document.getElementById(`taskPrio${id}`).innerHTML = `${result}`;
 }
 
-function renderCardSubtasks(task, id){
+function renderCardSubtasks(task, id) {
     let subtasks = document.getElementById('subtasks');
     subtasks.innerHTML = '';
 
-    if(task.subtasks.length === 0){
+    if (task.subtasks.length === 0) {
         subtasks.innerHTML = '<div class="taskCardSubtask"><span>No subtask createt</span></div>'
     } else
-        for (let i = 0; i < task.subtasks.length; i++){
+        for (let i = 0; i < task.subtasks.length; i++) {
             subtasks.innerHTML += `
             <div class="taskCardSubtask">
               <input
@@ -275,12 +276,12 @@ function renderCardSubtasks(task, id){
 
 }
 
-function updateSubtask(id, i){
+function updateSubtask(id, i) {
     tasks[id].subtasks[i].status === 'done' ? 'toDo' : 'done';
-    renderCardSubtasks (tasks[id], id);
+    renderCardSubtasks(tasks[id], id);
 }
 
-function showAddTaskCard(){
+function showAddTaskCard() {
     addtask = document.getElementById('taskCard');
     addtask.innerHTML = `
     <div class="addTaskCardContainer" onclick="closeTask()">
@@ -290,5 +291,26 @@ function showAddTaskCard(){
     init();
 }
 
-function renderCardAssigned(){}
-function renderCardDate(){}
+function renderCardAssigned() { }
+function renderCardDate() { }
+
+function searchTask() {
+    let search = document.getElementById('findTask').value.toLowerCase();
+    filteredTasks = [];
+    for (let i = 0; i < tasks.length; i++) {
+        let title = tasks[i]['title'].toLowerCase();
+        let description = tasks[i]['description'].toLowerCase();
+        if (title.includes(search) || description.includes(search)) {
+            filteredTasks.push(tasks[i]);
+        }
+    }
+    updateHTML();
+}
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    let searchInput = document.getElementById('findTask');
+    searchInput.addEventListener("input", function () {
+        searchTask();
+    });
+});
