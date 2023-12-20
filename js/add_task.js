@@ -11,16 +11,25 @@ let newTask = {
     status: ''
 };
 
+/**
+ * Initialisierung (bei Onload, Body)
+ */
 async function initAddTask() {
     await init();
     renderAddTaskForm();
 }
 
+/**
+ * allgemeine Render-Funktion
+ */
 function renderAddTaskForm() {
     renderAddTaskAssigned();
     renderAddTaskSubtasks();
 }
 
+/**
+ * assigned-Liste rendern
+ */
 function renderAddTaskAssigned() {
     // const contacts = [LADEN VON USER-DATEN]
     const assigned = [];
@@ -39,6 +48,9 @@ function renderAddTaskAssigned() {
     }
 }
 
+/**
+ * Subtasks rendern
+ */
 function renderAddTaskSubtasks() {
     const subtasks = newTask['subtasks'];
     const list = document.getElementById('subtasksList');
@@ -49,23 +61,31 @@ function renderAddTaskSubtasks() {
     }
 }
 
+/**
+ * due-Feld fokussieren
+ */
 function focusAddTaskDue() {
     const container = document.getElementById('addTaskDueContainer');
     unfocusAll();
-    console.log('focus');
     container.style.borderColor = 'var(--lightBlue1)';
     addTaskDueText.focus();
     document.addEventListener("mousedown", unfocusAddTaskDue); // reagiert auf Clicks abseits des Containers
 }
 
+/**
+ * due-Fokus aufheben
+ */
 function unfocusAddTaskDue() {
-    console.log('unfocus');
     const container = document.getElementById('addTaskDueContainer');
     container.style.borderColor = '';
     setAddTaskDueText();
     document.removeEventListener("mousedown", unfocusAddTaskDue);
 }
 
+/**
+ * an passenden Stellen automatisch '/' einfügen
+ * @param {event} e 
+ */
 function autofillAddTaskDueText(e) {
     const value = addTaskDueText.value;
     const key = e.key;
@@ -74,9 +94,12 @@ function autofillAddTaskDueText(e) {
     if (key != ('Backspace' || '/') && (length == 2 || length == 5)) { // an den passenden Stellen...
         addTaskDueText.value = value + '/'; // ...automatisch '/' einfügen
     }
-    checkAddTaskDueText();
+    checkAddTaskDueText(); // Eingabe prüfen
 }
 
+/**
+ * Datumseingabe prüfen
+ */
 function checkAddTaskDueText() {
     const value = addTaskDueText.value;
     if (value.length >= 10) {
@@ -92,6 +115,11 @@ function checkAddTaskDueText() {
     }
 }
 
+/**
+ * Datumsstring umkehren
+ * @param {string} ddmmyyyy
+ * @returns yyyymmdd
+ */
 function transformDate(ddmmyyyy) {
     let yyyy = ddmmyyyy.substring(6);
     let mm = ddmmyyyy.substring(3, 5);
@@ -99,21 +127,37 @@ function transformDate(ddmmyyyy) {
     return yyyy + '-' + mm + '-' + dd;
 }
 
+/**
+ * Datum auf Gültigkeit prüfen
+ * @param {string} yyyymmdd 
+ * @returns TRUE, falls Datum gültig, FALSE, falls ungültig
+ */
 function isDateValid(yyyymmdd) {
     let date = new Date(yyyymmdd); // Date-Objekt erzeugen
     const year = date.getFullYear();
-    const month = date.getMonth() + 1;
-    const day = date.getDate();
+    let month = date.getMonth() + 1;
+    let day = date.getDate();
     return date !== 'Invalid Date' && // keine unerlaubten Zeichen
         Date.now() <= Date.parse(date) && // Datum liegt in Zukunft
-        (
-            day <= 31 || // Tag kleiner als 31
-            ((month == 4 || month == 6 || month == 9 || month == 11) && day <= 30) || // in bestimmten Monaten kleiner als 30
-            (month == 2 && year % 4 == 0 && day <= 29) || // in Schaltjahren im Februar kleiner als 29
-            (month == 2 && year % 4 !== 0 && day <= 28) // außerhalb von Schaltjahren kleiner als 28
-        );
+        monthContainsDay(day, month) // Tag in Monat enthalten
 }
 
+/**
+ * Prüfen, ob der jeweilige Tag sich im Monat befindet (wird durch Default-Methoden für Date-Objekte noch nicht erfüllt)
+ * @param {number} day 
+ * @param {number} month 
+ * @returns TRUE, falls Tag in Monat enthalten, FALSE, falls nicht
+ */
+function monthContainsDay(day, month) {
+    return (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) || // Monate mit 31 Tagen
+    ((month == 4 || month == 6 || month == 9 || month == 11) && day <= 30) || // in bestimmten Monaten kleiner gleich 30
+    (month == 2 && year % 4 == 0 && day <= 29) || // in Schaltjahren im Februar kleiner gleich 29
+    (month == 2 && year % 4 !== 0 && day <= 28); // außerhalb von Schaltjahren kleiner gleich 28
+}
+
+/**
+ * Text-Input an Date-Input anpassen
+ */
 function setAddTaskDueText() {
     if (addTaskDue.value) {
         const date = new Date(addTaskDue.value);
