@@ -275,3 +275,77 @@ aside {
     font-weight: 700;
     color: #29ABE2;
 }
+
+/* responsive Header */
+
+@media (max-width: 950px) {
+    header {
+        justify-content: end;
+    }
+
+    #headerName {
+        display: none;
+    }
+
+    #smalInterface img {
+        display: none;
+    }
+}
+
+@media (max-width: 700px) {
+    header {
+        height: 80px;
+        padding: 0px 32px;
+        justify-content: space-between;
+    }
+
+    #mobileLogo {
+        display: block;
+    }
+
+    #user {
+        height: 40px;
+        width: 40px;
+        border: 2px solid #2A3647;
+        font-size: 14px;
+    }
+}
+
+/* Responsive Side Menu */
+
+@media (max-width: 700px) {
+    #mobileMenuBox {
+        height: 80px;
+        background-color: #2A3647;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+
+    .linkAlign {
+        height: 76px;
+        width: 80px;
+        padding: 0px;
+        border-radius: 16px;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .linkAlign img {
+        height: 24px;
+    }
+
+    .activ_bg img {
+        filter: brightness(2);
+    }
+
+    .linkAlign a {
+        font-family: Open Sans, sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+    }
+}

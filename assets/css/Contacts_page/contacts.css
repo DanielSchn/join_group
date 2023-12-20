@@ -230,8 +230,16 @@
     color: #2A3647;
 }
 
-#edit:hover img {
-    content: url('./assets/img/contacts/edit_pen_blue.svg');
+#edit_img {
+    height: 24px;
+    width: 24px;
+    background-image: url('./assets/img/contacts/edit_pen.svg');
+}
+
+#edit_img:hover {
+    height: 24px;
+    width: 24px;
+    background-image: url('./assets/img/contacts/edit_pen_blue.svg');
 }
 
 #edit:hover span {
@@ -417,9 +425,14 @@
 
  .addContactInput {
     flex: 1;
+    font-size: 20px;
     padding: 0;
     border: none;
     border-radius: 0;
+ }
+
+ .addContactInput:focus {
+    outline: none;
  }
 
 .addContactInput::placeholder {
