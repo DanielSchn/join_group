@@ -151,3 +151,16 @@ function renderLogo() {
   let capitalized = loadedUserName.charAt(0).toUpperCase();
   document.getElementById('use_name').innerHTML = capitalized;
 }
+
+
+/**
+ * Login validation on all pages except the index.html page
+ */
+// document.addEventListener("DOMContentLoaded", function () {
+//   if (window.location.href.indexOf("index.html") === -1) {
+//       let isLoggedIn = localStorage.getItem("isLoggedIn");
+//       if (!isLoggedIn) {
+//           window.location.href = "index.html";
+//       }
+//   }
+// });

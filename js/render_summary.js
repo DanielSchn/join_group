@@ -63,17 +63,19 @@ function login() {
     let guest = guests.find(u => u.email == email.value && u.password == password.value);
     console.log(user || guest);
     if (user || guest) {
+        localStorage.setItem('isLoggedIn', 'true');
         window.setTimeout(function () {
-            window.location.href = "summary.html";
-            if (user) {
-                localStorage.setItem('userName', user.name);
-            } else if (guest) {
-                localStorage.setItem('userName', guest.name);
-            }
-        }, 1000);
+            redirectToSummaryPage(user || guest);
+        }, 500);
     } else {
         document.getElementById('userNotFound').style.display = 'block';
     }
+}
+
+
+function redirectToSummaryPage(user) {
+    localStorage.setItem('userName', user.name);
+    window.location.href = "summary.html";
 }
 
 

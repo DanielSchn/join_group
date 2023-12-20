@@ -67,3 +67,14 @@ let TEST_TASKS = [
         status: 'done'
     }
 ]
+
+
+// /**
+//  * Login Validierung, suche noch den passenden Platz in einer Scriptdatei, da diese
+//  */
+// document.addEventListener("DOMContentLoaded", function () {
+//     let isLoggedIn = localStorage.getItem("isLoggedIn");
+//     if (!isLoggedIn) {
+//         window.location.href = "index.html";
+//     }
+//   });
