@@ -241,7 +241,7 @@ function focusSubtask() {
     addSubtask.focus();
     btnsPassive.style.display = 'none';
     btnsActive.style.display = '';
-    document.addEventListener("mousedown", unfocusSubtask); // reagiert auf Clicks abseits des Containers
+    document.addEventListener("click", unfocusSubtask); // reagiert auf Clicks abseits des Containers
 }
 
 /**
@@ -256,7 +256,7 @@ function unfocusSubtask() {
         btnsPassive.style.display = '';
         btnsActive.style.display = 'none';
     }
-    document.removeEventListener("mousedown", unfocusSubtask);
+    document.removeEventListener("click", unfocusSubtask);
 }
 
 /**

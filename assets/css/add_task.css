@@ -518,7 +518,7 @@ button.addTaskPrio3Selected {
         --fontSizeSmall: 12px;
     }
 
-    #addSubtask:focus {
+    #addSubtask {
         width: calc(100% - 100px);
     }
 }
