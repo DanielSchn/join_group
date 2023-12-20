@@ -35,9 +35,9 @@ function renderAddTaskForm() {
  */
 function renderAddTaskAssigned() {
     // const contacts = [LADEN VON USER-DATEN]
-    const assigned = [];
+
     const contacts = [0, 1, 2];
-    // const assigned = newTask['assigned']
+    const assigned = newTask['assignedTo'];
     // ...
     const list = document.getElementById('addTaskAssignedMenu');
     list.innerHTML = '';
@@ -46,9 +46,25 @@ function renderAddTaskAssigned() {
         let checkboxId = 'assignedContact' + i;
         list.innerHTML += contactAssignedHTML(contact, checkboxId);
         if (assigned.includes(i)) {
-            toggleCheckbox(checkboxId);
+            toggleAssigned(checkboxId);
         }
     }
+}
+
+function toggleAssigned(checkbox) {
+    let assigned = newTask['assignedTo'];
+    const li = checkbox.parentNode.parentNode; // selektiere li-Element aus Checkbox-ID
+    let id = checkbox.id; // erhalte ID-String
+    id = id.charAt(id.length - 1); // ID-Zahl ist letztes Zeichen aus String
+    li.classList.toggle('addTaskAssignedChecked');
+    toggleCheckbox(checkbox);
+    if (assigned.includes(id)) {
+        const index = assigned.indexOf(id);
+        assigned.splice(index, 1);
+    } else {
+        assigned.push(id);
+    }
+    console.log(newTask['assignedTo']);
 }
 
 /**
@@ -153,9 +169,9 @@ function isDateValid(yyyymmdd) {
  */
 function monthContainsDay(day, month, year) {
     return (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) || // Monate mit 31 Tagen
-    ((month == 4 || month == 6 || month == 9 || month == 11) && day <= 30) || // in bestimmten Monaten kleiner gleich 30
-    (month == 2 && year % 4 == 0 && day <= 29) || // in Schaltjahren im Februar kleiner gleich 29
-    (month == 2 && year % 4 !== 0 && day <= 28); // außerhalb von Schaltjahren kleiner gleich 28
+        ((month == 4 || month == 6 || month == 9 || month == 11) && day <= 30) || // in bestimmten Monaten kleiner gleich 30
+        (month == 2 && year % 4 == 0 && day <= 29) || // in Schaltjahren im Februar kleiner gleich 29
+        (month == 2 && year % 4 !== 0 && day <= 28); // außerhalb von Schaltjahren kleiner gleich 28
 }
 
 /**
@@ -321,14 +337,14 @@ function removeSubtask(index) {
 
 function contactAssignedHTML(contact, id) {
     return /* html */`
-        <li onclick="toggleCheckbox(${id})">
+        <li onclick="toggleAssigned(${id})">
             <div class="contactInitials">
                 <span id="user_name">AM</span>
             </div>
             <div class="contactDetails">
                         <div><span id="name">Anton</span><span id="lastname"> Mayer</span></div>
             </div>
-            <button type="button" onclick="event.stopPropagation(); toggleCheckbox(${id})">
+            <button type="button" onclick="event.stopPropagation(); toggleAssigned(${id})">
                 <img id="${id}" src="./assets/img/checkbox.svg" alt="unchecked">
             </button>
         </li>`;

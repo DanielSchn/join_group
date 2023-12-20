@@ -58,9 +58,13 @@
     gap: 16px;
 }
 
-#addTaskAssignedMenu li:hover {
+.addTaskAssignedChecked {
     background: var(--darkBlue1);
     color: white;
+}
+
+.addTaskAssignedChecked:hover {
+    background: var(--darkBlue2);
 }
 
 #addTaskAssignedMenu li:hover button img {
