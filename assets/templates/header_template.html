@@ -6,12 +6,16 @@
             <div id="help">
                 <img src="./assets/img/menu_icons/help.svg">
             </div>
-            <div id="user">
+            <div id="user" onclick="showHiddenMenu();">
                 <span id="use_name">SM</span>
             </div>
         </div>
     </div>
     <div class="hiddenMenuPos">
-        <div id="hiddenMenu"></div>
+        <div id="hiddenMenu" class="hiddenMenuText">
+            <a href="legal.html">Legal Notice</a>
+            <a href="privacy.html">Privacy Policy</a>
+            <a onclick="logout();">Log out</a>
+        </div>
     </div>
 </div>

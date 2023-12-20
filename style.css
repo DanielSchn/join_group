@@ -350,15 +350,29 @@ aside {
     }
 }
 
-#hiddenMenu {
+.hiddenMenuText {
     width: 150px;
     height: 158px;
     border-radius: 20px 0 20px 20px;
     background-color: var(--darkBlue1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    font-size: var(--fontSizeSmall);
+    gap: 16px;
+}
+
+.hiddenMenuText a {
+    cursor: pointer;
+    margin-left: 26px;
+    color: #CDCDCD;
 }
 
 .hiddenMenuPos {
     display: flex;
     justify-content: end;
     margin-right: 32px;
+    position: relative;
+    z-index: 1;
 }
