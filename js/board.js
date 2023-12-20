@@ -253,9 +253,6 @@ function renderCardPrio(task, id){
     document.getElementById(`taskPrio${id}`).innerHTML = `${result}`;
 }
 
-function renderCardAssigned(){}
-function renderCardDate(){}
-
 function renderCardSubtasks(task, id){
     let subtasks = document.getElementById('subtasks');
     subtasks.innerHTML = '';
@@ -286,9 +283,12 @@ function updateSubtask(id, i){
 function showAddTaskCard(){
     addtask = document.getElementById('taskCard');
     addtask.innerHTML = `
-    <div class="addTaskCardContainer" onclick=closeTask()>
-    <div class = "addTaskCard" id="addTaskCard" w3-include-html="assets/templates/add_task_template.html"></div>
+    <div class="addTaskCardContainer" onclick="closeTask()">
+    <div class = "addTaskCard" onclick="event.stopPropagation()" id="addTaskCard" w3-include-html="assets/templates/add_task_template.html"></div>
     </div>`;
 
     init();
 }
+
+function renderCardAssigned(){}
+function renderCardDate(){}
