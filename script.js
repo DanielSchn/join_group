@@ -164,3 +164,32 @@ function renderLogo() {
 //       }
 //   }
 // });
+
+
+function showHiddenMenu() {
+  let menu = document.getElementById('hiddenMenu');
+  menu.style.display = 'flex';
+}
+
+
+function hideHiddenMenu() {
+  let menu = document.getElementById('hiddenMenu');
+  menu.style.display = 'none';
+}
+
+
+document.addEventListener('click', bodyClick);
+document.getElementById('hiddenMenu').addEventListener('click', excludeDivClick);
+document.getElementById('user').addEventListener('click', excludeDivClick);
+
+
+function bodyClick(event) {
+  if (!event.target.closest('#hiddenMenu') && !event.target.closest('#user')) {
+    hideHiddenMenu();
+  }
+}
+
+
+function excludeDivClick(event) {
+  event.stopPropagation();
+}
