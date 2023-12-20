@@ -38,8 +38,8 @@
                     <h2>Due date<p class="red">*</p>
                     </h2>
                 </label>
-                <div id="addTaskDueContainer" class="borderHover" onmousedown="event.stopPropagation()" onclick="focusAddTaskDue()">
-                    <input type="text" id="addTaskDueText" placeholder="dd/mm/yyyy" onkeyup="handleAddTaskDueTextInput(event)">
+                <div id="addTaskDueContainer" class="borderHover" onmousedown="event.stopPropagation(); focusAddTaskDue()">
+                    <input type="text" id="addTaskDueText" placeholder="dd/mm/yyyy" onkeyup="autofillAddTaskDueText(event)" onchange="checkAddTaskDueText()">
                     <input type="date" id="addTaskDue" required onchange="setAddTaskDueText()">
                 </div>
             </div>

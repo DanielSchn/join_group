@@ -52,54 +52,66 @@ function renderAddTaskSubtasks() {
 function focusAddTaskDue() {
     const container = document.getElementById('addTaskDueContainer');
     unfocusAll();
+    console.log('focus');
     container.style.borderColor = 'var(--lightBlue1)';
     addTaskDueText.focus();
     document.addEventListener("mousedown", unfocusAddTaskDue); // reagiert auf Clicks abseits des Containers
 }
 
 function unfocusAddTaskDue() {
+    console.log('unfocus');
     const container = document.getElementById('addTaskDueContainer');
     container.style.borderColor = '';
-    setAddTaskDueDate();
+    setAddTaskDueText();
     document.removeEventListener("mousedown", unfocusAddTaskDue);
 }
 
-function handleAddTaskDueTextInput(e) {
+function autofillAddTaskDueText(e) {
     const value = addTaskDueText.value;
     const key = e.key;
     const length = value.length;
-    addTaskDueText.style.color = '';
+    addTaskDueContainer.style.borderColor = 'var(--lightBlue1)';
     if (key != ('Backspace' || '/') && (length == 2 || length == 5)) { // an den passenden Stellen...
         addTaskDueText.value = value + '/'; // ...automatisch '/' einfügen
     }
-    if (length >= 10) {
-        setAddTaskDueDate();
+    checkAddTaskDueText();
+}
+
+function checkAddTaskDueText() {
+    const value = addTaskDueText.value;
+    if (value.length >= 10) {
+        let transformedValue = transformDate(value); // String-Format umwandeln
+        if (isDateValid(transformedValue)) {
+            addTaskDueContainer.style.borderColor = 'var(--lightBlue1)';
+            addTaskDue.value = transformedValue;
+            setAddTaskDueText();
+        } else {
+            addTaskDueContainer.style.borderColor = '#FF8190'; // Border rot färben und...
+            addTaskDueText.value = value.substring(0, 10); // ...Text auf 10 Zeichen begrenzen
+        }
     }
 }
 
-function setAddTaskDueDate() {
-    const value = addTaskDueText.value;
-    let transformedValue = transformDate(value); // String-Format umwandeln
-    let date = new Date(transformedValue); // Date-Objekt erzeugen
-    if (isDateValid(date)) {
-        addTaskDueText.style.color = '';
-        addTaskDue.value = transformedValue;
-    } else {
-        addTaskDueText.style.color = '#FF8190'; // Text rot färben und...
-        addTaskDueText.value = value.substring(0, 10); // ...auf 10 Zeichen begrenzen
-    }
-} 
-
 function transformDate(ddmmyyyy) {
-    const yyyy = ddmmyyyy.substring(6);
-    const mm = ddmmyyyy.substring(3, 5);
-    const dd = ddmmyyyy.substring(0, 2);
+    let yyyy = ddmmyyyy.substring(6);
+    let mm = ddmmyyyy.substring(3, 5);
+    let dd = ddmmyyyy.substring(0, 2);
     return yyyy + '-' + mm + '-' + dd;
 }
 
-function isDateValid(date) {
-    return date !== 'Invalid Date' &&
-        Date.now() <= Date.parse(date);
+function isDateValid(yyyymmdd) {
+    let date = new Date(yyyymmdd); // Date-Objekt erzeugen
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+    return date !== 'Invalid Date' && // keine unerlaubten Zeichen
+        Date.now() <= Date.parse(date) && // Datum liegt in Zukunft
+        (
+            day <= 31 || // Tag kleiner als 31
+            ((month == 4 || month == 6 || month == 9 || month == 11) && day <= 30) || // in bestimmten Monaten kleiner als 30
+            (month == 2 && year % 4 == 0 && day <= 29) || // in Schaltjahren im Februar kleiner als 29
+            (month == 2 && year % 4 !== 0 && day <= 28) // außerhalb von Schaltjahren kleiner als 28
+        );
 }
 
 function setAddTaskDueText() {
