@@ -516,6 +516,10 @@ button.addTaskPrio3Selected {
 }
 
 @media (max-width: 352px) {
+    :root {
+        --fontSizeSmall: 12px;
+    }
+
     #addSubtask:focus {
         width: calc(100% - 100px);
     }
