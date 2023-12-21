@@ -69,6 +69,10 @@
         height: 104px;
     }
 
+    .dropdownMenu {
+        padding-top: 45px;
+    }
+
     .dropdownMenuWrapper {
         padding-top: 25px;
     }
@@ -121,6 +125,10 @@
     textarea {
         padding-top: 14px;
         height: 88px;
+    }
+
+    .dropdownMenu {
+        padding-top: 42px;
     }
 
     .dropdownMenuWrapper {
