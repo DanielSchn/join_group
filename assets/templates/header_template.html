@@ -1,10 +1,21 @@
-<img id="mobileLogo" src="./assets/img/menu_icons/Capa 3.svg">
-<div id="headerName">Kanban Project Management Tool</div>
-<div id="smalInterface">
-    <div id="help">
-        <img src="./assets/img/menu_icons/help.svg">
+<div>
+    <div class="headerStyle">
+        <img id="mobileLogo" src="./assets/img/menu_icons/Capa 3.svg">
+        <div id="headerName">Kanban Project Management Tool</div>
+        <div id="smalInterface">
+            <div id="help">
+                <img src="./assets/img/menu_icons/help.svg">
+            </div>
+            <div id="user" onclick="showHiddenMenu();">
+                <span id="use_name">SM</span>
+            </div>
+        </div>
     </div>
-    <div id="user">
-        <span id="use_name">SM</span>
+    <div class="hiddenMenuPos">
+        <div id="hiddenMenu" class="hiddenMenuText" style="display: none;">
+            <a href="legal.html">Legal Notice</a>
+            <a href="privacy.html">Privacy Policy</a>
+            <a onclick="logout();">Log out</a>
+        </div>
     </div>
 </div>
