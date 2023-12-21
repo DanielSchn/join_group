@@ -228,3 +228,36 @@ function redirectToSummaryPage(user) {
   localStorage.setItem('userName', user.name);
   window.location.href = "summary.html";
 }
+
+
+// function generateToken(userId) {
+//   const secretKey = 'DeinGeheimesSchluesselwort'; // Sollte sicher und geheim sein
+//   const expiresIn = 3600; // Gültigkeitsdauer des Tokens in Sekunden (hier: 1 Stunde)
+
+//   const expirationTime = Date.now() + expiresIn * 1000; // Umrechnung in Millisekunden
+//   const tokenPayload = {
+//       userId: userId,
+//       exp: expirationTime / 1000 // UNIX-Zeitstempel in Sekunden
+//   };
+
+//   const token = btoa(JSON.stringify(tokenPayload)); // Base64-Kodierung (vereinfacht)
+//   return token;
+// }
+
+
+// // Funktion zum Überprüfen eines Tokens
+// function verifyToken(token) {
+//   const secretKey = 'DeinGeheimesSchluesselwort'; // Sollte mit dem beim Generieren verwendeten übereinstimmen
+
+//   try {
+//       const decodedToken = JSON.parse(atob(token)); // Base64-Dekodierung (vereinfacht)
+//       return decodedToken.exp * 1000 > Date.now(); // Überprüfen der Gültigkeit
+//   } catch (error) {
+//       return false; // Das Token ist ungültig
+//   }
+// }
+
+
+// const userId = 123; // Hier solltest du die tatsächliche Benutzer-ID verwenden
+// const token = generateToken(userId);
+// localStorage.setItem("token", token);
