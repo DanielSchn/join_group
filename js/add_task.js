@@ -202,7 +202,7 @@ function isDateValid(yyyymmdd) {
     let month = date.getMonth() + 1;
     let day = date.getDate();
     return date !== 'Invalid Date' && // keine unerlaubten Zeichen
-        Date.now() <= Date.parse(date) && // Datum liegt in Zukunft
+        Date.now() <= Date.parse(date) && // Datum liegt nicht in Vergangenheit
         monthContainsDay(day, month, year) // Tag in Monat enthalten
 }
 

@@ -68,6 +68,7 @@
     box-shadow: none;
 }
 
+#addTaskAssignedMenu li:active,
 .addTaskAssignedChecked {
     background: var(--darkBlue1);
     color: white;
@@ -77,6 +78,7 @@
     background: var(--darkBlue2);
 }
 
+#addTaskAssignedMenu li:active img,
 #addTaskAssignedMenu .checked {
     content: url('../../img/checkbox_white_checked.svg');
 }
