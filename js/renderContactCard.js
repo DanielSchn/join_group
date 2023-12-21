@@ -1,28 +1,49 @@
+function showAndHideContactCard() {
+    contactCardWindow();
+    mobileContactCardWindow();
+}
+
 function contactCardWindow() {
     const cardBg = document.getElementById('mainContactCard_Bg');
-    const layer = document.getElementById('closeWindowLayer');
     const contact = document.getElementById('mainContactDetails');
     const mainContactCard = document.getElementById('mainContactContainer');
-    const arrow = document.getElementById('backArrow');
-    const hideAddBtn = document.getElementById('mobileAddContactBtnContainer');
-    const showSettingBtn = document.getElementById('mobileSettingBtnContainer');
+
     cardBg.classList.toggle('d-none');
-    layer.classList.toggle('d-none');
     contact.classList.toggle('d-none');
     mainContactCard.classList.toggle('mobile-d-none');
-    arrow.classList.toggle('showBackArrow');
+}
+
+function mobileContactCardWindow() {
+    const layer = document.getElementById('closeWindowLayer');
+    const hideAddBtn = document.getElementById('mobileAddContactBtnContainer');
+    const showSettingBtn = document.getElementById('mobileSettingBtnContainer');
+    const arrow = document.getElementById('backArrowContainer');
+
+    layer.classList.toggle('d-none');
     hideAddBtn.classList.toggle('d-none');
     showSettingBtn.classList.toggle('d-none');
+    arrow.classList.toggle('d-none');
 }
 
-function closeWindow() {
-    contactCardWindow();
+function addCardWindow(isGoingToOpen) {
+    const addContact_bg = document.getElementById('addCardBg');
+    const addContactCard = document.getElementById('AddCardOne');
+    const mainContactCard = document.getElementById('mainContactContainer');
+
+    if(isGoingToOpen === true) {
+        addContact_bg.classList.remove('d-none');
+        addContactCard.classList.remove('d-none');
+        addContactCard.classList.remove('slideOut');
+        addContactCard.classList.add('slideIn');
+        mainContactCard.classList.add('mobile-d-none');
+    } else {
+        addContact_bg.classList.add('d-none');
+        addContactCard.classList.remove('slideIn');
+        addContactCard.classList.add('slideOut');
+    }
 }
 
-function addCardWindow() {
-    const closeAddCardOne = document.getElementById('AddCardOne');
-    const closeAddCard_bg = document.getElementById('addCardBg');
-
-    closeAddCardOne.classList.toggle('d-none');
-    closeAddCard_bg.classList.toggle('d-none');
+function editContactInformation() {
+    showAndHideContactCard();
+    addCardWindow(true);
 }

@@ -28,7 +28,7 @@
             </div>
             <div id="myContacts">
             <div id="myContacts_A">
-                <div class="contactCard" onclick="contactCardWindow()">
+                <div class="contactCard" onclick="showAndHideContactCard()">
                     <div class="contactInitials">
                         <span id="user_name">AM</span>
                     </div>
@@ -147,11 +147,12 @@
 
     <!-- Contact Card -->
     <div id="mainContactCard_Bg" class="d-none"></div>
-    <div id="closeWindowLayer" class="d-none" onclick="closeWindow()"></div>
+    <div id="closeWindowLayer" class="d-none" onclick="showAndHideContactCard()"></div>
     <div id="mainContactContainer" class="mobile-d-none">
 
         <div id="contactTitleBar">
-            <div id="closeWindowBtn" onclick="closeWindow()">
+            <div id="closeWindowBtn" onclick="showAndHideContactCard()">
+                <img src="./assets/img/contacts/close.svg">
             </div>
             <div id="contactsTitle">Contacts</div>
             <div id="devider"></div>
@@ -167,11 +168,11 @@
                 <div id="contactSetup">
                     <div id="user_name_0" class="userNameFontSize responsiveUserNameFontSize">Anton Mayer</div>
                     <div id="settings">
-                        <div id="edit" class="settingsBtn" onclick="addCardWindow()">
-                            <div id="edit_img" ></div><span>Edit</span> <!-- Hover CSS / JS ?? -->
+                        <div id="edit" class="settingsBtn" onclick="editContactInformation()">
+                            <img id="edit_img" src="./assets/img/contacts/edit_pen.svg"><span>Edit</span> <!-- Hover CSS / JS ?? -->
                         </div>
                         <div id="remove" class="settingsBtn">
-                            <div id="remove_img"></div><span>Delete</span> <!-- Hover CSS / JS ?? -->
+                            <img id="remove_img" src="./assets/img/contacts/delete_bin.svg"><span>Delete</span> <!-- Hover CSS / JS ?? -->
                         </div>
                     </div>
                 </div>
@@ -195,9 +196,10 @@
     </div>
 
     <!-- Add Contact Card -->
-    <div id="addCardBg" class="d-none" onclick="addCardWindow()"></div>
-    <div id="AddCardOne" class="d-none">
+    <div id="addCardBg" class="d-none" onclick="addCardWindow(false)"></div>
+    <div id="AddCardOne" class="d-none slideIn">
         <div id="leftBlueSection">
+            <img id="closeAddCard" class="d-none" src="./assets/img/contacts/close.svg">
             <img id="smallCardLogo" src="./assets/img/contacts/logo_card.svg">
             <div id="addCardTitle">
                 <span>Edit Contact</span>
@@ -207,7 +209,7 @@
         <div id="cardInitials_bg">
             <span id="cardIntitials">TW</span>
         </div>
-        <img id="closeAddContact_btn" src="./assets/img/contacts/close.svg" onclick="addCardWindow()">
+        <img id="closeAddContact_btn" src="./assets/img/contacts/close.svg" onclick="addCardWindow(false)">
         <form>
             <div class="addContactInputContainer"><input class="addContactInput" type="text" placeholder="Name"><img src="./assets/img/contacts/person.svg"></div>
             <div class="addContactInputContainer"><input class="addContactInput" type="email" placeholder="Email"><img src="./assets/img/contacts/mail.svg"></div>
@@ -226,8 +228,8 @@
         <button id="mobileAddContactBtn"><img src="./assets/img/menu_icons/person_add.svg"></button>
     </div>
 
-     <div id="backArrow" onclick="closeWindow()">
-        
+     <div id="backArrowContainer" class="d-none" onclick="showAndHideContactCard()">
+        <img id="backArrow" src="./assets/img/contacts/arrow-left-line.svg">
      </div>
 
     <div id="mobileSettingBtnContainer" class="d-none">
