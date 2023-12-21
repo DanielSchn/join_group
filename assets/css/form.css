@@ -132,7 +132,7 @@ input[type="date"]::-webkit-calendar-picker-indicator:active {
     top: 12px;
     box-shadow: var(--shadowSubtle);
     padding: 48px 0 0 0;
-    z-index: 1;
+    z-index: 2;
 }
 
 .dropdownMenu li {
@@ -145,10 +145,11 @@ input[type="date"]::-webkit-calendar-picker-indicator:active {
 }
 
 .dropdownMenuWrapper {
+    z-index: 1;
     width: 100%;
     position: absolute;
     top: 32px;
-    padding-top: 32px;
+    padding-top: 30px;
     border-radius: 10px;
     background: white;
     box-shadow: var(--shadowSubtle);

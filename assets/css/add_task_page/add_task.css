@@ -54,13 +54,14 @@
 }
 
 #addTaskAssignedMenu {
-    height: 200px;
+    max-height: 280px;
     overflow-y: auto;
 }
 
 #addTaskAssignedMenu li {
     display: flex;
     gap: 16px;
+    padding: 7px 16px;
 }
 
 #addTaskAssignedMenu button {
