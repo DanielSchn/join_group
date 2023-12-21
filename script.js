@@ -178,7 +178,7 @@ function hideHiddenMenu() {
 }
 
 
-// document.addEventListener('click', bodyClick);
+
 
 if (document.getElementById('uniqueElement')) {
 } else {
