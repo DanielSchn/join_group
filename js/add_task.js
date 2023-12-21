@@ -63,19 +63,20 @@ async function initAddTask() {
  * allgemeine Render-Funktion
  */
 function renderAddTaskForm() {
-    renderAddTaskAssigned();
+    renderAddTaskAssignedList();
+    renderAddTaskAssignedIcons();
     renderAddTaskSubtasks();
 }
 
 /**
  * assigned-Liste rendern
  */
-function renderAddTaskAssigned() {
+function renderAddTaskAssignedList() {
     const contacts = TEST_CONTACTS;
     const assigned = newTask['assignedTo'];
     const list = document.getElementById('addTaskAssignedMenu');
     list.innerHTML = '';
-    for (let i = 0; i < contacts.length; i++) { // ersetze 3 durch contacts.length
+    for (let i = 0; i < contacts.length; i++) {
         let contact = contacts[i];
         let checkboxId = 'assignedContact' + i;
         list.innerHTML += contactAssignedHTML(contact, checkboxId);
@@ -83,6 +84,18 @@ function renderAddTaskAssigned() {
             toggleAssigned(checkboxId);
         }
     }
+}
+
+function renderAddTaskAssignedIcons() {
+    const contacts = TEST_CONTACTS;
+    const assigned = newTask['assignedTo'];
+    assignedIcons.innerHTML = '';
+    for (let i = 0; i < contacts.length; i++) {
+        let contact = contacts[i];
+        if (assigned.includes(i)) {
+            assignedIcons.innerHTML += contactAssignedIconHTML(contact);
+        }
+    }    
 }
 
 /**
@@ -97,6 +110,7 @@ function toggleAssigned(checkbox) {
     li.classList.toggle('addTaskAssignedChecked');
     toggleCheckbox(checkbox);
     toggleAssignedArray(id);
+    renderAddTaskAssignedIcons();
 }
 
 /**
@@ -384,9 +398,7 @@ function removeSubtask(index) {
 function contactAssignedHTML(contact, id) {
     return /* html */`
         <li onclick="event.stopPropagation(); toggleAssigned(${id})">
-            <div class="contactInitials">
-                <span>${contact['name'].charAt(0)}${contact['lastName'].charAt(0)}</span>
-            </div>
+            ${contactAssignedIconHTML(contact)}
             <div class="contactDetails">
                 <div>${contact['name']} ${contact['lastName']}</div>
             </div>
@@ -394,6 +406,14 @@ function contactAssignedHTML(contact, id) {
                 <img id="${id}" src="./assets/img/checkbox.svg" alt="unchecked">
             </button>
         </li>`;
+}
+
+function contactAssignedIconHTML(contact) {
+    return /* html */`
+        <div class="contactInitials">
+            <span>${contact['name'].charAt(0)}${contact['lastName'].charAt(0)}</span>
+        </div>    
+    `;
 }
 
 function subtaskHTML(subtask, index) {

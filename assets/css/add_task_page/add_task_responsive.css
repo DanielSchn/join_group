@@ -127,6 +127,10 @@
         padding-top: 22px;
     }
 
+    #assignedIcons {
+        position: initial;
+    }
+
     .subtasksContainer {
         width: 100%;
         justify-content: flex-start;
