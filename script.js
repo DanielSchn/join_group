@@ -261,3 +261,13 @@ function redirectToSummaryPage(user) {
 // const userId = 123; // Hier solltest du die tatsächliche Benutzer-ID verwenden
 // const token = generateToken(userId);
 // localStorage.setItem("token", token);
+
+
+// document.addEventListener("DOMContentLoaded", function () {
+//   if (window.location.href.indexOf("index.html") === -1) {
+//       let token = localStorage.getItem("token");
+//       if (!token || !verifyToken(token)) {
+//           window.location.href = "index.html";
+//       }
+//   }
+// });
