@@ -119,7 +119,7 @@ input[type="date"]::-webkit-calendar-picker-indicator:active {
 .dropdownInput,
 .dropdownInput input {
     cursor: default;
-    z-index: 1;
+    z-index: 2;
 }
 
 .dropdownMenu {
@@ -133,6 +133,7 @@ input[type="date"]::-webkit-calendar-picker-indicator:active {
     top: 12px;
     box-shadow: var(--shadowSubtle);
     padding: 48px 0 0 0;
+    z-index: 1;
 
 }
 

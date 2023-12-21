@@ -51,7 +51,6 @@ function renderAddTaskAssigned() {
     }
 }
 
-
 /**
  * Kontakt in sichtbarer Assigned-Liste markieren oder Markierung entfernen
  * @param {element} checkbox - ID/Element der Checkbox 

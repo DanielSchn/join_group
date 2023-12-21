@@ -86,10 +86,6 @@ button:hover {
     background: var(--lightBlue1);
 }
 
-.btnPrimary:active {
-    background: var(--darkBlue2);
-}
-
 .btnSecondary {
     border: 1px solid var(--darkBlue1);
     padding: 15px 16px;
@@ -100,11 +96,6 @@ button:hover {
 .btnSecondary:hover {
     border-color: var(--lightBlue1);
     color: var(--lightBlue1);
-}
-
-.btnSecondary:active {
-    border-color: var(--darkBlue2);
-    color: var(--darkBlue2);
 }
 
 /* vr für "vertical ruler", vertikale Linie */

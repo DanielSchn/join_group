@@ -316,7 +316,3 @@ button.addTaskPrio3Selected {
 .addTaskBottom .btnSecondary:hover {
     background-image: url('../../img/cancel_hover.svg');
 }
-
-.addTaskBottom .btnSecondary:active {
-    background-image: url('../../img/cancel_active.svg');
-}
