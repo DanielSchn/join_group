@@ -404,7 +404,7 @@
     left: 1132px;
  }
 
- form {
+ #AddCardOne form {
     display: flex;
     flex-direction: column;
     gap: 32px;

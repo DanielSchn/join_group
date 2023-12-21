@@ -147,7 +147,8 @@ input[type="date"]::-webkit-calendar-picker-indicator:active {
 .dropdownMenuWrapper {
     width: 100%;
     position: absolute;
-    top: 63px;
+    top: 32px;
+    padding-top: 32px;
     border-radius: 10px;
     background: white;
     box-shadow: var(--shadowSubtle);
