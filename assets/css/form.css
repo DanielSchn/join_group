@@ -129,12 +129,10 @@ input[type="date"]::-webkit-calendar-picker-indicator:active {
     width: 100%;
     border-radius: 10px;
     position: absolute;
-    z-index: 0;
     top: 12px;
     box-shadow: var(--shadowSubtle);
     padding: 48px 0 0 0;
     z-index: 1;
-
 }
 
 .dropdownMenu li {
@@ -144,4 +142,22 @@ input[type="date"]::-webkit-calendar-picker-indicator:active {
 
 .dropdownMenu li:hover {
     background: var(--lightGray4);
+}
+
+.dropdownMenuWrapper {
+    width: 100%;
+    position: absolute;
+    top: 63px;
+    border-radius: 10px;
+    background: white;
+    box-shadow: var(--shadowSubtle);
+}
+
+.dropdownMenuWrapper .dropdownMenu {
+    box-shadow: none;
+    position: initial;
+    background: none;
+    top: 0;
+    padding: 0;
+    margin-bottom: 0;
 }

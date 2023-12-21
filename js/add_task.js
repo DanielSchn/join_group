@@ -11,6 +11,43 @@ let newTask = {
     status: ''
 };
 
+const TEST_CONTACTS = [
+    {
+        name: 'Anton',
+        lastName: 'Mayer'
+    },
+
+    {
+        name: 'Berta',
+        lastName: 'Müller'
+    },
+
+    {
+        name: 'Clara',
+        lastName: 'Schmidt'
+    },
+
+    {
+        name: 'Deniz',
+        lastName: 'Yildiz'
+    },
+
+    {
+        name: 'Eva',
+        lastName: 'Hofmann'
+    },
+
+    {
+        name: 'Ferdinand',
+        lastName: 'Porsche'
+    },
+
+    {
+        name: 'Günther',
+        lastName: 'Hillmann'
+    }
+]
+
 /**
  * Initialisierung (bei Onload, Body)
  */
@@ -34,14 +71,11 @@ function renderAddTaskForm() {
  * assigned-Liste rendern
  */
 function renderAddTaskAssigned() {
-    // const contacts = [LADEN VON USER-DATEN]
-
-    const contacts = [0, 1, 2];
+    const contacts = TEST_CONTACTS;
     const assigned = newTask['assignedTo'];
-    // ...
     const list = document.getElementById('addTaskAssignedMenu');
     list.innerHTML = '';
-    for (let i = 0; i < 3; i++) { // ersetze 3 durch contacts.length
+    for (let i = 0; i < contacts.length; i++) { // ersetze 3 durch contacts.length
         let contact = contacts[i];
         let checkboxId = 'assignedContact' + i;
         list.innerHTML += contactAssignedHTML(contact, checkboxId);
@@ -72,10 +106,10 @@ function toggleAssigned(checkbox) {
 function toggleAssignedArray(id) {
     let assigned = newTask['assignedTo'];
     if (assigned.includes(id)) {
-        const index = assigned.indexOf(id);
-        assigned.splice(index, 1);
+        const index = assigned.indexOf(id); // bestimme Index der Kontakt-ID im assignedTo-Array
+        assigned.splice(index, 1); // ID entfernen
     } else {
-        assigned.push(id);
+        assigned.push(id); // ID hinzufügen
     }
 }
 
@@ -349,14 +383,14 @@ function removeSubtask(index) {
 
 function contactAssignedHTML(contact, id) {
     return /* html */`
-        <li onclick="toggleAssigned(${id})">
+        <li onclick="event.stopPropagation(); toggleAssigned(${id})">
             <div class="contactInitials">
-                <span id="user_name">AM</span>
+                <span>${contact['name'].charAt(0)}${contact['lastName'].charAt(0)}</span>
             </div>
             <div class="contactDetails">
-                        <div><span id="name">Anton</span><span id="lastname"> Mayer</span></div>
+                <div>${contact['name']} ${contact['lastName']}</div>
             </div>
-            <button type="button" onclick="event.stopPropagation(); toggleAssigned(${id})">
+            <button type="button">
                 <img id="${id}" src="./assets/img/checkbox.svg" alt="unchecked">
             </button>
         </li>`;

@@ -53,6 +53,11 @@
     margin: 0;
 }
 
+#addTaskAssignedMenu {
+    height: 200px;
+    overflow-y: auto;
+}
+
 #addTaskAssignedMenu li {
     display: flex;
     gap: 16px;
@@ -130,7 +135,9 @@
 }
 
 .addTaskPrioBtns button {
-    min-width: calc((100% - 32px)/3);
+    flex: 1;
+    padding-left: 0;
+    padding-right: 0;
     background: white;
     box-shadow: var(--shadowSubtle);
     display: flex;

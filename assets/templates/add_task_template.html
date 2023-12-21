@@ -28,7 +28,9 @@
                         <img src="./assets/img/select_icon.svg" alt="icon" id="addTaskAssignedIcon">
                     </button>
                 </div>
-                <ul class="dropdownMenu" id="addTaskAssignedMenu" style="display: none"></ul>
+                <div class="dropdownMenuWrapper">
+                    <ul class="dropdownMenu" id="addTaskAssignedMenu" style="display: none"></ul>
+                </div>
             </div>
         </div>
         <div class="vr" id="formSeperator"></div>
@@ -38,8 +40,10 @@
                     <h2>Due date<p class="red">*</p>
                     </h2>
                 </label>
-                <div id="addTaskDueContainer" class="borderHover" onmousedown="event.stopPropagation(); focusAddTaskDue()">
-                    <input type="text" id="addTaskDueText" placeholder="dd/mm/yyyy" onkeyup="autofillAddTaskDueText(event)" onchange="checkAddTaskDueText()">
+                <div id="addTaskDueContainer" class="borderHover"
+                    onmousedown="event.stopPropagation(); focusAddTaskDue()">
+                    <input type="text" id="addTaskDueText" placeholder="dd/mm/yyyy"
+                        onkeyup="autofillAddTaskDueText(event)" onchange="checkAddTaskDueText()">
                     <input type="date" id="addTaskDue" required onchange="setAddTaskDueText()">
                 </div>
             </div>
