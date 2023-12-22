@@ -66,15 +66,4 @@ let TEST_TASKS = [
         timestamp: 1702647193451,
         status: 'done'
     }
-]
-
-
-// /**
-//  * Login Validierung, suche noch den passenden Platz in einer Scriptdatei, da diese
-//  */
-// document.addEventListener("DOMContentLoaded", function () {
-//     let isLoggedIn = localStorage.getItem("isLoggedIn");
-//     if (!isLoggedIn) {
-//         window.location.href = "index.html";
-//     }
-//   });
+];
