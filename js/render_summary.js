@@ -130,11 +130,25 @@ function renderUrgentTasks() {
 }
 
 
+// function renderUrgentDeadline() {
+//     let deadline = document.getElementById('deadlineDashboard');
+//     TEST_TASKS.forEach(task => {
+//         if (task.prio === 'urgent') {
+//             const date = new Date(task.due);
+//             const options = { year: 'numeric', month: 'long', day: 'numeric' };
+//             const formattedDate = date.toLocaleDateString('en-US', options);
+//             deadline.innerHTML = formattedDate;
+//         }
+//     });
+// }
+
+
 function renderUrgentDeadline() {
     let deadline = document.getElementById('deadlineDashboard');
     TEST_TASKS.forEach(task => {
         if (task.prio === 'urgent') {
-            const date = new Date(task.due);
+            const [day, month, year] = task.due.split('/');
+            const date = new Date(`${year}-${month}-${day}`);
             const options = { year: 'numeric', month: 'long', day: 'numeric' };
             const formattedDate = date.toLocaleDateString('en-US', options);
             deadline.innerHTML = formattedDate;

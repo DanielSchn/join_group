@@ -69,6 +69,10 @@
         height: 104px;
     }
 
+    .dropdownMenu {
+        padding-top: 45px;
+    }
+
     .dropdownMenuWrapper {
         padding-top: 25px;
     }
@@ -123,8 +127,16 @@
         height: 88px;
     }
 
+    .dropdownMenu {
+        padding-top: 42px;
+    }
+
     .dropdownMenuWrapper {
         padding-top: 22px;
+    }
+
+    #assignedIcons {
+        position: initial;
     }
 
     .subtasksContainer {

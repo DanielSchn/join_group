@@ -1,4 +1,4 @@
-<form class="addTaskForm" autocomplete="off" action="">
+<form class="addTaskForm" autocomplete="off" onsubmit="submitTask(); return false">
     <input autocomplete="false" name="hidden" type="text" style="display:none;">
     <h1>Add Task</h1>
     <div class="addTaskFormMain">
@@ -31,6 +31,7 @@
                 <div class="dropdownMenuWrapper preventSelect">
                     <ul class="dropdownMenu" id="addTaskAssignedMenu" style="display: none"></ul>
                 </div>
+                <div id="assignedIcons"></div>
             </div>
         </div>
         <div class="vr" id="formSeperator"></div>

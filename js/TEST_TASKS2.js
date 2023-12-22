@@ -35,7 +35,7 @@ let TEST_TASKS = [
         title: 'Einkaufen',
         description: 'Äpfel, Birnen, Milch, Eier',
         assignedTo: [1],
-        due: '2023-12-19',
+        due: '19/12/2023',
         prio: 'low',
         category: 0, // Index für category-Array
         subtasks: [],
@@ -47,7 +47,7 @@ let TEST_TASKS = [
         title: 'wäsche waschen',
         description: 'Kochwäsche, Pflegeleicht',
         assignedTo: [1],
-        due: '2023-12-22',
+        due: '22/12/2023',
         prio: 'low',
         category: 0, // Index für category-Array
         subtasks: [],
@@ -59,22 +59,11 @@ let TEST_TASKS = [
         title: 'essen kochen',
         description: 'Spaghetti, Brokkoli, Zwiebeln, Sahne',
         assignedTo: [0],
-        due: '2023-12-24',
+        due: '24/12/2023',
         prio: 'low',
         category: 0, // Index für category-Array
         subtasks: [],
         timestamp: 1702647193451,
         status: 'done'
     }
-]
-
-
-// /**
-//  * Login Validierung, suche noch den passenden Platz in einer Scriptdatei, da diese
-//  */
-// document.addEventListener("DOMContentLoaded", function () {
-//     let isLoggedIn = localStorage.getItem("isLoggedIn");
-//     if (!isLoggedIn) {
-//         window.location.href = "index.html";
-//     }
-//   });
+];

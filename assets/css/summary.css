@@ -194,8 +194,6 @@
 }
 
 .greeting {
-    height: 136px;
-    width: 385px;
     position: fixed;
     left: 968px;
     top: 547.5px;
@@ -231,7 +229,7 @@
     }
 }
 
-@media (max-width: 1360px) {
+@media (max-width: 1380px) {
     .sumHeadPosition {
         left: 280px;
     }
@@ -245,7 +243,7 @@
     }
 }
 
-@media (max-width: 1260px) {
+@media (max-width: 1280px) {
     .greeting {
         left: 860px;
     }
@@ -253,11 +251,19 @@
     .font47pxBold500 {
         font-size: 33px;
         font-weight: 400;
+        margin-left: 8px;
     }
 
     .font64pxBold700 {
         font-size: 50px;
         font-weight: 500;
+        margin-left: 8px;
+    }
+}
+
+@media (max-width: 1280px) {
+    .font64pxBold700 {
+        font-size: 45px;
     }
 }
 

@@ -97,6 +97,18 @@
     padding: 0;
 }
 
+#assignedIcons {
+    display: flex;
+    flex-wrap: wrap;
+    position: absolute;
+    top: 92px;
+    max-width: 100%;
+}
+
+#assignedIcons div {
+    margin-right: -12px;
+}
+
 #addTaskDueContainer {
     width: 100%;
     display: flex;

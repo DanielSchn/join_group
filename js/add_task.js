@@ -1,3 +1,5 @@
+const PRIOS = [null, 'urgent', 'medium', 'low'];
+
 let newTask = {
     id: -1,
     title: '',
@@ -63,19 +65,20 @@ async function initAddTask() {
  * allgemeine Render-Funktion
  */
 function renderAddTaskForm() {
-    renderAddTaskAssigned();
+    renderAddTaskAssignedList();
+    renderAddTaskAssignedIcons();
     renderAddTaskSubtasks();
 }
 
 /**
  * assigned-Liste rendern
  */
-function renderAddTaskAssigned() {
+function renderAddTaskAssignedList() {
     const contacts = TEST_CONTACTS;
     const assigned = newTask['assignedTo'];
     const list = document.getElementById('addTaskAssignedMenu');
     list.innerHTML = '';
-    for (let i = 0; i < contacts.length; i++) { // ersetze 3 durch contacts.length
+    for (let i = 0; i < contacts.length; i++) {
         let contact = contacts[i];
         let checkboxId = 'assignedContact' + i;
         list.innerHTML += contactAssignedHTML(contact, checkboxId);
@@ -83,6 +86,18 @@ function renderAddTaskAssigned() {
             toggleAssigned(checkboxId);
         }
     }
+}
+
+function renderAddTaskAssignedIcons() {
+    const contacts = TEST_CONTACTS;
+    const assigned = newTask['assignedTo'];
+    assignedIcons.innerHTML = '';
+    for (let i = 0; i < contacts.length; i++) {
+        let contact = contacts[i];
+        if (assigned.includes(i)) {
+            assignedIcons.innerHTML += contactAssignedIconHTML(contact);
+        }
+    }    
 }
 
 /**
@@ -97,6 +112,7 @@ function toggleAssigned(checkbox) {
     li.classList.toggle('addTaskAssignedChecked');
     toggleCheckbox(checkbox);
     toggleAssignedArray(id);
+    renderAddTaskAssignedIcons();
 }
 
 /**
@@ -122,7 +138,7 @@ function renderAddTaskSubtasks() {
     list.innerHTML = '';
     for (let i = 0; i < subtasks.length; i++) {
         let subtask = subtasks[i];
-        list.innerHTML += subtaskHTML(subtask, i);
+        list.innerHTML += subtaskHTML(subtask['title'], i);
     }
 }
 
@@ -291,6 +307,21 @@ function colorPrioBtnImg(index) {
     }
 }
 
+/**
+ * Task-Priorität aus Formularstatus auslesen
+ * @returns Priorität als String aus globalem PRIOS-Array
+ */
+function getTaskPrio() {
+    const prioBtn = document.getElementsByClassName('addTaskPrioBtnsSelected');
+    let prioId = 0;
+    if(prioBtn.length > 0) {
+        prioId = prioBtn[0].id; // String
+        prioId = prioId.slice(-1); // erhalte letztes Zeichen
+        prioId = parseInt(prioId); // Umwandlung in Zahl
+    }
+    return PRIOS[prioId];
+}
+
 /** 
  * Fokussierung des Input-Feldes für Subtasks
  */
@@ -334,7 +365,10 @@ function cancelSubtask() {
  */
 function createSubtask() {
     if (addSubtask.value) {
-        newTask['subtasks'].push(addSubtask.value);
+        newTask['subtasks'].push({
+            title: addSubtask.value,
+            status: 'toDo'
+        });
         renderAddTaskSubtasks();
     }
     cancelSubtask();
@@ -347,7 +381,7 @@ function createSubtask() {
 function editSubtask(index) {
     let subtask = newTask['subtasks'][index];
     const li = document.getElementById(`subtask${index}`);
-    li.innerHTML = editSubtaskHTML(subtask, index);
+    li.innerHTML = editSubtaskHTML(subtask['title'], index);
     li.classList.add('editSubtask');
     const input = document.getElementById('editSubtaskInput');
     const length = input.value.length;
@@ -364,7 +398,7 @@ function confirmSubtaskEdit(index) {
     const input = document.getElementById('editSubtaskInput');
     let subtasks = newTask['subtasks'];
     if (input.value) {
-        subtasks[index] = input.value;
+        subtasks[index]['title'] = input.value;
     } else {
         subtasks.splice(index, 1);
     }
@@ -381,12 +415,29 @@ function removeSubtask(index) {
     renderAddTaskSubtasks();
 }
 
+/**
+ * Task hinzufügen
+ */
+function submitTask() {
+    setAddTaskDueText(); // Datum-Inputs synchronisieren
+    tasks.push({
+        id: tasks.length,
+        title: addTaskTitle.value,
+        description: addTaskDescription.value,
+        assignedTo: newTask['assignedTo'],
+        due: addTaskDueText.value,
+        prio: getTaskPrio(),
+        category: addTaskCategory.value,
+        subtasks: newTask['subtasks'],
+        timestamp: getTimestamp(),
+        status: 'toDo'
+    });
+}
+
 function contactAssignedHTML(contact, id) {
     return /* html */`
         <li onclick="event.stopPropagation(); toggleAssigned(${id})">
-            <div class="contactInitials">
-                <span>${contact['name'].charAt(0)}${contact['lastName'].charAt(0)}</span>
-            </div>
+            ${contactAssignedIconHTML(contact)}
             <div class="contactDetails">
                 <div>${contact['name']} ${contact['lastName']}</div>
             </div>
@@ -394,6 +445,14 @@ function contactAssignedHTML(contact, id) {
                 <img id="${id}" src="./assets/img/checkbox.svg" alt="unchecked">
             </button>
         </li>`;
+}
+
+function contactAssignedIconHTML(contact) {
+    return /* html */`
+        <div class="contactInitials">
+            <span>${contact['name'].charAt(0)}${contact['lastName'].charAt(0)}</span>
+        </div>    
+    `;
 }
 
 function subtaskHTML(subtask, index) {
