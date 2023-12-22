@@ -1,3 +1,5 @@
+const PRIOS = [null, 'urgent', 'medium', 'low'];
+
 let newTask = {
     id: -1,
     title: '',
@@ -136,7 +138,7 @@ function renderAddTaskSubtasks() {
     list.innerHTML = '';
     for (let i = 0; i < subtasks.length; i++) {
         let subtask = subtasks[i];
-        list.innerHTML += subtaskHTML(subtask, i);
+        list.innerHTML += subtaskHTML(subtask['title'], i);
     }
 }
 
@@ -305,6 +307,21 @@ function colorPrioBtnImg(index) {
     }
 }
 
+/**
+ * Task-Priorität aus Formularstatus auslesen
+ * @returns Priorität als String aus globalem PRIOS-Array
+ */
+function getTaskPrio() {
+    const prioBtn = document.getElementsByClassName('addTaskPrioBtnsSelected');
+    let prioId = 0;
+    if(prioBtn.length > 0) {
+        prioId = prioBtn[0].id; // String
+        prioId = prioId.slice(-1); // erhalte letztes Zeichen
+        prioId = parseInt(prioId); // Umwandlung in Zahl
+    }
+    return PRIOS[prioId];
+}
+
 /** 
  * Fokussierung des Input-Feldes für Subtasks
  */
@@ -348,7 +365,10 @@ function cancelSubtask() {
  */
 function createSubtask() {
     if (addSubtask.value) {
-        newTask['subtasks'].push(addSubtask.value);
+        newTask['subtasks'].push({
+            title: addSubtask.value,
+            status: 'toDo'
+        });
         renderAddTaskSubtasks();
     }
     cancelSubtask();
@@ -361,7 +381,7 @@ function createSubtask() {
 function editSubtask(index) {
     let subtask = newTask['subtasks'][index];
     const li = document.getElementById(`subtask${index}`);
-    li.innerHTML = editSubtaskHTML(subtask, index);
+    li.innerHTML = editSubtaskHTML(subtask['title'], index);
     li.classList.add('editSubtask');
     const input = document.getElementById('editSubtaskInput');
     const length = input.value.length;
@@ -378,7 +398,7 @@ function confirmSubtaskEdit(index) {
     const input = document.getElementById('editSubtaskInput');
     let subtasks = newTask['subtasks'];
     if (input.value) {
-        subtasks[index] = input.value;
+        subtasks[index]['title'] = input.value;
     } else {
         subtasks.splice(index, 1);
     }
@@ -393,6 +413,25 @@ function removeSubtask(index) {
     let subtasks = newTask['subtasks'];
     subtasks.splice(index, 1);
     renderAddTaskSubtasks();
+}
+
+/**
+ * Task hinzufügen
+ */
+function submitTask() {
+    tasks.push({
+        id: tasks.length,
+        title: addTaskTitle.value,
+        description: addTaskDescription.value,
+        assignedTo: newTask['assignedTo'],
+        due: addTaskDueText.value,
+        prio: getTaskPrio(),
+        category: addTaskCategory.value,
+        subtasks: newTask['subtasks'],
+        timestamp: getTimestamp(),
+        status: 'toDo'
+    });
+    console.log(tasks[tasks.length]); // TEST
 }
 
 function contactAssignedHTML(contact, id) {

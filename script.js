@@ -1,3 +1,5 @@
+let tasks = [];
+
 async function init() {
   await includeHTML();
   renderLogo();
@@ -35,6 +37,14 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
+/**
+ * aktuellen Timestamp ausgeben
+ * @returns Timestamp als Zahl
+ */
+function getTimestamp() {
+  const currentDate = new Date();
+  return currentDate.getTime();
+}
 
 /**
  * Dropdown-Menü ein-/ausblenden
