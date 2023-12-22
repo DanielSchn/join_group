@@ -148,8 +148,10 @@ function toggleCheckbox(checkbox) {
  */
 function renderLogo() {
   let loadedUserName = localStorage.getItem('userName');
-  let capitalized = loadedUserName.charAt(0).toUpperCase();
+  const nameParts = loadedUserName.split(' ');
+  const capitalized = nameParts.map(part => part.charAt(0).toUpperCase()).join('');
   document.getElementById('use_name').innerHTML = capitalized;
+
 }
 
 
@@ -248,8 +250,8 @@ function generateToken(userId) {
   const expiresIn = 43200;
   const expirationTime = Date.now() + expiresIn * 1000;
   const tokenPayload = {
-      userId: userId,
-      exp: expirationTime / 1000
+    userId: userId,
+    exp: expirationTime / 1000
   };
   const token = btoa(JSON.stringify(tokenPayload));
   return token;
@@ -266,10 +268,10 @@ function generateToken(userId) {
  */
 function verifyToken(token) {
   try {
-      const decodedToken = JSON.parse(atob(token));
-      return decodedToken.exp * 1000 > Date.now();
+    const decodedToken = JSON.parse(atob(token));
+    return decodedToken.exp * 1000 > Date.now();
   } catch (error) {
-      return false;
+    return false;
   }
 }
 
