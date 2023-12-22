@@ -10,12 +10,13 @@
     <link rel="stylesheet" href="assets/css/style_board.css">
     <link rel="stylesheet" href="fonts.css">
     <link rel="stylesheet" href="assets/css/form.css">
-    <link rel="stylesheet" href="assets/css/add_task.css">
+    <link rel="stylesheet" href="assets/css/add_task_page/add_task.css">
+    <link rel="stylesheet" href="assets/css/add_task_page/add_task_responsive.css">
     <script src="js/TEST_TASKS2.js"></script>
     <script src="script.js"></script>
     <script src="js/board.js"></script>
     <script src="js/add_task.js"></script>
-    
+
 </head>
 
 <body onload="init(); updateHTML()">
@@ -25,21 +26,32 @@
 
     <div id="taskCard"></div>
 
+
     <section class="boardHeaderContainer">
         <div class="boardHeader">
-            <div class="boardHeaderMobile">
+            <div class="">
                 <h1>Board</h1>
             </div>
 
             <div class="boardHeaderSearch">
                 <div class="inputWithImg">
                     <input id="findTask" type="text" placeholder="Find Task" />
-                    <div class="findTaskImg" onclick="searchTask()"><img src="assets/img/menu_icons/search.png" alt="" /></div>
+                    <div class="findTaskImg" onclick="searchTask()"><img src="assets/img/menu_icons/search.png"
+                            alt="" /></div>
                 </div>
-                <button class="addTaskDesktop" onclick="showAddTaskCard()">
-                    <b>Add task</b>
-                    <img src="assets/img/menu_icons/add.svg" alt="" />
-                </button>
+
+                <div class="addTaskDesktopButton">
+                    <button class="" onclick="showAddTaskCard()">
+                        <b>Add task</b>
+                        <img src="assets/img/menu_icons/add.svg" alt="" />
+                    </button>
+                </div>
+
+                <div class="boardHeaderMobile">
+                    <button class="addTaskDesktopMobile" onclick="showAddTaskCard()">
+                        <img src="assets/img/menu_icons/add.svg" alt="" />
+                    </button>
+                </div>
             </div>
         </div>
     </section>
@@ -48,8 +60,8 @@
         <div class="sectionDragArea">
             <div class="headerDragArea">
                 <h2>To do</h2>
-                <img onclick="showAddTaskCard()" class="addTaskToSection addTaskDesktop" src="assets/img/menu_icons/plus_button.svg"
-                    alt="Add Task to to do" />
+                <img onclick="showAddTaskCard()" class="addTaskToSection addTaskDesktop"
+                    src="assets/img/menu_icons/plus_button.svg" alt="Add Task to to do" />
             </div>
             <div id="toDo" class="dragArea" ondrop="moveTo('toDo'); removeHighlight('toDo')"
                 ondragleave="removeHighlight('toDo')" ondragover="allowDrop(event); highlight('toDo')">
@@ -59,8 +71,8 @@
         <div class="sectionDragArea">
             <div class="headerDragArea">
                 <h2>In pogress</h2>
-                <img onclick="showAddTaskCard()" class="addTaskToSection addTaskDesktop" src="assets/img/menu_icons/plus_button.svg"
-                    alt="Add Task to in Progress" />
+                <img onclick="showAddTaskCard()" class="addTaskToSection addTaskDesktop"
+                    src="assets/img/menu_icons/plus_button.svg" alt="Add Task to in Progress" />
             </div>
             <div id="inProgress" class="dragArea" ondrop="moveTo('inProgress'); removeHighlight('inProgress')"
                 ondragleave="removeHighlight('inProgress')" ondragover="allowDrop(event); highlight('inProgress')">
@@ -71,8 +83,8 @@
             <div class="headerDragArea">
                 <h2>Await feedback</h2>
 
-                <img onclick="showAddTaskCard()" class="addTaskToSection addTaskDesktop" src="assets/img/menu_icons/plus_button.svg"
-                    alt="Add Task to Await Feedback" />
+                <img onclick="showAddTaskCard()" class="addTaskToSection addTaskDesktop"
+                    src="assets/img/menu_icons/plus_button.svg" alt="Add Task to Await Feedback" />
             </div>
             <div id="awaitFeedback" class="dragArea" ondrop="moveTo('awaitFeedback'); removeHighlight('awaitFeedback')"
                 ondragleave="removeHighlight('awaitFeedback')"
@@ -90,6 +102,9 @@
             </div>
         </div>
     </section>
+
+    <!-- Mobile -->
+    <div id="mobileMenuBox" w3-include-html="assets/templates/mobile_side_menu.html"></div>
 
 </body>
 
