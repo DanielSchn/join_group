@@ -419,6 +419,7 @@ function removeSubtask(index) {
  * Task hinzufügen
  */
 function submitTask() {
+    setAddTaskDueText(); // Datum-Inputs synchronisieren
     tasks.push({
         id: tasks.length,
         title: addTaskTitle.value,
