@@ -237,7 +237,7 @@ function redirectToSummaryPage(user) {
 
 
 /**
- * Generate Token for login validation. BTOA Base64 will create an ASCII string for decode.
+ * Generate Token for login validation. BTOA Base64 will create an ASCII string for encode.
  * Will use an expiration time in 12h. Will be enough for a working day.
  * 
  * @param {array} userId - The User Info Array with Name, Email and password.
@@ -257,7 +257,8 @@ function generateToken(userId) {
 
 
 /**
- * Verify the generated token when load another Page from the Website Project
+ * Verify the generated token when load another Page from the Website Project.
+ * ATOB decode the token.
  * 
  * @param {value} token - The generated token from the localStorage 
  * @returns 
