@@ -41,6 +41,12 @@ body {
     justify-content: center;
 }
 
+.preventSelect {
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+}
+
 p {
     margin: 0;
 }
@@ -86,10 +92,6 @@ button:hover {
     background: var(--lightBlue1);
 }
 
-.btnPrimary:active {
-    background: var(--darkBlue2);
-}
-
 .btnSecondary {
     border: 1px solid var(--darkBlue1);
     padding: 15px 16px;
@@ -100,11 +102,6 @@ button:hover {
 .btnSecondary:hover {
     border-color: var(--lightBlue1);
     color: var(--lightBlue1);
-}
-
-.btnSecondary:active {
-    border-color: var(--darkBlue2);
-    color: var(--darkBlue2);
 }
 
 /* vr für "vertical ruler", vertikale Linie */
@@ -122,7 +119,7 @@ footer {
 
 /* Header */
 
-header {
+.headerStyle {
     height: 96px;
     padding-right: 40px;
     padding-left: 348px;
@@ -279,7 +276,7 @@ aside {
 /* responsive Header */
 
 @media (max-width: 950px) {
-    header {
+    .headerStyle {
         justify-content: end;
     }
 
@@ -293,7 +290,7 @@ aside {
 }
 
 @media (max-width: 700px) {
-    header {
+    .headerStyle {
         height: 80px;
         padding: 0px 32px;
         justify-content: space-between;
@@ -348,4 +345,31 @@ aside {
         font-size: 14px;
         font-weight: 400;
     }
+}
+
+.hiddenMenuText {
+    width: 150px;
+    height: 158px;
+    border-radius: 20px 0 20px 20px;
+    background-color: var(--darkBlue1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    font-size: var(--fontSizeSmall);
+    gap: 16px;
+}
+
+.hiddenMenuText a {
+    cursor: pointer;
+    margin-left: 26px;
+    color: #CDCDCD;
+}
+
+.hiddenMenuPos {
+    display: flex;
+    justify-content: end;
+    margin-right: 32px;
+    position: relative;
+    z-index: 1;
 }

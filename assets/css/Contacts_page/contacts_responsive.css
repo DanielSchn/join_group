@@ -59,6 +59,10 @@
         width: 24px;
     }
 
+    .responsiveSlideIn {
+        animation: swipeInFromRight 100ms ease-in-out forwards;
+    }
+
     #mainContactContainer {
         z-index: 3000;
         box-sizing: border-box;
@@ -78,7 +82,6 @@
         right: 0;
         background-color: white;
         border-radius: 30px;
-        animation: swipeInFromRight 100ms ease-in-out;
     }
 
     #contactTitleBar {
@@ -194,7 +197,6 @@
         right: 0;
         background-color: white;
         border-radius: 30px;
-        animation: swipeInFromRight 100ms ease-in-out;
     }
 
     #mainContactContainer_1 {

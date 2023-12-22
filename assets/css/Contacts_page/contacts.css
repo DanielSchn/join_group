@@ -152,16 +152,6 @@
     display: none !important;
 }
 
-@keyframes swipeInFromRight {
-    from {
-        transform: translateX(100%);
-        opacity: 0;
-    }
-    to {transform: translateX(0);
-        opacity: 1;
-    }
-}
-
 #mainContactDetails {
     display: flex;
     align-items: start;
@@ -170,7 +160,6 @@
     position: fixed;
     top: 311px;
     left: 750px;
-    animation: swipeInFromRight 100ms ease-in-out;
 }
 
 #mainContactContainer_1 {
@@ -317,7 +306,7 @@
         transform: translateX(0);
         opacity: 1;
     }
-    to {transform: translateX(100%);
+    to {transform: translateX(300%);
         opacity: 0;
     }
 }
@@ -328,7 +317,6 @@
 
 .slideOut {
     animation: swipeOutToRight 100ms ease-in-out forwards;
-    right: 1000px;
 }
 
  #addCardBg {
@@ -425,7 +413,7 @@
     left: 1132px;
  }
 
- form {
+ #AddCardOne form {
     display: flex;
     flex-direction: column;
     gap: 32px;

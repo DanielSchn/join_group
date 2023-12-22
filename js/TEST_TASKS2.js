@@ -8,7 +8,7 @@ let TEST_TASKS = [
         title: 'Geschenke kaufen',
         description: 'Geschenke für Mama, Papa und den Hund',
         assignedTo: [0, 1], // Kontakte als IDs hinterlegt, setzt Kontakte-Array voraus
-        due: '2023-12-24',
+        due: '24/12/2023',
         prio: 'urgent', // low, medium, urgent
         category: 1, // Index für category-Array
         subtasks: [

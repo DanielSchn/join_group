@@ -146,9 +146,12 @@
     </section>
 
     <!-- Contact Card -->
-    <div id="mainContactCard_Bg" class="d-none"></div>
-    <div id="closeWindowLayer" class="d-none" onclick="showAndHideContactCard()"></div>
-    <div id="mainContactContainer" class="mobile-d-none">
+    <div id="contactCardContainer">
+        <div id="responsivBackgroundSetup" class="d-none">
+            <div id="mainContactCard_Bg"></div>
+            <div id="closeWindowLayer" onclick="showAndHideContactCard()"></div>
+        </div>
+        <div id="mainContactContainer" class="mobile-d-none">
 
         <div id="contactTitleBar">
             <div id="closeWindowBtn" onclick="showAndHideContactCard()">
@@ -193,13 +196,14 @@
                 </div>
             </div>
         </div>
+        </div>
     </div>
 
     <!-- Add Contact Card -->
     <div id="addCardBg" class="d-none" onclick="addCardWindow(false)"></div>
     <div id="AddCardOne" class="d-none slideIn">
         <div id="leftBlueSection">
-            <img id="closeAddCard" class="d-none" src="./assets/img/contacts/close.svg">
+            <img id="closeAddCard" class="d-none" onclick="addCardWindow(false)" src="./assets/img/contacts/close.svg">
             <img id="smallCardLogo" src="./assets/img/contacts/logo_card.svg">
             <div id="addCardTitle">
                 <span>Edit Contact</span>
