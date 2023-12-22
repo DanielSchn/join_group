@@ -130,6 +130,10 @@ function renderUrgentTasks() {
 }
 
 
+/**
+ * Render Date for Deadline on summary
+ * This function if the Date is written as: 2023-12-24
+ */
 // function renderUrgentDeadline() {
 //     let deadline = document.getElementById('deadlineDashboard');
 //     TEST_TASKS.forEach(task => {
@@ -143,6 +147,10 @@ function renderUrgentTasks() {
 // }
 
 
+/**
+ * Render Date for Deadline on summary
+ * This function if the Date is written as: 24/12/2023
+ */
 function renderUrgentDeadline() {
     let deadline = document.getElementById('deadlineDashboard');
     TEST_TASKS.forEach(task => {
