@@ -259,6 +259,7 @@ function generateToken(userId) {
 /**
  * Verify the generated token when load another Page from the Website Project.
  * ATOB decode the token.
+ * UNIX Timestamp.
  * 
  * @param {value} token - The generated token from the localStorage 
  * @returns 
