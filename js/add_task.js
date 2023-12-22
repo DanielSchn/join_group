@@ -431,7 +431,6 @@ function submitTask() {
         timestamp: getTimestamp(),
         status: 'toDo'
     });
-    console.log(tasks); // TEST
 }
 
 function contactAssignedHTML(contact, id) {
