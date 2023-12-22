@@ -154,24 +154,19 @@ function renderLogo() {
 
 
 /**
- * Login validation on all pages except the index.html page
+ * Function to show the hidden menu behind the Userlogo in the Header.
+ * The style attribute for display will change to 'flex'
  */
-// document.addEventListener("DOMContentLoaded", function () {
-//   if (window.location.href.indexOf("index.html") === -1) {
-//       let isLoggedIn = localStorage.getItem("isLoggedIn");
-//       if (!isLoggedIn) {
-//           window.location.href = "index.html";
-//       }
-//   }
-// });
-
-
 function showHiddenMenu() {
   let menu = document.getElementById('hiddenMenu');
   menu.style.display = 'flex';
 }
 
 
+/**
+ * Function to hide the hidden menu.
+ * The style attribute for display will change to 'none'
+ */
 function hideHiddenMenu() {
   let menu = document.getElementById('hiddenMenu');
   menu.style.display = 'none';
@@ -179,13 +174,19 @@ function hideHiddenMenu() {
 
 
 
-
+/**
+ * Check if an Element with the id 'uniqueElement' is on the site. When this Element will be present, it will do nothing.
+ * If the Element is not present, the bodyClick function, to hide the hiddenMenu, will work. 
+ */
 if (document.getElementById('uniqueElement')) {
 } else {
   document.addEventListener('click', bodyClick);
 }
 
 
+/**
+ * Check function for the click to hideHiddenMenu()
+ */
 function bodyClick(event) {
   if (!event.target.closest('#hiddenMenu') && !event.target.closest('#user')) {
     hideHiddenMenu();
@@ -193,14 +194,13 @@ function bodyClick(event) {
 }
 
 
-function excludeDivClick(event) {
-  event.stopPropagation();
-}
-
-
+/**
+ * Logout function. This will delete all information in the local Storage
+ */
 function logout() {
-  localStorage.removeItem("isLoggedIn");
-  window.location.href = "index.html";
+  localStorage.removeItem('token');
+  localStorage.removeItem('userName');
+  window.location.href = 'index.html';
 }
 
 
@@ -214,7 +214,8 @@ function login() {
   let guest = guests.find(u => u.email == email.value && u.password == password.value);
   console.log(user || guest);
   if (user || guest) {
-    localStorage.setItem('isLoggedIn', 'true');
+    const token = generateToken(user || guest);
+    localStorage.setItem("token", token);
     window.setTimeout(function () {
       redirectToSummaryPage(user || guest);
     }, 500);
@@ -224,45 +225,58 @@ function login() {
 }
 
 
+/**
+ * Go to summary Page after successfull login
+ * 
+ * @param {string} user - User Info for rendering some Userspecific HTML Data
+ */
 function redirectToSummaryPage(user) {
   localStorage.setItem('userName', user.name);
   window.location.href = "summary.html";
 }
 
 
-// function generateToken(userId) {
-//   const secretKey = 'DeinGeheimesSchluesselwort'; // Sollte sicher und geheim sein
-//   const expiresIn = 3600; // Gültigkeitsdauer des Tokens in Sekunden (hier: 1 Stunde)
-
-//   const expirationTime = Date.now() + expiresIn * 1000; // Umrechnung in Millisekunden
-//   const tokenPayload = {
-//       userId: userId,
-//       exp: expirationTime / 1000 // UNIX-Zeitstempel in Sekunden
-//   };
-
-//   const token = btoa(JSON.stringify(tokenPayload)); // Base64-Kodierung (vereinfacht)
-//   return token;
-// }
-
-
-// // Funktion zum Überprüfen eines Tokens
-// function verifyToken(token) {
-//   const secretKey = 'DeinGeheimesSchluesselwort'; // Sollte mit dem beim Generieren verwendeten übereinstimmen
-
-//   try {
-//       const decodedToken = JSON.parse(atob(token)); // Base64-Dekodierung (vereinfacht)
-//       return decodedToken.exp * 1000 > Date.now(); // Überprüfen der Gültigkeit
-//   } catch (error) {
-//       return false; // Das Token ist ungültig
-//   }
-// }
+/**
+ * Generate Token for login validation. BTOA Base64 will create an ASCII string for decode.
+ * Will use an expiration time in 12h. Will be enough for a working day.
+ * 
+ * @param {array} userId - The User Info Array with Name, Email and password.
+ * @returns 
+ */
+function generateToken(userId) {
+  console.log(userId);
+  const expiresIn = 43200;
+  const expirationTime = Date.now() + expiresIn * 1000;
+  const tokenPayload = {
+      userId: userId,
+      exp: expirationTime / 1000
+  };
+  const token = btoa(JSON.stringify(tokenPayload));
+  return token;
+}
 
 
-// const userId = 123; // Hier solltest du die tatsächliche Benutzer-ID verwenden
-// const token = generateToken(userId);
-// localStorage.setItem("token", token);
+/**
+ * Verify the generated token when load another Page from the Website Project
+ * 
+ * @param {value} token - The generated token from the localStorage 
+ * @returns 
+ */
+function verifyToken(token) {
+  try {
+      const decodedToken = JSON.parse(atob(token));
+      return decodedToken.exp * 1000 > Date.now();
+  } catch (error) {
+      return false;
+  }
+}
 
 
+// DIESE FUNKTION IST DAFÜR DA UM DEN LOGGED IN STATUS ZU VALIDIEREN. WENN SIE AKTIV IST DANN KÖNNT IHR EURE SEITEN NUR AUFRUFEN WENN IHR EINGELOGGT SEID!!!!!
+
+// /**
+//  * Event Listener at DOM Content Loaded. Will check and verify the login token in the local Storage.
+//  */
 // document.addEventListener("DOMContentLoaded", function () {
 //   if (window.location.href.indexOf("index.html") === -1) {
 //       let token = localStorage.getItem("token");
