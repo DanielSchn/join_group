@@ -54,8 +54,10 @@ const TEST_CONTACTS = [
  * Initialisierung (bei Onload, Body)
  */
 async function initAddTask() {
-    // await init();
-    await includeHTML(); // !!! wenn Ladeprozess implementiert ist, durch await init() ersetzen !!!
+    await includeHTML();
+    TEST_TASKS = '';
+    console.log('empty');
+    TEST_TASKS = JSON.parse(await getItem('test')); // Tasks laden - SPÄTER ERSETZEN
     renderAddTaskForm();
     let today = new Date(); // heutiges Datum
     addTaskDue.min = today.toISOString().slice(0, -14); // Minimalwert von Date-Input auf heutigen Tag setzen
@@ -420,7 +422,7 @@ function removeSubtask(index) {
  */
 function submitTask() {
     setAddTaskDueText(); // Datum-Inputs synchronisieren
-    tasks.push({
+    TEST_TASKS.push({ // später durch echtes Tasks-Array (global oder user-individuell ersetzen - falls individuell, mit for-Schleife bei allen zugeordneten Usern hinzufügen)
         id: tasks.length,
         title: addTaskTitle.value,
         description: addTaskDescription.value,
@@ -432,6 +434,7 @@ function submitTask() {
         timestamp: getTimestamp(),
         status: 'toDo'
     });
+    setItem('test', JSON.stringify(TEST_TASKS));
 }
 
 function contactAssignedHTML(contact, id) {
