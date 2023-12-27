@@ -409,6 +409,10 @@ function createSubtask() {
     cancelSubtask();
 }
 
+function handleSubtaskSubmitByEnter() {
+    createSubtask();
+    focusSubtask();
+}
 
 /**
  * erstellt Input-Feld in Subtasks-Liste, um Subtask zu bearbeiten
@@ -474,7 +478,7 @@ function resetTaskForm() {
 function submitTask() {
     setAddTaskDueText(); // Datum-Inputs synchronisieren
     TEST_TASKS.push({ // später durch echtes Tasks-Array (global oder user-individuell ersetzen - falls individuell, mit for-Schleife bei allen zugeordneten Usern hinzufügen)
-        id: tasks.length,
+        id: TEST_TASKS.length,
         title: addTaskTitle.value,
         description: addTaskDescription.value,
         assignedTo: newTask['assignedTo'],
@@ -485,9 +489,7 @@ function submitTask() {
         timestamp: getTimestamp(),
         status: 'toDo'
     });
-    // Button deaktivieren
     setItem('test', JSON.stringify(TEST_TASKS));
-    // Button reaktivieren
 }
 
 
