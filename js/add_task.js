@@ -56,7 +56,6 @@ const TEST_CONTACTS = [
 async function initAddTask() {
     await includeHTML();
     TEST_TASKS = '';
-    console.log('empty');
     TEST_TASKS = JSON.parse(await getItem('test')); // Tasks laden - SPÄTER ERSETZEN
     renderAddTaskForm();
     let today = new Date(); // heutiges Datum
@@ -277,10 +276,19 @@ function stylePrioBtn(index, btnNumber) {
         btn.classList.toggle(`addTaskPrio${index}Selected`);
         togglePrioBtnImg(index);
     } else { // CSS-Klassen entfernen, falls anderer Button geklickt wurde
-        btn.classList.remove('addTaskPrioBtnsSelected');
-        btn.classList.remove(`addTaskPrio${index}Selected`);
-        colorPrioBtnImg(index);
+        unselectPrioBtn(index);
     }
+}
+
+/**
+ * entfernt die bei Selektion hinzugefügten Klassen und Färbung
+ * @param {*} index - Laufindex des zu stylenden Buttons 
+ */
+function unselectPrioBtn(index) {
+    const btn = document.getElementById('addTaskPrio' + index);
+    btn.classList.remove('addTaskPrioBtnsSelected');
+    btn.classList.remove(`addTaskPrio${index}Selected`);
+    colorPrioBtnImg(index);    
 }
 
 /** 
@@ -311,9 +319,9 @@ function colorPrioBtnImg(index) {
 
 /**
  * Task-Priorität aus Formularstatus auslesen
- * @returns Priorität als String aus globalem PRIOS-Array
+ * @returns Priorität als Zahl (wie im globalem PRIOS-Array)
  */
-function getTaskPrio() {
+function getTaskPrioId() {
     const prioBtn = document.getElementsByClassName('addTaskPrioBtnsSelected');
     let prioId = 0;
     if(prioBtn.length > 0) {
@@ -321,7 +329,7 @@ function getTaskPrio() {
         prioId = prioId.slice(-1); // erhalte letztes Zeichen
         prioId = parseInt(prioId); // Umwandlung in Zahl
     }
-    return PRIOS[prioId];
+    return prioId;
 }
 
 /** 
@@ -418,6 +426,17 @@ function removeSubtask(index) {
 }
 
 /**
+ * Formular resetten, zusätzlich zu automatischem HTML5-Reset
+ */
+function resetTaskForm() {
+    const prio = getTaskPrioId(); // Priorität resetten
+    unselectPrioBtn(prio);
+    newTask['assignedTo'] = []; // assigned resetten
+    newTask['subtasks'] = []; // Subtasks resetten
+    renderAddTaskForm();
+}
+
+/**
  * Task hinzufügen
  */
 function submitTask() {
@@ -428,7 +447,7 @@ function submitTask() {
         description: addTaskDescription.value,
         assignedTo: newTask['assignedTo'],
         due: addTaskDueText.value,
-        prio: getTaskPrio(),
+        prio: PRIOS[getTaskPrioId()],
         category: addTaskCategory.value,
         subtasks: newTask['subtasks'],
         timestamp: getTimestamp(),
