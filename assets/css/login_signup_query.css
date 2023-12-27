@@ -43,6 +43,10 @@
     footer {
         left: 281px;
     }
+
+    #startLogo.logo {
+        left: 300px;
+    }
 }
 
 @media (max-width: 735px) {
