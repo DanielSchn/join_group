@@ -54,6 +54,7 @@ const TEST_CONTACTS = [
  * Initialisierung (bei Onload, Body)
  */
 async function initAddTask() {
+    // await init();
     await includeHTML();
     TEST_TASKS = '';
     TEST_TASKS = JSON.parse(await getItem('test')); // Tasks laden - SPÄTER ERSETZEN
@@ -89,6 +90,7 @@ function renderAddTaskAssignedList() {
     }
 }
 
+
 function renderAddTaskAssignedIcons() {
     const contacts = TEST_CONTACTS;
     const assigned = newTask['assignedTo'];
@@ -101,14 +103,17 @@ function renderAddTaskAssignedIcons() {
     }
 }
 
+
 function focusAssignedSearch() {
     addTaskAssigned.placeholder = '';
     addTaskAssigned.focus();
 }
 
+
 function unfocusAssigned() {
     addTaskAssigned.placeholder = 'Select contacts to assign';   
 }
+
 
 /**
  * Kontakt in sichtbarer Assigned-Liste markieren oder Markierung entfernen
@@ -126,6 +131,7 @@ function toggleAssigned(checkbox) {
     focusAssignedSearch();
 }
 
+
 /**
  * Kontakt in assignedTo-Array hinzufügen oder entfernen
  * @param {number} id - Kontakt-ID aus assignedTo-Array
@@ -140,6 +146,7 @@ function toggleAssignedArray(id) {
     }
 }
 
+
 /**
  * subtasks rendern
  */
@@ -153,6 +160,7 @@ function renderAddTaskSubtasks() {
     }
 }
 
+
 /**
  * due-Feld fokussieren
  */
@@ -164,6 +172,7 @@ function focusAddTaskDue() {
     document.addEventListener("mousedown", unfocusAddTaskDue); // reagiert auf Clicks abseits des Containers
 }
 
+
 /**
  * due-Fokus aufheben
  */
@@ -173,6 +182,7 @@ function unfocusAddTaskDue() {
     setAddTaskDueText();
     document.removeEventListener("mousedown", unfocusAddTaskDue);
 }
+
 
 /**
  * an passenden Stellen automatisch '/' einfügen
@@ -188,6 +198,7 @@ function autofillAddTaskDueText(e) {
     }
     checkAddTaskDueText(); // Eingabe prüfen
 }
+
 
 /**
  * Datumseingabe prüfen
@@ -206,6 +217,7 @@ function checkAddTaskDueText() {
     }
 }
 
+
 /**
  * Datumsstring umkehren
  * @param {string} ddmmyyyy
@@ -217,6 +229,7 @@ function transformDate(ddmmyyyy) {
     let dd = ddmmyyyy.substring(0, 2);
     return yyyy + '-' + mm + '-' + dd;
 }
+
 
 /**
  * Datum auf Gültigkeit prüfen
@@ -233,6 +246,7 @@ function isDateValid(yyyymmdd) {
         monthContainsDay(day, month, year) // Tag in Monat enthalten
 }
 
+
 /**
  * Prüfen, ob der jeweilige Tag sich im Monat befindet (wird durch Default-Methoden für Date-Objekte noch nicht erfüllt)
  * @param {number} day 
@@ -246,6 +260,7 @@ function monthContainsDay(day, month, year) {
         (month == 2 && year % 4 == 0 && day <= 29) || // in Schaltjahren im Februar kleiner gleich 29
         (month == 2 && year % 4 !== 0 && day <= 28); // außerhalb von Schaltjahren kleiner gleich 28
 }
+
 
 /**
  * Text-Input an Date-Input anpassen
@@ -264,6 +279,7 @@ function setAddTaskDueText() {
     }
 }
 
+
 /** 
  * Funktion bestimmt, was bei Klick auf einen der drei Prioritätsbuttons geschieht 
  * @param {number} btnNumber - Laufindex des geklickten Buttons (1: urgent, 2: medium, 3: low) 
@@ -273,6 +289,7 @@ function handlePrioBtnClick(btnNumber) {
         stylePrioBtn(i, btnNumber);
     }
 }
+
 
 /** 
  * Button stylen
@@ -290,6 +307,7 @@ function stylePrioBtn(index, btnNumber) {
     }
 }
 
+
 /**
  * entfernt die bei Selektion hinzugefügten Klassen und Färbung
  * @param {*} index - Laufindex des zu stylenden Buttons 
@@ -300,6 +318,7 @@ function unselectPrioBtn(index) {
     btn.classList.remove(`addTaskPrio${index}Selected`);
     colorPrioBtnImg(index);
 }
+
 
 /** 
  * <img> im Button durch Pfadänderung stylen
@@ -315,6 +334,7 @@ function togglePrioBtnImg(index) {
     }
 }
 
+
 /** 
  * <img> im Button bunt färben
  * @param {number} index - Laufindex des Buttons 
@@ -326,6 +346,7 @@ function colorPrioBtnImg(index) {
         img.src = newSrc;
     }
 }
+
 
 /**
  * Task-Priorität aus Formularstatus auslesen
@@ -342,6 +363,7 @@ function getTaskPrioId() {
     return prioId;
 }
 
+
 /** 
  * Fokussierung des Input-Feldes für Subtasks
  */
@@ -356,6 +378,7 @@ function focusSubtask() {
     btnsActive.style.display = '';
     document.addEventListener("click", unfocusSubtask); // reagiert auf Clicks abseits des Containers
 }
+
 
 /**
  * Fokus aufheben
@@ -372,6 +395,7 @@ function unfocusSubtask() {
     document.removeEventListener("click", unfocusSubtask);
 }
 
+
 /**
  * Cancel-Button löscht eingetragenen Wert und hebt Fokus auf
  */
@@ -379,6 +403,7 @@ function cancelSubtask() {
     addSubtask.value = '';
     unfocusSubtask();
 }
+
 
 /**
  * Check-Button erzeugt Subtask, falls Wert eingetragen
@@ -393,6 +418,7 @@ function createSubtask() {
     }
     cancelSubtask();
 }
+
 
 /**
  * erstellt Input-Feld in Subtasks-Liste, um Subtask zu bearbeiten
@@ -410,6 +436,7 @@ function editSubtask(index) {
     document.addEventListener("click", renderAddTaskSubtasks); // Klick neben Liste wird als Abbruch der Bearbeitung gewertet
 }
 
+
 /**
  * Bestätigung der Subtask-Bearbeitung
  * @param {number} index - Laufindex innerhalb des subtasks-Array 
@@ -425,6 +452,7 @@ function confirmSubtaskEdit(index) {
     renderAddTaskSubtasks();
 }
 
+
 /**
  * Subtask aus Liste und Daten entfernen
  * @param {number} index - Laufindex innerhalb des subtasks-Array 
@@ -434,6 +462,7 @@ function removeSubtask(index) {
     subtasks.splice(index, 1);
     renderAddTaskSubtasks();
 }
+
 
 /**
  * Formular resetten, zusätzlich zu automatischem HTML-Reset
@@ -447,6 +476,7 @@ function resetTaskForm() {
     newTask['subtasks'] = []; // Subtasks resetten
     renderAddTaskForm();
 }
+
 
 /**
  * Task hinzufügen
@@ -468,6 +498,7 @@ function submitTask() {
     setItem('test', JSON.stringify(TEST_TASKS));
 }
 
+
 function contactAssignedHTML(contact, id) {
     return /* html */`
         <li onclick="event.stopPropagation(); toggleAssigned(${id})">
@@ -481,6 +512,7 @@ function contactAssignedHTML(contact, id) {
         </li>`;
 }
 
+
 function contactAssignedIconHTML(contact) {
     return /* html */`
         <div class="contactInitials">
@@ -488,6 +520,7 @@ function contactAssignedIconHTML(contact) {
         </div>    
     `;
 }
+
 
 function subtaskHTML(subtask, index) {
     return /* html */`
@@ -503,6 +536,7 @@ function subtaskHTML(subtask, index) {
             </button>
         </li>`;
 }
+
 
 function editSubtaskHTML(subtask, index) {
     return /* html */`
