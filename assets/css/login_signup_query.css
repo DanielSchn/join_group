@@ -182,6 +182,10 @@
     #startLogo.logo {
         left: 50px;
     }
+
+    .mainDivSignup {
+        gap: 32px;
+    }
 }
 
 /* @media (orientation: landscape) {
