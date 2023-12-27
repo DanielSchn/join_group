@@ -123,9 +123,6 @@ input::placeholder {
 }
 
 .logIn {
-    /* position: fixed;
-    top: 265.5px;
-    left: 394px; */
     width: 652px;
     height: 493px;
     background: var(--white);
