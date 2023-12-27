@@ -20,20 +20,7 @@
     --white: #FFFFFF;
 }
 
-@media (max-width: 1320px) {
-    .toSignUp {
-        left: 768px;
-    }
-}
-
 @media (max-width: 1050px) {
-    .toSignUp {
-        left: 452px;
-    }
-
-    .logIn {
-        left: 78px;
-    }
 
     .signUp {
         left: 78px;
@@ -51,8 +38,6 @@
 
 @media (max-width: 735px) {
     .logIn {
-        left: 16px;
-        top: 205.5px;
         width: 396px;
         height: 515px;
         padding-top: 0;
@@ -93,11 +78,6 @@
     .rememberMe {
         font-size: var(--fontSizeSmall);
         margin: 0 0 32px 16px;
-    }
-
-    .toSignUp {
-        left: 70px;
-        top: 778px;
     }
 
     footer {
@@ -163,18 +143,31 @@
     }
 }
 
+@media (max-width: 600px) {
+    .signUpHeadPos {
+        display: none !important;
+    }
+
+    #mainBody {
+        gap: 64px;
+    }
+
+    .signUpHeadPosMobile {
+        display: flex;
+    }
+
+    .toSignUpMobile {
+        gap: 16px;
+    }
+}
+
 @media (max-width: 420px) {
     .logIn {
         width: 300px;
-        left: 8px;
     }
 
     .inputLogInSignUp {
         width: 240px;
-    }
-
-    .toSignUp {
-        left: 16px;
     }
 
     footer {

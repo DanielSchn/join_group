@@ -73,6 +73,18 @@ input::placeholder {
     gap: 35px;
 }
 
+.toSignUpMobile {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+}
+
+.signUpHeadPosMobile {
+        display: none;
+        justify-content: flex-end;
+        align-items: center;
+}
+
 .inputLogInSignUp {
     width: 422px;
     max-height: 48px;
