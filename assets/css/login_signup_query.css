@@ -143,13 +143,13 @@
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 620px) {
     .signUpHeadPos {
         display: none !important;
     }
 
-    #mainBody {
-        gap: 64px;
+    .toSignUp {
+        display: none;
     }
 
     .signUpHeadPosMobile {
