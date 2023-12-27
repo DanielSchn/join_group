@@ -106,17 +106,6 @@ function renderAddTaskAssignedIcons() {
 }
 
 
-function focusAssignedSearch() {
-    addTaskAssigned.placeholder = '';
-    addTaskAssigned.focus();
-}
-
-
-function unfocusAssigned() {
-    addTaskAssigned.placeholder = 'Select contacts to assign';   
-}
-
-
 /**
  * Kontakt in sichtbarer Assigned-Liste markieren oder Markierung entfernen
  * @param {element} checkbox - ID/Element der Checkbox 
