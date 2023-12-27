@@ -76,10 +76,12 @@ button {
     font-family: 'Inter';
     font-size: var(--fontSizeNormal);
     padding: 16px;
+    transition: 75ms ease-in-out;
 }
 
 button:hover {
     box-shadow: var(--shadowStronger);
+    transition: 75ms ease-in-out;
 }
 
 .btnPrimary {

@@ -98,7 +98,7 @@ function renderAddTaskAssignedIcons() {
         if (assigned.includes(i)) {
             assignedIcons.innerHTML += contactAssignedIconHTML(contact);
         }
-    }    
+    }
 }
 
 /**
@@ -288,7 +288,7 @@ function unselectPrioBtn(index) {
     const btn = document.getElementById('addTaskPrio' + index);
     btn.classList.remove('addTaskPrioBtnsSelected');
     btn.classList.remove(`addTaskPrio${index}Selected`);
-    colorPrioBtnImg(index);    
+    colorPrioBtnImg(index);
 }
 
 /** 
@@ -324,7 +324,7 @@ function colorPrioBtnImg(index) {
 function getTaskPrioId() {
     const prioBtn = document.getElementsByClassName('addTaskPrioBtnsSelected');
     let prioId = 0;
-    if(prioBtn.length > 0) {
+    if (prioBtn.length > 0) {
         prioId = prioBtn[0].id; // String
         prioId = prioId.slice(-1); // erhalte letztes Zeichen
         prioId = parseInt(prioId); // Umwandlung in Zahl
@@ -429,8 +429,10 @@ function removeSubtask(index) {
  * Formular resetten, zusätzlich zu automatischem HTML5-Reset
  */
 function resetTaskForm() {
-    const prio = getTaskPrioId(); // Priorität resetten
-    unselectPrioBtn(prio);
+    const prio = getTaskPrioId();
+    if (prio) { // falls Priorität vorhanden
+        unselectPrioBtn(prio); // Priorität resetten
+    }
     newTask['assignedTo'] = []; // assigned resetten
     newTask['subtasks'] = []; // Subtasks resetten
     renderAddTaskForm();
