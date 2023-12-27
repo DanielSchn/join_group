@@ -75,6 +75,9 @@ function unfocusAll() {
   if (document.getElementById('addSubtask')) { // falls Element mit ID addSubtask vorhanden
     unfocusSubtask(); // Fokus auf das Element aufheben
   }
+  if(document.getElementById('addTaskAssigned')) {
+    unfocusAssigned();
+  }
 }
 
 

@@ -48,7 +48,7 @@ const TEST_CONTACTS = [
         name: 'Günther',
         lastName: 'Hillmann'
     }
-]
+];
 
 /**
  * Initialisierung (bei Onload, Body)
@@ -101,6 +101,15 @@ function renderAddTaskAssignedIcons() {
     }
 }
 
+function focusAssignedSearch() {
+    addTaskAssigned.placeholder = '';
+    addTaskAssigned.focus();
+}
+
+function unfocusAssigned() {
+    addTaskAssigned.placeholder = 'Select contacts to assign';   
+}
+
 /**
  * Kontakt in sichtbarer Assigned-Liste markieren oder Markierung entfernen
  * @param {element} checkbox - ID/Element der Checkbox 
@@ -114,6 +123,7 @@ function toggleAssigned(checkbox) {
     toggleCheckbox(checkbox);
     toggleAssignedArray(id);
     renderAddTaskAssignedIcons();
+    focusAssignedSearch();
 }
 
 /**
@@ -426,7 +436,7 @@ function removeSubtask(index) {
 }
 
 /**
- * Formular resetten, zusätzlich zu automatischem HTML5-Reset
+ * Formular resetten, zusätzlich zu automatischem HTML-Reset
  */
 function resetTaskForm() {
     const prio = getTaskPrioId();

@@ -21,7 +21,7 @@
                     <h2>Assigned to</h2>
                 </label>
                 <div id="addTaskAssignedInputContainer" class="extendedInput dropdownInput borderHover"
-                    onclick="event.stopPropagation(); toggleDropdown('addTaskAssigned')">
+                    onclick="event.stopPropagation(); toggleDropdown('addTaskAssigned'); focusAssignedSearch();">
                     <input type="text" placeholder="Select contacts to assign" id="addTaskAssigned"
                         onmousedown="event.preventDefault()">
                     <button type="button">
