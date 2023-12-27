@@ -119,7 +119,6 @@ function toggleAssigned(checkbox) {
     toggleCheckbox(checkbox);
     toggleAssignedArray(id);
     renderAddTaskAssignedIcons();
-    focusAssignedSearch();
 }
 
 
