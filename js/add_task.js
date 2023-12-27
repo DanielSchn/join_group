@@ -61,7 +61,6 @@ async function initAddTask() {
     renderAddTaskForm();
     let today = new Date(); // heutiges Datum
     addTaskDue.min = today.toISOString().slice(0, -14); // Minimalwert von Date-Input auf heutigen Tag setzen
-    activatePrio(2);
 }
 
 
@@ -300,15 +299,6 @@ function stylePrioBtn(index, btnNumber) {
 
 
 /**
- * Prio-Button aktivieren
- * @param {number} btnNumber 
- */
-function activatePrio(btnNumber) {
-    stylePrioBtn(btnNumber, btnNumber);
-}
-
-
-/**
  * entfernt die bei Selektion hinzugefügten Klassen und Färbung
  * @param {*} index - Laufindex des zu stylenden Buttons 
  */
@@ -465,7 +455,7 @@ function removeSubtask(index) {
 
 
 /**
- * Formular resetten, zusätzlich zu automatischem HTML-Reset
+ * Formular resetten
  */
 function resetTaskForm() {
     const prio = getTaskPrioId();
@@ -495,7 +485,9 @@ function submitTask() {
         timestamp: getTimestamp(),
         status: 'toDo'
     });
+    // Button deaktivieren
     setItem('test', JSON.stringify(TEST_TASKS));
+    // Button reaktivieren
 }
 
 
