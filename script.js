@@ -28,12 +28,12 @@ document.addEventListener("DOMContentLoaded", function () {
   let indexPage = document.querySelector('.rememberMe');
   if (indexPage) {
     const logo = document.getElementById('startLogo');
-    const body = document.getElementById('mainBody');
     setTimeout(function () {
       logo.classList.add('transformed');
     }, 500);
     logo.addEventListener("transitionend", function () {
-      body.style.display = 'block';
+      document.getElementById('mainBody').style.display = 'flex';
+      document.getElementById('toSignUpId').style.display = 'flex';
     });
   }
 });

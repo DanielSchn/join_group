@@ -190,3 +190,21 @@
         left: 50px;
     }
 }
+
+/* @media (orientation: landscape) {
+    .logIn {
+        position: unset;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    #mainBody {
+        display: flex !important;
+        justify-content: center;
+        align-items: center;
+        position: unset;
+        height: 100vh;
+    }
+} */
