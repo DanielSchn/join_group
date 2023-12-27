@@ -61,6 +61,7 @@ async function initAddTask() {
     renderAddTaskForm();
     let today = new Date(); // heutiges Datum
     addTaskDue.min = today.toISOString().slice(0, -14); // Minimalwert von Date-Input auf heutigen Tag setzen
+    activatePrio(2);
 }
 
 
@@ -282,7 +283,7 @@ function handlePrioBtnClick(btnNumber) {
 
 
 /** 
- * Button stylen
+ * Prio-Button stylen
  * @param {number} index - Laufindex des zu stylenden Buttons
  * @param {*} btnNumber - Laufindex des geklickten Buttons
  */
@@ -295,6 +296,15 @@ function stylePrioBtn(index, btnNumber) {
     } else { // CSS-Klassen entfernen, falls anderer Button geklickt wurde
         unselectPrioBtn(index);
     }
+}
+
+
+/**
+ * Prio-Button aktivieren
+ * @param {number} btnNumber 
+ */
+function activatePrio(btnNumber) {
+    stylePrioBtn(btnNumber, btnNumber);
 }
 
 
