@@ -63,6 +63,7 @@ async function initAddTask() {
     addTaskDue.min = today.toISOString().slice(0, -14); // Minimalwert von Date-Input auf heutigen Tag setzen
 }
 
+
 /**
  * allgemeine Render-Funktion
  */
@@ -71,6 +72,7 @@ function renderAddTaskForm() {
     renderAddTaskAssignedIcons();
     renderAddTaskSubtasks();
 }
+
 
 /**
  * assigned-Liste rendern
