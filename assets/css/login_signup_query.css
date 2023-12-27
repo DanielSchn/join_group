@@ -158,3 +158,31 @@
         left: 38px;
     }
 }
+
+@media (max-width: 420px) {
+    .logIn {
+        width: 300px;
+        left: 8px;
+    }
+
+    .inputLogInSignUp {
+        width: 240px;
+    }
+
+    .toSignUp {
+        left: 16px;
+    }
+
+    footer {
+        left: 50px;
+    }
+
+    .signUp {
+        width: 300px;
+        left: 8px;
+    }
+
+    #startLogo.logo {
+        left: 50px;
+    }
+}
