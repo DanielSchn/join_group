@@ -14,7 +14,7 @@
                 <label for="addTaskDescription">
                     <h2>Description</h2>
                 </label>
-                <textarea placeholder="Enter a description" id="addTaskDescription" class="borderHover"></textarea>
+                <textarea placeholder="Enter a description" onkeydown="event.stopPropagation()" id="addTaskDescription" class="borderHover"></textarea>
             </div>
             <div class="addTaskField dropdownContainer">
                 <label for="addTaskAssigned" onclick="event.preventDefault()">

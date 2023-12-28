@@ -1,5 +1,7 @@
 const PRIOS = [null, 'urgent', 'medium', 'low'];
 
+let submitOnEnter = true;
+
 let newTask = {
     id: -1,
     title: '',
@@ -108,11 +110,13 @@ function renderAddTaskAssignedIcons() {
 
 
 function submitFormOnEnter(e) {
-    if(addTaskForm && e.key == 'Enter') { // falls "Add Task"-Formular geladen ist und Enter gedrückt wurde
-        unfocusAll(); // Fokus aufheben
-        submitBtn.click(); // Submit-Button auslösen
+    if (submitOnEnter) {
+        if (addTaskForm && e.key == 'Enter') { // falls "Add Task"-Formular geladen ist und Enter gedrückt wurde
+            unfocusAll(); // Fokus aufheben
+            submitBtn.click(); // Submit-Button auslösen
+        }
+        removeEventListener('keydown', submitFormOnEnter); // Listener entfernen
     }
-    removeEventListener('keydown', submitFormOnEnter); // Listener entfernen
 }
 
 
@@ -377,6 +381,8 @@ function focusSubtask() {
     btnsPassive.style.display = 'none';
     btnsActive.style.display = '';
     document.addEventListener("click", unfocusSubtask); // reagiert auf Clicks abseits des Containers
+    submitOnEnter = false;
+    document.addEventListener("keydown", createSubtaskOnEnter); // Subtasks mit Enter hinzufügen
 }
 
 
@@ -393,6 +399,8 @@ function unfocusSubtask() {
         btnsActive.style.display = 'none';
     }
     document.removeEventListener("click", unfocusSubtask);
+    submitOnEnter = true;
+    document.removeEventListener("keydown", createSubtaskOnEnter);
 }
 
 
@@ -417,6 +425,14 @@ function createSubtask() {
         renderAddTaskSubtasks();
     }
     cancelSubtask();
+}
+
+function createSubtaskOnEnter(e) {
+    if (e.key == 'Enter') {
+        e.preventDefault();
+        createSubtask();
+        focusSubtask();
+    }
 }
 
 
@@ -497,15 +513,6 @@ function submitTask() {
         status: 'toDo'
     });
     setItem('test', JSON.stringify(TEST_TASKS));
-}
-
-
-function submitOnEnter(e) {
-    console.log(this);
-    const key = e.key;
-    if(key == 'Enter') {
-        this.submit();
-    }
 }
 
 
