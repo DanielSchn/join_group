@@ -32,7 +32,6 @@ function renderSummaryGreeting(daytime) {
 function setDaytime() {
     let today = new Date();
     let currentHour = today.getHours();
-    console.log(currentHour);
     if (currentHour < 12) {
         renderSummaryGreeting('Good morning');
     } else if (currentHour < 18) {
