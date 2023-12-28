@@ -34,14 +34,19 @@ async function loadUsers() {
  */
 async function register() {
     registerBtn.disabled = true;
-    users.push({
-        name: signUpName.value,
-        email: signUpEmail.value,
-        password: signUpPassword.value,
-    });
-    await setItem('users', JSON.stringify(users));
-    resetForm();
-    showOverlaySignedUp();
+    const isEmailRegistered = users.some(u => u.email === signUpEmail.value);
+    if (isEmailRegistered) {
+        console.error('User bereits registriert');
+    } else {
+        users.push({
+            name: signUpName.value,
+            email: signUpEmail.value,
+            password: signUpPassword.value,
+        });
+        await setItem('users', JSON.stringify(users));
+        resetForm();
+        showOverlaySignedUp();
+    }
 }
 
 
