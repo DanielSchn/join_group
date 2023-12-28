@@ -75,8 +75,9 @@ function unfocusAll() {
     let id = dropdownMenu.id;
     hideDropdown(id.replace('Menu', ''));
   }
-  if (document.getElementById('addSubtask')) { // falls Element mit ID addSubtask vorhanden
-    unfocusSubtask(); // Fokus auf das Element aufheben
+  if (document.getElementById('addTaskForm')) { // falls im Add Task-Formular
+    unfocusSubtask();
+    unfocusAddTaskDue();
   }
 }
 

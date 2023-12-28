@@ -1,4 +1,4 @@
-<form class="addTaskForm" autocomplete="off" onreset="resetTaskForm()" onsubmit="submitTask(); return false">
+<form class="addTaskForm" id="addTaskForm" autocomplete="off" onreset="resetTaskForm()" onsubmit="submitTask(); return false">
     <input autocomplete="false" name="hidden" type="text" style="display: none">
     <h1>Add Task</h1>
     <div class="addTaskFormMain">
@@ -115,7 +115,7 @@
         </div>
         <div>
             <button type="reset" class="btnSecondary">Clear</button>
-            <button type="submit" class="btnPrimary">Create Task</button>
+            <button type="submit" class="btnPrimary" id="submitBtn">Create Task</button>
         </div>
     </div>
 </form>

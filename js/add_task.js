@@ -59,6 +59,7 @@ async function initAddTask() {
     TEST_TASKS = '';
     TEST_TASKS = JSON.parse(await getItem('test')); // Tasks laden - SPÄTER ERSETZEN
     renderAddTaskForm();
+    document.addEventListener('keydown', submitFormOnEnter);
     let today = new Date(); // heutiges Datum
     addTaskDue.min = today.toISOString().slice(0, -14); // Minimalwert von Date-Input auf heutigen Tag setzen
 }
@@ -103,6 +104,15 @@ function renderAddTaskAssignedIcons() {
             assignedIcons.innerHTML += contactAssignedIconHTML(contact);
         }
     }
+}
+
+
+function submitFormOnEnter(e) {
+    if(addTaskForm && e.key == 'Enter') { // falls "Add Task"-Formular geladen ist und Enter gedrückt wurde
+        unfocusAll(); // Fokus aufheben
+        submitBtn.click(); // Submit-Button auslösen
+    }
+    removeEventListener('keydown', submitFormOnEnter); // Listener entfernen
 }
 
 
@@ -409,10 +419,6 @@ function createSubtask() {
     cancelSubtask();
 }
 
-function handleSubtaskSubmitByEnter() {
-    createSubtask();
-    focusSubtask();
-}
 
 /**
  * erstellt Input-Feld in Subtasks-Liste, um Subtask zu bearbeiten
@@ -464,8 +470,9 @@ function removeSubtask(index) {
 function resetTaskForm() {
     const prio = getTaskPrioId();
     if (prio) { // falls Priorität vorhanden
-        unselectPrioBtn(prio); // Priorität resetten
+        unselectPrioBtn(prio); // Priorität entfernen
     }
+    stylePrioBtn(2, 2); // Priorität resetten
     newTask['assignedTo'] = []; // assigned resetten
     newTask['subtasks'] = []; // Subtasks resetten
     renderAddTaskForm();
@@ -490,6 +497,15 @@ function submitTask() {
         status: 'toDo'
     });
     setItem('test', JSON.stringify(TEST_TASKS));
+}
+
+
+function submitOnEnter(e) {
+    console.log(this);
+    const key = e.key;
+    if(key == 'Enter') {
+        this.submit();
+    }
 }
 
 
