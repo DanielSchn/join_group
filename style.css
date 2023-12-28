@@ -368,6 +368,10 @@ aside {
     color: #CDCDCD;
 }
 
+.hiddenMenuText a:hover {
+    color: #b3aaaa;
+}
+
 .hiddenMenuPos {
     display: flex;
     justify-content: end;
