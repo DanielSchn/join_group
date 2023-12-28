@@ -49,7 +49,7 @@ textarea:focus,
 
 /* neuer Resizer */
 textarea {
-    background-image: url(../img/resize-handle.svg);
+    background-image: url(../img/resize_handle.svg);
     background-size: 19px;
     background-repeat: no-repeat;
     background-position: calc(100% - 5px) calc(100% - 4px);
