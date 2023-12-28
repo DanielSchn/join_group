@@ -36,7 +36,7 @@ async function register() {
     registerBtn.disabled = true;
     const isEmailRegistered = users.some(u => u.email === signUpEmail.value);
     if (isEmailRegistered) {
-        console.error('User bereits registriert');
+        document.getElementById('errorMessageId').innerHTML = 'This Email was registered soon!'
     } else {
         users.push({
             name: signUpName.value,
