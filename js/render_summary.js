@@ -1,6 +1,8 @@
 const userName = [];
 
-
+/**
+ * Init function for the summary Page
+ */
 async function initSummary() {
     await init();
     setDaytime();
@@ -63,12 +65,18 @@ function renderUserName() {
 }
 
 
+/**
+ * Render quantity for all Tasks on summary Page
+ */
 function renderTasksInBoard() {
     let tasksInBoard = document.getElementById('tasksInBoardDashboard');
     tasksInBoard.innerHTML = TEST_TASKS.length;
 }
 
 
+/**
+ * Render quantity for in progress Tasks on summary Page
+ */
 function renderTasksInProgress() {
     let tasksInProgress = document.getElementById('tasksInProgressDashboard');
     let inProgressCount = 0;
@@ -81,6 +89,9 @@ function renderTasksInProgress() {
 }
 
 
+/**
+ * Render quantity for Tasks are await feedback on summary Page
+ */
 function renderTasksAwaitFeedback() {
     let tasksAwaitFeedback = document.getElementById('awaitFeedbackDashboard');
     let awaitFeedbackCount = 0;
@@ -93,6 +104,9 @@ function renderTasksAwaitFeedback() {
 }
 
 
+/**
+ * Render quantity for to do Tasks on summary Page
+ */
 function renderToDo() {
     let toDo = document.getElementById('toDoDashboard');
     let toDoCount = 0;
@@ -105,6 +119,9 @@ function renderToDo() {
 }
 
 
+/**
+ * Render quantity for Done Tasks on summary Page
+ */
 function renderDoneTasks() {
     let doneTasks = document.getElementById('doneTasksDashboard');
     let doneTasksCount = 0;
@@ -117,6 +134,9 @@ function renderDoneTasks() {
 }
 
 
+/**
+ * Render quantity for Deadline on summary
+ */
 function renderUrgentTasks() {
     let urgentTask = document.getElementById('urgentTaskDashboard');
     let urgentTaskCount = 0;
