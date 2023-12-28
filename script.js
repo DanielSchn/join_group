@@ -225,13 +225,12 @@ function logout() {
 function login() {
   let email = document.getElementById('email');
   let password = document.getElementById('signUpPassword');
-  let user = users.find(u => u.email == email.value && u.password == password.value);
-  let guest = guests.find(u => u.email == email.value && u.password == password.value);
-  if (user || guest) {
-    const token = generateToken(user || guest);
+  let user = users.find(u => u.email == email.value && u.password == password.value) || guests.find(u => u.email == email.value && u.password == password.value);
+  if (user) {
+    const token = generateToken(user);
     localStorage.setItem("token", token);
     window.setTimeout(function () {
-      redirectToSummaryPage(user || guest);
+      redirectToSummaryPage(user);
     }, 500);
   } else {
     document.getElementById('userNotFound').style.display = 'block';

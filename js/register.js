@@ -145,5 +145,3 @@ function togglePasswordVisibility(inputId, visibilityIconId, visibilityOffIconId
         visibilityOffIcon.classList.add('dNone');
     }
 }
-
-
