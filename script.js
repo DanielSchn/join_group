@@ -6,6 +6,9 @@ async function init() {
 }
 
 
+/**
+ * Function to include template html files
+ */
 async function includeHTML() {
   let includeElements = document.querySelectorAll('[w3-include-html]');
   for (let i = 0; i < includeElements.length; i++) {
@@ -240,7 +243,6 @@ function login() {
 
 /**
  * Go to summary Page after successfull login
- * 
  * @param {string} user - User Info for rendering some Userspecific HTML Data
  */
 function redirectToSummaryPage(user) {
@@ -252,7 +254,6 @@ function redirectToSummaryPage(user) {
 /**
  * Generate Token for login validation. BTOA Base64 will create an ASCII string for encode.
  * Will use an expiration time in 12h. Will be enough for a working day.
- * 
  * @param {array} userId - The User Info Array with Name, Email and password.
  * @returns 
  */
@@ -272,7 +273,6 @@ function generateToken(userId) {
  * Verify the generated token when load another Page from the Website Project.
  * ATOB decode the token.
  * UNIX Timestamp.
- * 
  * @param {value} token - The generated token from the localStorage 
  * @returns 
  */
