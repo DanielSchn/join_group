@@ -184,7 +184,7 @@
 
     .addTaskBottom {
         position: fixed;
-        z-index: 2;
+        z-index: 3;
         left: 0;
         right: 0;
         bottom: 80px;
@@ -192,6 +192,10 @@
         background: var(--lightGray2);
         padding: var(--sidePadding);
         align-items: center;
+    }
+
+    #mobileMenuBox {
+        z-index: 3;
     }
 }
 

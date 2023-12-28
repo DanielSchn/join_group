@@ -1,5 +1,5 @@
-<form class="addTaskForm" autocomplete="off" onsubmit="submitTask(); return false">
-    <input autocomplete="false" name="hidden" type="text" style="display:none;">
+<form class="addTaskForm" autocomplete="off" onreset="resetTaskForm()" onsubmit="submitTask(); return false">
+    <input autocomplete="false" name="hidden" type="text" style="display: none">
     <h1>Add Task</h1>
     <div class="addTaskFormMain">
         <div class="addTaskFormMainSide addTaskFormMainSideOne">
@@ -53,8 +53,8 @@
                 <div class="addTaskPrioBtns preventSelect">
                     <button type="button" id="addTaskPrio1" onclick="handlePrioBtnClick(1)">Urgent <img
                             src="./assets/img/prio_icons/task_prio_urgent.svg" alt="icon" id="addTaskPrio1Img"></button>
-                    <button type="button" id="addTaskPrio2" onclick="handlePrioBtnClick(2)">Medium <img
-                            src="./assets/img/prio_icons/task_prio_medium.svg" alt="icon" id="addTaskPrio2Img"></button>
+                    <button type="button" id="addTaskPrio2" onclick="handlePrioBtnClick(2)" class="addTaskPrioBtnsSelected addTaskPrio2Selected">Medium <img
+                            src="./assets/img/prio_icons/task_prio_medium_white.svg" alt="icon" id="addTaskPrio2Img"></button>
                     <button type="button" id="addTaskPrio3" onclick="handlePrioBtnClick(3)">Low <img
                             src="./assets/img/prio_icons/task_prio_low.svg" alt="icon" id="addTaskPrio3Img"></button>
                 </div>

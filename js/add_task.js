@@ -48,18 +48,21 @@ const TEST_CONTACTS = [
         name: 'Günther',
         lastName: 'Hillmann'
     }
-]
+];
 
 /**
  * Initialisierung (bei Onload, Body)
  */
 async function initAddTask() {
     // await init();
-    await includeHTML(); // !!! wenn Ladeprozess implementiert ist, durch await init() ersetzen !!!
+    await includeHTML();
+    TEST_TASKS = '';
+    TEST_TASKS = JSON.parse(await getItem('test')); // Tasks laden - SPÄTER ERSETZEN
     renderAddTaskForm();
     let today = new Date(); // heutiges Datum
     addTaskDue.min = today.toISOString().slice(0, -14); // Minimalwert von Date-Input auf heutigen Tag setzen
 }
+
 
 /**
  * allgemeine Render-Funktion
@@ -69,6 +72,7 @@ function renderAddTaskForm() {
     renderAddTaskAssignedIcons();
     renderAddTaskSubtasks();
 }
+
 
 /**
  * assigned-Liste rendern
@@ -88,6 +92,7 @@ function renderAddTaskAssignedList() {
     }
 }
 
+
 function renderAddTaskAssignedIcons() {
     const contacts = TEST_CONTACTS;
     const assigned = newTask['assignedTo'];
@@ -97,8 +102,9 @@ function renderAddTaskAssignedIcons() {
         if (assigned.includes(i)) {
             assignedIcons.innerHTML += contactAssignedIconHTML(contact);
         }
-    }    
+    }
 }
+
 
 /**
  * Kontakt in sichtbarer Assigned-Liste markieren oder Markierung entfernen
@@ -115,6 +121,7 @@ function toggleAssigned(checkbox) {
     renderAddTaskAssignedIcons();
 }
 
+
 /**
  * Kontakt in assignedTo-Array hinzufügen oder entfernen
  * @param {number} id - Kontakt-ID aus assignedTo-Array
@@ -129,6 +136,7 @@ function toggleAssignedArray(id) {
     }
 }
 
+
 /**
  * subtasks rendern
  */
@@ -142,6 +150,7 @@ function renderAddTaskSubtasks() {
     }
 }
 
+
 /**
  * due-Feld fokussieren
  */
@@ -153,6 +162,7 @@ function focusAddTaskDue() {
     document.addEventListener("mousedown", unfocusAddTaskDue); // reagiert auf Clicks abseits des Containers
 }
 
+
 /**
  * due-Fokus aufheben
  */
@@ -162,6 +172,7 @@ function unfocusAddTaskDue() {
     setAddTaskDueText();
     document.removeEventListener("mousedown", unfocusAddTaskDue);
 }
+
 
 /**
  * an passenden Stellen automatisch '/' einfügen
@@ -177,6 +188,7 @@ function autofillAddTaskDueText(e) {
     }
     checkAddTaskDueText(); // Eingabe prüfen
 }
+
 
 /**
  * Datumseingabe prüfen
@@ -195,6 +207,7 @@ function checkAddTaskDueText() {
     }
 }
 
+
 /**
  * Datumsstring umkehren
  * @param {string} ddmmyyyy
@@ -206,6 +219,7 @@ function transformDate(ddmmyyyy) {
     let dd = ddmmyyyy.substring(0, 2);
     return yyyy + '-' + mm + '-' + dd;
 }
+
 
 /**
  * Datum auf Gültigkeit prüfen
@@ -222,6 +236,7 @@ function isDateValid(yyyymmdd) {
         monthContainsDay(day, month, year) // Tag in Monat enthalten
 }
 
+
 /**
  * Prüfen, ob der jeweilige Tag sich im Monat befindet (wird durch Default-Methoden für Date-Objekte noch nicht erfüllt)
  * @param {number} day 
@@ -235,6 +250,7 @@ function monthContainsDay(day, month, year) {
         (month == 2 && year % 4 == 0 && day <= 29) || // in Schaltjahren im Februar kleiner gleich 29
         (month == 2 && year % 4 !== 0 && day <= 28); // außerhalb von Schaltjahren kleiner gleich 28
 }
+
 
 /**
  * Text-Input an Date-Input anpassen
@@ -253,6 +269,7 @@ function setAddTaskDueText() {
     }
 }
 
+
 /** 
  * Funktion bestimmt, was bei Klick auf einen der drei Prioritätsbuttons geschieht 
  * @param {number} btnNumber - Laufindex des geklickten Buttons (1: urgent, 2: medium, 3: low) 
@@ -263,8 +280,9 @@ function handlePrioBtnClick(btnNumber) {
     }
 }
 
+
 /** 
- * Button stylen
+ * Prio-Button stylen
  * @param {number} index - Laufindex des zu stylenden Buttons
  * @param {*} btnNumber - Laufindex des geklickten Buttons
  */
@@ -275,11 +293,22 @@ function stylePrioBtn(index, btnNumber) {
         btn.classList.toggle(`addTaskPrio${index}Selected`);
         togglePrioBtnImg(index);
     } else { // CSS-Klassen entfernen, falls anderer Button geklickt wurde
-        btn.classList.remove('addTaskPrioBtnsSelected');
-        btn.classList.remove(`addTaskPrio${index}Selected`);
-        colorPrioBtnImg(index);
+        unselectPrioBtn(index);
     }
 }
+
+
+/**
+ * entfernt die bei Selektion hinzugefügten Klassen und Färbung
+ * @param {*} index - Laufindex des zu stylenden Buttons 
+ */
+function unselectPrioBtn(index) {
+    const btn = document.getElementById('addTaskPrio' + index);
+    btn.classList.remove('addTaskPrioBtnsSelected');
+    btn.classList.remove(`addTaskPrio${index}Selected`);
+    colorPrioBtnImg(index);
+}
+
 
 /** 
  * <img> im Button durch Pfadänderung stylen
@@ -295,6 +324,7 @@ function togglePrioBtnImg(index) {
     }
 }
 
+
 /** 
  * <img> im Button bunt färben
  * @param {number} index - Laufindex des Buttons 
@@ -307,20 +337,22 @@ function colorPrioBtnImg(index) {
     }
 }
 
+
 /**
  * Task-Priorität aus Formularstatus auslesen
- * @returns Priorität als String aus globalem PRIOS-Array
+ * @returns Priorität als Zahl (wie im globalem PRIOS-Array)
  */
-function getTaskPrio() {
+function getTaskPrioId() {
     const prioBtn = document.getElementsByClassName('addTaskPrioBtnsSelected');
     let prioId = 0;
-    if(prioBtn.length > 0) {
+    if (prioBtn.length > 0) {
         prioId = prioBtn[0].id; // String
         prioId = prioId.slice(-1); // erhalte letztes Zeichen
         prioId = parseInt(prioId); // Umwandlung in Zahl
     }
-    return PRIOS[prioId];
+    return prioId;
 }
+
 
 /** 
  * Fokussierung des Input-Feldes für Subtasks
@@ -337,6 +369,7 @@ function focusSubtask() {
     document.addEventListener("click", unfocusSubtask); // reagiert auf Clicks abseits des Containers
 }
 
+
 /**
  * Fokus aufheben
  */
@@ -352,6 +385,7 @@ function unfocusSubtask() {
     document.removeEventListener("click", unfocusSubtask);
 }
 
+
 /**
  * Cancel-Button löscht eingetragenen Wert und hebt Fokus auf
  */
@@ -359,6 +393,7 @@ function cancelSubtask() {
     addSubtask.value = '';
     unfocusSubtask();
 }
+
 
 /**
  * Check-Button erzeugt Subtask, falls Wert eingetragen
@@ -372,6 +407,11 @@ function createSubtask() {
         renderAddTaskSubtasks();
     }
     cancelSubtask();
+}
+
+function handleSubtaskSubmitByEnter() {
+    createSubtask();
+    focusSubtask();
 }
 
 /**
@@ -390,6 +430,7 @@ function editSubtask(index) {
     document.addEventListener("click", renderAddTaskSubtasks); // Klick neben Liste wird als Abbruch der Bearbeitung gewertet
 }
 
+
 /**
  * Bestätigung der Subtask-Bearbeitung
  * @param {number} index - Laufindex innerhalb des subtasks-Array 
@@ -405,6 +446,7 @@ function confirmSubtaskEdit(index) {
     renderAddTaskSubtasks();
 }
 
+
 /**
  * Subtask aus Liste und Daten entfernen
  * @param {number} index - Laufindex innerhalb des subtasks-Array 
@@ -415,24 +457,41 @@ function removeSubtask(index) {
     renderAddTaskSubtasks();
 }
 
+
+/**
+ * Formular resetten
+ */
+function resetTaskForm() {
+    const prio = getTaskPrioId();
+    if (prio) { // falls Priorität vorhanden
+        unselectPrioBtn(prio); // Priorität resetten
+    }
+    newTask['assignedTo'] = []; // assigned resetten
+    newTask['subtasks'] = []; // Subtasks resetten
+    renderAddTaskForm();
+}
+
+
 /**
  * Task hinzufügen
  */
 function submitTask() {
     setAddTaskDueText(); // Datum-Inputs synchronisieren
-    tasks.push({
-        id: tasks.length,
+    TEST_TASKS.push({ // später durch echtes Tasks-Array (global oder user-individuell ersetzen - falls individuell, mit for-Schleife bei allen zugeordneten Usern hinzufügen)
+        id: TEST_TASKS.length,
         title: addTaskTitle.value,
         description: addTaskDescription.value,
         assignedTo: newTask['assignedTo'],
         due: addTaskDueText.value,
-        prio: getTaskPrio(),
+        prio: PRIOS[getTaskPrioId()],
         category: addTaskCategory.value,
         subtasks: newTask['subtasks'],
         timestamp: getTimestamp(),
         status: 'toDo'
     });
+    setItem('test', JSON.stringify(TEST_TASKS));
 }
+
 
 function contactAssignedHTML(contact, id) {
     return /* html */`
@@ -447,6 +506,7 @@ function contactAssignedHTML(contact, id) {
         </li>`;
 }
 
+
 function contactAssignedIconHTML(contact) {
     return /* html */`
         <div class="contactInitials">
@@ -454,6 +514,7 @@ function contactAssignedIconHTML(contact) {
         </div>    
     `;
 }
+
 
 function subtaskHTML(subtask, index) {
     return /* html */`
@@ -469,6 +530,7 @@ function subtaskHTML(subtask, index) {
             </button>
         </li>`;
 }
+
 
 function editSubtaskHTML(subtask, index) {
     return /* html */`

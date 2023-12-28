@@ -1,9 +1,10 @@
-let tasks = [];
+// let tasks = [];
 
 async function init() {
   await includeHTML();
   renderLogo();
 }
+
 
 async function includeHTML() {
   let includeElements = document.querySelectorAll('[w3-include-html]');
@@ -27,15 +28,16 @@ document.addEventListener("DOMContentLoaded", function () {
   let indexPage = document.querySelector('.rememberMe');
   if (indexPage) {
     const logo = document.getElementById('startLogo');
-    const body = document.getElementById('mainBody');
     setTimeout(function () {
       logo.classList.add('transformed');
     }, 500);
     logo.addEventListener("transitionend", function () {
-      body.style.display = 'block';
+      document.getElementById('mainBody').style.display = 'flex';
+      document.getElementById('toSignUpId').style.display = 'flex';
     });
   }
 });
+
 
 /**
  * aktuellen Timestamp ausgeben
@@ -45,6 +47,7 @@ function getTimestamp() {
   const currentDate = new Date();
   return currentDate.getTime();
 }
+
 
 /**
  * Dropdown-Menü ein-/ausblenden
@@ -183,7 +186,6 @@ function hideHiddenMenu() {
   let menu = document.getElementById('hiddenMenu');
   menu.style.display = 'none';
 }
-
 
 
 /**

@@ -72,10 +72,12 @@
 .addTaskAssignedChecked {
     background: var(--darkBlue1);
     color: white;
+    transition: 75ms ease-in-out;
 }
 
 #addTaskAssignedMenu .addTaskAssignedChecked:hover {
     background: var(--darkBlue2);
+    transition: 75ms ease-in-out;
 }
 
 #addTaskAssignedMenu li:active img,
@@ -119,14 +121,17 @@
     border: 1px solid var(--lightGray1);
     box-sizing: border-box;
     position: relative;
+    transition: 100ms ease-in-out;
 }
 
 #addTaskDueContainer:hover {
     border-color: #BEBEBE;
+    transition: 100ms ease-in-out;
 }
 
 #addTaskDueContainer:active {
     border-color: var(--lightBlue1);
+    transition: 100ms ease-in-out;
 }
 
 #addTaskDueText {
@@ -227,10 +232,12 @@ button.addTaskPrio3Selected {
     gap: 2px;
     align-items: center;
     height: var(--subtasksLiHeight);
+    transition: 75ms ease-in-out;
 }
 
 #subtasksList li:hover {
     background: var(--lightGray4);
+    transition: 75ms ease-in-out;
 }
 
 #subtasksList li span {
@@ -247,11 +254,13 @@ button.addTaskPrio3Selected {
 
 #subtasksList li button img {
     display: block;
+    transition: 75ms ease-in-out;
 }
 
 #subtasksList li button,
 #subtasksList li .vr {
     display: none;
+    transition: 75ms ease-in-out;
 }
 
 #subtasksList li:hover button,
@@ -259,10 +268,12 @@ button.addTaskPrio3Selected {
 #subtasksList .editSubtask button,
 #subtasksList .editSubtask .vr {
     display: initial;
+    transition: 75ms ease-in-out;
 }
 
 #subtasksList li:hover button:hover {
     filter: invert(56%) sepia(80%) saturate(2198%) hue-rotate(166deg) brightness(102%) contrast(77%);
+    transition: 75ms ease-in-out;
 }
 
 #subtasksList .editSubtask:hover button:hover {
@@ -282,10 +293,12 @@ button.addTaskPrio3Selected {
     background: white;
     display: flex;
     align-items: center;
+    transition: 75ms ease-in-out;
 }
 
 #subtasksList .editSubtask:hover {
     background: white;
+    transition: 75ms ease-in-out;
 }
 
 #subtasksList li input {

@@ -20,20 +20,7 @@
     --white: #FFFFFF;
 }
 
-@media (max-width: 1320px) {
-    .toSignUp {
-        left: 768px;
-    }
-}
-
 @media (max-width: 1050px) {
-    .toSignUp {
-        left: 452px;
-    }
-
-    .logIn {
-        left: 78px;
-    }
 
     .signUp {
         left: 78px;
@@ -43,12 +30,14 @@
     footer {
         left: 281px;
     }
+
+    #startLogo.logo {
+        left: 300px;
+    }
 }
 
 @media (max-width: 735px) {
     .logIn {
-        left: 16px;
-        top: 205.5px;
         width: 396px;
         height: 515px;
         padding-top: 0;
@@ -89,11 +78,6 @@
     .rememberMe {
         font-size: var(--fontSizeSmall);
         margin: 0 0 32px 16px;
-    }
-
-    .toSignUp {
-        left: 70px;
-        top: 778px;
     }
 
     footer {
@@ -158,3 +142,66 @@
         left: 38px;
     }
 }
+
+@media (max-width: 620px) {
+    .signUpHeadPos {
+        display: none !important;
+    }
+
+    .toSignUp {
+        display: none;
+    }
+
+    .signUpHeadPosMobile {
+        display: flex;
+    }
+
+    .toSignUpMobile {
+        gap: 16px;
+    }
+}
+
+@media (max-width: 420px) {
+    .logIn {
+        width: 300px;
+    }
+
+    .inputLogInSignUp {
+        width: 240px;
+    }
+
+    footer {
+        left: 50px;
+    }
+
+    .signUp {
+        width: 300px;
+        left: 8px;
+    }
+
+    #startLogo.logo {
+        left: 50px;
+    }
+
+    .mainDivSignup {
+        gap: 32px;
+    }
+}
+
+/* @media (orientation: landscape) {
+    .logIn {
+        position: unset;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    #mainBody {
+        display: flex !important;
+        justify-content: center;
+        align-items: center;
+        position: unset;
+        height: 100vh;
+    }
+} */

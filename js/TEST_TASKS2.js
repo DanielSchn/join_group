@@ -67,3 +67,8 @@ let TEST_TASKS = [
         status: 'done'
     }
 ];
+
+function resetTEST_TASKS() {
+    TEST_TASKS = TEST_TASKS.splice(0,4);
+    setItem('test', JSON.stringify(TEST_TASKS));
+}
