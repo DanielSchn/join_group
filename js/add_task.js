@@ -498,7 +498,7 @@ function resetTaskForm() {
 /**
  * Task hinzufügen
  */
-function submitTask() {
+async function submitTask() {
     setAddTaskDueText(); // Datum-Inputs synchronisieren
     TEST_TASKS.push({ // später durch echtes Tasks-Array (global oder user-individuell ersetzen - falls individuell, mit for-Schleife bei allen zugeordneten Usern hinzufügen)
         id: TEST_TASKS.length,
@@ -512,7 +512,20 @@ function submitTask() {
         timestamp: getTimestamp(),
         status: 'toDo'
     });
-    setItem('test', JSON.stringify(TEST_TASKS));
+    await setItem('test', JSON.stringify(TEST_TASKS));
+    showTaskAddedMsg();
+    goToBoard();
+}
+
+async function showTaskAddedMsg() {
+    const message = document.getElementById('toastMsg');
+    message.style.transform = 'translateY(-50vh)';
+}
+
+function goToBoard() {
+    window.setTimeout(function () {
+        window.location.href = './board.html';
+    }, 500);
 }
 
 

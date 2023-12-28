@@ -352,11 +352,11 @@ button.addTaskPrio3Selected {
     background-image: url('../../img/cancel_hover.svg');
 }
 
-.toastMsg {
+#toastMsg {
     position: fixed;
     z-index: 4;
-    top: calc(50vh - 37px);
-    left: calc(var(--menuBarWidth)/2 + 50vw - 163px);
+    bottom: -74px;
+    left: calc(var(--menuBarWidth)/2 + 50vw - 163px - var(--sidePadding)/4);
     width: 326px;
     height: 74px;
     border-radius: 20px;
@@ -366,9 +366,10 @@ button.addTaskPrio3Selected {
     gap: 16px;
     justify-content: center;
     align-items: center;
+    transition: 125ms ease-in-out;
 }
 
-.toastMsg img {
+#toastMsg img {
     filter: brightness(2);
     height: 26px;
 }
