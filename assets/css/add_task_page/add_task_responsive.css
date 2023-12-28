@@ -85,6 +85,11 @@
     .addTaskBottom .btnSecondary {
         font-size: 20px;
     }
+
+    .toastMsg {
+        left: calc(var(--menuBarWidth)/2 + 50vw - 156px);
+        width: 312px;
+    }
 }
 
 @media (max-width: 1150px) {
@@ -105,6 +110,13 @@
 
     #subtasksLeftMargin {
         width: calc(var(--absoluteContentWidth) / 2 + var(--sidePadding) / 3);
+    }
+
+    .toastMsg {
+        left: calc(var(--menuBarWidth)/2 + 50vw - 148px);
+        top: calc(50vh - 32px);
+        width: 296px;
+        height: 64px;
     }
 }
 
@@ -196,6 +208,10 @@
 
     #mobileMenuBox {
         z-index: 3;
+    }
+
+    .toastMsg {
+        left: calc(50vw - 148px - var(--scrollbarWidth)/2);
     }
 }
 

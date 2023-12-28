@@ -351,3 +351,24 @@ button.addTaskPrio3Selected {
 .addTaskBottom .btnSecondary:hover {
     background-image: url('../../img/cancel_hover.svg');
 }
+
+.toastMsg {
+    position: fixed;
+    z-index: 4;
+    top: calc(50vh - 37px);
+    left: calc(var(--menuBarWidth)/2 + 50vw - 163px);
+    width: 326px;
+    height: 74px;
+    border-radius: 20px;
+    color: var(--white);
+    background-color: var(--darkBlue1);
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    align-items: center;
+}
+
+.toastMsg img {
+    filter: brightness(2);
+    height: 26px;
+}
