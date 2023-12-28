@@ -22,6 +22,16 @@ async function includeHTML() {
 
 
 /**
+ * Check if an Element with the id 'uniqueElement' is on the site. When this Element will be present, it will do nothing.
+ * If the Element is not present, the bodyClick function, to hide the hiddenMenu, will work. 
+ */
+if (document.getElementById('uniqueElement')) {
+} else {
+  document.addEventListener('click', bodyClick);
+}
+
+
+/**
  * function for scale Logo by startup
  */
 document.addEventListener("DOMContentLoaded", function () {
@@ -186,16 +196,6 @@ function showHiddenMenu() {
 function hideHiddenMenu() {
   let menu = document.getElementById('hiddenMenu');
   menu.style.display = 'none';
-}
-
-
-/**
- * Check if an Element with the id 'uniqueElement' is on the site. When this Element will be present, it will do nothing.
- * If the Element is not present, the bodyClick function, to hide the hiddenMenu, will work. 
- */
-if (document.getElementById('uniqueElement')) {
-} else {
-  document.addEventListener('click', bodyClick);
 }
 
 
