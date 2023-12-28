@@ -26,7 +26,7 @@
             </div>
             <div class="seperator"><img src="./assets/img/seperator.svg"></div>
             </div>
-            <div id="myContacts">
+            <div class="myContacts">
             <div id="myContacts_A">
                 <div class="contactCard" onclick="showAndHideContactCard()">
                     <div class="contactInitials">
@@ -67,7 +67,7 @@
             <div class="seperator"><img src="./assets/img/seperator.svg"></div>
             </div>
 
-            <div id="myContacts">
+            <div class="myContacts">
                 <div id="myContacts_A">
                     <div class="contactCard">
                         <div class="contactInitials">
@@ -108,7 +108,7 @@
                 <div class="seperator"><img src="./assets/img/seperator.svg"></div>
                 </div>
     
-                <div id="myContacts">
+                <div class="myContacts">
                     <div id="myContacts_A">
                         <div class="contactCard">
                             <div class="contactInitials">
@@ -220,7 +220,7 @@
             <div class="addContactInputContainer"><input class="addContactInput" type="tel" placeholder="Phone"><img src="./assets/img/contacts/call.svg"></div>
             <div id="addSummit_btn">
                 <button id="addContactCancel_btn">Cancel<img src="./assets/img/contacts/iconoir_cancel.svg"></button>
-                <button id="addContactCreate_btn">Create Contact<img src="./assets/img/contacts/check.svg"></button>
+                <button id="addContactCreate_btn">Save<img src="./assets/img/contacts/check.svg"></button>
             </div>
         </form>
     </div>
@@ -228,16 +228,98 @@
      <!-- Mobile -->
      <div id="mobileMenuBox" w3-include-html="assets/templates/mobile_side_menu.html"></div>
 
-     <div id="mobileAddContactBtnContainer">
+     <div id="mobileMainContactContainer" class="d-none">
+        <div id="backArrowContainer" onclick="showAndHideContactCard()">
+            <img id="backArrow" src="./assets/img/contacts/arrow-left-line.svg">
+        </div>
+
+        <div id="mobileContactTitleBar">
+            <div id="closeWindowBtn" onclick="showAndHideContactCard()">
+                <img src="./assets/img/contacts/close.svg">
+            </div>
+            <div id="contactsTitle">Contacts</div>
+            <div id="devider"></div>
+            <div id="contactsSlogan">Better with a Team</div>
+            <div id="devider2" class="d-none"></div>
+        </div>
+
+        <div id="mobileMainContactDetails">
+            <div id="mobileMainContactContainer_1">
+                <div class="initialCircle">
+                    <span id="user_initials_0" class="userNameFontSize">AM</span>
+                </div>
+                <div id="contactSetup">
+                    <div id="user_name_0" class="userNameFontSize responsiveUserNameFontSize">Anton Mayer</div>
+                    <div id="settings">
+                        <div id="edit" class="settingsBtn" onclick="editContactInformation()">
+                            <img id="edit_img" src="./assets/img/contacts/edit_pen.svg"><span>Edit</span> <!-- Hover CSS / JS ?? -->
+                        </div>
+                        <div id="remove" class="settingsBtn">
+                            <img id="remove_img" src="./assets/img/contacts/delete_bin.svg"><span>Delete</span> <!-- Hover CSS / JS ?? -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="mainContactContainer_2">
+                Contact Information
+            </div>
+
+            <div id="mainContactContainer_3">
+                <div id="mailContainer">
+                    <span class="contactDataTitle">Mail</span>
+                    <span class="contactData link">antom@gmail.com</span>
+                </div>
+                <div id="phoneContainer">
+                    <span class="contactDataTitle">Phone</span>
+                    <span class="contactData">+49 1111 111 11 1</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="mobileSettingBtnContainer" onclick="showSettings()">
+            <button id="mobileSettingBtn"><img src="./assets/img/contacts/more_vert.svg"></button>
+        </div>
+
+        <div id="contactOptions" class="d-none">
+            <div id="mobileEdit" class="settingsBtn" onclick="editContactInformation()">
+                <img id="edit_img" src="./assets/img/contacts/edit_pen.svg"><span>Edit</span> <!-- Hover CSS / JS ?? -->
+            </div>
+            <div id="mobileRemove" class="settingsBtn">
+                <img id="remove_img" src="./assets/img/contacts/delete_bin.svg"><span>Delete</span> <!-- Hover CSS / JS ?? -->
+            </div>
+        </div>
+
+        <div id="contactOptionBgLayer" class="d-none" onclick="hideSettings()">
+        </div>
+     </div>
+
+    <div id="mobileAddContactBtnContainer">
         <button id="mobileAddContactBtn"><img src="./assets/img/menu_icons/person_add.svg"></button>
     </div>
 
-     <div id="backArrowContainer" class="d-none" onclick="showAndHideContactCard()">
-        <img id="backArrow" src="./assets/img/contacts/arrow-left-line.svg">
-     </div>
-
-    <div id="mobileSettingBtnContainer" class="d-none">
-        <button id="mobileSettingBtn"><img src="./assets/img/contacts/more_vert.svg"></button>
+    <div id="mobileAddCardBg" class="d-none" onclick="addCardWindow(false)"></div>
+    <div id="mobileAddCardOne" class="d-none">
+        <div id="mobileLeftBlueSection">
+            <img id="mobileCloseAddCard" class="d-none" onclick="addCardWindow(false)" src="./assets/img/contacts/close.svg">
+            <div id="mobileAddCardTitle">
+                <span>Edit Contact</span>
+                <div id="mobileDevider3"></div>
+            </div>
+        </div>
+        <div id="mobileCardInitials_bg">
+            <span id="cardIntitials">TW</span>
+        </div>
+        <img id="mobileCloseAddContact_btn" src="./assets/img/contacts/close.svg" onclick="addCardWindow(false)">
+        <form>
+            <div class="addContactInputContainer"><input class="addContactInput" type="text" placeholder="Name"><img src="./assets/img/contacts/person.svg"></div>
+            <div class="addContactInputContainer"><input class="addContactInput" type="email" placeholder="Email"><img src="./assets/img/contacts/mail.svg"></div>
+            <div class="addContactInputContainer"><input class="addContactInput" type="tel" placeholder="Phone"><img src="./assets/img/contacts/call.svg"></div>
+            <div id="mobileAddSummit_btn">
+                <button id="mobileAddContactCancel_btn">Cancel<img src="./assets/img/contacts/iconoir_cancel.svg"></button>
+                <button id="mobileAddContactCreate_btn">Save<img src="./assets/img/contacts/check.svg"></button>
+            </div>
+        </form>
     </div>
 
 </body>

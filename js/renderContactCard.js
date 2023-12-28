@@ -11,27 +11,26 @@ function contactCardWindow() {
     contactContainer.classList.add('slideIn');
     contactContainer.classList.toggle('d-none');
     responsiveBackgroundSetup.classList.toggle('d-none');
+    mainContactContainer.classList.add('responsiveSlideIn');
     mainContactContainer.classList.toggle('mobile-d-none');
 }
 
 function mobileContactCardWindow() {
-    const hideAddBtn = document.getElementById('mobileAddContactBtnContainer');
-    const showSettingBtn = document.getElementById('mobileSettingBtnContainer');
-    const arrow = document.getElementById('backArrowContainer');
-    const mainContactContainer = document.getElementById('mainContactContainer');
+    const mainContactContainer = document.getElementById('mobileMainContactContainer');
+    const setting_btn = document.getElementById('contactOptions');
 
-    hideAddBtn.classList.toggle('d-none');
-    showSettingBtn.classList.toggle('d-none');
-    arrow.classList.toggle('d-none');
-    mainContactContainer.classList.add('responsiveSlideIn');
+    mainContactContainer.classList.toggle('d-none');
+    setting_btn.classList.add('d-none');
 }
 
 function addCardWindow(isGoingToOpen) {
 
     if(isGoingToOpen === true) {
         openAddCard();
+        openMobileAddCard();
     } else {
         closeAddCard();
+        closeMobileAddCard();
         showResponsiveAddCardWindow();
     }
 }
@@ -47,13 +46,22 @@ function openAddCard() {
     addContactCard.classList.add('slideIn');
     mainContactCard.classList.add('mobile-d-none');
 }
+function openMobileAddCard() {
+    const mobileAddCardBg = document.getElementById('mobileAddCardBg');
+    const mobileAddCardOne = document.getElementById('mobileAddCardOne');
+
+    mobileAddCardBg.classList.remove('d-none');
+    mobileAddCardOne.classList.remove('d-none');
+    mobileAddCardOne.classList.remove('slideDown');
+    mobileAddCardOne.classList.add('slideUp');
+}
 
 function closeAddCard() {
     const addContact_bg = document.getElementById('addCardBg');
     const addContactCard = document.getElementById('AddCardOne');
     const mainContactCard = document.getElementById('mainContactContainer');
     const contactContainer = document.getElementById('mainContactDetails');
-
+    
     addContact_bg.classList.add('d-none');
     addContactCard.classList.remove('slideIn');
     addContactCard.classList.add('slideOut');
@@ -62,14 +70,44 @@ function closeAddCard() {
     contactContainer.classList.remove('slideIn');
 }
 
+function closeMobileAddCard() {
+    const mobileAddCardBg = document.getElementById('mobileAddCardBg');
+    const mobileAddCardOne = document.getElementById('mobileAddCardOne');
+
+    mobileAddCardBg.classList.add('d-none');
+    mobileAddCardOne.classList.add('d-none');
+    mobileAddCardOne.classList.remove('slideUp');
+    mobileAddCardOne.classList.add('slideDown');
+}
+
 function showResponsiveAddCardWindow() {
     const contact = document.getElementById('mainContactDetails');
     const responsiveBackgroundSetup = document.getElementById('responsivBackgroundSetup');
+
     contact.classList.remove('d-none');
     responsiveBackgroundSetup.classList.remove('d-none');
 }
 
 function editContactInformation() {
-    showAndHideContactCard();
+    contactCardWindow();
     addCardWindow(true);
+}
+
+function showSettings() {
+    const setting_btn = document.getElementById('contactOptions');
+    const setting_bg_layer = document.getElementById('contactOptionBgLayer');
+
+    setting_btn.classList.remove('d-none');
+    setting_btn.classList.remove('mobileSlideOutToRight');
+    setting_btn.classList.add('mobileSlideInFromRight');
+    setting_bg_layer.classList.remove('d-none');
+}
+
+function hideSettings() {
+    const setting_btn = document.getElementById('contactOptions');
+    const setting_bg_layer = document.getElementById('contactOptionBgLayer');
+
+    setting_btn.classList.remove('mobileSlideInFromRight');
+    setting_btn.classList.add('mobileSlideOutToRight');
+    setting_bg_layer.classList.add('d-none');
 }
