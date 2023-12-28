@@ -8,6 +8,9 @@ let guests = [
 ];
 
 
+/**
+ * init function
+ */
 async function initRegister() {
     loadUsers();
 }
@@ -101,7 +104,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 /**
  * This function toggle the icon for the Password. When the User fill the input field, the function will work and show an icon to change the visibility from the password.
- * 
  * @param {string} inputId - Selector for the password or confirm password input field icon
  * @param {string} visibilityIconId - Selector for the visibilityICon for the password or confirm password input field icon
  * @param {string} visibilityOffIconId - Selector for the visibilityOffICon for the password or confirm password input field icon
@@ -126,7 +128,6 @@ function togglePasswordIcon(inputId, visibilityIconId, visibilityOffIconId) {
 
 /**
  * This function will toggle the password input visibility from 'password' and 'text'
- * 
  * @param {string} inputId - Selector for which field will be toggle the password in 'text' or 'password'
  * @param {string} visibilityIconId - Selector for which field will be toggle the password in 'text' or 'password'
  * @param {string} visibilityOffIconId - Selector for which field will be toggle the password in 'text' or 'password'
