@@ -58,12 +58,14 @@ const TEST_CONTACTS = [
 async function initAddTask() {
     // await init();
     await includeHTML();
+    submitBtn.disabled = true;
     TEST_TASKS = '';
     TEST_TASKS = JSON.parse(await getItem('test')); // Tasks laden - SPÄTER ERSETZEN
     renderAddTaskForm();
     document.addEventListener('keydown', submitFormOnEnter);
     let today = new Date(); // heutiges Datum
     addTaskDue.min = today.toISOString().slice(0, -14); // Minimalwert von Date-Input auf heutigen Tag setzen
+    submitBtn.disabled = false;
 }
 
 
@@ -512,7 +514,9 @@ async function submitTask() {
         timestamp: getTimestamp(),
         status: 'toDo'
     });
+    submitBtn.disabled = true;
     await setItem('test', JSON.stringify(TEST_TASKS));
+    submitBtn.disabled = false;
     showTaskAddedMsg();
     goToBoard();
 }
