@@ -4,7 +4,6 @@
 
 .boardHeaderContainer {
   margin-left: 230px;
-  width: calc(100% - 230px);
   display: flex;
   align-items: center;
 }
@@ -28,11 +27,11 @@
 }
 
 .boardHeaderMobile {
-  display: none;
   align-items: center;
 }
 
 .addTaskDesktopMobile {
+  display: none;
   width: 40px;
   height: 40px;
   padding: 3px;
@@ -120,6 +119,7 @@
   height: 18px;
   background-size: contain;
   display: flex;
+  margin-left: 16px;
 }
 
 .findTaskImg:hover {

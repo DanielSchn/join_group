@@ -19,7 +19,7 @@
     .boardHeader {
       display: flex;
       margin-left: 0px;
-  
+      width: 80vw;
     }
   
     .boardHeaderMobile button {
@@ -34,7 +34,7 @@
       align-items: center;
       height: 40px;
       width: 40px;
-      margin-right: 60px;
+      
       margin-bottom: 8px;
     }
   
@@ -92,13 +92,19 @@
   
     .inputWithImg{
       width: auto;
+      
     }
   
     .boardHeaderContainer{
-      width: 100vw;
       margin-left: 30px;
       margin-right: 30px;
       justify-content: flex-start;
   
+    }
+  }
+
+  @media (max-width: 400px){
+    #findTask {
+      width: 150px;
     }
   }
