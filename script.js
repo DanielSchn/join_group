@@ -31,6 +31,7 @@ async function init() {
   await includeHTML();
   await loadUsers();
   renderLogo();
+  showActiveSite();
 }
 
 
@@ -329,3 +330,30 @@ function verifyToken(token) {
 //       }
 //   }
 // });
+
+
+// document.addEventListener('DOMContentLoaded', function () {
+//   setTimeout(function () {
+//     updateMenuForPage('/summary.html', 'linkSummary', 'sideSummary', 'sideImgSummary');
+//     updateMenuForPage('/board.html', 'linkBoard', 'sideBoard', 'sideImgBoard');
+//     updateMenuForPage('/add_task.html', 'linkAddTask', 'sideAddTask', 'sideImgAddTask');
+//     updateMenuForPage('/contacts.html', 'linkContacts', 'sideContacts', 'sideImgContacts');
+//   }, 600);
+// });
+
+function updateMenuForPage(pagePath, linkId, sideId, sideImgId) {
+  if (window.location.pathname === pagePath) {
+    document.getElementById(linkId).classList.remove('menuLink');
+    document.getElementById(linkId).classList.add('activMenuLink');
+    document.getElementById(sideId).classList.add('activ_bg');
+    document.getElementById(sideImgId).classList.add('activMenuIcon');
+  }
+}
+
+
+function showActiveSite() {
+  updateMenuForPage('/summary.html', 'linkSummary', 'sideSummary', 'sideImgSummary');
+  updateMenuForPage('/board.html', 'linkBoard', 'sideBoard', 'sideImgBoard');
+  updateMenuForPage('/add_task.html', 'linkAddTask', 'sideAddTask', 'sideImgAddTask');
+  updateMenuForPage('/contacts.html', 'linkContacts', 'sideContacts', 'sideImgContacts');
+}
