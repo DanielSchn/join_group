@@ -136,7 +136,7 @@ async function submitTask() {
 /**
  * Message "Task added to board" in Viewport bewegen
  */
-async function showTaskAddedMsg() {
+function showTaskAddedMsg() {
     const message = document.getElementById('toastMsg');
     message.style.transform = 'translateY(-50vh)';
 }
