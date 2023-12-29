@@ -1,10 +1,14 @@
-//let tasks = [];
+// let tasks = [];
 
 async function init() {
   await includeHTML();
   renderLogo();
 }
 
+
+/**
+ * Function to include template html files
+ */
 async function includeHTML() {
   let includeElements = document.querySelectorAll('[w3-include-html]');
   for (let i = 0; i < includeElements.length; i++) {
@@ -21,21 +25,32 @@ async function includeHTML() {
 
 
 /**
+ * Check if an Element with the id 'uniqueElement' is on the site. When this Element will be present, it will do nothing.
+ * If the Element is not present, the bodyClick function, to hide the hiddenMenu, will work. 
+ */
+if (document.getElementById('uniqueElement')) {
+} else {
+  document.addEventListener('click', bodyClick);
+}
+
+
+/**
  * function for scale Logo by startup
  */
 document.addEventListener("DOMContentLoaded", function () {
   let indexPage = document.querySelector('.rememberMe');
   if (indexPage) {
     const logo = document.getElementById('startLogo');
-    const body = document.getElementById('mainBody');
     setTimeout(function () {
       logo.classList.add('transformed');
     }, 500);
     logo.addEventListener("transitionend", function () {
-      body.style.display = 'block';
+      document.getElementById('mainBody').style.display = 'flex';
+      document.getElementById('toSignUpId').style.display = 'flex';
     });
   }
 });
+
 
 /**
  * aktuellen Timestamp ausgeben
@@ -45,6 +60,7 @@ function getTimestamp() {
   const currentDate = new Date();
   return currentDate.getTime();
 }
+
 
 /**
  * Dropdown-Menü ein-/ausblenden
@@ -72,11 +88,9 @@ function unfocusAll() {
     let id = dropdownMenu.id;
     hideDropdown(id.replace('Menu', ''));
   }
-  if (document.getElementById('addSubtask')) { // falls Element mit ID addSubtask vorhanden
-    unfocusSubtask(); // Fokus auf das Element aufheben
-  }
-  if(document.getElementById('addTaskAssigned')) {
-    unfocusAssigned();
+  if (document.getElementById('addTaskForm')) { // falls im Add Task-Formular
+    unfocusSubtask();
+    unfocusAddTaskDue();
   }
 }
 
@@ -88,13 +102,13 @@ function unfocusAll() {
 function showDropdown(id) {
   const container = document.getElementById(id + 'InputContainer');
   const menu = document.getElementById(id + 'Menu');
-  toggleDropdownIcon(id, true);
   container.style.borderColor = 'var(--lightBlue1)';
   menu.style.display = '';
   document.addEventListener("click", function clickedElsewhere() {
     hideDropdown(id);
     document.removeEventListener("click", clickedElsewhere);
   });
+  toggleDropdownIcon(id, true);
 }
 
 
@@ -105,26 +119,23 @@ function showDropdown(id) {
 function hideDropdown(id) {
   const container = document.getElementById(id + 'InputContainer');
   const menu = document.getElementById(id + 'Menu');
-  toggleDropdownIcon(id, false);
   container.style.borderColor = '';
   menu.style.display = 'none';
+  toggleDropdownIcon(id, false);
 }
 
 
 /**
- * beim Dropdown-Menü richtiges Icon (Pfeilspitze) anzeigen
+ * beim Dropdown-Menü Icon (Pfeilspitze) rotieren
  * @param {string} id - ID des Dropdown-Menüs (muss zu umgebenden IDs passen) 
  * @param {boolean} show - signalisiert, ob Menü gezeigt (true) oder verborgen (false) wird
  */
 function toggleDropdownIcon(id, show) {
   const icon = document.getElementById(id + 'Icon');
-  let iconSrc = icon.src;
-  if (show) {
-    if (!iconSrc.includes('active')) {
-      icon.src = iconSrc.replace('.svg', '_active.svg');
-    }
-  } else { // keine weitere Bedingung nötig, denn...
-    icon.src = iconSrc.replace('_active', ''); // ...replace-Methode NUR wirksam, FALLS 'active' ohnehin in Dateipfad vorhanden ist
+  if(show) {
+    icon.style.transform = 'rotate(180deg)';
+  } else {
+    icon.style.transform = 'none';
   }
 }
 
@@ -143,6 +154,10 @@ function handleDropdownMenuClick(e) {
 }
 
 
+/**
+ * individuellen Checkbox-Haken togglen
+ * @param {element} checkbox 
+ */
 function toggleCheckbox(checkbox) {
   let checkboxSrc = checkbox.src;
   if (checkboxSrc.includes('checked')) {
@@ -188,17 +203,6 @@ function hideHiddenMenu() {
 }
 
 
-
-/**
- * Check if an Element with the id 'uniqueElement' is on the site. When this Element will be present, it will do nothing.
- * If the Element is not present, the bodyClick function, to hide the hiddenMenu, will work. 
- */
-if (document.getElementById('uniqueElement')) {
-} else {
-  document.addEventListener('click', bodyClick);
-}
-
-
 /**
  * Check function for the click to hideHiddenMenu()
  */
@@ -225,14 +229,12 @@ function logout() {
 function login() {
   let email = document.getElementById('email');
   let password = document.getElementById('signUpPassword');
-  let user = users.find(u => u.email == email.value && u.password == password.value);
-  let guest = guests.find(u => u.email == email.value && u.password == password.value);
-  console.log(user || guest);
-  if (user || guest) {
-    const token = generateToken(user || guest);
+  let user = users.find(u => u.email == email.value && u.password == password.value) || guests.find(u => u.email == email.value && u.password == password.value);
+  if (user) {
+    const token = generateToken(user);
     localStorage.setItem("token", token);
     window.setTimeout(function () {
-      redirectToSummaryPage(user || guest);
+      redirectToSummaryPage(user);
     }, 500);
   } else {
     document.getElementById('userNotFound').style.display = 'block';
@@ -242,7 +244,6 @@ function login() {
 
 /**
  * Go to summary Page after successfull login
- * 
  * @param {string} user - User Info for rendering some Userspecific HTML Data
  */
 function redirectToSummaryPage(user) {
@@ -254,12 +255,10 @@ function redirectToSummaryPage(user) {
 /**
  * Generate Token for login validation. BTOA Base64 will create an ASCII string for encode.
  * Will use an expiration time in 12h. Will be enough for a working day.
- * 
  * @param {array} userId - The User Info Array with Name, Email and password.
  * @returns 
  */
 function generateToken(userId) {
-  console.log(userId);
   const expiresIn = 43200;
   const expirationTime = Date.now() + expiresIn * 1000;
   const tokenPayload = {
@@ -275,7 +274,6 @@ function generateToken(userId) {
  * Verify the generated token when load another Page from the Website Project.
  * ATOB decode the token.
  * UNIX Timestamp.
- * 
  * @param {value} token - The generated token from the localStorage 
  * @returns 
  */

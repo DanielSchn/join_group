@@ -5,90 +5,77 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JOIN - Log in</title>
-    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
-    <link rel="stylesheet" href="fonts.css">
-    <link rel="stylesheet" href="assets/css/login_signup.css">
-    <link rel="stylesheet" href="assets/css/login_signup_query.css">
-    <script src="script.js" defer></script>
-    <script src="js/register.js" defer></script>
-    <script src="js/storage.js" defer></script>
-    <script src="js/render_summary.js"></script>
+    <link rel="icon" type="image/x-icon" href="./assets/img/favicon.ico">
+    <link rel="stylesheet" href="./fonts.css">
+    <link rel="stylesheet" href="./assets/css/login_signup.css">
+    <link rel="stylesheet" href="./assets/css/login_signup_query.css">
+    <script src="./script.js" defer></script>
+    <script src="./js/register.js" defer></script>
+    <script src="./js/storage.js" defer></script>
+    <script src="./js/render_summary.js"></script>
 </head>
 
 <body onload="initRegister()">
-    <img id="startLogo" class="logo" src="assets/img/logo.svg" alt="JOIN">
-    <div id="mainBody" style="display: none;">
-        <div id="uniqueElement" class="indexWrapper">
-            <div class="toSignUp">
+    <div id="uniqueElement" class="mainDivLogin">
+        <div class="signUpHeadPos">
+            <div id="toSignUpId" class="toSignUp">
                 <p>Not a Join user?</p>
-                <a href="signup.html" class="signUpBtnHead">Sign up</a>
+                <a href="./signup.html" class="signUpBtnHead">Sign up</a>
             </div>
-
-            <footer>
-                <a href="privacy.html">Privacy Policy</a>
-                <a href="legal.html">Legal Notice</a>
-            </footer>
-
         </div>
-
-
-        <div class="logIn">
-            <div class="logInHead">
-                <h1>Log in</h1>
-                <div class="loginDash"></div>
+        <div class="logoDiv">
+            <img id="startLogo" class="logo" src="./assets/img/logo.svg" alt="JOIN">
+        </div>
+        <div id="mainBody" style="display: none;">
+            <div class="logIn">
+                <div class="logInHead">
+                    <h1>Log in</h1>
+                    <div class="loginDash"></div>
+                </div>
+                <div class="logInFormPos">
+                    <form class="logInForm" action="" onsubmit="login(); return false;">
+                        <div class="inputContainer">
+                            <input required class="mailIcon inputLogInSignUp" type="email" placeholder="Email"
+                                id="email">
+                        </div>
+                        <div class="inputContainer">
+                            <img src="./assets/img/login_signup_icons/lock.svg" alt="Lock" class="passwordIcon">
+                            <img src="./assets/img/login_signup_icons/visibility_off.svg" alt="Visibility Off"
+                                class="visibilityIcon dNone" id="visibilityOffIcon1"
+                                onclick="togglePasswordVisibility('signUpPassword', 'visibilityIcon1', 'visibilityOffIcon1')">
+                            <img src="./assets/img/login_signup_icons/visibility.svg" alt="Visibility"
+                                class="visibilityIcon dNone" id="visibilityIcon1"
+                                onclick="togglePasswordVisibility('signUpPassword', 'visibilityIcon1', 'visibilityOffIcon1')">
+                            <input required class="inputLogInSignUp" type="password" placeholder="Password"
+                                id="signUpPassword"
+                                oninput="togglePasswordIcon('signUpPassword', 'visibilityIcon1', 'visibilityOffIcon1')">
+                            <p id="userNotFound" class="errorMessage" style="display: none;">Wrong password Ups! Try
+                                again.
+                            </p>
+                        </div>
+                        <div class="rememberMe">
+                            <input type="checkbox">
+                            Remember me
+                        </div>
+                        <div class="logInBtns">
+                            <button class="logInButton">Log in</button>
+                            <button type="button" class="guestLogInButton" onclick="fillInGuest()">Guest Log in</button>
+                        </div>
+                    </form>
+                </div>
             </div>
-            <div class="logInFormPos">
-                <!-- <form class="logInForm" action="" onsubmit="login(); return false;">
-                    <div class="inputContainer">
-                        <input required class="mailIcon inputLogInSignUp" type="email" placeholder="Email" id="email">
-                    </div>
-                    <div class="inputContainer">
-                        <img src="assets/img/login_signup_icons/lock.svg" alt="Lock" class="passwordIcon">
-                        <img src="assets/img/login_signup_icons/visibility_off.svg" alt="Visibility Off" class="visibilityIcon dNone" id="visibilityOffIcon1" onclick="togglePasswordVisibility('signUpPassword', 'visibilityIcon1', 'visibilityOffIcon1')">
-                        <img src="assets/img/login_signup_icons/visibility.svg" alt="Visibility" class="visibilityIcon dNone" id="visibilityIcon1" onclick="togglePasswordVisibility('signUpPassword', 'visibilityIcon1', 'visibilityOffIcon1')">
-                        <input required class="inputLogInSignUp" type="password" placeholder="Password" id="signUpPassword" oninput="togglePasswordIcon('signUpPassword', 'visibilityIcon1', 'visibilityOffIcon1')">
-                        <p id="userNotFound" class="errorMessage" style="display: none;">Wrong password Ups! Try again.</p>
-                    </div>
-                    <div class="rememberMe">
-                        <input type="checkbox">
-                        Remember me
-                    </div>
-                    <div class="logInBtns">
-                        <button class="logInButton">Log in</button>
-                        <button class="guestLogInButton" onclick="logInGuest()">Guest Log in</button>
-                    </div>
-                    
-                </form> -->
-                
-                <form class="logInForm" action="" onsubmit="login(); return false;">
-                    <div class="inputContainer">
-                        <input required class="mailIcon inputLogInSignUp" type="email" placeholder="Email" id="email">
-                    </div>
-                    <div class="inputContainer">
-                        <img src="assets/img/login_signup_icons/lock.svg" alt="Lock" class="passwordIcon">
-                        <img src="assets/img/login_signup_icons/visibility_off.svg" alt="Visibility Off" class="visibilityIcon dNone" id="visibilityOffIcon1" onclick="togglePasswordVisibility('signUpPassword', 'visibilityIcon1', 'visibilityOffIcon1')">
-                        <img src="assets/img/login_signup_icons/visibility.svg" alt="Visibility" class="visibilityIcon dNone" id="visibilityIcon1" onclick="togglePasswordVisibility('signUpPassword', 'visibilityIcon1', 'visibilityOffIcon1')">
-                        <input required class="inputLogInSignUp" type="password" placeholder="Password" id="signUpPassword" oninput="togglePasswordIcon('signUpPassword', 'visibilityIcon1', 'visibilityOffIcon1')">
-                        <p id="userNotFound" class="errorMessage" style="display: none;">Wrong password Ups! Try again.</p>
-                    </div>
-                    <div class="rememberMe">
-                        <input type="checkbox">
-                        Remember me
-                    </div>
-                    <div class="logInBtns">
-                        <button class="logInButton">Log in</button>
-                        <button type="button" class="guestLogInButton" onclick="fillInGuest()">Guest Log in</button>
-                    </div>
-                    
-                </form>
-
+            <div class="signUpHeadPosMobile">
+                <div id="toSignUpId" class="toSignUpMobile">
+                    <p>Not a Join user?</p>
+                    <a href="./signup.html" class="signUpBtnHead">Sign up</a>
+                </div>
             </div>
+            <footer>
+                <a target="_blank" href="./privacy.html">Privacy Policy</a>
+                <a target="_blank" href="./legal.html">Legal Notice</a>
+            </footer>
         </div>
     </div>
-
-
-
-
 </body>
 
 </html>

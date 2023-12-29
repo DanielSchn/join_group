@@ -1,6 +1,10 @@
-@media (max-height: 1008px) {
+@media (max-height: 1024px) {
     :root {
         --top: 80px;
+    }
+
+    #addTaskAssignedMenu {
+        max-height: 224px;
     }
 }
 
@@ -15,10 +19,6 @@
     :root {
         --top: 48px;
         --bottom: 32px;
-    }
-
-    #addTaskAssignedMenu {
-        max-height: 224px;
     }
 }
 
@@ -66,7 +66,6 @@
 
     textarea {
         padding-top: 16px;
-        height: 104px;
     }
 
     .dropdownMenu {
@@ -84,6 +83,23 @@
     .addTaskBottom .btnPrimary,
     .addTaskBottom .btnSecondary {
         font-size: 20px;
+    }
+
+    #toastMsg {
+        left: calc(var(--menuBarWidth)/2 + 50vw - 156px);
+        width: 312px;
+    }
+}
+
+@media (max-height: 906px) {
+    #addTaskAssignedMenu {
+        max-height: 168px;
+    }    
+}
+
+@media (max-height: 848px) {
+    .addTaskFormMain {
+        padding-top: 32px;
     }
 }
 
@@ -106,15 +122,34 @@
     #subtasksLeftMargin {
         width: calc(var(--absoluteContentWidth) / 2 + var(--sidePadding) / 3);
     }
+
+    #toastMsg {
+        left: calc(var(--menuBarWidth)/2 + 50vw - 148px);
+        bottom: -64px;
+        width: 296px;
+        height: 64px;
+    }
 }
 
 @media (max-width: 1050px) {
+    :root {
+        --absoluteContentWidth: calc(100vw - var(--menuBarWidth) - calc(var(--sidePadding) * 2) - var(--scrollbarWidth));
+    }
+
+    .main {
+        width: calc(var(--mainWidth) - var(--scrollbarWidth));
+    }
+
     .addTaskFormMain {
         flex-direction: column;
     }
 
     .addTaskForm {
         height: auto;
+    }
+
+    .addTaskFormMainSideOne {
+        gap: 24px;
     }
 
     input,
@@ -125,6 +160,7 @@
     textarea {
         padding-top: 14px;
         height: 88px;
+        flex: none;
     }
 
     .dropdownMenu {
@@ -133,6 +169,10 @@
 
     .dropdownMenuWrapper {
         padding-top: 22px;
+    }
+
+    #addTaskAssignedMenu {
+        max-height: 224px;
     }
 
     #assignedIcons {
@@ -196,6 +236,10 @@
 
     #mobileMenuBox {
         z-index: 3;
+    }
+
+    #toastMsg {
+        left: calc(50vw - 148px - var(--scrollbarWidth)/2);
     }
 }
 

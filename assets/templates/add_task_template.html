@@ -1,5 +1,5 @@
-<form class="addTaskForm" autocomplete="off" onreset="resetTaskForm()" onsubmit="submitTask(); return false">
-    <input autocomplete="false" name="hidden" type="text" style="display:none;">
+<form class="addTaskForm" id="addTaskForm" autocomplete="off" onreset="resetTaskForm()" onsubmit="submitTask(); return false">
+    <input autocomplete="false" name="hidden" type="text" style="display: none">
     <h1>Add Task</h1>
     <div class="addTaskFormMain">
         <div class="addTaskFormMainSide addTaskFormMainSideOne">
@@ -10,22 +10,22 @@
                 </label>
                 <input type="text" placeholder="Enter a title" id="addTaskTitle" required class="borderHover">
             </div>
-            <div class="addTaskField">
+            <div class="addTaskField descriptionContainer">
                 <label for="addTaskDescription">
                     <h2>Description</h2>
                 </label>
-                <textarea placeholder="Enter a description" id="addTaskDescription" class="borderHover"></textarea>
+                <textarea placeholder="Enter a description" onkeydown="event.stopPropagation()" id="addTaskDescription" class="borderHover"></textarea>
             </div>
             <div class="addTaskField dropdownContainer">
                 <label for="addTaskAssigned" onclick="event.preventDefault()">
                     <h2>Assigned to</h2>
                 </label>
-                <div id="addTaskAssignedInputContainer" class="extendedInput dropdownInput borderHover"
-                    onclick="event.stopPropagation(); toggleDropdown('addTaskAssigned'); focusAssignedSearch();">
+                <div id="addTaskAssignedInputContainer" class="extendedInput dropdownInput borderHover preventSelect"
+                    onclick="event.stopPropagation(); toggleDropdown('addTaskAssigned')">
                     <input type="text" placeholder="Select contacts to assign" id="addTaskAssigned"
                         onmousedown="event.preventDefault()">
                     <button type="button">
-                        <img src="./assets/img/select_icon.svg" alt="icon" id="addTaskAssignedIcon">
+                        <img src="./assets/img/select_icon.svg" alt="icon" id="addTaskAssignedIcon" style="transform: none">
                     </button>
                 </div>
                 <div class="dropdownMenuWrapper preventSelect">
@@ -53,8 +53,8 @@
                 <div class="addTaskPrioBtns preventSelect">
                     <button type="button" id="addTaskPrio1" onclick="handlePrioBtnClick(1)">Urgent <img
                             src="./assets/img/prio_icons/task_prio_urgent.svg" alt="icon" id="addTaskPrio1Img"></button>
-                    <button type="button" id="addTaskPrio2" onclick="handlePrioBtnClick(2)">Medium <img
-                            src="./assets/img/prio_icons/task_prio_medium.svg" alt="icon" id="addTaskPrio2Img"></button>
+                    <button type="button" id="addTaskPrio2" onclick="handlePrioBtnClick(2)" class="addTaskPrioBtnsSelected addTaskPrio2Selected">Medium <img
+                            src="./assets/img/prio_icons/task_prio_medium_white.svg" alt="icon" id="addTaskPrio2Img"></button>
                     <button type="button" id="addTaskPrio3" onclick="handlePrioBtnClick(3)">Low <img
                             src="./assets/img/prio_icons/task_prio_low.svg" alt="icon" id="addTaskPrio3Img"></button>
                 </div>
@@ -69,7 +69,7 @@
                     <input type="text" placeholder="Select task category" id="addTaskCategory" required
                         onmousedown="event.preventDefault()">
                     <button type="button">
-                        <img src="./assets/img/select_icon.svg" alt="icon" id="addTaskCategoryIcon">
+                        <img src="./assets/img/select_icon.svg" alt="icon" id="addTaskCategoryIcon" style="transform: none">
                     </button>
                 </div>
                 <ul class="dropdownMenu preventSelect" id="addTaskCategoryMenu" style="display: none">
@@ -78,7 +78,7 @@
                 </ul>
             </div>
             <div class="addTaskField">
-                <label for="addSubtask">
+                <label for="addSubtask" onclick="event.stopPropagation(); focusSubtask()">
                     <h2>Subtasks</h2>
                 </label>
                 <div id="addSubtaskInputContainer" class="extendedInput borderHover"
@@ -115,7 +115,9 @@
         </div>
         <div>
             <button type="reset" class="btnSecondary">Clear</button>
-            <button type="submit" class="btnPrimary">Create Task</button>
+            <button type="submit" class="btnPrimary" id="submitBtn">Create Task</button>
         </div>
     </div>
 </form>
+
+<div id="toastMsg" class="preventSelect">Task added to board<img src="./assets/img/menu_icons/board.svg" alt="icon"></div>

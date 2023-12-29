@@ -63,17 +63,24 @@ input::placeholder {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    min-height: 100vh;
-    width: 100vw;
 }
 
 .toSignUp {
+    display: none;
+    align-items: center;
+    gap: 35px;
+}
+
+.toSignUpMobile {
     display: flex;
     align-items: center;
     gap: 35px;
-    position: fixed;
-    top: 67px;
-    left: 1039px;
+}
+
+.signUpHeadPosMobile {
+        display: none;
+        justify-content: flex-end;
+        align-items: center;
 }
 
 .inputLogInSignUp {
@@ -91,10 +98,39 @@ input::placeholder {
     justify-content: center;
 }
 
+#mainBody {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    gap: 128px;
+}
+
+.mainDivLogin {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.mainDivSignup {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 128px;
+}
+
+.signUpHeadPos {
+    height: 164px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 0 122px 0 0;
+}
+
 .logIn {
-    position: fixed;
-    top: 265.5px;
-    left: 394px;
     width: 652px;
     height: 493px;
     background: var(--white);
@@ -103,9 +139,6 @@ input::placeholder {
 }
 
 .signUp {
-    position: fixed;
-    top: 197px;
-    left: 421px;
     width: 598px;
     height: 630px;
     background: var(--white);
@@ -196,9 +229,6 @@ input::placeholder {
 
 footer {
     display: flex;
-    position: fixed;
-    top: 949px;
-    left: 597px;
     gap: 16px;
 }
 
