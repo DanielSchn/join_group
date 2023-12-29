@@ -32,6 +32,7 @@ async function init() {
   await loadUsers();
   renderLogo();
   showActiveSite();
+  // showActiveSiteMobile();
 }
 
 
@@ -356,4 +357,13 @@ function showActiveSite() {
   updateMenuForPage('/board.html', 'linkBoard', 'sideBoard', 'sideImgBoard');
   updateMenuForPage('/add_task.html', 'linkAddTask', 'sideAddTask', 'sideImgAddTask');
   updateMenuForPage('/contacts.html', 'linkContacts', 'sideContacts', 'sideImgContacts');
+  showActiveSiteMobile();
+}
+
+
+function showActiveSiteMobile() {
+  updateMenuForPage('/summary.html', 'linkSummaryMobile', 'sideSummaryMobile', 'sideImgSummaryMobile');
+  updateMenuForPage('/board.html', 'linkBoardMobile', 'sideBoardMobile', 'sideImgBoardMobile');
+  updateMenuForPage('/add_task.html', 'linkAddTaskMobile', 'sideAddTaskMobile', 'sideImgAddTaskMobile');
+  updateMenuForPage('/contacts.html', 'linkContactsMobile', 'sideContactsMobile', 'sideImgContactsMobile');
 }
