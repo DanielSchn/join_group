@@ -157,6 +157,10 @@ function handleDropdownMenuClick(e) {
 }
 
 
+/**
+ * individuellen Checkbox-Haken togglen
+ * @param {element} checkbox 
+ */
 function toggleCheckbox(checkbox) {
   let checkboxSrc = checkbox.src;
   if (checkboxSrc.includes('checked')) {

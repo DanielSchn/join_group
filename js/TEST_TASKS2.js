@@ -72,3 +72,40 @@ function resetTEST_TASKS() {
     TEST_TASKS = TEST_TASKS.splice(0,4);
     setItem('test', JSON.stringify(TEST_TASKS));
 }
+
+const TEST_CONTACTS = [
+    {
+        name: 'Anton',
+        lastName: 'Mayer'
+    },
+
+    {
+        name: 'Berta',
+        lastName: 'Müller'
+    },
+
+    {
+        name: 'Clara',
+        lastName: 'Schmidt'
+    },
+
+    {
+        name: 'Deniz',
+        lastName: 'Yildiz'
+    },
+
+    {
+        name: 'Eva',
+        lastName: 'Hofmann'
+    },
+
+    {
+        name: 'Ferdinand',
+        lastName: 'Porsche'
+    },
+
+    {
+        name: 'Günther',
+        lastName: 'Hillmann'
+    }
+];
