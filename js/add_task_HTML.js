@@ -17,6 +17,7 @@ function contactAssignedHTML(contact, id) {
         </li>`;
 }
 
+
 /**
  * erzeugt Kontakt-Icon unter assignedTo-Eingabefeld
  * @param {JSON} contact - Kontaktdaten
@@ -29,6 +30,7 @@ function contactAssignedIconHTML(contact) {
         </div>    
     `;
 }
+
 
 /**
  * erzeugt Subtask für Subtasks-Liste
