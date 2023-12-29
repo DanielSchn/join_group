@@ -102,13 +102,13 @@ function unfocusAll() {
 function showDropdown(id) {
   const container = document.getElementById(id + 'InputContainer');
   const menu = document.getElementById(id + 'Menu');
-  toggleDropdownIcon(id, true);
   container.style.borderColor = 'var(--lightBlue1)';
   menu.style.display = '';
   document.addEventListener("click", function clickedElsewhere() {
     hideDropdown(id);
     document.removeEventListener("click", clickedElsewhere);
   });
+  toggleDropdownIcon(id, true);
 }
 
 
@@ -119,26 +119,23 @@ function showDropdown(id) {
 function hideDropdown(id) {
   const container = document.getElementById(id + 'InputContainer');
   const menu = document.getElementById(id + 'Menu');
-  toggleDropdownIcon(id, false);
   container.style.borderColor = '';
   menu.style.display = 'none';
+  toggleDropdownIcon(id, false);
 }
 
 
 /**
- * beim Dropdown-Menü richtiges Icon (Pfeilspitze) anzeigen
+ * beim Dropdown-Menü Icon (Pfeilspitze) rotieren
  * @param {string} id - ID des Dropdown-Menüs (muss zu umgebenden IDs passen) 
  * @param {boolean} show - signalisiert, ob Menü gezeigt (true) oder verborgen (false) wird
  */
 function toggleDropdownIcon(id, show) {
   const icon = document.getElementById(id + 'Icon');
-  let iconSrc = icon.src;
-  if (show) {
-    if (!iconSrc.includes('active')) {
-      icon.src = iconSrc.replace('.svg', '_active.svg');
-    }
-  } else { // keine weitere Bedingung nötig, denn...
-    icon.src = iconSrc.replace('_active', ''); // ...replace-Methode NUR wirksam, FALLS 'active' ohnehin in Dateipfad vorhanden ist
+  if(show) {
+    icon.style.transform = 'rotate(180deg)';
+  } else {
+    icon.style.transform = 'none';
   }
 }
 

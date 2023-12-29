@@ -134,6 +134,10 @@ input[type="date"]::-webkit-calendar-picker-indicator:active {
     z-index: 3;
 }
 
+.dropdownInput img {
+    transition: 175ms ease-in-out !important;
+}
+
 .dropdownMenu {
     cursor: default;
     list-style-type: none;
