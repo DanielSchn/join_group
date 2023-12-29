@@ -1,11 +1,9 @@
-
+let tasks = TEST_TASKS;
 let filteredTasks = tasks;
-let tasks = [];
 let currentDraggedElement;
 
 
 function updateHTML() {
-    tasks = TEST_TASKS;
     updateToDo();
     updateInProgress();
     updateAwaitFeedback();
