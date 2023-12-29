@@ -24,7 +24,7 @@ async function initAddTask(status) {
     addTaskDue.min = today.toISOString().slice(0, -14); // Minimalwert von Date-Input auf heutigen Tag setzen
     submitBtn.disabled = false;
     newTask['status'] = status;
-    showActiveSite();
+    init();
 }
 
 
