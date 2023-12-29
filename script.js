@@ -118,10 +118,12 @@ function showDropdown(id) {
  */
 function hideDropdown(id) {
   const container = document.getElementById(id + 'InputContainer');
-  const menu = document.getElementById(id + 'Menu');
-  container.style.borderColor = '';
-  menu.style.display = 'none';
-  toggleDropdownIcon(id, false);
+  if (container) {
+    const menu = document.getElementById(id + 'Menu');
+    container.style.borderColor = '';
+    menu.style.display = 'none';
+    toggleDropdownIcon(id, false);
+  }
 }
 
 
@@ -132,7 +134,7 @@ function hideDropdown(id) {
  */
 function toggleDropdownIcon(id, show) {
   const icon = document.getElementById(id + 'Icon');
-  if(show) {
+  if (show) {
     icon.style.transform = 'rotate(180deg)';
   } else {
     icon.style.transform = 'none';
