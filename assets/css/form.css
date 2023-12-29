@@ -9,7 +9,7 @@ textarea {
     outline: none;
     font-family: 'Inter';
     font-size: var(--fontSizeNormal);
-    transition: 100ms ease-in-out;
+    transition: border 100ms ease-in-out;
 }
 
 input,
@@ -21,7 +21,8 @@ input,
 
 textarea {
     padding-top: 18px;
-    height: 120px;
+    flex: 1;
+    resize: vertical;
 }
 
 input::placeholder,
@@ -39,7 +40,7 @@ textarea:focus,
 .borderHover:focus,
 .borderHover:active {
     border-color: var(--lightBlue1);
-    transition: 100ms ease-in-out;
+    transition: border 100ms ease-in-out;
 }
 
 /* Default-Resizer (Textarea) verstecken */
