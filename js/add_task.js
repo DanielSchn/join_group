@@ -4,13 +4,15 @@ let submitOnEnter = true; // Ergänzung zu automatischer HTML-Mechanik
 let newTask = {
     assignedTo: [],
     subtasks: [],
+    status: ''
 };
 
 
 /**
  * Initialisierung (bei Onload, Body)
+ * @param {string} status 
  */
-async function initAddTask() {
+async function initAddTask(status) {
     // await init();
     await includeHTML();
     submitBtn.disabled = true;
@@ -21,6 +23,7 @@ async function initAddTask() {
     let today = new Date(); // heutiges Datum
     addTaskDue.min = today.toISOString().slice(0, -14); // Minimalwert von Date-Input auf heutigen Tag setzen
     submitBtn.disabled = false;
+    newTask['status'] = status;
 }
 
 
@@ -114,7 +117,7 @@ async function submitTask() {
         category: addTaskCategory.value,
         subtasks: newTask['subtasks'],
         timestamp: getTimestamp(),
-        status: 'toDo'
+        status: newTask['status']
     });
     submitBtn.disabled = true;
     await setItem('test', JSON.stringify(TEST_TASKS));
