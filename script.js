@@ -29,6 +29,7 @@ let userIconColor = [
 
 async function init() {
   await includeHTML();
+  await loadUsers();
   renderLogo();
 }
 
@@ -208,7 +209,6 @@ function renderLogo() {
   const nameParts = loadedUserName.split(' ');
   const capitalized = nameParts.map(part => part.charAt(0).toUpperCase()).join('');
   document.getElementById('use_name').innerHTML = capitalized;
-
 }
 
 
