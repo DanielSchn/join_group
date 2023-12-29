@@ -29,6 +29,15 @@ async function loadUsers() {
 }
 
 
+function setInitialsAtRegistration() {
+    let loadedUserName = signUpName.value; //localStorage.getItem('userName');
+    const nameParts = loadedUserName.split(' ');
+    const capitalized = nameParts.map(part => part.charAt(0).toUpperCase()).join('');
+    console.log(capitalized);
+    return capitalized;
+  }
+
+
 /**
  * With this function we disable the button after click and push the Data into the users Array and POST it over the setItem() into the remote storage
  */
@@ -38,15 +47,22 @@ async function register() {
     if (isEmailRegistered) {
         document.getElementById('errorMessageId').innerHTML = 'This Email was registered soon!'
     } else {
-        users.push({
-            name: signUpName.value,
-            email: signUpEmail.value,
-            password: signUpPassword.value,
-        });
+        collectDataForRegistration();
         await setItem('users', JSON.stringify(users));
         resetForm();
         showOverlaySignedUp();
     }
+}
+
+
+function collectDataForRegistration() {
+    users.push({
+        name: signUpName.value,
+        email: signUpEmail.value,
+        password: signUpPassword.value,
+        initials: setInitialsAtRegistration(),
+        color: userIconColor[Math.floor(Math.random() * userIconColor.length)],
+    });
 }
 
 
