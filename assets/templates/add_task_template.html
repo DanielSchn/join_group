@@ -20,7 +20,7 @@
                 <label for="addTaskAssigned" onclick="event.preventDefault()">
                     <h2>Assigned to</h2>
                 </label>
-                <div id="addTaskAssignedInputContainer" class="extendedInput dropdownInput borderHover"
+                <div id="addTaskAssignedInputContainer" class="extendedInput dropdownInput borderHover preventSelect"
                     onclick="event.stopPropagation(); toggleDropdown('addTaskAssigned')">
                     <input type="text" placeholder="Select contacts to assign" id="addTaskAssigned"
                         onmousedown="event.preventDefault()">
@@ -78,7 +78,7 @@
                 </ul>
             </div>
             <div class="addTaskField">
-                <label for="addSubtask">
+                <label for="addSubtask" onclick="event.stopPropagation(); focusSubtask()">
                     <h2>Subtasks</h2>
                 </label>
                 <div id="addSubtaskInputContainer" class="extendedInput borderHover"

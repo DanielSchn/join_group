@@ -21,7 +21,7 @@ input,
 
 textarea {
     padding-top: 18px;
-    flex: 1;
+    height: 120px;
     resize: vertical;
 }
 

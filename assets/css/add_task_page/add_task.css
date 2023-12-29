@@ -53,10 +53,6 @@
     margin: 0;
 }
 
-.descriptionContainer {
-    flex: 1;
-}
-
 #addTaskAssignedMenu {
     max-height: 280px;
     overflow-y: auto;

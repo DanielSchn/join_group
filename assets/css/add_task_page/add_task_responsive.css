@@ -22,18 +22,6 @@
     }
 }
 
-@media (max-height: 906px) {
-    #addTaskAssignedMenu {
-        max-height: 168px;
-    }    
-}
-
-@media (max-height: 848px) {
-    .addTaskFormMain {
-        padding-top: 32px;
-    }
-}
-
 @media (max-width: 1920px) {
     :root {
         --sidePadding: 128px;
@@ -103,6 +91,18 @@
     }
 }
 
+@media (max-height: 906px) {
+    #addTaskAssignedMenu {
+        max-height: 168px;
+    }    
+}
+
+@media (max-height: 848px) {
+    .addTaskFormMain {
+        padding-top: 32px;
+    }
+}
+
 @media (max-width: 1150px) {
     :root {
         --sidePadding: 40px;
@@ -132,12 +132,24 @@
 }
 
 @media (max-width: 1050px) {
+    :root {
+        --absoluteContentWidth: calc(100vw - var(--menuBarWidth) - calc(var(--sidePadding) * 2) - var(--scrollbarWidth));
+    }
+
+    .main {
+        width: calc(var(--mainWidth) - var(--scrollbarWidth));
+    }
+
     .addTaskFormMain {
         flex-direction: column;
     }
 
     .addTaskForm {
         height: auto;
+    }
+
+    .addTaskFormMainSideOne {
+        gap: 24px;
     }
 
     input,
@@ -157,6 +169,10 @@
 
     .dropdownMenuWrapper {
         padding-top: 22px;
+    }
+
+    #addTaskAssignedMenu {
+        max-height: 224px;
     }
 
     #assignedIcons {

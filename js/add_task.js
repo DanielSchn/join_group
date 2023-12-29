@@ -426,9 +426,28 @@ function createSubtask() {
         });
         renderAddTaskSubtasks();
     }
+    subtasksScrollBottom();
     cancelSubtask();
 }
 
+
+/**
+ * Subtasks nach unten scrollen
+ */
+function subtasksScrollBottom() {
+    let element = window;
+    const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0); // Viewport-Breite (Cross-Browser)
+    if(vw > 1050) { // falls zweispaltiges Layout
+        element = subtasksList.parentNode.parentNode; // scrollen in Subtasks-Liste statt im Fenster
+    }
+    element.scrollTo(0, document.body.scrollHeight);
+}
+
+
+/**
+ * wird ein Subtask mittels Enter-Key erstellt, wird das Input-Feld danach wieder fokussiert
+ * @param {event} e - Event zur Key-Abfrage
+ */
 function createSubtaskOnEnter(e) {
     if (e.key == 'Enter') {
         e.preventDefault();
