@@ -101,10 +101,30 @@
       justify-content: flex-start;
   
     }
+
+    .dragAreaDone{
+      margin-bottom: 120px;
+    }
+
+    .boardHeader h1 {
+      font-size: 55px;
+    }
   }
 
   @media (max-width: 400px){
     #findTask {
       width: 150px;
     }
+
+    .boardHeader h1 {
+      font-size: 44px;
+    }
+
+    .taskTitle {
+      font-size: 44px;
+      font-weight: 700;
+    }
+    .taskSection {
+      margin-right: 0px;
+  }
   }

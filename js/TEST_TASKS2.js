@@ -6,7 +6,7 @@ let TEST_TASKS = [
     {
         id: 0,
         title: 'Geschenke kaufen',
-        description: 'Geschenke für Mama, Papa und den Hund',
+        description: 'Geschenke für Mama, Papa und den Hund. Und noch so viele Geschenke mehr, denn eigentlich bin ich der Weihnachtsmann und teste gerade mit diesem Text nur, dass die seite sich so verhält wie ich das möchte',
         assignedTo: [0, 1], // Kontakte als IDs hinterlegt, setzt Kontakte-Array voraus
         due: '24/12/2023',
         prio: 'urgent', // low, medium, urgent
