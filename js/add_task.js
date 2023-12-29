@@ -1,18 +1,9 @@
 const PRIOS = [null, 'urgent', 'medium', 'low'];
 
-let submitOnEnter = true;
-
+let submitOnEnter = true; // Ergänzung zu automatischer HTML-Mechanik
 let newTask = {
-    id: -1,
-    title: '',
-    description: '',
     assignedTo: [],
-    due: '',
-    prio: '',
-    category: '',
     subtasks: [],
-    timestamp: 0,
-    status: ''
 };
 
 

@@ -101,6 +101,10 @@
     .addTaskFormMain {
         padding-top: 32px;
     }
+
+    textarea {
+        height: 96px;
+    }
 }
 
 @media (max-width: 1150px) {
