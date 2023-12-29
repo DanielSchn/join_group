@@ -1,6 +1,10 @@
-@media (max-height: 1008px) {
+@media (max-height: 1024px) {
     :root {
         --top: 80px;
+    }
+
+    #addTaskAssignedMenu {
+        max-height: 224px;
     }
 }
 
@@ -16,9 +20,17 @@
         --top: 48px;
         --bottom: 32px;
     }
+}
 
+@media (max-height: 906px) {
     #addTaskAssignedMenu {
-        max-height: 224px;
+        max-height: 168px;
+    }    
+}
+
+@media (max-height: 848px) {
+    .addTaskFormMain {
+        padding-top: 32px;
     }
 }
 
