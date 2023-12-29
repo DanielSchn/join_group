@@ -133,7 +133,7 @@ function showTaskCard(element, id) {
 function generateTaskCard(task, id) {
     return `    
     <div id="taskContainer" onclick="closeTask()">
-        <div id="taskCard" class="taskCard showTaskCard" onclick="event.stopPropagation()">
+        <div id="taskCard" class="taskCard showTaskCard textOverflow" onclick="event.stopPropagation()">
             <div class="taskCardHeader">
                 <div class="taskCardCategory${task['category']}" id="taskCardCategory${id}">
                     ${categories[task['category']]}
@@ -162,7 +162,7 @@ function generateTaskCard(task, id) {
             </div>
 
 
-            <div class="subtasksContainer">
+            <div class="subtasksContainerBoard">
                 <div class="taskSection">Subtasks:</div>
                 <div class="subtasks" id="subtasks"></div>
             </div>
@@ -288,6 +288,7 @@ function showAddTaskCard() {
     </div>`;
 
     init();
+    
 }
 
 function renderCardAssigned() { }
