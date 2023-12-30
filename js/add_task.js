@@ -1,7 +1,7 @@
 const PRIOS = [null, 'urgent', 'medium', 'low'];
 
 let submitOnEnter = true; // Ergänzung zu automatischer HTML-Mechanik
-let newTask = {
+let currentTask = {
     assignedTo: [],
     subtasks: [],
     status: ''
@@ -22,7 +22,7 @@ async function initAddTask(status) {
     let today = new Date(); // heutiges Datum
     addTaskDue.min = today.toISOString().slice(0, -14); // Minimalwert von Date-Input auf heutigen Tag setzen
     submitBtn.disabled = false;
-    newTask['status'] = status;
+    currentTask['status'] = status;
 }
 
 
@@ -40,12 +40,11 @@ function renderAddTaskForm() {
  * assigned-Liste rendern
  */
 function renderAddTaskAssignedList() {
-    const contacts = TEST_CONTACTS;
-    const assigned = newTask['assignedTo'];
+    const assigned = currentTask['assignedTo'];
     const list = document.getElementById('addTaskAssignedMenu');
     list.innerHTML = '';
-    for (let i = 0; i < contacts.length; i++) {
-        let contact = contacts[i];
+    for (let i = 0; i < users.length; i++) {
+        let contact = users[i];
         let checkboxId = 'assignedContact' + i;
         list.innerHTML += contactAssignedHTML(contact, checkboxId);
         if (assigned.includes(i)) {
@@ -59,11 +58,10 @@ function renderAddTaskAssignedList() {
  * assigned-Icons rendern
  */
 function renderAddTaskAssignedIcons() {
-    const contacts = TEST_CONTACTS;
-    const assigned = newTask['assignedTo'];
+    const assigned = currentTask['assignedTo'];
     assignedIcons.innerHTML = '';
-    for (let i = 0; i < contacts.length; i++) {
-        let contact = contacts[i];
+    for (let i = 0; i < users.length; i++) {
+        let contact = users[i];
         if (assigned.includes(i)) {
             assignedIcons.innerHTML += contactAssignedIconHTML(contact);
         }
@@ -95,8 +93,8 @@ function resetTaskForm() {
         unselectPrioBtn(prio); // Priorität entfernen
     }
     stylePrioBtn(2, 2); // Priorität resetten
-    newTask['assignedTo'] = []; // assigned resetten
-    newTask['subtasks'] = []; // Subtasks resetten
+    currentTask['assignedTo'] = []; // assigned resetten
+    currentTask['subtasks'] = []; // Subtasks resetten
     renderAddTaskForm();
 }
 
@@ -110,13 +108,13 @@ async function submitTask() {
         id: TEST_TASKS.length,
         title: addTaskTitle.value,
         description: addTaskDescription.value,
-        assignedTo: newTask['assignedTo'],
+        assignedTo: currentTask['assignedTo'],
         due: addTaskDueText.value,
         prio: PRIOS[getTaskPrioId()],
         category: addTaskCategory.value,
-        subtasks: newTask['subtasks'],
+        subtasks: currentTask['subtasks'],
         timestamp: getTimestamp(),
-        status: newTask['status']
+        status: currentTask['status']
     });
     submitBtn.disabled = true;
     await setItem('test', JSON.stringify(TEST_TASKS));

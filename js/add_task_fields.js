@@ -19,7 +19,7 @@ function toggleAssigned(checkbox) {
  * @param {number} id - Kontakt-ID aus assignedTo-Array
  */
 function toggleAssignedArray(id) {
-    let assigned = newTask['assignedTo'];
+    let assigned = currentTask['assignedTo'];
     if (assigned.includes(id)) {
         const index = assigned.indexOf(id); // bestimme Index der Kontakt-ID im assignedTo-Array
         assigned.splice(index, 1); // ID entfernen
@@ -33,7 +33,7 @@ function toggleAssignedArray(id) {
  * subtasks rendern
  */
 function renderAddTaskSubtasks() {
-    const subtasks = newTask['subtasks'];
+    const subtasks = currentTask['subtasks'];
     const list = document.getElementById('subtasksList');
     list.innerHTML = '';
     for (let i = 0; i < subtasks.length; i++) {
@@ -296,7 +296,7 @@ function cancelSubtask() {
  */
 function createSubtask() {
     if (addSubtask.value) {
-        newTask['subtasks'].push({
+        currentTask['subtasks'].push({
             title: addSubtask.value,
             status: 'toDo'
         });
@@ -338,7 +338,7 @@ function createSubtaskOnEnter(e) {
  * @param {number} index - Laufindex innerhalb des subtasks-Array 
  */
 function editSubtask(index) {
-    let subtask = newTask['subtasks'][index];
+    let subtask = currentTask['subtasks'][index];
     const li = document.getElementById(`subtask${index}`);
     li.innerHTML = editSubtaskHTML(subtask['title'], index);
     li.classList.add('editSubtask');
@@ -356,7 +356,7 @@ function editSubtask(index) {
  */
 function confirmSubtaskEdit(index) {
     const input = document.getElementById('editSubtaskInput');
-    let subtasks = newTask['subtasks'];
+    let subtasks = currentTask['subtasks'];
     if (input.value) {
         subtasks[index]['title'] = input.value;
     } else {
@@ -371,7 +371,7 @@ function confirmSubtaskEdit(index) {
  * @param {number} index - Laufindex innerhalb des subtasks-Array 
  */
 function removeSubtask(index) {
-    let subtasks = newTask['subtasks'];
+    let subtasks = currentTask['subtasks'];
     subtasks.splice(index, 1);
     renderAddTaskSubtasks();
 }
