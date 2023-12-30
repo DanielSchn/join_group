@@ -10,7 +10,7 @@ let newTask = {
 
 /**
  * Initialisierung (bei Onload, Body)
- * @param {string} status 
+ * @param {string} status - Bearbeitungsstatus des Tasks
  */
 async function initAddTask(status) {
     await init();
