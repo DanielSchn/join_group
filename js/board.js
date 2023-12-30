@@ -261,6 +261,7 @@ function closeTask() {
  */
 function preventClosing() {
     prevent = true;
+    // per Bubbling wird anschließend closeTask() aufgerufen und setzt im selben Klick wieder prevent = false
 }
 
 
