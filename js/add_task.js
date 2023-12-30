@@ -13,8 +13,7 @@ let newTask = {
  * @param {string} status 
  */
 async function initAddTask(status) {
-    // await init();
-    await includeHTML();
+    await init();
     submitBtn.disabled = true;
     TEST_TASKS = '';
     TEST_TASKS = JSON.parse(await getItem('test')); // Tasks laden - SPÄTER ERSETZEN
@@ -24,7 +23,6 @@ async function initAddTask(status) {
     addTaskDue.min = today.toISOString().slice(0, -14); // Minimalwert von Date-Input auf heutigen Tag setzen
     submitBtn.disabled = false;
     newTask['status'] = status;
-    init();
 }
 
 

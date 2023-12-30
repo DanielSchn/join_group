@@ -280,14 +280,19 @@ function updateSubtask(id, i) {
     renderCardSubtasks(tasks[id], id);
 }
 
-function showAddTaskCard() {
+
+/**
+ * Add Task-Overlay aufrufen
+ * @param {string} status - Bearbeitungsstatus des Tasks 
+ */
+async function showAddTaskCard(status) {
     addtask = document.getElementById('taskCard');
     addtask.innerHTML = `
     <div class="addTaskCardContainer" onclick="closeTask()">
     <div class = "addTaskCard" onclick="event.stopPropagation()" id="addTaskCard" w3-include-html="assets/templates/add_task_template.html"></div>
     </div>`;
 
-    init();
+    await initAddTask(status);
     
 }
 
