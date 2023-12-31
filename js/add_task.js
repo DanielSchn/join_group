@@ -2,6 +2,7 @@ const PRIOS = [null, 'urgent', 'medium', 'low'];
 
 let submitOnEnter = true; // Ergänzung zu automatischer HTML-Mechanik
 let currentTask = {
+    id: -1,
     assignedTo: [],
     subtasks: [],
     status: ''
@@ -26,6 +27,25 @@ async function initAddTask(status) {
 }
 
 
+function editTask(id) {
+    // vor Test tasks laden implementieren!!
+    const task = tasks[id];
+    currentTask['id'] = id;
+    showAddTaskCard(task['status']);
+    prefillForm(task);
+}
+
+
+function deleteTask(id) {
+    // Task löschen
+    // OPTIONAL: IDs bei allen nachfolgenden Tasks neu zuweisen ODER ID-Lücken mit neuen Tasks füllen
+    //      letzteres: gelöschte IDs in zusätzlichem Array speichern, falls ID nicht der letzte Task war
+    //      bei Task-Erzeugung neu zuweisen??
+    // EINFACHSTE LÖSUNG: Status "deleted" hinzufügen, beim Rendern der Tasks nur die nehmen, deren Status nicht deleted ist
+    // erst umsetzen, wenn richtiges Task-Array geladen wird
+}
+
+
 /**
  * allgemeine Render-Funktion
  */
@@ -33,6 +53,11 @@ function renderAddTaskForm() {
     renderAddTaskAssignedList();
     renderAddTaskAssignedIcons();
     renderAddTaskSubtasks();
+}
+
+
+function prefillForm(task) {
+    // Formular vorausfüllen (Bearbeitungsmodus)
 }
 
 
@@ -104,8 +129,23 @@ function resetTaskForm() {
  */
 async function submitTask() {
     setAddTaskDueText(); // Datum-Inputs synchronisieren
-    TEST_TASKS.push({ // später durch echtes Tasks-Array (global oder user-individuell ersetzen - falls individuell, mit for-Schleife bei allen zugeordneten Usern hinzufügen)
-        id: TEST_TASKS.length,
+    const currentId = currentTask['id'];
+    if (currentId == -1) {
+        TEST_TASKS.push(generateTaskJSON(TEST_TASKS.length)); // neuen Task hinzufügen
+    } else {
+        TEST_TASKS[currentId] = generateTaskJSON(currentId); // bestehenden Task überschreiben (Bearbeitungsmodus)
+    }
+    submitBtn.disabled = true;
+    await setItem('test', JSON.stringify(TEST_TASKS));
+    submitBtn.disabled = false;
+    showTaskAddedMsg();
+    goToBoard();
+}
+
+
+function generateTaskJSON(id) {
+    return { 
+        id: id,
         title: addTaskTitle.value,
         description: addTaskDescription.value,
         assignedTo: currentTask['assignedTo'],
@@ -115,12 +155,7 @@ async function submitTask() {
         subtasks: currentTask['subtasks'],
         timestamp: getTimestamp(),
         status: currentTask['status']
-    });
-    submitBtn.disabled = true;
-    await setItem('test', JSON.stringify(TEST_TASKS));
-    submitBtn.disabled = false;
-    showTaskAddedMsg();
-    goToBoard();
+    };
 }
 
 
