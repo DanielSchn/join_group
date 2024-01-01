@@ -64,7 +64,8 @@ function prefillForm(task) {
 
 
 function disableCategory() {
-    // Dropdown: Event-Listener entfernen!
+    addTaskCategoryInputContainer.onclick = null;
+    addTaskCategoryIcon.style.display = 'none';
 }
 
 
