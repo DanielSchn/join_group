@@ -1,4 +1,4 @@
-// let tasks = [];
+let tasks = [];
 let userIconColor = [
   "#FDDC2F",
   "#33DA81",
@@ -30,6 +30,7 @@ let userIconColor = [
 async function init() {
   await includeHTML();
   await loadUsers();
+  await loadTasks();
   renderLogo();
   showActiveSite();
   // showActiveSiteMobile();
@@ -80,6 +81,15 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 });
+
+
+async function loadTasks() {
+  try {
+    tasks = JSON.parse(await getItem('tasks'));
+  } catch (e) {
+    console.error('Loading error:', e);
+  }
+}
 
 
 /**

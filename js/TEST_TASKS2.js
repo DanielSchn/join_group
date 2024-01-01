@@ -73,6 +73,10 @@ function resetTEST_TASKS() {
     setItem('test', JSON.stringify(TEST_TASKS));
 }
 
+function setSampleTasks() {
+    tasks = TEST_TASKS;
+}
+
 const TEST_CONTACTS = [
     {
         name: 'Anton',

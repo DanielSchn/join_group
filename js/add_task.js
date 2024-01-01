@@ -16,8 +16,6 @@ let currentTask = {
 async function initAddTask(status) {
     await init();
     submitBtn.disabled = true;
-    TEST_TASKS = '';
-    TEST_TASKS = JSON.parse(await getItem('test')); // Tasks laden - SPÄTER ERSETZEN
     renderAddTaskForm();
     document.addEventListener('keydown', submitFormOnEnter);
     let today = new Date(); // heutiges Datum
@@ -42,6 +40,7 @@ function deleteTask(id) {
     //      letzteres: gelöschte IDs in zusätzlichem Array speichern, falls ID nicht der letzte Task war
     //      bei Task-Erzeugung neu zuweisen??
     // EINFACHSTE LÖSUNG: Status "deleted" hinzufügen, beim Rendern der Tasks nur die nehmen, deren Status nicht deleted ist
+    // FRAGE: Muss auf dem Board die gespeicherte ID mit der tatsächlichen Array-ID identisch sein? Dann auf jeden Fall deleted-Status nutzen
     // erst umsetzen, wenn richtiges Task-Array geladen wird
 }
 
@@ -131,12 +130,13 @@ async function submitTask() {
     setAddTaskDueText(); // Datum-Inputs synchronisieren
     const currentId = currentTask['id'];
     if (currentId == -1) {
-        TEST_TASKS.push(generateTaskJSON(TEST_TASKS.length)); // neuen Task hinzufügen
+        tasks.push(generateTaskJSON(tasks.length)); // neuen Task hinzufügen
+        // als ID ggf. ID des letzten Elements + 1 wählen (falls nicht mit Array identisch): "tasks[tasks.length - 1]['id'] + 1"
     } else {
-        TEST_TASKS[currentId] = generateTaskJSON(currentId); // bestehenden Task überschreiben (Bearbeitungsmodus)
+        tasks[currentId] = generateTaskJSON(currentId); // bestehenden Task überschreiben (Bearbeitungsmodus)
     }
     submitBtn.disabled = true;
-    await setItem('test', JSON.stringify(TEST_TASKS));
+    await setItem('tasks', JSON.stringify(tasks));
     submitBtn.disabled = false;
     showTaskAddedMsg();
     goToBoard();

@@ -1,4 +1,5 @@
-let tasks = TEST_TASKS;
+// let tasks = TEST_TASKS;
+tasks = TEST_TASKS;
 let filteredTasks = tasks;
 let currentDraggedElement;
 let prevent = false; // dient zur Ermittlung, ob Add Task-Karte bei Klick geschlossen werden soll
