@@ -38,15 +38,7 @@ async function editTask(id) {
 
 
 function deleteTask(id) {
-    // Task löschen
-    // OPTIONAL: IDs bei allen nachfolgenden Tasks neu zuweisen ODER ID-Lücken mit neuen Tasks füllen
-    //      letzteres: gelöschte IDs in zusätzlichem Array speichern, falls ID nicht der letzte Task war
-    //      bei Task-Erzeugung neu zuweisen??
-    // EINFACHSTE LÖSUNG: Status "deleted" hinzufügen, beim Rendern der Tasks nur die nehmen, deren Status nicht deleted ist
-    // EINFACHER: tasks[id] = null;
-    // beim Rendern: tasks.indexOf(null) überprüfen
-    // FRAGE: Muss auf dem Board die gespeicherte ID mit der tatsächlichen Array-ID identisch sein? Dann auf jeden Fall deleted-Status nutzen
-    // erst umsetzen, wenn richtiges Task-Array geladen wird
+    tasks[id] = null;
 }
 
 
@@ -146,8 +138,12 @@ async function submitTask() {
     setAddTaskDueText(); // Datum-Inputs synchronisieren
     const currentId = currentTask['id'];
     if (currentId == -1) { // falls neuer Task angelegt wurde
-        tasks.push(generateTaskJSON(tasks.length)); // neuen Task hinzufügen
-        // als ID ggf. ID des letzten Elements + 1 wählen (falls nicht mit Array identisch): "tasks[tasks.length - 1]['id'] + 1"
+        const blank = tasks.indexOf(null); // erste Leerstelle im tasks-Array
+        if (blank == -1) { // falls keine Leerstelle vorhanden
+            tasks.push(generateTaskJSON(tasks.length)); // neuen Task am Ende des tasks-Arrays hinzufügen
+        } else {
+            tasks[blank] = generateTaskJSON(blank); // neuen Task an Leerstelle hinzufügen
+        }
     } else { // Bearbeitungsmodus
         tasks[currentId] = generateTaskJSON(currentId); // bestehenden Task überschreiben
     }
@@ -160,7 +156,7 @@ async function submitTask() {
 
 
 function generateTaskJSON(id) {
-    return { 
+    return {
         id: id,
         title: addTaskTitle.value,
         description: addTaskDescription.value,
