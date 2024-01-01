@@ -1,4 +1,7 @@
+const categories = ['Technical Task', 'User Story'];
 let tasks = [];
+
+
 let userIconColor = [
   "#FDDC2F",
   "#33DA81",

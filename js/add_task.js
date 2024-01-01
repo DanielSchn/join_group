@@ -25,12 +25,15 @@ async function initAddTask(status) {
 }
 
 
-function editTask(id) {
-    // vor Test tasks laden implementieren!!
+async function editTask(id) {
     const task = tasks[id];
     currentTask['id'] = id;
-    showAddTaskCard(task['status']);
+    currentTask['assignedTo'] = task['assignedTo'];
+    currentTask['subtasks'] = task['subtasks'];
+    await showAddTaskCard(task['status']);
+    unselectPrioBtn(2); // Default-Prio entfernen
     prefillForm(task);
+    disableCategory();
 }
 
 
@@ -40,6 +43,8 @@ function deleteTask(id) {
     //      letzteres: gelöschte IDs in zusätzlichem Array speichern, falls ID nicht der letzte Task war
     //      bei Task-Erzeugung neu zuweisen??
     // EINFACHSTE LÖSUNG: Status "deleted" hinzufügen, beim Rendern der Tasks nur die nehmen, deren Status nicht deleted ist
+    // EINFACHER: tasks[id] = null;
+    // beim Rendern: tasks.indexOf(null) überprüfen
     // FRAGE: Muss auf dem Board die gespeicherte ID mit der tatsächlichen Array-ID identisch sein? Dann auf jeden Fall deleted-Status nutzen
     // erst umsetzen, wenn richtiges Task-Array geladen wird
 }
@@ -56,7 +61,18 @@ function renderAddTaskForm() {
 
 
 function prefillForm(task) {
-    // Formular vorausfüllen (Bearbeitungsmodus)
+    const prio = PRIOS.indexOf(task['prio']);
+    addTaskTitle.value = task['title'];
+    addTaskDescription.value = task['description'];
+    addTaskDueText.value = task['due'];
+    addTaskDue.value = transformDate(task['due']);
+    stylePrioBtn(prio, prio);
+    addTaskCategory.value = categories.indexOf(task['category']);
+}
+
+
+function disableCategory() {
+    // Dropdown: Event-Listener entfernen!
 }
 
 
@@ -71,9 +87,9 @@ function renderAddTaskAssignedList() {
         let contact = users[i];
         let checkboxId = 'assignedContact' + i;
         list.innerHTML += contactAssignedHTML(contact, checkboxId);
-        if (assigned.includes(i)) {
-            toggleAssigned(checkboxId);
-        }
+        // if (assigned.includes(i)) {
+        //     toggleAssigned(checkboxId);
+        // }
     }
 }
 
@@ -151,7 +167,7 @@ function generateTaskJSON(id) {
         assignedTo: currentTask['assignedTo'],
         due: addTaskDueText.value,
         prio: PRIOS[getTaskPrioId()],
-        category: addTaskCategory.value,
+        category: categories.indexOf(addTaskCategory.value),
         subtasks: currentTask['subtasks'],
         timestamp: getTimestamp(),
         status: currentTask['status']

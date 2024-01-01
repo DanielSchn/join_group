@@ -1,6 +1,5 @@
 // gedacht als frei zur Verfügung gestellte Datenbank, um Tasks zu testen
 
-let categories = ['Technical Task', 'User Story']; // eigene Deklaration, um später problemlos weitere Kategorien hinzuzufügen
 let contacts = [];
 let TEST_TASKS = [
     {
