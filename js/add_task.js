@@ -37,8 +37,9 @@ async function editTask(id) {
 }
 
 
-function deleteTask(id) {
+async function deleteTask(id) {
     tasks[id] = null;
+    await setItem('tasks', JSON.stringify(tasks));
 }
 
 
