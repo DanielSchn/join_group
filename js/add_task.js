@@ -67,7 +67,7 @@ function prefillForm(task) {
     addTaskDueText.value = task['due'];
     addTaskDue.value = transformDate(task['due']);
     stylePrioBtn(prio, prio);
-    addTaskCategory.value = categories.indexOf(task['category']);
+    addTaskCategory.value = categories[task['category']];
 }
 
 
@@ -145,11 +145,11 @@ function resetTaskForm() {
 async function submitTask() {
     setAddTaskDueText(); // Datum-Inputs synchronisieren
     const currentId = currentTask['id'];
-    if (currentId == -1) {
+    if (currentId == -1) { // falls neuer Task angelegt wurde
         tasks.push(generateTaskJSON(tasks.length)); // neuen Task hinzufügen
         // als ID ggf. ID des letzten Elements + 1 wählen (falls nicht mit Array identisch): "tasks[tasks.length - 1]['id'] + 1"
-    } else {
-        tasks[currentId] = generateTaskJSON(currentId); // bestehenden Task überschreiben (Bearbeitungsmodus)
+    } else { // Bearbeitungsmodus
+        tasks[currentId] = generateTaskJSON(currentId); // bestehenden Task überschreiben
     }
     submitBtn.disabled = true;
     await setItem('tasks', JSON.stringify(tasks));
