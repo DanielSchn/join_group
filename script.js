@@ -36,7 +36,6 @@ async function init() {
   await loadTasks();
   renderLogo();
   showActiveSite();
-  // showActiveSiteMobile();
 }
 
 
@@ -346,15 +345,15 @@ function verifyToken(token) {
 // });
 
 
-// document.addEventListener('DOMContentLoaded', function () {
-//   setTimeout(function () {
-//     updateMenuForPage('/summary.html', 'linkSummary', 'sideSummary', 'sideImgSummary');
-//     updateMenuForPage('/board.html', 'linkBoard', 'sideBoard', 'sideImgBoard');
-//     updateMenuForPage('/add_task.html', 'linkAddTask', 'sideAddTask', 'sideImgAddTask');
-//     updateMenuForPage('/contacts.html', 'linkContacts', 'sideContacts', 'sideImgContacts');
-//   }, 600);
-// });
-
+/**
+ * This function will highlight the actual loaded page in the side menu.
+ * With the window.location.pathname value, it will check which page is actually loaded.
+ * 
+ * @param {string} pagePath - The Page which is loaded
+ * @param {string} linkId - ID for the right link in the side menu
+ * @param {string} sideId - ID for the right site
+ * @param {string} sideImgId - ID for the right image
+ */
 function updateMenuForPage(pagePath, linkId, sideId, sideImgId) {
   if (window.location.pathname === pagePath) {
     document.getElementById(linkId).classList.remove('menuLink');
@@ -365,6 +364,10 @@ function updateMenuForPage(pagePath, linkId, sideId, sideImgId) {
 }
 
 
+/**
+ * This function is started with the init() function and is the main property for the updateMenuForPage() function.
+ * These are the function for the main side menu
+ */
 function showActiveSite() {
   updateMenuForPage('/summary.html', 'linkSummary', 'sideSummary', 'sideImgSummary');
   updateMenuForPage('/board.html', 'linkBoard', 'sideBoard', 'sideImgBoard');
@@ -374,6 +377,10 @@ function showActiveSite() {
 }
 
 
+/**
+ * This function is started with the init() function and is the main property for the updateMenuForPage() function.
+ * These are the function for the mobile side menu
+ */
 function showActiveSiteMobile() {
   updateMenuForPage('/summary.html', 'linkSummaryMobile', 'sideSummaryMobile', 'sideImgSummaryMobile');
   updateMenuForPage('/board.html', 'linkBoardMobile', 'sideBoardMobile', 'sideImgBoardMobile');
