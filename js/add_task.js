@@ -77,13 +77,18 @@ function renderAddTaskAssignedList() {
     const assigned = currentTask['assignedTo'];
     const list = document.getElementById('addTaskAssignedMenu');
     list.innerHTML = '';
-    for (let i = 0; i < users.length; i++) {
-        let contact = users[i];
-        let checkboxId = 'assignedContact' + i;
-        list.innerHTML += contactAssignedHTML(contact, checkboxId);
-        // if (assigned.includes(i)) {
-        //     toggleAssigned(checkboxId);
-        // }
+    list.innerHTML += contactAssignedHTML(users[userId], 'assignedContact' + userId); // aktiver User
+    if (userId != -1) { // falls als vollständiger User, nicht als Gast eingeloggt
+        for (let i = 0; i < users.length; i++) {
+            if (i != userId) { // aktiver User bereits gerendert, wird daher übersprungen
+                let contact = users[i];
+                let checkboxId = 'assignedContact' + i;
+                list.innerHTML += contactAssignedHTML(contact, checkboxId);
+                // if (assigned.includes(i)) {
+                //     toggleAssigned(checkboxId);
+                // }
+            }
+        }
     }
 }
 

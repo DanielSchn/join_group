@@ -5,16 +5,22 @@
  * @returns HTML-String
  */
 function contactAssignedHTML(contact, id) {
-    return /* html */`
-        <li onclick="event.stopPropagation(); toggleAssigned(${id})">
-            ${contactAssignedIconHTML(contact)}
-            <div class="contactDetails">
-                <div>${contact['name']}</div>
+    let html = '';
+    html += /* html */`
+    <li onclick="event.stopPropagation(); toggleAssigned(${id})">
+        ${contactAssignedIconHTML(contact)}
+        <div class="contactDetails">
+            <div>${contact['name']}`;
+    if (id.includes(userId)) {
+        html += ' (You)';
+    }
+    html += /* html */`</div>
             </div>
             <button type="button">
                 <img id="${id}" src="./assets/img/checkbox.svg" alt="unchecked">
             </button>
         </li>`;
+    return html;
 }
 
 
