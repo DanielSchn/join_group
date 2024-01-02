@@ -163,6 +163,11 @@
     #mainBody {
         margin-top: 256px;
     }
+
+    #startLogo.logo.transformed {
+        top: 16px;
+        left: 16px;
+    }
 }
 
 @media (max-width: 420px) {
