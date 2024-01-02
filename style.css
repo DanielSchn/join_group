@@ -2,6 +2,7 @@
     --fontSizeHuge: 61px;
     --fontSizeNormal: 20px;
     --fontSizeSmall: 16px;
+    --fontSizeVerySmall: 14px;
     --fontSize21px: 21px;
     --fontWeight700: 700;
     --fontWeight400: 400;
@@ -378,4 +379,23 @@ aside {
     margin-right: 32px;
     position: relative;
     z-index: 1;
+}
+
+@media (max-width: 400px) {
+    #mobileMenuBox {
+        gap: 0;
+    }
+
+    .linkAlign {
+        width: 76px;
+}
+
+.linkAlign img {
+    height: 24px;
+    width: 24px;
+}
+
+.menuLink {
+    font-size: var(--fontSizeVerySmall);
+}
 }
