@@ -2,10 +2,11 @@
 //tasks = TEST_TASKS;
 let currentDraggedElement;
 let prevent = false; // dient zur Ermittlung, ob Add Task-Karte bei Klick geschlossen werden soll
-
+let filteredTasks = [];
 
 async function loadData() {
     await init();
+    filteredTasks = tasks;
     updateHTML();
 }
 
@@ -21,7 +22,7 @@ async function saveChanges(){
 }
 
 function updateToDo() {
-    let todo = tasks.filter(t => t['status'] == 'toDo');
+    let todo = filteredTasks.filter(t => t['status'] == 'toDo');
     let status = 'to do';
 
     document.getElementById('toDo').innerHTML = '';
@@ -39,7 +40,7 @@ function updateToDo() {
 }
 
 function updateInProgress() {
-    let inprogress = tasks.filter(t => t['status'] == 'inProgress')
+    let inprogress = filteredTasks.filter(t => t['status'] == 'inProgress')
     let status = 'in progress';
 
     document.getElementById('inProgress').innerHTML = '';
@@ -57,7 +58,7 @@ function updateInProgress() {
 }
 
 function updateAwaitFeedback() {
-    let feedback = tasks.filter(t => t['status'] == 'awaitFeedback');
+    let feedback = filteredTasks.filter(t => t['status'] == 'awaitFeedback');
     let status = 'await Feedback';
 
     document.getElementById('awaitFeedback').innerHTML = '';
@@ -76,7 +77,7 @@ function updateAwaitFeedback() {
 }
 
 function updateDone() {
-    let done = tasks.filter(t => t['status'] == 'done')
+    let done = filteredTasks.filter(t => t['status'] == 'done')
     let status = 'done';
 
     document.getElementById('done').innerHTML = '';
