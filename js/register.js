@@ -1,7 +1,7 @@
 let users = [];
 let guests = [
     {
-        'name': 'guest',
+        'name': 'Guest',
         'email': 'guest@guest.de',
         'password': 'guest',
         'initials': 'G',
