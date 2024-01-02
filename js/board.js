@@ -3,7 +3,7 @@ let filteredTasks = tasks;
 let currentDraggedElement;
 
 
-function updateHTML() {
+async function updateHTML() {
     updateToDo();
     updateInProgress();
     updateAwaitFeedback();
@@ -309,6 +309,7 @@ function searchTask() {
 
 
 document.addEventListener("DOMContentLoaded", function () {
+    updateHTML();
     let searchInput = document.getElementById('findTask');
     searchInput.addEventListener("input", function () {
         searchTask();
