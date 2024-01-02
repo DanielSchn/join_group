@@ -16,6 +16,10 @@ async function updateHTML() {
     updateDone();
 }
 
+async function saveChanges(){
+    await setItem('tasks', JSON.stringify(tasks));
+}
+
 function updateToDo() {
     let todo = tasks.filter(t => t['status'] == 'toDo');
     let status = 'to do';
@@ -203,6 +207,7 @@ function allowDrop(ev) {
 
 function moveTo(status) {
     tasks[currentDraggedElement]['status'] = status;
+    saveChanges();
     updateHTML();
 }
 
@@ -304,6 +309,7 @@ function updateProgressBar(subtasks, doneSubtasksDiv, progressbarFillerDiv) {
 function closeTask() {
     if (!prevent) {
         document.getElementById('taskCard').innerHTML = '';
+        updateHTML();
     }
     prevent = false;
 }
@@ -347,8 +353,17 @@ function renderCardSubtasks(task, id) {
 }
 
 function updateSubtask(id, i) {
-    tasks[id].subtasks[i].status === 'done' ? 'toDo' : 'done';
+    if (tasks[id].subtasks[i].status == 'toDo'){
+        tasks[id].subtasks[i].status = 'done';
+    }
+    else {
+        tasks[id].subtasks[i].status ='toDo';
+    }
+
+    //tasks[id].subtasks[i].status === 'toDo' ? 'done' : 'toDo';
+
     renderCardSubtasks(tasks[id], id);
+    saveChanges();
 }
 
 
@@ -366,8 +381,6 @@ async function showAddTaskCard(status) {
     await initAddTask(status);
 
 }
-
-function renderCardDate() { }
 
 function searchTask() {
     let search = document.getElementById('findTask').value.toLowerCase();
