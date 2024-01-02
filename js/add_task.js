@@ -37,8 +37,12 @@ async function editTask(id) {
 }
 
 
-async function deleteTask(id) {
-    tasks[id] = null;
+async function deleteTask(id) { // Überprüfung: Stimmen nach Ausführung alle IDs mit der Position überein?
+    tasks.splice(id, 1);
+    for (let i = 0; i < tasks.length; i++) {
+        let task = tasks[i];
+        task['id'] = i;
+    }
     await setItem('tasks', JSON.stringify(tasks));
 }
 
@@ -92,7 +96,7 @@ function renderAddTaskAssignedList() {
 }
 
 
-function precheckAssignedList() { // FRAGE: FUNKTIONIERT TOGGLE ASSIGNED NOCH??
+function precheckAssignedList() { // FRAGE: FUNKTIONIERT TOGGLE ASSIGNED NOCH?? ENTSCHEIDEND: Werden checkboxes als IDs oder Nodes interpretiert?
     const assigned = currentTask['assignedTo'];
     for (let i = 0; i < users.length; i++) {
         if (assigned.includes(i)) {
@@ -155,12 +159,7 @@ async function submitTask() {
     setAddTaskDueText(); // Datum-Inputs synchronisieren
     const currentId = currentTask['id'];
     if (currentId == -1) { // falls neuer Task angelegt wurde
-        const blank = tasks.indexOf(null); // erste Leerstelle im tasks-Array
-        if (blank == -1) { // falls keine Leerstelle vorhanden
-            tasks.push(generateTaskJSON(tasks.length)); // neuen Task am Ende des tasks-Arrays hinzufügen
-        } else {
-            tasks[blank] = generateTaskJSON(blank); // neuen Task an Leerstelle hinzufügen
-        }
+        tasks.push(generateTaskJSON(tasks.length)); // neuen Task am Ende des tasks-Arrays hinzufügen
     } else { // Bearbeitungsmodus
         tasks[currentId] = generateTaskJSON(currentId); // bestehenden Task überschreiben
     }
