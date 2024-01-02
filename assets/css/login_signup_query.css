@@ -196,33 +196,3 @@
         height: 90px;
     }
 }
-
-/* @media (orientation: landscape) 
-and (min-device-width: 319px) 
-and (max-device-width: 915px) {
-    .logIn {
-        position: unset;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-    }
-
-    #mainBody {
-        display: flex !important;
-        justify-content: center;
-        align-items: center;
-        position: unset;
-        height: 100vh;
-    }
-
-    #startLogo.logo.transformed {
-        top: 16px;
-        left: 16px;
-    }
-
-    #startLogo.logo {
-        top: 100px;
-        z-index: 3;
-    }
-} */
