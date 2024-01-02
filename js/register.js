@@ -5,6 +5,7 @@ let guests = [
         'email': 'guest@guest.de',
         'password': 'guest',
         'initials': 'G',
+        'color': '#FF3D00',
     },
 ];
 
@@ -30,11 +31,15 @@ async function loadUsers() {
 }
 
 
+/**
+ * This function get the initials from the registration name
+ * 
+ * @returns - The initials with capitalized Letters from Name and Surname
+ */
 function setInitialsAtRegistration() {
-    let loadedUserName = signUpName.value; //localStorage.getItem('userName');
+    let loadedUserName = signUpName.value;
     const nameParts = loadedUserName.split(' ');
     const capitalized = nameParts.map(part => part.charAt(0).toUpperCase()).join('');
-    console.log(capitalized);
     return capitalized;
   }
 
@@ -56,6 +61,11 @@ async function register() {
 }
 
 
+/**
+ * Collect Date for registration and push it into the users array
+ * The initials are set in extra function
+ * Pick the random color are calculate in this function
+ */
 function collectDataForRegistration() {
     users.push({
         name: signUpName.value,
