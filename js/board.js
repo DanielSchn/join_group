@@ -137,8 +137,9 @@ function generateNoTask(status) {
 function showTaskCard(element, id) {
     document.getElementById('taskCard').innerHTML = generateTaskCard(element, id);
     renderCardPrio(element, id);
-    renderCardSubtasks(element, id)
-
+    renderCardSubtasks(element, id);
+    renderCardAssigned(element, id);
+    
 }
 
 function generateTaskCard(task, id) {
@@ -242,7 +243,7 @@ function generateSubtask(element) {
 }
 
 function renderBoardAssignedIcons(element) {
-    const assigned = element['assignedTo'];
+    let assigned = element['assignedTo'];
     let assignedDiv= document.getElementById(`taskCardAssignedTo${element['id']}`);
 
     assignedDiv.innerHTML = '';
@@ -252,6 +253,34 @@ function renderBoardAssignedIcons(element) {
             assignedDiv.innerHTML += contactAssignedIconHTML(contact);
         }
     }
+}
+
+function renderCardAssigned(element, id){
+    let assignedDiv = document.getElementById(`taskAssigned${id}`)
+    let assigned = element['assignedTo'];
+
+    assignedDiv.innerHTML='';
+    for (let i = 0; i < assigned.length; i++){
+        let contact = users[i];
+        
+            assignedDiv.innerHTML += taskCardAssignedHTML(contact, id);
+        
+    }
+}
+
+function taskCardAssignedHTML(contact, id) {
+
+    let html = '';
+    html += `
+    <div class="d-flex">
+        ${contactAssignedIconHTML(contact)}
+        <div class="contactDetails">
+            <div>${contact['name']}     
+    </div>`
+    //if (id.includes(userId)) {
+    //    html += ' (You)';
+    //}
+    return html;
 }
 
 
@@ -338,7 +367,6 @@ async function showAddTaskCard(status) {
 
 }
 
-function renderCardAssigned() { }
 function renderCardDate() { }
 
 function searchTask() {
