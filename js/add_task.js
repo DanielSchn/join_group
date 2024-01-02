@@ -52,7 +52,6 @@ async function deleteTask(id) { // Überprüfung: Stimmen nach Ausführung alle 
  */
 function renderAddTaskForm() {
     renderAddTaskAssignedList();
-    renderAddTaskAssignedIcons();
     renderAddTaskSubtasks();
 }
 
@@ -100,7 +99,9 @@ function precheckAssignedList() { // FRAGE: FUNKTIONIERT TOGGLE ASSIGNED NOCH?? 
     const assigned = currentTask['assignedTo'];
     for (let i = 0; i < users.length; i++) {
         if (assigned.includes(i)) {
-            let checkbox = 'assignedContact' + i;
+            let checkboxId = 'assignedContact' + i;
+            let checkbox = document.getElementById(checkboxId);
+            toggleAssignedArray(i);
             toggleAssigned(checkbox);
         }
     }
