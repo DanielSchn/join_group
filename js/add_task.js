@@ -1,7 +1,8 @@
 const PRIOS = [null, 'urgent', 'medium', 'low'];
 
 let submitOnEnter = true; // Ergänzung zu automatischer HTML-Mechanik
-let newTask = {
+let currentTask = {
+    id: -1,
     assignedTo: [],
     subtasks: [],
     status: ''
@@ -10,20 +11,35 @@ let newTask = {
 
 /**
  * Initialisierung (bei Onload, Body)
- * @param {string} status 
+ * @param {string} status - Bearbeitungsstatus des Tasks
  */
 async function initAddTask(status) {
-    // await init();
-    await includeHTML();
+    await init();
     submitBtn.disabled = true;
-    TEST_TASKS = '';
-    TEST_TASKS = JSON.parse(await getItem('test')); // Tasks laden - SPÄTER ERSETZEN
     renderAddTaskForm();
     document.addEventListener('keydown', submitFormOnEnter);
     let today = new Date(); // heutiges Datum
     addTaskDue.min = today.toISOString().slice(0, -14); // Minimalwert von Date-Input auf heutigen Tag setzen
     submitBtn.disabled = false;
-    newTask['status'] = status;
+    currentTask['status'] = status;
+}
+
+
+async function editTask(id) {
+    const task = tasks[id];
+    currentTask['id'] = id;
+    currentTask['assignedTo'] = task['assignedTo'];
+    currentTask['subtasks'] = task['subtasks'];
+    await showAddTaskCard(task['status']);
+    unselectPrioBtn(2); // Default-Prio entfernen
+    prefillForm(task);
+    disableCategory();
+}
+
+
+async function deleteTask(id) {
+    tasks[id] = null;
+    await setItem('tasks', JSON.stringify(tasks));
 }
 
 
@@ -37,21 +53,37 @@ function renderAddTaskForm() {
 }
 
 
+function prefillForm(task) {
+    const prio = PRIOS.indexOf(task['prio']);
+    addTaskTitle.value = task['title'];
+    addTaskDescription.value = task['description'];
+    addTaskDueText.value = task['due'];
+    addTaskDue.value = transformDate(task['due']);
+    stylePrioBtn(prio, prio);
+    addTaskCategory.value = categories[task['category']];
+}
+
+
+function disableCategory() {
+    addTaskCategoryInputContainer.onclick = null;
+    addTaskCategoryIcon.style.display = 'none';
+}
+
+
 /**
  * assigned-Liste rendern
  */
 function renderAddTaskAssignedList() {
-    const contacts = TEST_CONTACTS;
-    const assigned = newTask['assignedTo'];
+    const assigned = currentTask['assignedTo'];
     const list = document.getElementById('addTaskAssignedMenu');
     list.innerHTML = '';
-    for (let i = 0; i < contacts.length; i++) {
-        let contact = contacts[i];
+    for (let i = 0; i < users.length; i++) {
+        let contact = users[i];
         let checkboxId = 'assignedContact' + i;
         list.innerHTML += contactAssignedHTML(contact, checkboxId);
-        if (assigned.includes(i)) {
-            toggleAssigned(checkboxId);
-        }
+        // if (assigned.includes(i)) {
+        //     toggleAssigned(checkboxId);
+        // }
     }
 }
 
@@ -60,11 +92,10 @@ function renderAddTaskAssignedList() {
  * assigned-Icons rendern
  */
 function renderAddTaskAssignedIcons() {
-    const contacts = TEST_CONTACTS;
-    const assigned = newTask['assignedTo'];
+    const assigned = currentTask['assignedTo'];
     assignedIcons.innerHTML = '';
-    for (let i = 0; i < contacts.length; i++) {
-        let contact = contacts[i];
+    for (let i = 0; i < users.length; i++) {
+        let contact = users[i];
         if (assigned.includes(i)) {
             assignedIcons.innerHTML += contactAssignedIconHTML(contact);
         }
@@ -96,8 +127,8 @@ function resetTaskForm() {
         unselectPrioBtn(prio); // Priorität entfernen
     }
     stylePrioBtn(2, 2); // Priorität resetten
-    newTask['assignedTo'] = []; // assigned resetten
-    newTask['subtasks'] = []; // Subtasks resetten
+    currentTask['assignedTo'] = []; // assigned resetten
+    currentTask['subtasks'] = []; // Subtasks resetten
     renderAddTaskForm();
 }
 
@@ -107,23 +138,38 @@ function resetTaskForm() {
  */
 async function submitTask() {
     setAddTaskDueText(); // Datum-Inputs synchronisieren
-    TEST_TASKS.push({ // später durch echtes Tasks-Array (global oder user-individuell ersetzen - falls individuell, mit for-Schleife bei allen zugeordneten Usern hinzufügen)
-        id: TEST_TASKS.length,
-        title: addTaskTitle.value,
-        description: addTaskDescription.value,
-        assignedTo: newTask['assignedTo'],
-        due: addTaskDueText.value,
-        prio: PRIOS[getTaskPrioId()],
-        category: addTaskCategory.value,
-        subtasks: newTask['subtasks'],
-        timestamp: getTimestamp(),
-        status: newTask['status']
-    });
+    const currentId = currentTask['id'];
+    if (currentId == -1) { // falls neuer Task angelegt wurde
+        const blank = tasks.indexOf(null); // erste Leerstelle im tasks-Array
+        if (blank == -1) { // falls keine Leerstelle vorhanden
+            tasks.push(generateTaskJSON(tasks.length)); // neuen Task am Ende des tasks-Arrays hinzufügen
+        } else {
+            tasks[blank] = generateTaskJSON(blank); // neuen Task an Leerstelle hinzufügen
+        }
+    } else { // Bearbeitungsmodus
+        tasks[currentId] = generateTaskJSON(currentId); // bestehenden Task überschreiben
+    }
     submitBtn.disabled = true;
-    await setItem('test', JSON.stringify(TEST_TASKS));
+    await setItem('tasks', JSON.stringify(tasks));
     submitBtn.disabled = false;
     showTaskAddedMsg();
     goToBoard();
+}
+
+
+function generateTaskJSON(id) {
+    return {
+        id: id,
+        title: addTaskTitle.value,
+        description: addTaskDescription.value,
+        assignedTo: currentTask['assignedTo'],
+        due: addTaskDueText.value,
+        prio: PRIOS[getTaskPrioId()],
+        category: categories.indexOf(addTaskCategory.value),
+        subtasks: currentTask['subtasks'],
+        timestamp: getTimestamp(),
+        status: currentTask['status']
+    };
 }
 
 

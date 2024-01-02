@@ -9,7 +9,7 @@ function contactAssignedHTML(contact, id) {
         <li onclick="event.stopPropagation(); toggleAssigned(${id})">
             ${contactAssignedIconHTML(contact)}
             <div class="contactDetails">
-                <div>${contact['name']} ${contact['lastName']}</div>
+                <div>${contact['name']}</div>
             </div>
             <button type="button">
                 <img id="${id}" src="./assets/img/checkbox.svg" alt="unchecked">
@@ -25,8 +25,8 @@ function contactAssignedHTML(contact, id) {
  */
 function contactAssignedIconHTML(contact) {
     return /* html */`
-        <div class="contactInitials">
-            <span>${contact['name'].charAt(0)}${contact['lastName'].charAt(0)}</span>
+        <div class="contactInitials" style="background: ${contact['color']}">
+            <span>${contact['initials']}</span>
         </div>    
     `;
 }

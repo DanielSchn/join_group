@@ -1,6 +1,8 @@
-let tasks = TEST_TASKS;
+// let tasks = TEST_TASKS;
+tasks = TEST_TASKS;
 let filteredTasks = tasks;
 let currentDraggedElement;
+let prevent = false; // dient zur Ermittlung, ob Add Task-Karte bei Klick geschlossen werden soll
 
 
 async function updateHTML() {
@@ -243,9 +245,26 @@ function updateProgressBar(subtasks, doneSubtasksDiv, progressbarFillerDiv) {
     progressbarFillerDiv.style.width = `${fillWidth}px`;
 }
 
+
+/**
+ * Task-Karte entfernen
+ */
 function closeTask() {
-    document.getElementById('taskCard').innerHTML = '';
+    if (!prevent) {
+        document.getElementById('taskCard').innerHTML = '';
+    }
+    prevent = false;
 }
+
+
+/**
+ * verhindern, dass Task-Karte entfernt wird
+ */
+function preventClosing() {
+    prevent = true;
+    // per Bubbling wird anschließend closeTask() aufgerufen und setzt im selben Klick wieder prevent = false
+}
+
 
 function renderCardPrio(task, id) {
     prio = task["prio"];
@@ -280,15 +299,20 @@ function updateSubtask(id, i) {
     renderCardSubtasks(tasks[id], id);
 }
 
-function showAddTaskCard() {
+
+/**
+ * Add Task-Overlay aufrufen
+ * @param {string} status - Bearbeitungsstatus des Tasks 
+ */
+async function showAddTaskCard(status) {
     addtask = document.getElementById('taskCard');
     addtask.innerHTML = `
     <div class="addTaskCardContainer" onclick="closeTask()">
-    <div class = "addTaskCard" onclick="event.stopPropagation()" id="addTaskCard" w3-include-html="assets/templates/add_task_template.html"></div>
+    <div class="addTaskCard" onclick="preventClosing()" id="addTaskCard" w3-include-html="assets/templates/add_task_template.html"></div>
     </div>`;
 
-    init();
-    
+    await initAddTask(status);
+
 }
 
 function renderCardAssigned() { }

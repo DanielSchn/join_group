@@ -19,7 +19,7 @@ function toggleAssigned(checkbox) {
  * @param {number} id - Kontakt-ID aus assignedTo-Array
  */
 function toggleAssignedArray(id) {
-    let assigned = newTask['assignedTo'];
+    let assigned = currentTask['assignedTo'];
     if (assigned.includes(id)) {
         const index = assigned.indexOf(id); // bestimme Index der Kontakt-ID im assignedTo-Array
         assigned.splice(index, 1); // ID entfernen
@@ -33,7 +33,7 @@ function toggleAssignedArray(id) {
  * subtasks rendern
  */
 function renderAddTaskSubtasks() {
-    const subtasks = newTask['subtasks'];
+    const subtasks = currentTask['subtasks'];
     const list = document.getElementById('subtasksList');
     list.innerHTML = '';
     for (let i = 0; i < subtasks.length; i++) {
@@ -74,11 +74,9 @@ function autofillAddTaskDueText(e) {
     const value = addTaskDueText.value;
     const key = e.key;
     const length = value.length;
-    addTaskDueContainer.style.borderColor = 'var(--lightBlue1)';
     if (key != ('Backspace' || '/') && (length == 2 || length == 5)) { // an den passenden Stellen...
         addTaskDueText.value = value + '/'; // ...automatisch '/' einfügen
     }
-    checkAddTaskDueText(); // Eingabe prüfen
 }
 
 
@@ -87,14 +85,12 @@ function autofillAddTaskDueText(e) {
  */
 function checkAddTaskDueText() {
     const value = addTaskDueText.value;
-    if (value.length >= 10) {
-        let transformedValue = transformDate(value); // String-Format umwandeln
-        if (isDateValid(transformedValue)) {
-            addTaskDueContainer.style.borderColor = 'var(--lightBlue1)';
-            addTaskDue.value = transformedValue;
-        } else {
-            addTaskDueContainer.style.borderColor = '#FF8190'; // Border rot färben und...
-            addTaskDueText.value = value.substring(0, 10); // ...Text auf 10 Zeichen begrenzen
+    let transformedValue = transformDate(value);
+    if (value.length == 10 && isDateValid(transformedValue)) { // falls gültiges Datum
+        addTaskDue.value = transformedValue;
+    } else {
+        if (value.length > 10) {
+            addTaskDueText.value = value.substring(0, 10); // Text auf 10 Zeichen begrenzen
         }
     }
 }
@@ -296,7 +292,7 @@ function cancelSubtask() {
  */
 function createSubtask() {
     if (addSubtask.value) {
-        newTask['subtasks'].push({
+        currentTask['subtasks'].push({
             title: addSubtask.value,
             status: 'toDo'
         });
@@ -313,7 +309,7 @@ function createSubtask() {
 function subtasksScrollBottom() {
     let element = window;
     const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0); // Viewport-Breite (Cross-Browser-Lösung)
-    if(vw > 1050) { // falls zweispaltiges Layout
+    if (vw > 1050) { // falls zweispaltiges Layout
         element = subtasksList.parentNode.parentNode; // scrollen in Subtasks-Liste statt im Fenster
     }
     element.scrollTo(0, document.body.scrollHeight); // nach unten scrollen
@@ -338,7 +334,7 @@ function createSubtaskOnEnter(e) {
  * @param {number} index - Laufindex innerhalb des subtasks-Array 
  */
 function editSubtask(index) {
-    let subtask = newTask['subtasks'][index];
+    let subtask = currentTask['subtasks'][index];
     const li = document.getElementById(`subtask${index}`);
     li.innerHTML = editSubtaskHTML(subtask['title'], index);
     li.classList.add('editSubtask');
@@ -356,7 +352,7 @@ function editSubtask(index) {
  */
 function confirmSubtaskEdit(index) {
     const input = document.getElementById('editSubtaskInput');
-    let subtasks = newTask['subtasks'];
+    let subtasks = currentTask['subtasks'];
     if (input.value) {
         subtasks[index]['title'] = input.value;
     } else {
@@ -371,7 +367,7 @@ function confirmSubtaskEdit(index) {
  * @param {number} index - Laufindex innerhalb des subtasks-Array 
  */
 function removeSubtask(index) {
-    let subtasks = newTask['subtasks'];
+    let subtasks = currentTask['subtasks'];
     subtasks.splice(index, 1);
     renderAddTaskSubtasks();
 }

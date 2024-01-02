@@ -1,4 +1,7 @@
-// let tasks = [];
+const categories = ['Technical Task', 'User Story'];
+let tasks = [];
+
+
 let userIconColor = [
   "#FDDC2F",
   "#33DA81",
@@ -29,7 +32,11 @@ let userIconColor = [
 
 async function init() {
   await includeHTML();
+  await loadUsers();
+  await loadTasks();
   renderLogo();
+  showActiveSite();
+  // showActiveSiteMobile();
 }
 
 
@@ -77,6 +84,15 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 });
+
+
+async function loadTasks() {
+  try {
+    tasks = JSON.parse(await getItem('tasks'));
+  } catch (e) {
+    console.error('Loading error:', e);
+  }
+}
 
 
 /**
@@ -208,7 +224,6 @@ function renderLogo() {
   const nameParts = loadedUserName.split(' ');
   const capitalized = nameParts.map(part => part.charAt(0).toUpperCase()).join('');
   document.getElementById('use_name').innerHTML = capitalized;
-
 }
 
 
@@ -329,3 +344,39 @@ function verifyToken(token) {
 //       }
 //   }
 // });
+
+
+// document.addEventListener('DOMContentLoaded', function () {
+//   setTimeout(function () {
+//     updateMenuForPage('/summary.html', 'linkSummary', 'sideSummary', 'sideImgSummary');
+//     updateMenuForPage('/board.html', 'linkBoard', 'sideBoard', 'sideImgBoard');
+//     updateMenuForPage('/add_task.html', 'linkAddTask', 'sideAddTask', 'sideImgAddTask');
+//     updateMenuForPage('/contacts.html', 'linkContacts', 'sideContacts', 'sideImgContacts');
+//   }, 600);
+// });
+
+function updateMenuForPage(pagePath, linkId, sideId, sideImgId) {
+  if (window.location.pathname === pagePath) {
+    document.getElementById(linkId).classList.remove('menuLink');
+    document.getElementById(linkId).classList.add('activMenuLink');
+    document.getElementById(sideId).classList.add('activ_bg');
+    document.getElementById(sideImgId).classList.add('activMenuIcon');
+  }
+}
+
+
+function showActiveSite() {
+  updateMenuForPage('/summary.html', 'linkSummary', 'sideSummary', 'sideImgSummary');
+  updateMenuForPage('/board.html', 'linkBoard', 'sideBoard', 'sideImgBoard');
+  updateMenuForPage('/add_task.html', 'linkAddTask', 'sideAddTask', 'sideImgAddTask');
+  updateMenuForPage('/contacts.html', 'linkContacts', 'sideContacts', 'sideImgContacts');
+  showActiveSiteMobile();
+}
+
+
+function showActiveSiteMobile() {
+  updateMenuForPage('/summary.html', 'linkSummaryMobile', 'sideSummaryMobile', 'sideImgSummaryMobile');
+  updateMenuForPage('/board.html', 'linkBoardMobile', 'sideBoardMobile', 'sideImgBoardMobile');
+  updateMenuForPage('/add_task.html', 'linkAddTaskMobile', 'sideAddTaskMobile', 'sideImgAddTaskMobile');
+  updateMenuForPage('/contacts.html', 'linkContactsMobile', 'sideContactsMobile', 'sideImgContactsMobile');
+}

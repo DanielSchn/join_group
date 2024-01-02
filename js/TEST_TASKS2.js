@@ -1,6 +1,5 @@
 // gedacht als frei zur Verfügung gestellte Datenbank, um Tasks zu testen
 
-let categories = ['Technical Task', 'User Story']; // eigene Deklaration, um später problemlos weitere Kategorien hinzuzufügen
 let contacts = [];
 let TEST_TASKS = [
     {
@@ -71,6 +70,10 @@ let TEST_TASKS = [
 function resetTEST_TASKS() {
     TEST_TASKS = TEST_TASKS.splice(0,4);
     setItem('test', JSON.stringify(TEST_TASKS));
+}
+
+function setSampleTasks() {
+    tasks = TEST_TASKS;
 }
 
 const TEST_CONTACTS = [
