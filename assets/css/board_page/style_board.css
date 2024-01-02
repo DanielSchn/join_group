@@ -268,6 +268,11 @@
 
 .toDoAssignedContainer {
   display: flex;
+  margin-left: 12px;
+}
+
+.contactInitials{
+  margin-left: -12px;
 }
 
 .toDoAssigned {

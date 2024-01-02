@@ -26,6 +26,7 @@ function updateToDo() {
             const element = todo[i];
             document.getElementById('toDo').innerHTML += generateTask(element);
             generateSubtask(element);
+            renderBoardAssignedIcons(element);
         }
 }
 
@@ -43,6 +44,7 @@ function updateInProgress() {
             const element = inprogress[i];
             document.getElementById('inProgress').innerHTML += generateTask(element);
             generateSubtask(element);
+            renderBoardAssignedIcons(element);
         }
 }
 
@@ -60,6 +62,7 @@ function updateAwaitFeedback() {
             const element = feedback[i];
             document.getElementById('awaitFeedback').innerHTML += generateTask(element);
             generateSubtask(element);
+            renderBoardAssignedIcons(element);
         }
 
 }
@@ -78,6 +81,7 @@ function updateDone() {
             const element = done[i];
             document.getElementById('done').innerHTML += generateTask(element);
             generateSubtask(element);
+            renderBoardAssignedIcons(element);
         }
 }
 
@@ -109,7 +113,7 @@ function generateTask(element) {
         </div>
 
         <div class="toDoBottom">
-            <div class="toDoAssignedContainer"> ${element['assignedTo']} </div>
+            <div class="toDoAssignedContainer" id="taskCardAssignedTo${element['id']}">  </div>
             <div class="toDoPrio">
                 <img src="./assets/img/prio_icons/task_prio_${element['prio']}.svg" alt="icon">
             </div>
@@ -117,6 +121,7 @@ function generateTask(element) {
     </div>`
 
 }
+
 
 function generateNoTask(status) {
     return `
@@ -231,6 +236,20 @@ function generateSubtask(element) {
         progressbarFillerDiv.style.width = `${fillWidth}px`;
     }
 }
+
+function renderBoardAssignedIcons(element) {
+    const assigned = element['assignedTo'];
+    let assignedDiv= document.getElementById(`taskCardAssignedTo${element['id']}`);
+
+    assignedDiv.innerHTML = '';
+    for (let i = 0; i < users.length; i++) {
+        let contact = users[i];
+        if (assigned.includes(i)) {
+            assignedDiv.innerHTML += contactAssignedIconHTML(contact);
+        }
+    }
+}
+
 
 function updateProgressBar(subtasks, doneSubtasksDiv, progressbarFillerDiv) {
     let trueCount = 0;
