@@ -1,3 +1,5 @@
+Save Html: 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,7 +27,7 @@
 
     <!-- Contact Section -->
     <section id="contacts">
-        <div id="addContactBtnContainer"><button id="addContactBtn">Add new contact<img src="./assets/img/menu_icons/person_add.svg"></button></div>
+        <div id="addContactBtnContainer"><button id="addContactBtn" onclick="openAddCardOne()">Add new contact<img src="./assets/img/menu_icons/person_add.svg"></button></div>
 
         <div id="myContactsContainer">
             <div class="alphabetContainer">
@@ -153,6 +155,32 @@
         </div>
     </section>
 
+    <!-- Add new Contact -->
+    <div id="addContactBg" class="cardBg d-none" onclick="closeAddCardOne()"></div>
+    <div id="addCardOne" class="editContactCard d-none slideUp">
+        <div class="leftBlueSection">
+            <img class="closeAddCard d-none" onclick="closeAddCardOne()" src="./assets/img/contacts/close.svg">
+            <img class="smallCardLogo" src="./assets/img/contacts/logo_card.svg">
+            <div class="cardTitle">
+                <span>Edit Contact</span>
+                <div class="devider3"></div>
+            </div>
+        </div>
+        <div class="cardInitials_bg">
+            <span class="cardIntitials">TW</span>
+        </div>
+        <img class="closeAddContact_btn" src="./assets/img/contacts/close.svg" onclick="closeAddCardOne()">
+        <form onsubmit="addNewContact(); return false">
+            <div class="addContactInputContainer"><input id="contactName" class="addContactInput" type="text" placeholder="Name"><img src="./assets/img/contacts/person.svg"></div>
+            <div class="addContactInputContainer"><input id="contactEmail" class="addContactInput" type="email" placeholder="Email"><img src="./assets/img/contacts/mail.svg"></div>
+            <div class="addContactInputContainer"><input id="contactNumber" class="addContactInput" type="tel" placeholder="Phone"><img src="./assets/img/contacts/call.svg"></div>
+            <div class="addSummit_btn">
+                <button type="reset" class="addContactCancel_btn">Cancel<img src="./assets/img/contacts/iconoir_cancel.svg"></button>
+                <button type="submit" class="addContactCreate_btn">Save<img src="./assets/img/contacts/check.svg"></button>
+            </div>
+        </form>
+    </div>
+
     <!-- Contact Card -->
     <div id="contactCardContainer">
         <div id="responsivBackgroundSetup" class="d-none">
@@ -207,28 +235,28 @@
         </div>
     </div>
 
-    <!-- Add Contact Card -->
-    <div id="addCardBg" class="d-none" onclick="addCardWindow(false)"></div>
-    <div id="AddCardOne" class="d-none slideIn">
-        <div id="leftBlueSection">
-            <img id="closeAddCard" class="d-none" onclick="addCardWindow(false)" src="./assets/img/contacts/close.svg">
-            <img id="smallCardLogo" src="./assets/img/contacts/logo_card.svg">
-            <div id="addCardTitle">
+    <!-- Edit Contact Card -->
+    <div id="editCardBg" class="cardBg d-none" onclick="addCardWindow(false)"></div>
+    <div id="editCardOne" class="editContactCard d-none slideIn">
+        <div class="leftBlueSection">
+            <img class="closeAddCard d-none" onclick="addCardWindow(false)" src="./assets/img/contacts/close.svg">
+            <img class="smallCardLogo" src="./assets/img/contacts/logo_card.svg">
+            <div class="cardTitle">
                 <span>Edit Contact</span>
                 <div id="devider3"></div>
             </div>
         </div>
-        <div id="cardInitials_bg">
-            <span id="cardIntitials">TW</span>
+        <div class="cardInitials_bg">
+            <span class="cardIntitials">TW</span>
         </div>
-        <img id="closeAddContact_btn" src="./assets/img/contacts/close.svg" onclick="addCardWindow(false)">
+        <img class="closeAddContact_btn" src="./assets/img/contacts/close.svg" onclick="addCardWindow(false)">
         <form>
             <div class="addContactInputContainer"><input class="addContactInput" type="text" placeholder="Name"><img src="./assets/img/contacts/person.svg"></div>
             <div class="addContactInputContainer"><input class="addContactInput" type="email" placeholder="Email"><img src="./assets/img/contacts/mail.svg"></div>
             <div class="addContactInputContainer"><input class="addContactInput" type="tel" placeholder="Phone"><img src="./assets/img/contacts/call.svg"></div>
-            <div id="addSummit_btn">
-                <button id="addContactCancel_btn">Cancel<img src="./assets/img/contacts/iconoir_cancel.svg"></button>
-                <button id="addContactCreate_btn">Save<img src="./assets/img/contacts/check.svg"></button>
+            <div class="addSummit_btn">
+                <button class="addContactCancel_btn">Cancel<img src="./assets/img/contacts/iconoir_cancel.svg"></button>
+                <button class="addContactCreate_btn">Save<img src="./assets/img/contacts/check.svg"></button>
             </div>
         </form>
     </div>
@@ -302,30 +330,54 @@
         </div>
      </div>
 
-    <div id="mobileAddContactBtnContainer">
+    <div id="mobileAddContactBtnContainer" onclick="openMobileAddContactCard()">
         <button id="mobileAddContactBtn"><img src="./assets/img/menu_icons/person_add.svg"></button>
     </div>
 
-    <div id="mobileAddCardBg" class="d-none" onclick="addCardWindow(false)"></div>
-    <div id="mobileAddCardOne" class="d-none">
-        <div id="mobileLeftBlueSection">
-            <img id="mobileCloseAddCard" class="d-none" onclick="addCardWindow(false)" src="./assets/img/contacts/close.svg">
-            <div id="mobileAddCardTitle">
+    <div id="mobileAddCardBg" class="mobileCardBg d-none" onclick="closeMobileAddContactCard()"></div>
+    <div id="mobileAddCardOne" class="mobileEditContactCard d-none">
+        <div class="mobileLeftBlueSection">
+            <img class="mobileCloseAddCard d-none" onclick="closeMobileAddContactCard()" src="./assets/img/contacts/close.svg">
+            <div class="mobileAddCardTitle">
                 <span>Edit Contact</span>
-                <div id="mobileDevider3"></div>
+                <div class="mobileDevider3"></div>
             </div>
         </div>
-        <div id="mobileCardInitials_bg">
-            <span id="cardIntitials">TW</span>
+        <div class="mobileCardInitials_bg">
+            <span class="mobileCardIntitials">TW</span>
         </div>
-        <img id="mobileCloseAddContact_btn" src="./assets/img/contacts/close.svg" onclick="addCardWindow(false)">
+        <img class="mobileCloseAddContact_btn" src="./assets/img/contacts/close.svg" onclick="closeMobileAddContactCard()">
         <form>
             <div class="addContactInputContainer"><input class="addContactInput" type="text" placeholder="Name"><img src="./assets/img/contacts/person.svg"></div>
             <div class="addContactInputContainer"><input class="addContactInput" type="email" placeholder="Email"><img src="./assets/img/contacts/mail.svg"></div>
             <div class="addContactInputContainer"><input class="addContactInput" type="tel" placeholder="Phone"><img src="./assets/img/contacts/call.svg"></div>
-            <div id="mobileAddSummit_btn">
-                <button id="mobileAddContactCancel_btn">Cancel<img src="./assets/img/contacts/iconoir_cancel.svg"></button>
-                <button id="mobileAddContactCreate_btn">Save<img src="./assets/img/contacts/check.svg"></button>
+            <div class="mobileAddSummit_btn">
+                <button class="mobileAddContactCancel_btn">Cancel<img src="./assets/img/contacts/iconoir_cancel.svg"></button>
+                <button class="mobileAddContactCreate_btn">Save<img src="./assets/img/contacts/check.svg"></button>
+            </div>
+        </form>
+    </div>
+
+    <div id="mobileEditCardBg" class="mobileCardBg d-none" onclick="addCardWindow(false)"></div>
+    <div id="mobileEditCardOne" class="mobileEditContactCard d-none">
+        <div class="mobileLeftBlueSection">
+            <img class="mobileCloseAddCard d-none" onclick="addCardWindow(false)" src="./assets/img/contacts/close.svg">
+            <div class="mobileAddCardTitle">
+                <span>Edit Contact</span>
+                <div class="mobileDevider3"></div>
+            </div>
+        </div>
+        <div class="mobileCardInitials_bg">
+            <span class="mobileCardIntitials">TW</span>
+        </div>
+        <img class="mobileCloseAddContact_btn" src="./assets/img/contacts/close.svg" onclick="addCardWindow(false)">
+        <form>
+            <div class="addContactInputContainer"><input class="addContactInput" type="text" placeholder="Name"><img src="./assets/img/contacts/person.svg"></div>
+            <div class="addContactInputContainer"><input class="addContactInput" type="email" placeholder="Email"><img src="./assets/img/contacts/mail.svg"></div>
+            <div class="addContactInputContainer"><input class="addContactInput" type="tel" placeholder="Phone"><img src="./assets/img/contacts/call.svg"></div>
+            <div class="mobileAddSummit_btn">
+                <button class="mobileAddContactCancel_btn">Cancel<img src="./assets/img/contacts/iconoir_cancel.svg"></button>
+                <button class="mobileAddContactCreate_btn">Save<img src="./assets/img/contacts/check.svg"></button>
             </div>
         </form>
     </div>
