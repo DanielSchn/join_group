@@ -197,7 +197,9 @@
     }
 }
 
-/* @media (orientation: landscape) {
+/* @media (orientation: landscape) 
+and (min-device-width: 319px) 
+and (max-device-width: 915px) {
     .logIn {
         position: unset;
         display: flex;
@@ -212,5 +214,15 @@
         align-items: center;
         position: unset;
         height: 100vh;
+    }
+
+    #startLogo.logo.transformed {
+        top: 16px;
+        left: 16px;
+    }
+
+    #startLogo.logo {
+        top: 100px;
+        z-index: 3;
     }
 } */
