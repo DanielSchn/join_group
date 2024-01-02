@@ -159,6 +159,10 @@
     .toSignUpMobile {
         gap: 16px;
     }
+
+    #mainBody {
+        margin-top: 256px;
+    }
 }
 
 @media (max-width: 420px) {
