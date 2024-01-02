@@ -74,11 +74,9 @@ function autofillAddTaskDueText(e) {
     const value = addTaskDueText.value;
     const key = e.key;
     const length = value.length;
-    addTaskDueContainer.style.borderColor = 'var(--lightBlue1)';
     if (key != ('Backspace' || '/') && (length == 2 || length == 5)) { // an den passenden Stellen...
         addTaskDueText.value = value + '/'; // ...automatisch '/' einfügen
     }
-    checkAddTaskDueText(); // Eingabe prüfen
 }
 
 
@@ -87,14 +85,12 @@ function autofillAddTaskDueText(e) {
  */
 function checkAddTaskDueText() {
     const value = addTaskDueText.value;
-    if (value.length >= 10) {
-        let transformedValue = transformDate(value); // String-Format umwandeln
-        if (isDateValid(transformedValue)) {
-            addTaskDueContainer.style.borderColor = 'var(--lightBlue1)';
-            addTaskDue.value = transformedValue;
-        } else {
-            addTaskDueContainer.style.borderColor = '#FF8190'; // Border rot färben und...
-            addTaskDueText.value = value.substring(0, 10); // ...Text auf 10 Zeichen begrenzen
+    let transformedValue = transformDate(value);
+    if (value.length == 10 && isDateValid(transformedValue)) { // falls gültiges Datum
+        addTaskDue.value = transformedValue;
+    } else {
+        if (value.length > 10) {
+            addTaskDueText.value = value.substring(0, 10); // Text auf 10 Zeichen begrenzen
         }
     }
 }
@@ -313,7 +309,7 @@ function createSubtask() {
 function subtasksScrollBottom() {
     let element = window;
     const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0); // Viewport-Breite (Cross-Browser-Lösung)
-    if(vw > 1050) { // falls zweispaltiges Layout
+    if (vw > 1050) { // falls zweispaltiges Layout
         element = subtasksList.parentNode.parentNode; // scrollen in Subtasks-Liste statt im Fenster
     }
     element.scrollTo(0, document.body.scrollHeight); // nach unten scrollen
