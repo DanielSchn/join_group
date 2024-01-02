@@ -1,4 +1,5 @@
 const categories = ['Technical Task', 'User Story'];
+const userId = localStorage.getItem('userId');
 let tasks = [];
 
 
@@ -262,6 +263,7 @@ function bodyClick(event) {
 function logout() {
   localStorage.removeItem('token');
   localStorage.removeItem('userName');
+  localStorage.removeItem('userId');
   window.location.href = 'index.html';
 }
 
@@ -291,6 +293,7 @@ function login() {
  */
 function redirectToSummaryPage(user) {
   localStorage.setItem('userName', user.name);
+  localStorage.setItem('userId', users.indexOf(user));
   window.location.href = "summary.html";
 }
 
