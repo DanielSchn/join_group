@@ -57,6 +57,7 @@ function prefillForm(task) {
     const prio = PRIOS.indexOf(task['prio']);
     addTaskTitle.value = task['title'];
     addTaskDescription.value = task['description'];
+    precheckAssignedList();
     addTaskDueText.value = task['due'];
     addTaskDue.value = transformDate(task['due']);
     stylePrioBtn(prio, prio);
@@ -74,20 +75,29 @@ function disableCategory() {
  * assigned-Liste rendern
  */
 function renderAddTaskAssignedList() {
-    const assigned = currentTask['assignedTo'];
     const list = document.getElementById('addTaskAssignedMenu');
     list.innerHTML = '';
-    list.innerHTML += contactAssignedHTML(users[userId], 'assignedContact' + userId); // aktiver User
     if (userId != -1) { // falls als vollständiger User, nicht als Gast eingeloggt
+        let checkbox = 'assignedContact' + userId; // aktiver User
+        list.innerHTML += contactAssignedHTML(users[userId], checkbox);
         for (let i = 0; i < users.length; i++) {
             if (i != userId) { // aktiver User bereits gerendert, wird daher übersprungen
-                let contact = users[i];
-                let checkboxId = 'assignedContact' + i;
-                list.innerHTML += contactAssignedHTML(contact, checkboxId);
-                // if (assigned.includes(i)) {
-                //     toggleAssigned(checkboxId);
-                // }
+                let checkbox = 'assignedContact' + i
+                list.innerHTML += contactAssignedHTML(users[i], checkbox);
             }
+        }
+    } else {
+        list.innerHTML += contactAssignedHTML(guests[0], 'assignedContact' + '-1'); // aktiver User
+    }
+}
+
+
+function precheckAssignedList() { // FRAGE: FUNKTIONIERT TOGGLE ASSIGNED NOCH??
+    const assigned = currentTask['assignedTo'];
+    for (let i = 0; i < users.length; i++) {
+        if (assigned.includes(i)) {
+            let checkbox = 'assignedContact' + i;
+            toggleAssigned(checkbox);
         }
     }
 }
