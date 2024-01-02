@@ -18,6 +18,11 @@ async function initSummary() {
 }
 
 
+document.addEventListener('DOMContentLoaded', function () {
+    document.body.style.display = 'block';
+});
+
+
 /**
  * Function to render the Daytime Greeting in the HTML
  * 
