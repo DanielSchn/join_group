@@ -380,8 +380,9 @@ async function showAddTaskCard(status) {
     </div>`;
 
     await initAddTask(status);
-
+    changeClearBtn(); // Clear-Button durch Cancel-Button ersetzen
 }
+
 
 function searchTask() {
     let search = document.getElementById('findTask').value.toLowerCase();

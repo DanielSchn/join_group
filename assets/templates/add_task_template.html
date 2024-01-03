@@ -59,7 +59,7 @@
                             src="./assets/img/prio_icons/task_prio_low.svg" alt="icon" id="addTaskPrio3Img"></button>
                 </div>
             </div>
-            <div class="addTaskField dropdownContainer">
+            <div class="addTaskField dropdownContainer" id="addTaskCategoryContainer">
                 <label for="addTaskCategory" onclick="event.preventDefault()">
                     <h2>Category<p class="red">*</p>
                     </h2>
@@ -114,7 +114,8 @@
             This field is required
         </div>
         <div>
-            <button type="reset" class="btnSecondary">Clear</button>
+            <button type="reset" id="addTaskCancelBtn" class="btnSecondary" style="display: none" onclick="resetTaskForm(); closeTask()">Cancel</button>
+            <button type="reset" id="addTaskClearBtn" class="btnSecondary">Clear</button>
             <button type="submit" class="btnPrimary" id="submitBtn">Create Task</button>
         </div>
     </div>
