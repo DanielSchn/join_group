@@ -323,7 +323,7 @@
     animation: swipeOutToRight 100ms ease-in-out forwards;
 }
 
- #addCardBg {
+ .cardBg {
     z-index: 2000;
     position: fixed;
     top: 0;
@@ -333,7 +333,7 @@
     background-color: rgba(0, 0, 0, 0.25);
  }
 
- #AddCardOne {
+ .editContactCard {
     z-index: 2500;
     width: 1212px;
     height: 592px;
@@ -349,7 +349,7 @@
     align-items: center;
  }
 
- #leftBlueSection {
+ .leftBlueSection {
     box-sizing: border-box;
     width: max-content;
     height: 594px;
@@ -361,7 +361,7 @@
     align-items: center;
  }
 
- #smallCardLogo {
+ .smallCardLogo {
     width: 53.933px;
     height: 66.483px;
     position: absolute;
@@ -369,19 +369,19 @@
     left: 45.5px;
  }
 
- #addCardTitle {
+ .cardTitle {
     display: flex;
     flex-direction: column;
     gap: 8px;
  }
 
- #leftBlueSection span {
+ .leftBlueSection span {
     font-size: 61px;
     font-weight: 700;
     color: white;
  }
 
- #devider3 {
+ .devider3 {
     display: block !important;
     margin-top: 8px;
     height: 3px;
@@ -390,7 +390,7 @@
     border-radius: 30px;
  }
 
- #cardInitials_bg {
+ .cardInitials_bg {
     width: 120px;
     height: 120px;
     background-color: #FFC700;
@@ -400,16 +400,16 @@
     align-items: center;
     position: absolute;
     top: 204px;
-    left: 570px;
+    left: 550px;
  }
 
- #cardIntitials {
+ .cardIntitials {
     color: white;
     font-size: 47px;
     font-weight: 500;
  }
 
- #closeAddContact_btn {
+ .closeAddContact_btn {
     filter: invert(1);
     cursor: pointer;
     position: absolute;
@@ -417,13 +417,19 @@
     left: 1132px;
  }
 
- #AddCardOne form {
+ .editContactCard form {
     display: flex;
     flex-direction: column;
     gap: 32px;
     position: absolute;
     top: 137px;
     right: 48px;
+ }
+
+ form button {
+    display: flex;
+    align-items: center;
+    gap: 4px;
  }
 
  .addContactInputContainer {
@@ -454,34 +460,34 @@
     font-weight: 400;
 }
 
-#addSummit_btn {
+.addSummit_btn {
     display: flex;
     gap: 24px;
     margin-top: 16px;
 }
 
-#addSummit_btn button {
+.addSummit_btn button {
     display: flex;
     align-items: center;
     gap: 4px;
 }
 
-#addContactCancel_btn {
+.addContactCancel_btn {
     background-color: white;
     border: 1px solid #2A3647;
 }
 
-#addContactCreate_btn {
+.addContactCreate_btn {
     color: white;
     font-size: 21px;
     font-weight: 700;
     background-color: #2A3647;
 }
 
-#mobileAddCardBg {
+.mobileCardBg {
     display: none;
 }
 
-#mobileAddCardOne {
+.mobileEditContactCard {
     display: none;
 }

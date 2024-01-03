@@ -106,14 +106,14 @@
 
     /* Add Contact Card */
 
-    #addCardBg {
+    .cardBg {
         top: 96px;
         bottom: 0;
         left: 232px;
         right: 0;    
     }
 
-    #AddCardOne {
+    .editContactCard {
         z-index: 3000;
         box-sizing: border-box;
         margin: auto;
@@ -131,40 +131,40 @@
         border-radius: 30px;
     }
 
-    #leftBlueSection {
+    .leftBlueSection {
         height: 50%;
         border-radius: 30px 30px 0 0;
     }
 
-    #smallCardLogo {
+    .smallCardLogo {
         display: none;
     }
 
-    #cardInitials_bg {
+    .cardInitials_bg {
         position: static;
         margin-top: -63px;
         border: 3px solid white;
     }
 
-    #AddCardOne form {
+    .editContactCard form {
         margin-top: 24px;
         position: static;
         align-items: center;
         gap: 24px;
     }
 
-    #AddCardOne form .addContactInputContainer {
+    .editContactCard form .addContactInputContainer {
         box-sizing: border-box;
         height: 41px;
     }
 
-    #addSummit_btn {
+    .addSummit_btn {
         height: 51px;
         width: max-content;
         margin-top: 0;
     }
 
-    #closeAddCard {
+    .closeAddCard {
         display: block !important;
         position: fixed;
         top: 24px;
@@ -214,7 +214,7 @@
 }
 
 @media (max-width: 800px) {
-    #addCardTitle span {
+    .cardTitle span {
         font-size: 51px;
     }
 }
@@ -243,14 +243,26 @@
         left: 0;
     }
 
-    #addCardBg {
+    #mobileMenuBox {
+        height: 80px;
+        background-color: #2A3647;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+
+    .cardBg {
         top: 0;
         bottom: 0;
         left: 0;
         right: 0;
     }
 
-    #AddCardOne {
+    .editContactCard {
         top: 0;
         left: 0;
         right: 0;
@@ -429,7 +441,7 @@
     }
 
     #contactOptionBgLayer {
-        z-index: -1 !important;
+        z-index: 1 !important;
         position: fixed;
         top: 0;
         right: 0;
@@ -486,15 +498,15 @@
 
     /* Edit Contact Card */
 
-    #addCardBg {
+    .cardBg {
         display: none;
     }
 
-    #AddCardOne {
+    .editContactCard {
         display: none;
     }
 
-    #mobileAddCardBg {
+    .mobileCardBg {
         display: block;
         z-index: 2000;
         position: fixed;
@@ -520,7 +532,7 @@
             transform: translateY(0);
             opacity: 1;
         }
-        to {transform: translateY(100%);
+        to {transform: translateY(150%);
             opacity: 1;
         }
     }
@@ -533,7 +545,7 @@
         animation: slideFromTopToBottom 500ms ease-in-out forwards;
     }
 
-    #mobileAddCardOne {
+    .mobileEditContactCard {
         z-index: 3000;
         box-sizing: border-box;
         margin: auto 12px;
@@ -551,7 +563,7 @@
         border-radius: 30px;
     }
 
-    #mobileAddCardOne form {
+    .mobileEditContactCard form {
         width: 90%;
         margin: 24px 8px 0px 8px;
         display: flex;
@@ -563,13 +575,13 @@
         right: 48px;
     }
 
-    #mobileAddCardOne form .addContactInputContainer {
+    .mobileEditContactCard form .addContactInputContainer {
         box-sizing: border-box;
         width: 100%;
         height: 41px;
     }
 
-    #mobileLeftBlueSection {
+    .mobileLeftBlueSection {
         width: 100%;
         height: 50%;
         padding: 66px 46px;
@@ -581,26 +593,26 @@
         align-items: center;
     }
 
-    #mobileCloseAddCard {
+    .mobileCloseAddCard {
         display: block !important;
         position: absolute;
         top: 24px;
         right: 16px;
     }
 
-    #mobileAddCardTitle {
+    .mobileAddCardTitle {
         display: flex;
         flex-direction: column;
         gap: 8px;
     }
 
-    #mobileAddCardTitle span {
+    .mobileAddCardTitle span {
         font-size: 47px;
         font-weight: 700;
         color: white;
     }
 
-    #mobileDevider3 {
+    .mobileDevider3 {
         display: block !important;
         margin-top: 8px;
         height: 3px;
@@ -609,7 +621,7 @@
         border-radius: 30px;
      }
 
-     #mobileCardInitials_bg {
+     .mobileCardInitials_bg {
         width: 120px;
         height: 120px;
         background-color: #FFC700;
@@ -622,13 +634,13 @@
         margin-top: -63px;
     }
 
-    #mobileCardIntitials {
+    .mobileCardIntitials {
         color: white;
         font-size: 47px;
         font-weight: 500;
      }
 
-     #mobileCloseAddContact_btn {
+     .mobileCloseAddContact_btn {
         filter: invert(1);
         cursor: pointer;
         position: absolute;
@@ -636,7 +648,7 @@
         left: 1132px;
      }
 
-     #mobileAddSummit_btn {
+     .mobileAddSummit_btn {
         height: 51px;
         width: fit-content;
         margin-top: 0;
@@ -650,12 +662,12 @@
         gap: 4px;
     }
 
-    #mobileAddContactCancel_btn {
+    .mobileAddContactCancel_btn {
         background-color: white;
         border: 1px solid #2A3647;
     }
 
-    #mobileAddContactCreate_btn {
+    .mobileAddContactCreate_btn {
         color: white;
         font-size: 21px;
         font-weight: 700;
