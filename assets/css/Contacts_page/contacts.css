@@ -375,9 +375,21 @@
     gap: 8px;
  }
 
- .leftBlueSection span {
+ .addCardHeadingContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+ }
+
+ .addCardHeadline {
     font-size: 61px;
     font-weight: 700;
+    color: white;
+ }
+
+ .addCardSubHeadline {
+    font-size: 27px;
+    font-weight: 400;
     color: white;
  }
 
