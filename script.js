@@ -1,8 +1,6 @@
 const categories = ['Technical Task', 'User Story'];
 const userId = localStorage.getItem('userId');
 let tasks = [];
-
-
 let userIconColor = [
   "#FDDC2F",
   "#33DA81",
