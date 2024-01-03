@@ -1,5 +1,3 @@
-// let tasks = TEST_TASKS;
-//tasks = TEST_TASKS;
 let currentDraggedElement;
 let prevent = false; // dient zur Ermittlung, ob Add Task-Karte bei Klick geschlossen werden soll
 let filteredTasks = [];
@@ -140,17 +138,23 @@ function generateNoTask(status) {
 }
 
 function showTaskCard(element, id) {
-    document.getElementById('taskCard').innerHTML = generateTaskCard(element, id);
+    let taskCard = document.getElementById('taskCard');
+    
+    taskCard.innerHTML = generateTaskCard(element, id);
     renderCardPrio(element, id);
     renderCardSubtasks(element, id);
     renderCardAssigned(element, id);
-    
+
+    let taskContainer = document.getElementById('taskContainer');
+
+    taskContainer.classList.remove('slideOut');
+    taskContainer.classList.add('slideIn'); 
 }
 
 function generateTaskCard(task, id) {
     return `    
     <div id="taskContainer" onclick="closeTask()">
-        <div id="taskCard" class="taskCard showTaskCard textOverflow" onclick="event.stopPropagation()">
+        <div id="taskCard2" class="taskCard showTaskCard textOverflow" onclick="event.stopPropagation()">
             <div class="taskCardHeader">
                 <div class="taskCardCategory${task['category']}" id="taskCardCategory${id}">
                     ${categories[task['category']]}
@@ -283,9 +287,6 @@ function taskCardAssignedHTML(contact, id) {
         <div class="contactDetails">
             <div>${contact['name']}     
     </div>`
-    //if (id.includes(userId)) {
-    //    html += ' (You)';
-    //}
     return html;
 }
 
@@ -309,7 +310,9 @@ function updateProgressBar(subtasks, doneSubtasksDiv, progressbarFillerDiv) {
  */
 function closeTask() {
     if (!prevent) {
-        document.getElementById('taskCard').innerHTML = '';
+        let taskContainer = document.getElementById('taskContainer');
+        taskContainer.classList.remove('slideIn');
+        taskContainer.classList.add('slideOut');
         updateHTML();
     }
     prevent = false;
@@ -361,8 +364,6 @@ function updateSubtask(id, i) {
         tasks[id].subtasks[i].status ='toDo';
     }
 
-    //tasks[id].subtasks[i].status === 'toDo' ? 'done' : 'toDo';
-
     renderCardSubtasks(tasks[id], id);
     saveChanges();
 }
@@ -375,12 +376,16 @@ function updateSubtask(id, i) {
 async function showAddTaskCard(status) {
     addtask = document.getElementById('taskCard');
     addtask.innerHTML = `
-    <div class="addTaskCardContainer" onclick="closeTask()">
+    <div id="taskContainer" class="addTaskCardContainer" onclick="closeTask()">
     <div class="addTaskCard" onclick="preventClosing()" id="addTaskCard" w3-include-html="assets/templates/add_task_template.html"></div>
     </div>`;
-
+    taskContainer = document.getElementById('taskContainer');
+    taskContainer.classList.remove('slideOut');
+    taskContainer.classList.add('slideIn'); 
     await initAddTask(status);
     changeClearBtn(); // Clear-Button durch Cancel-Button ersetzen
+
+
 }
 
 
