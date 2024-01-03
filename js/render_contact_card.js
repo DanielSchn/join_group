@@ -35,6 +35,15 @@ function closeMobileAddContactCard() {
     mobileAddCardBg.classList.add('d-none');
     mobileAddCardOne.classList.add('slideDown');
     mobileAddCardOne.classList.remove('slideUp');
+    stopAnimation();
+}
+
+function stopAnimation() {
+    const animation = document.getElementById('mobileAddCardOne');
+
+    animation.addEventListener('animationend', function() {
+        this.classList.add('d-none');
+    })
 }
 
 function showAndHideContactCard() {
