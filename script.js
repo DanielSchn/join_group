@@ -31,8 +31,10 @@ let userIconColor = [
   "#BF59F2"
 ];
 
+
 async function init() {
   await includeHTML();
+  hideSideMenuBox();
   await loadUsers();
   await loadTasks();
   renderLogo();
@@ -389,4 +391,13 @@ function showActiveSiteMobile() {
   updateMenuForPage('/board.html', 'linkBoardMobile', 'sideBoardMobile', 'sideImgBoardMobile');
   updateMenuForPage('/add_task.html', 'linkAddTaskMobile', 'sideAddTaskMobile', 'sideImgAddTaskMobile');
   updateMenuForPage('/contacts.html', 'linkContactsMobile', 'sideContactsMobile', 'sideImgContactsMobile');
+}
+
+/**
+ * Hide the side menu when legal or privacy are opened
+ */
+function hideSideMenuBox() {
+  if (document.getElementById('uniquePrivacyOrLegal')) {
+    document.getElementById('menuBox').style.display = 'none';
+  }
 }
