@@ -1,0 +1,14 @@
+:root {
+    --sidePadding: 74px;
+    --top: 64px;
+    --bottom: var(--top);
+    --absoluteContentWidth: calc(1116px - var(--sidePadding) * 2);
+}
+
+.addTaskForm {
+    margin: 0;
+    padding: var(--top) var(--sidePadding);
+    height: calc(100% - var(--top) * 2);
+}
+
+/* BENÖTIGTE MEDIA QUERYS KOPIEREN, STATT ALLE ÜBERSCHREIBEN */

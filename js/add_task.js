@@ -33,7 +33,9 @@ async function editTask(id) {
     await showAddTaskCard(task['status']);
     unselectPrioBtn(2); // Default-Prio entfernen
     prefillForm(task);
-    disableCategory();
+    addTaskCategoryContainer.style.display = 'none';
+    addTaskCancelBtn.style.display = 'none';
+    submitBtn.innerHTML = 'Ok';
 }
 
 
@@ -68,9 +70,9 @@ function prefillForm(task) {
 }
 
 
-function disableCategory() {
-    addTaskCategoryInputContainer.onclick = null;
-    addTaskCategoryIcon.style.display = 'none';
+function changeClearBtn() {
+    addTaskClearBtn.style.display = 'none';
+    addTaskCancelBtn.style.display = '';
 }
 
 
