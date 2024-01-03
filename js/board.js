@@ -17,6 +17,7 @@ async function updateHTML() {
 
 async function saveChanges(){
     await setItem('tasks', JSON.stringify(tasks));
+    filteredTasks = tasks;
 }
 
 function updateToDo() {
