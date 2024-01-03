@@ -107,6 +107,11 @@ button:hover {
     color: var(--lightBlue1);
 }
 
+#mobileSideMenuBox {
+    display: flex;
+    flex-direction: row;
+}
+
 /* vr für "vertical ruler", vertikale Linie */
 .vr {
     width: 1px;
