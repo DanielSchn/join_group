@@ -236,6 +236,10 @@ footer a {
     color: var(--lightGray3);
 }
 
+footer a:hover {
+    color: var(--lightBlue1);
+}
+
 .rememberMe {
     margin: 0 0 32px 39px;
 }
