@@ -85,7 +85,7 @@ function renderAddTaskAssignedList() {
         list.innerHTML += contactAssignedHTML(users[userId], checkbox);
         for (let i = 0; i < users.length; i++) {
             if (i != userId) { // aktiver User bereits gerendert, wird daher übersprungen
-                let checkbox = 'assignedContact' + i
+                let checkbox = 'assignedContact' + i;
                 list.innerHTML += contactAssignedHTML(users[i], checkbox);
             }
         }
@@ -95,14 +95,13 @@ function renderAddTaskAssignedList() {
 }
 
 
-function precheckAssignedList() { // FRAGE: FUNKTIONIERT TOGGLE ASSIGNED NOCH?? ENTSCHEIDEND: Werden checkboxes als IDs oder Nodes interpretiert?
+function precheckAssignedList() {
     const assigned = currentTask['assignedTo'];
     for (let i = 0; i < users.length; i++) {
         if (assigned.includes(i)) {
             let checkboxId = 'assignedContact' + i;
             let checkbox = document.getElementById(checkboxId);
-            toggleAssignedArray(i);
-            toggleAssigned(checkbox);
+            toggleAssignedStyle(checkbox);
         }
     }
 }

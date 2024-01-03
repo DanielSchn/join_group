@@ -3,13 +3,18 @@
  * @param {element} checkbox - ID/Element der Checkbox 
  */
 function toggleAssigned(checkbox) {
-    const li = checkbox.parentNode.parentNode; // selektiere li-Element aus Checkbox-ID
     let id = checkbox.id; // erhalte ID-String
     id = id.charAt(id.length - 1); // ID-Zahl ist letztes Zeichen aus String
     id = parseInt(id); // zu Zahl umwandeln
+    toggleAssignedArray(id);
+    toggleAssignedStyle(checkbox);
+}
+
+
+function toggleAssignedStyle(checkbox) {
+    const li = checkbox.parentNode.parentNode; // selektiere li-Element aus Checkbox-ID
     li.classList.toggle('addTaskAssignedChecked');
     toggleCheckbox(checkbox);
-    toggleAssignedArray(id);
     renderAddTaskAssignedIcons();
 }
 
