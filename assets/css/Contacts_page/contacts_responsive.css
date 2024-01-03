@@ -243,18 +243,6 @@
         left: 0;
     }
 
-    #mobileMenuBox {
-        height: 80px;
-        background-color: #2A3647;
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-        position: fixed;
-        left: 0;
-        right: 0;
-        bottom: 0;
-    }
-
     .cardBg {
         top: 0;
         bottom: 0;
