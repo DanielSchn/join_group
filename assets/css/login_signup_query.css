@@ -161,7 +161,8 @@
     }
 
     #mainBody {
-        margin-top: 256px;
+        margin-top: 164px;
+        gap: 32px;
     }
 
     #startLogo.logo.transformed {
