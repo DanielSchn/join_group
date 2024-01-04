@@ -23,7 +23,9 @@ async function initSummary() {
  */
 document.addEventListener('DOMContentLoaded', function () {
     document.body.style.display = 'block';
-    if (document.referrer.endsWith('/index.html')) {
+    const isFromIndexPage = document.referrer.endsWith('/index.html');
+    const isFromMainDomain = window.location.href.startsWith('http://gruppe-815.developerakademie.net/') || window.location.href.startsWith('https://gruppe-815.developerakademie.net/');
+    if (isFromIndexPage || isFromMainDomain) {
             document.getElementById('mobileGreetingContainer').classList.remove('dNone');
             document.getElementById('summaryBody').classList.add('dNone');
         setTimeout(function () {
