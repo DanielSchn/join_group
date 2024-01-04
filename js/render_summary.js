@@ -177,23 +177,6 @@ function renderUrgentTasks() {
 
 /**
  * Render Date for Deadline on summary
- * This function if the Date is written as: 2023-12-24
- */
-// function renderUrgentDeadline() {
-//     let deadline = document.getElementById('deadlineDashboard');
-//     tasks.forEach(task => {
-//         if (task.prio === 'urgent') {
-//             const date = new Date(task.due);
-//             const options = { year: 'numeric', month: 'long', day: 'numeric' };
-//             const formattedDate = date.toLocaleDateString('en-US', options);
-//             deadline.innerHTML = formattedDate;
-//         }
-//     });
-// }
-
-
-/**
- * Render Date for Deadline on summary
  * This function if the Date is written as: 24/12/2023
  */
 function renderUrgentDeadline() {
