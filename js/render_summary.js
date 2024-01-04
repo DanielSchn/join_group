@@ -1,4 +1,6 @@
 const userName = [];
+const uploadedDomain = 'http://gruppe-815.developerakademie.net/';
+const uploadedSecureDomain = 'https://gruppe-815.developerakademie.net/';
 
 
 /**
@@ -22,16 +24,18 @@ async function initSummary() {
  * Event Listener at DOMContentLoaded to show the and hide the mobile greeting
  */
 document.addEventListener('DOMContentLoaded', function () {
-    document.body.style.display = 'block';
-    const isFromIndexPage = document.referrer.endsWith('/index.html');
-    const isFromMainDomain = window.location.href.startsWith('http://gruppe-815.developerakademie.net/') || window.location.href.startsWith('https://gruppe-815.developerakademie.net/');
-    if (isFromIndexPage || isFromMainDomain) {
+    if (window.location.pathname.endsWith('/summary.html')) {
+        document.body.style.display = 'block';
+        const isFromIndexPage = document.referrer.endsWith('/index.html');
+        const isFromMainDomain = window.location.href.startsWith(uploadedDomain) || window.location.href.startsWith(uploadedSecureDomain);
+        if (isFromIndexPage || isFromMainDomain) {
             document.getElementById('mobileGreetingContainer').classList.remove('dNone');
             document.getElementById('summaryBody').classList.add('dNone');
-        setTimeout(function () {
-            document.getElementById('mobileGreetingContainer').style.display = 'none';
-            document.getElementById('summaryBody').classList.remove('dNone');
-        }, 1500);
+            setTimeout(function () {
+                document.getElementById('mobileGreetingContainer').style.display = 'none';
+                document.getElementById('summaryBody').classList.remove('dNone');
+            }, 1500);
+        }
     }
 });
 
