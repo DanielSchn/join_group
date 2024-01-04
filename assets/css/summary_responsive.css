@@ -233,4 +233,8 @@
     .mobileGreetingStyle {
         display: none;
     }
+
+    /* #summaryBody {
+        display: block;
+    } */
 }

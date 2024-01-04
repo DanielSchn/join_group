@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
         setTimeout(function () {
             document.getElementById('mobileGreetingContainer').style.display = 'none';
             document.getElementById('summaryBody').classList.remove('dNone');
-        }, 2000);
+        }, 1500);
     }
 });
 
