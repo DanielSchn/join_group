@@ -24,7 +24,7 @@
 
 @media (max-width: 1280px) {
     .greeting {
-        left: 860px;
+        display: none;
     }
 
     .font47pxBold500 {
@@ -37,12 +37,6 @@
         font-size: 50px;
         font-weight: 500;
         margin-left: 8px;
-    }
-}
-
-@media (max-width: 1280px) {
-    .font64pxBold700 {
-        font-size: 45px;
     }
 }
 
@@ -232,5 +226,11 @@
 
     .greeting {
         left: 740px;
+    }
+}
+
+@media (min-width: 1280px) {
+    .mobileGreetingStyle {
+        display: none;
     }
 }
