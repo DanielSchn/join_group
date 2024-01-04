@@ -20,6 +20,14 @@ async function initSummary() {
 
 document.addEventListener('DOMContentLoaded', function () {
     document.body.style.display = 'block';
+    if (document.referrer.endsWith('/index.html')) {
+            document.getElementById('mobileGreetingContainer').classList.remove('dNone');
+            document.getElementById('summaryBody').classList.add('dNone');
+        setTimeout(function () {
+            document.getElementById('mobileGreetingContainer').style.display = 'none';
+            document.getElementById('summaryBody').classList.remove('dNone');
+        }, 2000);
+    }
 });
 
 
@@ -53,14 +61,6 @@ function setDaytime() {
 
 
 /**
- * Responsive Greeting
- */
-function showMobileGreeting() {
-
-}
-
-
-/**
  * Fill in function for the guest login
  */
 function fillInGuest() {
@@ -77,11 +77,11 @@ function renderUserName() {
     let loadedUserName = localStorage.getItem('userName');
     if (loadedUserName === 'Guest') {
     } else {
-    let renderUserName = document.getElementById('userNameSummary');
-    let renderMobileUserName = document.getElementById('mobileGreetingUserName');
-    let capitalized = loadedUserName.charAt(0).toUpperCase() + loadedUserName.slice(1);
-    renderUserName.innerHTML = capitalized;
-    renderMobileUserName.innerHTML = capitalized;
+        let renderUserName = document.getElementById('userNameSummary');
+        let renderMobileUserName = document.getElementById('mobileGreetingUserName');
+        let capitalized = loadedUserName.charAt(0).toUpperCase() + loadedUserName.slice(1);
+        renderUserName.innerHTML = capitalized;
+        renderMobileUserName.innerHTML = capitalized;
     }
 }
 

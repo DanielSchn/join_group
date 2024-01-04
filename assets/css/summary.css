@@ -237,3 +237,7 @@
     font-weight: 700;
     text-align: center;
 }
+
+.dNone {
+    display: none;
+}
