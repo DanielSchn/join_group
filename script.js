@@ -335,19 +335,20 @@ function verifyToken(token) {
 }
 
 
-// DIESE FUNKTION IST DAFÜR DA UM DEN LOGGED IN STATUS ZU VALIDIEREN. WENN SIE AKTIV IST DANN KÖNNT IHR EURE SEITEN NUR AUFRUFEN WENN IHR EINGELOGGT SEID!!!!!
-
-// /**
-//  * Event Listener at DOM Content Loaded. Will check and verify the login token in the local Storage.
-//  */
-// document.addEventListener("DOMContentLoaded", function () {
-//   if (window.location.href.indexOf("index.html") === -1) {
-//       let token = localStorage.getItem("token");
-//       if (!token || !verifyToken(token)) {
-//           window.location.href = "index.html";
-//       }
-//   }
-// });
+/**
+ * Event Listener at DOM Content Loaded. Will check and verify the login token in the local Storage.
+ * The Privacy Policy and Legal Notice can be open without login
+ */
+document.addEventListener("DOMContentLoaded", function () {
+  const excludedPages = ["legal.html", "privacy.html"];
+  const currentUrl = window.location.href;
+  if (currentUrl.indexOf("index.html") === -1 && !excludedPages.some(page => currentUrl.includes(page))) {
+      let token = localStorage.getItem("token");
+      if (!token || !verifyToken(token)) {
+          window.location.href = "index.html";
+      }
+  }
+});
 
 
 /**
@@ -392,6 +393,7 @@ function showActiveSiteMobile() {
   updateMenuForPage('/add_task.html', 'linkAddTaskMobile', 'sideAddTaskMobile', 'sideImgAddTaskMobile');
   updateMenuForPage('/contacts.html', 'linkContactsMobile', 'sideContactsMobile', 'sideImgContactsMobile');
 }
+
 
 /**
  * Hide the side menu when legal or privacy are opened
