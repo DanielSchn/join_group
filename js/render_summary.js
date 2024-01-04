@@ -30,7 +30,9 @@ document.addEventListener('DOMContentLoaded', function () {
  */
 function renderSummaryGreeting(daytime) {
     let greeting = document.getElementById('greetOnSummary');
+    let mobileGreeting = document.getElementById('mobileGreeting');
     greeting.innerHTML = daytime;
+    mobileGreeting.innerHTML = daytime;
 }
 
 
@@ -51,6 +53,14 @@ function setDaytime() {
 
 
 /**
+ * Responsive Greeting
+ */
+function showMobileGreeting() {
+
+}
+
+
+/**
  * Fill in function for the guest login
  */
 function fillInGuest() {
@@ -65,9 +75,14 @@ function fillInGuest() {
  */
 function renderUserName() {
     let loadedUserName = localStorage.getItem('userName');
+    if (loadedUserName === 'Guest') {
+    } else {
     let renderUserName = document.getElementById('userNameSummary');
+    let renderMobileUserName = document.getElementById('mobileGreetingUserName');
     let capitalized = loadedUserName.charAt(0).toUpperCase() + loadedUserName.slice(1);
     renderUserName.innerHTML = capitalized;
+    renderMobileUserName.innerHTML = capitalized;
+    }
 }
 
 
