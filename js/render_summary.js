@@ -18,6 +18,9 @@ async function initSummary() {
 }
 
 
+/**
+ * Event Listener at DOMContentLoaded to show the and hide the mobile greeting
+ */
 document.addEventListener('DOMContentLoaded', function () {
     document.body.style.display = 'block';
     if (document.referrer.endsWith('/index.html')) {
