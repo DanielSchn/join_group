@@ -99,6 +99,7 @@ input::placeholder {
 }
 
 #mainBody {
+    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -346,9 +347,9 @@ footer a:hover {
     position: fixed;
     width: 100.03px;
     height: 121.97px;
-    top: 345px;
-    left: 583px;
-    transform: translate(50%, 50%) scale(2);
+    top: 512px;
+    left: 720px;
+    transform: translate(0%, 0%) scale(1.5);
     transition: all 500ms ease-in-out;
 }
 

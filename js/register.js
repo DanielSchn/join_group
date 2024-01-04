@@ -14,7 +14,7 @@ let guests = [
  * init function
  */
 async function initRegister() {
-    loadUsers();
+    await loadUsers();
 }
 
 

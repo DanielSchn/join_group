@@ -124,7 +124,7 @@
     }
 
     #startLogo.logo {
-        left: 110px;
+        left: 120px;
         top: 250px;
         transform: translate(100%, 100%) scale(2);
     }
@@ -190,7 +190,7 @@
     }
 
     #startLogo.logo {
-        left: 50px;
+        left: 90px;
     }
 
     .mainDivSignup {

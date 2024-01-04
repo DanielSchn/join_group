@@ -79,8 +79,10 @@ document.addEventListener("DOMContentLoaded", function () {
       logo.classList.add('transformed');
     }, 500);
     logo.addEventListener("transitionend", function () {
-      document.getElementById('mainBody').style.display = 'flex';
-      document.getElementById('toSignUpId').style.display = 'flex';
+      setTimeout(function () {
+        document.getElementById('bodyLogin').classList.remove('dNone');
+        document.getElementById('toSignUpId').style.display = 'flex';
+      }, 600);
     });
   }
 });
