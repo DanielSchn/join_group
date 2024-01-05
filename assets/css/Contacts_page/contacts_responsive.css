@@ -182,6 +182,17 @@
         top: 24px;
         right: 16px;
     }
+
+    /* Edit Card */
+
+    #closeEditCardWindow {
+        z-index: 2000;
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    }
 }
 
 @media (max-width: 850px) {
@@ -270,7 +281,7 @@
         display: none;
     }
 
-    #mainContactCard_Bg, #closeWindowLayer {
+    #mainContactCard_Bg, #closeWindowLayer, #closeEditCardWindow {
         display: none;
     }
 
@@ -494,6 +505,15 @@
 
     .cardBg {
         display: none;
+    }
+
+    #closeEditCardWindow {
+        z-index: 2000;
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
     }
 
     .editContactCard {

@@ -15,6 +15,7 @@
     <script src="./js/add_task_HTML.js" defer></script>
     <script src="./js/contacts.js" defer></script>
     <script src="./js/register.js" defer></script>
+    <script src="./js/add_contact_card.js" defer></script>
     <script src="./js/render_contact_card.js" defer></script>
     <script src="./js/render_summary.js" defer></script>
     <script src="./js/storage.js" defer></script>
@@ -36,7 +37,7 @@
             </div>
             <div class="myContacts">
             <div id="myContacts_A">
-                <div class="contactCard" onclick="showAndHideContactCard()">
+                <div class="contactCard" onclick="showContactCard()">
                     <div class="contactInitials">
                         <span id="user_name">AM</span>
                     </div>
@@ -184,14 +185,14 @@
 
     <!-- Contact Card -->
     <div id="contactCardContainer">
-        <div id="responsivBackgroundSetup" class="d-none">
+        <div id="responsivContactCardBg" class="d-none">
             <div id="mainContactCard_Bg"></div>
-            <div id="closeWindowLayer" onclick="showAndHideContactCard()"></div>
+            <div id="closeWindowLayer" onclick="hideContactCard()"></div>
         </div>
         <div id="mainContactContainer" class="mobile-d-none">
 
         <div id="contactTitleBar">
-            <div id="closeWindowBtn" onclick="showAndHideContactCard()">
+            <div id="closeWindowBtn" onclick="hideContactCard()">
                 <img src="./assets/img/contacts/close.svg">
             </div>
             <div id="contactsTitle">Contacts</div>
@@ -208,7 +209,7 @@
                 <div id="contactSetup">
                     <div id="user_name_0" class="userNameFontSize responsiveUserNameFontSize">Anton Mayer</div>
                     <div id="settings">
-                        <div id="edit" class="settingsBtn" onclick="editContactInformation()">
+                        <div id="edit" class="settingsBtn" onclick="editCardWindow(true)">
                             <img id="edit_img" src="./assets/img/contacts/edit_pen.svg"><span>Edit</span> <!-- Hover CSS / JS ?? -->
                         </div>
                         <div id="remove" class="settingsBtn">
@@ -237,20 +238,23 @@
     </div>
 
     <!-- Edit Contact Card -->
-    <div id="editCardBg" class="cardBg d-none" onclick="addCardWindow(false)"></div>
-    <div id="editCardOne" class="editContactCard d-none slideIn">
+    <div id="responsiveEditCardBg">
+        <div id="closeEditCardWindow" class="d-none" onclick="editCardWindow(false)"></div>
+    </div>
+    <div id="editCardBg" class="cardBg d-none" onclick="editCardWindow(false)"></div>
+    <div id="editCardOne" class="editContactCard d-none slideOut">
         <div class="leftBlueSection">
-            <img class="closeAddCard d-none" onclick="addCardWindow(false)" src="./assets/img/contacts/close.svg">
+            <img class="closeAddCard d-none" onclick="editCardWindow(false)" src="./assets/img/contacts/close.svg">
             <img class="smallCardLogo" src="./assets/img/contacts/logo_card.svg">
             <div class="cardTitle">
-                <span>Edit Contact</span>
+                <span class="addCardHeadline">Edit Contact</span>
                 <div id="devider3"></div>
             </div>
         </div>
         <div class="cardInitials_bg">
             <span class="cardIntitials">TW</span>
         </div>
-        <img class="closeAddContact_btn" src="./assets/img/contacts/close.svg" onclick="addCardWindow(false)">
+        <img class="closeAddContact_btn" src="./assets/img/contacts/close.svg" onclick="editCardWindow(false)">
         <form>
             <div class="addContactInputContainer"><input class="addContactInput" type="text" placeholder="Name"><img src="./assets/img/contacts/person.svg"></div>
             <div class="addContactInputContainer"><input class="addContactInput" type="email" placeholder="Email"><img src="./assets/img/contacts/mail.svg"></div>
@@ -266,12 +270,12 @@
      <div id="mobileMenuBox" w3-include-html="assets/templates/mobile_side_menu.html"></div>
 
      <div id="mobileMainContactContainer" class="d-none">
-        <div id="backArrowContainer" onclick="showAndHideContactCard()">
+        <div id="backArrowContainer" onclick="hideContactCard()">
             <img id="backArrow" src="./assets/img/contacts/arrow-left-line.svg">
         </div>
 
         <div id="mobileContactTitleBar">
-            <div id="closeWindowBtn" onclick="showAndHideContactCard()">
+            <div id="closeWindowBtn" onclick="hideContactCard()">
                 <img src="./assets/img/contacts/close.svg">
             </div>
             <div id="contactsTitle">Contacts</div>
@@ -319,7 +323,7 @@
         </div>
 
         <div id="contactOptions" class="d-none">
-            <div id="mobileEdit" class="settingsBtn" onclick="editContactInformation()">
+            <div id="mobileEdit" class="settingsBtn" onclick="editCardWindow(true)">
                 <img id="edit_img" src="./assets/img/contacts/edit_pen.svg"><span>Edit</span> <!-- Hover CSS / JS ?? -->
             </div>
             <div id="mobileRemove" class="settingsBtn">
@@ -362,19 +366,19 @@
         </form>
     </div>
 
-    <div id="mobileEditCardBg" class="mobileCardBg d-none" onclick="addCardWindow(false)"></div>
+    <div id="mobileEditCardBg" class="mobileCardBg d-none" onclick="editCardWindow(false)"></div>
     <div id="mobileEditCardOne" class="mobileEditContactCard d-none">
         <div class="mobileLeftBlueSection">
-            <img class="mobileCloseAddCard d-none" onclick="addCardWindow(false)" src="./assets/img/contacts/close.svg">
+            <img class="mobileCloseAddCard d-none" onclick="editCardWindow(false)" src="./assets/img/contacts/close.svg">
             <div class="mobileAddCardTitle">
-                <span>Edit Contact</span>
+                <span class="addCardHeadline">Edit Contact</span>
                 <div class="mobileDevider3"></div>
             </div>
         </div>
         <div class="mobileCardInitials_bg">
             <span class="mobileCardIntitials">TW</span>
         </div>
-        <img class="mobileCloseAddContact_btn" src="./assets/img/contacts/close.svg" onclick="addCardWindow(false)">
+        <img class="mobileCloseAddContact_btn" src="./assets/img/contacts/close.svg" onclick="editCardWindow(false)">
         <form>
             <div class="addContactInputContainer"><input class="addContactInput" type="text" placeholder="Name"><img src="./assets/img/contacts/person.svg"></div>
             <div class="addContactInputContainer"><input class="addContactInput" type="email" placeholder="Email"><img src="./assets/img/contacts/mail.svg"></div>
