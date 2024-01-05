@@ -20,3 +20,11 @@ p{
     margin-bottom: 24px;
 }
 
+.jblue{
+    color:rgb(0, 0, 192)
+}
+
+li::marker{
+    font-weight: bold;
+    font-size: 24px;
+}
