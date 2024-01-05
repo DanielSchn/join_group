@@ -41,7 +41,7 @@
             <div class="boardHeaderMobile">
                 <h1>Board</h1>
                 <div class="">
-                    <button class="addTaskDesktopMobile" onclick="showAddTaskCard('toDo')">
+                    <button class="addTaskDesktopMobile" onclick="addTaskBtn('toDo')">
                         <img src="assets/img/menu_icons/add.svg" alt="" />
                     </button>
                 </div>
@@ -55,7 +55,7 @@
                 </div>
 
                 <div class="addTaskDesktopButton">
-                    <button class="" onclick="showAddTaskCard('toDo')">
+                    <button class="" onclick="addTaskBtn('toDo')">
                         <b>Add task</b>
                         <img src="assets/img/menu_icons/add.svg" alt="" />
                     </button>
@@ -70,7 +70,7 @@
         <div class="sectionDragArea">
             <div class="headerDragArea">
                 <h2>To do</h2>
-                <img onclick="showAddTaskCard('toDo')" class="addTaskToSection addTaskDesktop"
+                <img onclick="addTaskBtn('toDo')" class="addTaskToSection addTaskDesktop"
                     src="assets/img/menu_icons/plus_button.svg" alt="Add Task to to do" />
             </div>
             <div id="toDo" class="dragArea" ondrop="moveTo('toDo'); removeHighlight('toDo')"
@@ -81,7 +81,7 @@
         <div class="sectionDragArea">
             <div class="headerDragArea">
                 <h2>In pogress</h2>
-                <img onclick="showAddTaskCard('inProgress')" class="addTaskToSection addTaskDesktop"
+                <img onclick="addTaskBtn('inProgress')" class="addTaskToSection addTaskDesktop"
                     src="assets/img/menu_icons/plus_button.svg" alt="Add Task to in Progress" />
             </div>
             <div id="inProgress" class="dragArea" ondrop="moveTo('inProgress'); removeHighlight('inProgress')"
@@ -93,7 +93,7 @@
             <div class="headerDragArea">
                 <h2>Await feedback</h2>
 
-                <img onclick="showAddTaskCard('awaitFeedback')" class="addTaskToSection addTaskDesktop"
+                <img onclick="addTaskBtn('awaitFeedback')" class="addTaskToSection addTaskDesktop"
                     src="assets/img/menu_icons/plus_button.svg" alt="Add Task to Await Feedback" />
             </div>
             <div id="awaitFeedback" class="dragArea" ondrop="moveTo('awaitFeedback'); removeHighlight('awaitFeedback')"

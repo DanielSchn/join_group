@@ -4,6 +4,18 @@ let submitOnEnter = true; // Ergänzung zu automatischer HTML-Mechanik
 let currentTask = {};
 
 
+// falls Add Task im Board geöffnet und Fenster auf unter 700px skaliert wird, Fenster schließen
+// (Add-Button leitet bei dieser Fenstergröße auf add_task.html weiter)
+window.addEventListener('resize', function () {
+    if (document.getElementById('addTaskForm') && document.getElementById('taskContainer')) { // falls Add Task im Board geöffnet
+        let viewportWidth = window.innerWidth || document.documentElement.clientWidth;
+        if (viewportWidth <= 700) {
+            closeTask();
+        }
+    }
+});
+
+
 /**
  * Initialisierung (bei Onload, Body)
  * @param {string} status - Bearbeitungsstatus des Tasks

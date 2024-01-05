@@ -15,7 +15,7 @@ async function updateHTML() {
     updateDone();
 }
 
-async function saveChanges(){
+async function saveChanges() {
     await setItem('tasks', JSON.stringify(tasks));
     filteredTasks = tasks;
 }
@@ -140,7 +140,7 @@ function generateNoTask(status) {
 
 function showTaskCard(element, id) {
     let taskCard = document.getElementById('taskCard');
-    
+
     taskCard.innerHTML = generateTaskCard(element, id);
     renderCardPrio(element, id);
     renderCardSubtasks(element, id);
@@ -149,7 +149,7 @@ function showTaskCard(element, id) {
     let taskContainer = document.getElementById('taskContainer');
 
     taskContainer.classList.remove('slideOut');
-    taskContainer.classList.add('slideIn'); 
+    taskContainer.classList.add('slideIn');
 }
 
 function generateTaskCard(task, id) {
@@ -255,7 +255,7 @@ function generateSubtask(element) {
 
 function renderBoardAssignedIcons(element) {
     let assigned = element['assignedTo'];
-    let assignedDiv= document.getElementById(`taskCardAssignedTo${element['id']}`);
+    let assignedDiv = document.getElementById(`taskCardAssignedTo${element['id']}`);
 
     assignedDiv.innerHTML = '';
     for (let i = 0; i < users.length; i++) {
@@ -266,16 +266,16 @@ function renderBoardAssignedIcons(element) {
     }
 }
 
-function renderCardAssigned(element, id){
+function renderCardAssigned(element, id) {
     let assignedDiv = document.getElementById(`taskAssigned${id}`)
     let assigned = element['assignedTo'];
 
-    assignedDiv.innerHTML='';
-    for (let i = 0; i < assigned.length; i++){
+    assignedDiv.innerHTML = '';
+    for (let i = 0; i < assigned.length; i++) {
         let contact = users[i];
-        
-            assignedDiv.innerHTML += taskCardAssignedHTML(contact, id);
-        
+
+        assignedDiv.innerHTML += taskCardAssignedHTML(contact, id);
+
     }
 }
 
@@ -358,15 +358,24 @@ function renderCardSubtasks(task, id) {
 }
 
 function updateSubtask(id, i) {
-    if (tasks[id].subtasks[i].status == 'toDo'){
+    if (tasks[id].subtasks[i].status == 'toDo') {
         tasks[id].subtasks[i].status = 'done';
     }
     else {
-        tasks[id].subtasks[i].status ='toDo';
+        tasks[id].subtasks[i].status = 'toDo';
     }
 
     renderCardSubtasks(tasks[id], id);
     saveChanges();
+}
+
+
+async function addTaskBtn(status) {
+    if (window.innerWidth > 700) {
+        await showAddTaskCard(status);
+    } else {
+        window.location.href = './add_task.html';
+    }
 }
 
 
@@ -383,7 +392,7 @@ async function showAddTaskCard(status) {
     taskCard = document.getElementById('addTaskCard');
     await initAddTask(status);
     taskCard.style.display = '';
-    taskCard.classList.add('slideIn'); 
+    taskCard.classList.add('slideIn');
     changeClearBtn(); // Clear-Button durch Cancel-Button ersetzen
 }
 
