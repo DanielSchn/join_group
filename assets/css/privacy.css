@@ -1,0 +1,21 @@
+.mainPrivacy {
+    position: absolute;
+    top: 180px;
+    left: 328px;
+    bottom: 0;  
+    right: 0;
+    padding-right: 64px;
+}
+
+.headerPrivacy {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+
+a{
+    color: rgb(0, 0, 192);
+}
+p{
+    margin-bottom: 16px;
+}
