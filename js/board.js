@@ -238,16 +238,6 @@ function generateSubtask(element) {
         subtasksDiv.classList.add("d-none");
     } else {
         updateProgressBar(subtasks, doneSubtasksDiv, progressbarFillerDiv);
-        let trueCount = 0;
-        for (let i = 0; i < subtasks.length; i++) {
-            if (subtasks[i]['status'] == 'done') {
-                trueCount++;
-            }
-        }
-        let barWidth = 130;
-        doneSubtasksDiv.innerHTML = `${trueCount}`;
-        let fillWidth = barWidth * (trueCount / subtasks.length);
-        progressbarFillerDiv.style.width = `${fillWidth}px`;
     }
 }
 
