@@ -247,6 +247,17 @@ function getTaskPrioId() {
 }
 
 
+/**
+ * Schaltet Transition-Dauer zwischen 0ms und Default-Wert, um Rendern zu beschleunigen
+ */
+function togglePrioTransition() {
+    for (let i = 1; i < 3; i++) {
+        const btn = document.getElementById('addTaskPrio' + i);
+        btn.style.transition = (btn.style.transition === '') ? '0ms' : '';     
+    }
+}
+
+
 /** 
  * Fokussierung des Input-Feldes für Subtasks
  */

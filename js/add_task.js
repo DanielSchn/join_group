@@ -1,12 +1,7 @@
 const PRIOS = [null, 'urgent', 'medium', 'low'];
 
 let submitOnEnter = true; // Ergänzung zu automatischer HTML-Mechanik
-let currentTask = {
-    id: -1,
-    assignedTo: [],
-    subtasks: [],
-    status: ''
-};
+let currentTask = {};
 
 
 /**
@@ -14,6 +9,7 @@ let currentTask = {
  * @param {string} status - Bearbeitungsstatus des Tasks
  */
 async function initAddTask(status) {
+    initCurrentTask();
     await init();
     submitBtn.disabled = true;
     renderAddTaskForm();
@@ -25,14 +21,28 @@ async function initAddTask(status) {
 }
 
 
+function initCurrentTask() {
+    currentTask = {
+        id: -1,
+        assignedTo: [],
+        subtasks: [],
+        status: ''
+    }
+}
+
+
 async function editTask(id) {
     const task = tasks[id];
+    await showAddTaskCard(task['status']);
     currentTask['id'] = id;
     currentTask['assignedTo'] = task['assignedTo'];
     currentTask['subtasks'] = task['subtasks'];
-    await showAddTaskCard(task['status']);
+    renderAddTaskForm();
+    togglePrioTransition();
     unselectPrioBtn(2); // Default-Prio entfernen
     prefillForm(task);
+    togglePrioTransition();
+    addTaskHeadline.style.display = 'none';
     addTaskCategoryContainer.style.display = 'none';
     addTaskCancelBtn.style.display = 'none';
     submitBtn.innerHTML = 'Ok';

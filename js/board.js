@@ -378,15 +378,13 @@ async function showAddTaskCard(status) {
     addtask = document.getElementById('taskCard');
     addtask.innerHTML = `
     <div id="taskContainer" class="addTaskCardContainer" onclick="closeTask()">
-    <div class="addTaskCard" onclick="preventClosing()" id="addTaskCard" w3-include-html="assets/templates/add_task_template.html"></div>
+    <div class="addTaskCard" onclick="preventClosing()" style="display: none" id="addTaskCard" w3-include-html="assets/templates/add_task_template.html"></div>
     </div>`;
-    taskContainer = document.getElementById('taskContainer');
-    taskContainer.classList.remove('slideOut');
-    taskContainer.classList.add('slideIn'); 
+    taskCard = document.getElementById('addTaskCard');
     await initAddTask(status);
+    taskCard.style.display = '';
+    taskCard.classList.add('slideIn'); 
     changeClearBtn(); // Clear-Button durch Cancel-Button ersetzen
-
-
 }
 
 

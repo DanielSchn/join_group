@@ -1,6 +1,6 @@
 <form class="addTaskForm" id="addTaskForm" autocomplete="off" onreset="resetTaskForm()" onsubmit="submitTask(); return false">
     <input autocomplete="false" name="hidden" type="text" style="display: none">
-    <h1>Add Task</h1>
+    <h1 id="addTaskHeadline">Add Task</h1>
     <div class="addTaskFormMain">
         <div class="addTaskFormMainSide addTaskFormMainSideOne">
             <div class="addTaskField">
@@ -121,4 +121,4 @@
     </div>
 </form>
 
-<div id="toastMsg" class="preventSelect">Task added to board<img src="./assets/img/menu_icons/board.svg" alt="icon"></div>
+<div id="toastMsg" class="preventSelect" style="display: none">Task added to board<img src="./assets/img/menu_icons/board.svg" alt="icon"></div>
