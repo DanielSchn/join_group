@@ -13,10 +13,6 @@
 }
 
 @media (max-width: 1380px) {
-    .sumHeadPosition {
-        left: 280px;
-    }
-
     .greeting {
         left: 880px;
     }
