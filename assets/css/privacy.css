@@ -2,9 +2,9 @@
     position: absolute;
     top: 180px;
     left: 328px;
-    bottom: 0;  
-    right: 0;
     padding-right: 64px;
+    margin-bottom: 40px;
+    height: auto;
 }
 
 .headerPrivacy {
@@ -17,5 +17,6 @@ a{
     color: rgb(0, 0, 192);
 }
 p{
-    margin-bottom: 16px;
+    margin-bottom: 24px;
 }
+
