@@ -27,6 +27,21 @@
     gap: 24px;
 }
 
+/* Anzeige Subtasks */
+.editTaskCard .subtasksContainer {
+    width: 100%;
+    justify-content: flex-start;
+    overflow-y: visible;
+}
+
+.editTaskCard #subtasksLeftMargin {
+    display: none;
+}
+
+.editTaskCard #subtasksList {
+    width: 100%;
+}
+
 @media (max-width: 428px) {
     :root {
         --fontSizeNormal: 16px;
@@ -66,5 +81,13 @@
 
     #addSubtask {
         width: calc(100% - 100px);
+    }
+
+    .editTaskCard #addTaskAssignedInputContainer {
+        padding-right: 14px;
+    }
+
+    .editTaskCard #addTaskAssignedInputContainer input {
+        width: calc(100% - 16px - 24px)
     }
 }

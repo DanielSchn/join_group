@@ -11,6 +11,10 @@
     height: calc(100% - var(--top) * 2);
 }
 
+.contactDetails {
+    font-size: var(--fontSizeSmall);
+}
+
 @media (max-width: 1360px) {
     :root {
         --fontSizeHuge: 54px;
