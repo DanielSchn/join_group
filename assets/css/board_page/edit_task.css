@@ -1,12 +1,7 @@
 .editTaskCard {
-    width: 100%;
+    width: calc(100% + var(--scrollbarWidth));
     border-radius: 0;
     box-shadow: none;
-}
-
-/* 1-Spalten-Layout */
-.editTaskCard #formSeperator {
-    display: none;
 }
 
 .editTaskCard .addTaskForm {
@@ -15,4 +10,19 @@
 
 .editTaskCard .addTaskFormMain {
     flex-direction: column;
+    gap: 24px;
+    padding-top: 0;
+}
+
+/* 1-Spalten-Layout */
+.editTaskCard #formSeperator {
+    display: none;
+}
+
+.editTaskCard #assignedIcons {
+    position: initial;
+}
+
+.editTaskCard .addTaskFormMainSideOne {
+    gap: 24px;
 }
