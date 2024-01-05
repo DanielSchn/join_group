@@ -45,7 +45,7 @@ function initCurrentTask() {
 
 async function editTask(id) {
     const task = tasks[id];
-    await showAddTaskCard(task['status']);
+    await showEditTaskCard(task['status']);
     currentTask['id'] = id;
     currentTask['assignedTo'] = task['assignedTo'];
     currentTask['subtasks'] = task['subtasks'];
@@ -93,8 +93,13 @@ function prefillForm(task) {
 
 
 function changeClearBtn() {
-    addTaskClearBtn.style.display = 'none';
+    hideClearBtn();
     addTaskCancelBtn.style.display = '';
+}
+
+
+function hideClearBtn() {
+    addTaskClearBtn.style.display = 'none';   
 }
 
 

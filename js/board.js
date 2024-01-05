@@ -372,7 +372,7 @@ function updateSubtask(id, i) {
 
 async function addTaskBtn(status) {
     if (window.innerWidth > 700) {
-        await showAddTaskCard(status);
+        await showAddTaskCard(status, true);
     } else {
         window.location.href = './add_task.html';
     }
@@ -381,19 +381,34 @@ async function addTaskBtn(status) {
 
 /**
  * Add Task-Overlay aufrufen
- * @param {string} status - Bearbeitungsstatus des Tasks 
+ * @param {string} status - Bearbeitungsstatus des Tasks
  */
 async function showAddTaskCard(status) {
     addtask = document.getElementById('taskCard');
-    addtask.innerHTML = `
-    <div id="taskContainer" class="addTaskCardContainer" onclick="closeTask()">
-    <div class="addTaskCard" onclick="preventClosing()" style="display: none" id="addTaskCard" w3-include-html="assets/templates/add_task_template.html"></div>
-    </div>`;
+    addtask.innerHTML = generateAddTaskTemplate();
     taskCard = document.getElementById('addTaskCard');
     await initAddTask(status);
     taskCard.style.display = '';
     taskCard.classList.add('slideIn');
     changeClearBtn(); // Clear-Button durch Cancel-Button ersetzen
+}
+
+
+function generateAddTaskTemplate() {
+    return /* html */ `
+    <div id="taskContainer" class="addTaskCardContainer" onclick="closeTask()">
+    <div class="addTaskCard" onclick="preventClosing()" style="display: none" id="addTaskCard" w3-include-html="assets/templates/add_task_template.html"></div>
+    </div>`;
+}
+
+
+async function showEditTaskCard(status) {
+    addtask = document.getElementById('taskCard');
+    addtask.innerHTML = generateAddTaskTemplate();
+    taskCard = document.getElementById('addTaskCard');
+    await initAddTask(status);
+    taskCard.style.display = '';
+    hideClearBtn(); // Clear-Button verstecken   
 }
 
 
