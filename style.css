@@ -354,6 +354,10 @@ aside {
         font-size: 14px;
         font-weight: 400;
     }
+
+    .hiddenMenuPos {
+        right: 32px;
+    }
 }
 
 .hiddenMenuText {
