@@ -1,0 +1,18 @@
+.editTaskCard {
+    width: 100%;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+/* 1-Spalten-Layout */
+.editTaskCard #formSeperator {
+    display: none;
+}
+
+.editTaskCard .addTaskForm {
+    padding: 0;
+}
+
+.editTaskCard .addTaskFormMain {
+    flex-direction: column;
+}

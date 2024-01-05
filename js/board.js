@@ -413,6 +413,7 @@ async function showEditTaskCard(status) {
     addTask.innerHTML += generateEditTaskHeader();
     addTask.innerHTML += generateAddTaskTemplateInner();
     taskCard = document.getElementById('addTaskCard');
+    taskCard.classList.add('editTaskCard');
     await initAddTask(status);
     taskCard.style.display = '';
     hideClearBtn(); // Clear-Button verstecken   
