@@ -228,7 +228,6 @@
   background-color: #1FD7C1;
 }
 
-
 .toDoTitle {
   font-weight: 700;
   color: #2a3647;
@@ -249,7 +248,7 @@
 
 .toDoSubtasksProgress {
   height: 8px;
-  width: 100px;
+  width: 130px;
   border-radius: 4px;
   background-color: #f4f4f4;
 }
@@ -258,7 +257,6 @@
   height: 100%;
   border-radius: 4px;
   background-color: #4589ff;
-  width: 30px;
 }
 
 .toDoSubtasksCount {
