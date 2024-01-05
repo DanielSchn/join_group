@@ -205,8 +205,6 @@ function generateTaskCard(task, id) {
 }
 
 
-
-
 function allowDrop(ev) {
     ev.preventDefault();
 }
@@ -372,7 +370,7 @@ function updateSubtask(id, i) {
 
 async function addTaskBtn(status) {
     if (window.innerWidth > 700) {
-        await showAddTaskCard(status, true);
+        await showAddTaskCard(status);
     } else {
         window.location.href = './add_task.html';
     }
@@ -384,8 +382,8 @@ async function addTaskBtn(status) {
  * @param {string} status - Bearbeitungsstatus des Tasks
  */
 async function showAddTaskCard(status) {
-    addtask = document.getElementById('taskCard');
-    addtask.innerHTML = generateAddTaskTemplate();
+    addTask = document.getElementById('taskCard');
+    addTask.innerHTML = generateAddTaskTemplateAll();
     taskCard = document.getElementById('addTaskCard');
     await initAddTask(status);
     taskCard.style.display = '';
@@ -394,22 +392,44 @@ async function showAddTaskCard(status) {
 }
 
 
-function generateAddTaskTemplate() {
+function generateAddTaskTemplateAll() {
+    let html = `<div id="taskContainer" class="addTaskCardContainer" onclick="closeTask()">`;
+    html += generateAddTaskTemplateInner();
+    html += `</div>`;
+    return html
+}
+
+
+function generateAddTaskTemplateInner() {
     return /* html */ `
-    <div id="taskContainer" class="addTaskCardContainer" onclick="closeTask()">
-    <div class="addTaskCard" onclick="preventClosing()" style="display: none" id="addTaskCard" w3-include-html="assets/templates/add_task_template.html"></div>
-    </div>`;
+        <div class="addTaskCard" onclick="preventClosing()" style="display: none" id="addTaskCard" w3-include-html="assets/templates/add_task_template.html"></div>
+    `;
 }
 
 
 async function showEditTaskCard(status) {
-    addtask = document.getElementById('taskCard');
-    addtask.innerHTML = generateAddTaskTemplate();
+    addTask = document.getElementById('taskCard2');
+    addTask.innerHTML = '';
+    addTask.innerHTML += generateEditTaskHeader();
+    addTask.innerHTML += generateAddTaskTemplateInner();
     taskCard = document.getElementById('addTaskCard');
     await initAddTask(status);
     taskCard.style.display = '';
     hideClearBtn(); // Clear-Button verstecken   
 }
+
+
+function generateEditTaskHeader() {
+    return /* html */ `
+        <div class="taskCardHeader">
+            <div></div>
+            <div onclick="closeTask()">
+                <img class="closeTask" src="./assets/img/cancel.svg" alt="Close">
+            </div>
+        </div>
+    `;
+}
+
 
 
 function searchTask() {
