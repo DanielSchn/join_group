@@ -28,6 +28,10 @@
         right: 0;
     }
 
+    #editCardBg {
+        display: none;
+    }
+
     #mainContactCard_Bg {
         z-index: 2000;
         position: fixed;

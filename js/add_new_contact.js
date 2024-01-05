@@ -1,5 +1,3 @@
-let contacts = [];
-
 function addNewContact() {
     const contactName = document.getElementById('contactName');
     const contactEmail = document.getElementById('contactEmail');
@@ -12,4 +10,5 @@ function addNewContact() {
     }
 
     contacts.push(newContact);
+    setItem('contacts', contacts);
 }

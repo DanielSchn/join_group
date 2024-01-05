@@ -6,7 +6,6 @@ function openAddCardOne() {
     addNewContactBtn.classList.remove('d-none');
     addNewContactBtn.classList.remove('slideOut');
     addNewContactBtn.classList.add('slideIn');
-    openMobileAddContactCardOne();
 }
 
 
@@ -53,7 +52,6 @@ function stopAnimation() {
     mobileAddCardOne.classList.remove('d-none');
     mobileAddCardOne.classList.remove('slideDown');
     mobileAddCardOne.classList.add('slideUp');
-    openAddCardOne();
 }
 
 

@@ -1,3 +1,6 @@
+/**
+ * Render quantity for Deadline on summary
+ */
 function showContactCard() {
   openContactCardWindow();
   openMobileContactCardWindow();
