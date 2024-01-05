@@ -4,16 +4,22 @@ let submitOnEnter = true; // Ergänzung zu automatischer HTML-Mechanik
 let currentTask = {};
 
 
-// falls Add Task im Board geöffnet und Fenster auf unter 700px skaliert wird, Fenster schließen
+// falls Add Task im Board geöffnet und Fenster auf 1-Spalten-Layout skaliert wird, Fenster schließen
 // (Add-Button leitet bei dieser Fenstergröße auf add_task.html weiter)
 window.addEventListener('resize', function () {
-    if (document.getElementById('addTaskForm') && document.getElementById('taskContainer')) { // falls Add Task im Board geöffnet
+    if (isAddTaskFromBoard()) {
         let viewportWidth = window.innerWidth || document.documentElement.clientWidth;
         if (viewportWidth <= 700) {
             closeTask();
         }
     }
 });
+
+
+function isAddTaskFromBoard() {
+    return document.getElementById('addTaskForm') && document.getElementById('taskContainer') && // falls Add Task im Board geöffnet
+    !document.getElementById('addTaskCard').classList.contains('editTaskCard'); // falls nicht im Bearbeitungsmodus
+}
 
 
 /**
