@@ -340,7 +340,7 @@ function verifyToken(token) {
  * The Privacy Policy and Legal Notice can be open without login
  */
 document.addEventListener("DOMContentLoaded", function () {
-  const excludedPages = ["legal.html", "privacy.html"];
+  const excludedPages = ["legal.html", "privacy.html", "signup.html"];
   const currentUrl = window.location.href;
   if (currentUrl.indexOf("index.html") === -1 && !excludedPages.some(page => currentUrl.includes(page))) {
       let token = localStorage.getItem("token");
