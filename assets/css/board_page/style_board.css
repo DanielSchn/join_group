@@ -282,7 +282,11 @@
 }
 
 .contactInitials{
-  margin-left: -12px;
+  margin-right: -12px;
+}
+
+.contactDetails{
+  margin-left: 20px;
 }
 
 .toDoAssigned {
