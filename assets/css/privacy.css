@@ -30,6 +30,13 @@ li::marker{
     font-size: 24px;
 }
 
+@media (max-width: 725px) {
+    .mainPrivacy {
+        left: 290px;
+        padding-right: 16px;     
+    }
+}
+
 @media (max-width: 700px) {
     .mainPrivacy {
         left: 0;
