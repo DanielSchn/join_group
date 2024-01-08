@@ -2,6 +2,7 @@ const PRIOS = [null, 'urgent', 'medium', 'low'];
 
 let submitOnEnter = true; // Ergänzung zu automatischer HTML-Mechanik
 let currentTask = {};
+let message = 'Task added to board';
 
 
 // falls Add Task im Board geöffnet und Fenster auf 1-Spalten-Layout skaliert wird, Fenster schließen
@@ -64,6 +65,7 @@ async function editTask(id) {
     addTaskCategoryContainer.style.display = 'none';
     addTaskCancelBtn.style.display = 'none';
     submitBtn.innerHTML = 'Ok';
+    message = 'Task edited';
 }
 
 
@@ -191,8 +193,9 @@ function resetTaskForm() {
 
 /**
  * Task hinzufügen
+ * @param {string} message - Inhalt der Toast-Nachricht 
  */
-async function submitTask() {
+async function submitTask(message) {
     setAddTaskDueText(); // Datum-Inputs synchronisieren
     const currentId = currentTask['id'];
     if (currentId == -1) { // falls neuer Task angelegt wurde
@@ -203,7 +206,7 @@ async function submitTask() {
     submitBtn.disabled = true;
     await setItem('tasks', JSON.stringify(tasks));
     submitBtn.disabled = false;
-    showToastMsg('Task added to board');
+    showToastMsg(message);
     goToBoard();
 }
 
