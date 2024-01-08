@@ -16,6 +16,7 @@
 a{
     color: rgb(0, 0, 192);
 }
+
 p{
     margin-bottom: 24px;
 }
@@ -33,5 +34,36 @@ li::marker{
     .mainPrivacy {
         left: 0;
         margin-left: 16px;
+    }
+
+    li, span, p, body {
+        font-size: 16px;
+    }
+
+    h1 {
+        font-size: 48px;
+    }
+
+    h3 {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 425px) {
+    h1 {
+        font-size: 30px;
+    }
+
+    .mainPrivacy {
+        padding-right: 16px;
+    }
+
+    .headerPrivacy {
+        justify-content: center;
+        gap: 16px;
+    }
+
+    li, span, p, body {
+        font-size: 14px;
     }
 }
