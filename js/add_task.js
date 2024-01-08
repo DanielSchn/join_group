@@ -1,6 +1,6 @@
 const PRIOS = [null, 'urgent', 'medium', 'low'];
 
-let submitOnEnter = true; // Ergänzung zu automatischer HTML-Mechanik
+let submitOnEnter = true;
 let currentTask = {};
 let message = 'Task added to board';
 
@@ -17,9 +17,13 @@ window.addEventListener('resize', function () {
 });
 
 
+/**
+ * Überprüfung, ob das Add Task-Formular vom Board aus aufgerufen wurde
+ * @returns true, falls vom Board aus aufgerufen, sonst false
+ */
 function isAddTaskFromBoard() {
-    return document.getElementById('addTaskForm') && document.getElementById('taskContainer') && // falls Add Task im Board geöffnet
-    !document.getElementById('addTaskCard').classList.contains('editTaskCard'); // falls nicht im Bearbeitungsmodus
+    return document.getElementById('addTaskForm') && document.getElementById('taskContainer') &&
+    !document.getElementById('addTaskCard').classList.contains('editTaskCard');
 }
 
 
@@ -30,16 +34,20 @@ function isAddTaskFromBoard() {
 async function initAddTask(status) {
     initCurrentTask();
     await init();
+    styleDescriptionResizeHandle();
     submitBtn.disabled = true;
     renderAddTaskForm();
     document.addEventListener('keydown', submitFormOnEnter);
-    let today = new Date(); // heutiges Datum
-    addTaskDue.min = today.toISOString().slice(0, -14); // Minimalwert von Date-Input auf heutigen Tag setzen
+    let today = new Date();
+    addTaskDue.min = today.toISOString().slice(0, -14);
     submitBtn.disabled = false;
     currentTask['status'] = status;
 }
 
 
+/**
+ * Initialisierung des globalen "currentTask"-JSONs zum Zwischenspeichern
+ */
 function initCurrentTask() {
     currentTask = {
         id: -1,
@@ -50,26 +58,49 @@ function initCurrentTask() {
 }
 
 
-async function editTask(id) {
-    const task = tasks[id];
-    await showEditTaskCard(task['status']);
-    currentTask['id'] = id;
-    currentTask['assignedTo'] = task['assignedTo'];
-    currentTask['subtasks'] = task['subtasks'];
-    renderAddTaskForm();
-    togglePrioTransition();
-    unselectPrioBtn(2); // Default-Prio entfernen
-    prefillForm(task);
-    togglePrioTransition();
-    addTaskHeadline.style.display = 'none';
-    addTaskCategoryContainer.style.display = 'none';
-    addTaskCancelBtn.style.display = 'none';
-    submitBtn.innerHTML = 'Ok';
-    message = 'Task edited';
+/**
+ * ersetze Default-Resize Handle durch Custom-Resize Handle (nur Webkit-Browser)
+ */
+function styleDescriptionResizeHandle() {
+    if('WebkitAppearance' in document.documentElement.style) {
+        addTaskDescription.classList.add('customResizeHandle');
+    }
 }
 
 
-async function deleteTask(id) { // Überprüfung: Stimmen nach Ausführung alle IDs mit der Position überein?
+/**
+ * Initialisierung des Bearbeitungsmodis
+ * @param {number} id - Laufindex des Tasks im globalen tasks-Array
+ */
+async function editTask(id) {
+    let task = tasks[id];
+    await showEditTaskCard(task['status']);
+    setCurrentTaskEdit(task);
+    renderAddTaskForm();
+    togglePrioTransition();
+    unselectPrioBtn(2);
+    prefillForm(task);
+    togglePrioTransition();
+    setFormEdit();
+}
+
+
+/**
+ * currentTask zur Initialisierung des Bearbeitungsmodus zwischenspeichern
+ * @param {JSON} task - Task-JSON aus Tasks-Array 
+ */
+function setCurrentTaskEdit(task) {
+    currentTask['id'] = task['id'];
+    currentTask['assignedTo'] = task['assignedTo'];
+    currentTask['subtasks'] = task['subtasks'];
+}
+
+
+/**
+ * Task entfernen
+ * @param {number} id - ID des Tasks im tasks-Array 
+ */
+async function deleteTask(id) {
     tasks.splice(id, 1);
     for (let i = 0; i < tasks.length; i++) {
         let task = tasks[i];
@@ -90,6 +121,10 @@ function renderAddTaskForm() {
 }
 
 
+/**
+ * Form zur Bearbeitung vorausfüllen
+ * @param {JSON} task - Task-JSON aus tasks-Array 
+ */
 function prefillForm(task) {
     const prio = PRIOS.indexOf(task['prio']);
     addTaskTitle.value = task['title'];
@@ -102,14 +137,32 @@ function prefillForm(task) {
 }
 
 
+/**
+ * Clear-Button durch Cancel-Button ersetzen
+ */
 function changeClearBtn() {
     hideClearBtn();
     addTaskCancelBtn.style.display = '';
 }
 
 
+/**
+ * Clear-Button verbergen
+ */
 function hideClearBtn() {
     addTaskClearBtn.style.display = 'none';   
+}
+
+
+/**
+ * Form-Details im Bearbeitungsmodus, die über erstes Rendern und Vorausfüllen hinausgehen
+ */
+function setFormEdit() {
+    addTaskHeadline.style.display = 'none';
+    addTaskCategoryContainer.style.display = 'none';
+    addTaskCancelBtn.style.display = 'none';
+    submitBtn.innerHTML = 'Ok';
+    message = 'Task edited';
 }
 
 
@@ -119,21 +172,31 @@ function hideClearBtn() {
 function renderAddTaskAssignedList() {
     const list = document.getElementById('addTaskAssignedMenu');
     list.innerHTML = '';
-    if (userId != -1) { // falls als vollständiger User, nicht als Gast eingeloggt
-        let checkbox = 'assignedContact' + userId; // aktiver User
-        list.innerHTML += contactAssignedHTML(users[userId], checkbox);
-        for (let i = 0; i < users.length; i++) {
-            if (i != userId) { // aktiver User bereits gerendert, wird daher übersprungen
-                let checkbox = 'assignedContact' + i;
-                list.innerHTML += contactAssignedHTML(users[i], checkbox);
-            }
+    renderActiveUserToAssignedList();
+    for (let i = 0; i < users.length; i++) {
+        if (i != userId) {
+            let checkbox = 'assignedContact' + i;
+            list.innerHTML += contactAssignedHTML(users[i], checkbox);
         }
-    } else {
-        list.innerHTML += contactAssignedHTML(guests[0], 'assignedContact' + '-1'); // aktiver User
     }
 }
 
 
+/**
+ * aktiven User (ausgenommen Guest) zuerst rendern
+ */
+function renderActiveUserToAssignedList() {
+    if (userId != -1) {
+        const list = document.getElementById('addTaskAssignedMenu');
+        let checkbox = 'assignedContact' + userId;
+        list.innerHTML += contactAssignedHTML(users[userId], checkbox);
+    }
+}
+
+
+/**
+ * (Bearbeitungsmodus:) Vorauswahl zugeordneter Kontakte im Dropdown-Menü
+ */
 function precheckAssignedList() {
     const assigned = currentTask['assignedTo'];
     for (let i = 0; i < users.length; i++) {
@@ -167,11 +230,11 @@ function renderAddTaskAssignedIcons() {
  */
 function submitFormOnEnter(e) {
     if (submitOnEnter) {
-        if (addTaskForm && e.key == 'Enter') { // falls "Add Task"-Formular geladen ist und Enter gedrückt wurde
-            unfocusAll(); // Fokus aufheben
-            submitBtn.click(); // Submit-Button auslösen
+        if (addTaskForm && e.key == 'Enter') {
+            unfocusAll();
+            submitBtn.click();
         }
-        removeEventListener('keydown', submitFormOnEnter); // Listener entfernen
+        removeEventListener('keydown', submitFormOnEnter);
     }
 }
 
@@ -181,26 +244,26 @@ function submitFormOnEnter(e) {
  */
 function resetTaskForm() {
     const prio = getTaskPrioId();
-    if (prio) { // falls Priorität vorhanden
-        unselectPrioBtn(prio); // Priorität entfernen
+    if (prio) {
+        unselectPrioBtn(prio);
     }
-    stylePrioBtn(2, 2); // Priorität resetten
-    currentTask['assignedTo'] = []; // assigned resetten
-    currentTask['subtasks'] = []; // Subtasks resetten
+    stylePrioBtn(2, 2);
+    currentTask['assignedTo'] = [];
+    currentTask['subtasks'] = [];
     renderAddTaskForm();
 }
 
 
 /**
- * Task hinzufügen
+ * Task hinzufügen und zum Board weiterleiten
  */
 async function submitTask() {
-    setAddTaskDueText(); // Datum-Inputs synchronisieren
+    setAddTaskDueText();
     const currentId = currentTask['id'];
-    if (currentId == -1) { // falls neuer Task angelegt wurde
-        tasks.push(generateTaskJSON(tasks.length)); // neuen Task am Ende des tasks-Arrays hinzufügen
-    } else { // Bearbeitungsmodus
-        tasks[currentId] = generateTaskJSON(currentId); // bestehenden Task überschreiben
+    if (currentId == -1) {
+        tasks.push(generateTaskJSON(tasks.length));
+    } else {
+        tasks[currentId] = generateTaskJSON(currentId);
     }
     submitBtn.disabled = true;
     await setItem('tasks', JSON.stringify(tasks));
@@ -210,6 +273,11 @@ async function submitTask() {
 }
 
 
+/**
+ * JSON-String für neuen oder bearbeiteten Task erzeugen
+ * @param {number} id - ID des Tasks im tasks-Array 
+ * @returns Task-JSON im Format des tasks-Arrays
+ */
 function generateTaskJSON(id) {
     return {
         id: id,
@@ -227,7 +295,7 @@ function generateTaskJSON(id) {
 
 
 /**
- * Message "Task added to board" in Viewport bewegen
+ * Message in Viewport bewegen
  */
 function showToastMsg(message) {
     const container = document.getElementById('toastMsg');

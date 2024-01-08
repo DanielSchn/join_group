@@ -44,12 +44,12 @@ textarea:focus,
 }
 
 /* Default-Resizer (Textarea) verstecken */
-::-webkit-resizer {
+.customResizeHandle::-webkit-resizer {
     display: none;
 }
 
 /* neuer Resizer */
-textarea {
+.customResizeHandle {
     background-image: url(../img/resize_handle.svg);
     background-size: 19px;
     background-repeat: no-repeat;
