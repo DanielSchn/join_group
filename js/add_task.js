@@ -193,9 +193,8 @@ function resetTaskForm() {
 
 /**
  * Task hinzufügen
- * @param {string} message - Inhalt der Toast-Nachricht 
  */
-async function submitTask(message) {
+async function submitTask() {
     setAddTaskDueText(); // Datum-Inputs synchronisieren
     const currentId = currentTask['id'];
     if (currentId == -1) { // falls neuer Task angelegt wurde
