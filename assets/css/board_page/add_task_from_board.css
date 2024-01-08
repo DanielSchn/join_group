@@ -19,6 +19,7 @@
     :root {
         --fontSizeHuge: 54px;
         --fontSizeNormal: 18px;
+        --absoluteContentWidth: calc(1116px - var(--sidePadding) * 2);
     }
 
     .addTaskFormMain {
