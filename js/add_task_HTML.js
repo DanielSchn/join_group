@@ -11,7 +11,7 @@ function contactAssignedHTML(contact, id) {
         ${contactAssignedIconHTML(contact)}
         <div class="contactDetails">
             <div>${contact['name']}`;
-    if (id.includes(userId)) {
+    if (id == 'assignedContact' + userId) {
         html += ' (You)';
     }
     html += /* html */`</div>

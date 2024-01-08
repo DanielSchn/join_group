@@ -1,18 +1,22 @@
 /**
  * Kontakt in sichtbarer Assigned-Liste markieren oder Markierung entfernen
- * @param {element} checkbox - ID/Element der Checkbox 
+ * @param {element} checkbox - ID/Element der Checkbox ('assignedContact' + jeweilige User-ID)
  */
 function toggleAssigned(checkbox) {
-    let id = checkbox.id; // erhalte ID-String
-    id = id.charAt(id.length - 1); // ID-Zahl ist letztes Zeichen aus String
-    id = parseInt(id); // zu Zahl umwandeln
+    let id = checkbox.id;
+    id = id.substring(15);
+    id = parseInt(id);
     toggleAssignedArray(id);
     toggleAssignedStyle(checkbox);
 }
 
 
+/**
+ * 
+ * @param {element} checkbox - ID/Element der Checkbox 
+ */
 function toggleAssignedStyle(checkbox) {
-    const li = checkbox.parentNode.parentNode; // selektiere li-Element aus Checkbox-ID
+    const li = checkbox.parentNode.parentNode;
     li.classList.toggle('addTaskAssignedChecked');
     toggleCheckbox(checkbox);
     renderAddTaskAssignedIcons();
@@ -26,10 +30,10 @@ function toggleAssignedStyle(checkbox) {
 function toggleAssignedArray(id) {
     let assigned = currentTask['assignedTo'];
     if (assigned.includes(id)) {
-        const index = assigned.indexOf(id); // bestimme Index der Kontakt-ID im assignedTo-Array
-        assigned.splice(index, 1); // ID entfernen
+        const index = assigned.indexOf(id);
+        assigned.splice(index, 1);
     } else {
-        assigned.push(id); // ID hinzufügen
+        assigned.push(id);
     }
 }
 
@@ -56,7 +60,7 @@ function focusAddTaskDue() {
     unfocusAll();
     container.style.borderColor = 'var(--lightBlue1)';
     addTaskDueText.focus();
-    document.addEventListener("mousedown", unfocusAddTaskDue); // reagiert auf Clicks abseits des Containers
+    document.addEventListener("mousedown", unfocusAddTaskDue);
 }
 
 
@@ -79,8 +83,8 @@ function autofillAddTaskDueText(e) {
     const value = addTaskDueText.value;
     const key = e.key;
     const length = value.length;
-    if (key != ('Backspace' || '/') && (length == 2 || length == 5)) { // an den passenden Stellen...
-        addTaskDueText.value = value + '/'; // ...automatisch '/' einfügen
+    if (key != ('Backspace' || '/') && (length == 2 || length == 5)) {
+        addTaskDueText.value = value + '/';
     }
 }
 
@@ -91,11 +95,11 @@ function autofillAddTaskDueText(e) {
 function checkAddTaskDueText() {
     const value = addTaskDueText.value;
     let transformedValue = transformDate(value);
-    if (value.length == 10 && isDateValid(transformedValue)) { // falls gültiges Datum
+    if (value.length == 10 && isDateValid(transformedValue)) {
         addTaskDue.value = transformedValue;
     } else {
         if (value.length > 10) {
-            addTaskDueText.value = value.substring(0, 10); // Text auf 10 Zeichen begrenzen
+            addTaskDueText.value = value.substring(0, 10);
         }
     }
 }
@@ -120,13 +124,13 @@ function transformDate(ddmmyyyy) {
  * @returns TRUE, falls Datum gültig, FALSE, falls ungültig
  */
 function isDateValid(yyyymmdd) {
-    let date = new Date(yyyymmdd); // Date-Objekt erzeugen
+    let date = new Date(yyyymmdd);
     let year = date.getFullYear();
     let month = date.getMonth() + 1;
     let day = date.getDate();
-    return date !== 'Invalid Date' && // keine unerlaubten Zeichen
-        Date.now() <= Date.parse(date) && // Datum liegt nicht in Vergangenheit
-        monthContainsDay(day, month, year) // Tag in Monat enthalten
+    return date !== 'Invalid Date' &&
+        Date.now() <= Date.parse(date) &&
+        monthContainsDay(day, month, year);
 }
 
 
@@ -138,10 +142,10 @@ function isDateValid(yyyymmdd) {
  * @returns TRUE, falls Tag in Monat enthalten, FALSE, falls nicht
  */
 function monthContainsDay(day, month, year) {
-    return (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) || // Monate mit 31 Tagen
-        ((month == 4 || month == 6 || month == 9 || month == 11) && day <= 30) || // in bestimmten Monaten kleiner gleich 30
-        (month == 2 && year % 4 == 0 && day <= 29) || // in Schaltjahren im Februar kleiner gleich 29
-        (month == 2 && year % 4 !== 0 && day <= 28); // außerhalb von Schaltjahren kleiner gleich 28
+    return (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) ||
+        ((month == 4 || month == 6 || month == 9 || month == 11) && day <= 30) ||
+        (month == 2 && year % 4 == 0 && day <= 29) ||
+        (month == 2 && year % 4 != 0 && day <= 28);
 }
 
 
@@ -153,9 +157,9 @@ function setAddTaskDueText() {
         const date = new Date(addTaskDue.value);
         const yyyy = date.getFullYear();
         let mm = date.getMonth() + 1;
-        mm = ('0' + mm).slice(-2); // füge vorher 0 hinzu (als String)
+        mm = ('0' + mm).slice(-2);
         let dd = date.getDate();
-        dd = ('0' + dd).slice(-2); // füge vorher 0 hinzu (als String)
+        dd = ('0' + dd).slice(-2);
         addTaskDueText.value = dd + '/' + mm + '/' + yyyy;
     } else {
         addTaskDueText.value = '';
@@ -181,11 +185,11 @@ function handlePrioBtnClick(btnNumber) {
  */
 function stylePrioBtn(index, btnNumber) {
     const btn = document.getElementById('addTaskPrio' + index);
-    if (index == btnNumber) { // falls dieser Button geklickt wurde
+    if (index == btnNumber) {
         btn.classList.toggle('addTaskPrioBtnsSelected');
         btn.classList.toggle(`addTaskPrio${index}Selected`);
         togglePrioBtnImg(index);
-    } else { // CSS-Klassen entfernen, falls anderer Button geklickt wurde
+    } else {
         unselectPrioBtn(index);
     }
 }
@@ -239,9 +243,9 @@ function getTaskPrioId() {
     const prioBtn = document.getElementsByClassName('addTaskPrioBtnsSelected');
     let prioId = 0;
     if (prioBtn.length > 0) {
-        prioId = prioBtn[0].id; // String
-        prioId = prioId.slice(-1); // erhalte letztes Zeichen
-        prioId = parseInt(prioId); // Umwandlung in Zahl
+        prioId = prioBtn[0].id;
+        prioId = prioId.slice(-1);
+        prioId = parseInt(prioId);
     }
     return prioId;
 }
@@ -270,9 +274,9 @@ function focusSubtask() {
     addSubtask.focus();
     btnsPassive.style.display = 'none';
     btnsActive.style.display = '';
-    document.addEventListener("click", unfocusSubtask); // reagiert auf Clicks abseits des Containers
+    document.addEventListener("click", unfocusSubtask);
     submitOnEnter = false;
-    document.addEventListener("keydown", createSubtaskOnEnter); // Subtasks mit Enter hinzufügen
+    document.addEventListener("keydown", createSubtaskOnEnter);
 }
 
 
@@ -324,11 +328,11 @@ function createSubtask() {
  */
 function subtasksScrollBottom() {
     let element = window;
-    const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0); // Viewport-Breite (Cross-Browser-Lösung)
-    if (vw > 1050) { // falls zweispaltiges Layout
-        element = subtasksList.parentNode.parentNode; // scrollen in Subtasks-Liste statt im Fenster
+    const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+    if (vw > 1050) {
+        element = subtasksList.parentNode.parentNode;
     }
-    element.scrollTo(0, document.body.scrollHeight); // nach unten scrollen
+    element.scrollTo(0, document.body.scrollHeight);
 }
 
 
@@ -358,7 +362,7 @@ function editSubtask(index) {
     const length = input.value.length;
     input.focus();
     input.setSelectionRange(length, length);
-    document.addEventListener("click", renderAddTaskSubtasks); // Klick neben Liste wird als Abbruch der Bearbeitung gewertet
+    document.addEventListener("click", renderAddTaskSubtasks);
 }
 
 

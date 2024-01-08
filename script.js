@@ -401,6 +401,6 @@ function showActiveSiteMobile() {
 function hideSideMenuBox() {
   if (document.getElementById('uniquePrivacyOrLegal')) {
     document.getElementById('menuBox').style.display = 'none';
-    document.getElementById('mobileSideMenuBox').style.display = 'none';
+    document.getElementById('mobileMenuBox').style.display = 'none';
   }
 }

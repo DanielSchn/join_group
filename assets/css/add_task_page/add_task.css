@@ -354,7 +354,7 @@ button.addTaskPrio3Selected {
 
 #toastMsg {
     position: fixed;
-    z-index: 4;
+    z-index: 200;
     bottom: -74px;
     left: calc(var(--menuBarWidth)/2 + 50vw - 163px - var(--sidePadding)/4);
     width: 326px;
@@ -366,7 +366,7 @@ button.addTaskPrio3Selected {
     gap: 16px;
     justify-content: center;
     align-items: center;
-    transition: 125ms ease-in-out;
+    transition: bottom 125ms ease-in-out;
 }
 
 #toastMsg img {

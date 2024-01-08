@@ -11,6 +11,10 @@
     height: calc(100% - var(--top) * 2);
 }
 
+.contactDetails {
+    font-size: var(--fontSizeSmall);
+}
+
 @media (max-width: 1360px) {
     :root {
         --fontSizeHuge: 54px;
@@ -50,6 +54,12 @@
     #toastMsg {
         left: calc(var(--menuBarWidth)/2 + 50vw - 156px);
         width: 312px;
+    }
+}
+
+@media (max-width: 1236px) {
+    :root {
+        --absoluteContentWidth: calc(100vw - (60px + var(--sidePadding)) * 2);
     }
 }
 

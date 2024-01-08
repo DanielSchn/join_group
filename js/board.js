@@ -155,7 +155,7 @@ function showTaskCard(element, id) {
 function generateTaskCard(task, id) {
     return `    
     <div id="taskContainer" onclick="closeTask()">
-        <div id="taskCard2" class="taskCard showTaskCard textOverflow" onclick="event.stopPropagation()">
+        <div id="taskCard2" class="taskCard showTaskCard textOverflow" onclick="preventClosing()">
             <div class="taskCardHeader">
                 <div class="taskCardCategory${task['category']}" id="taskCardCategory${id}">
                     ${categories[task['category']]}
@@ -238,16 +238,6 @@ function generateSubtask(element) {
         subtasksDiv.classList.add("d-none");
     } else {
         updateProgressBar(subtasks, doneSubtasksDiv, progressbarFillerDiv);
-        let trueCount = 0;
-        for (let i = 0; i < subtasks.length; i++) {
-            if (subtasks[i]['status'] == 'done') {
-                trueCount++;
-            }
-        }
-        let barWidth = 130;
-        doneSubtasksDiv.innerHTML = `${trueCount}`;
-        let fillWidth = barWidth * (trueCount / subtasks.length);
-        progressbarFillerDiv.style.width = `${fillWidth}px`;
     }
 }
 
@@ -454,3 +444,4 @@ document.addEventListener("DOMContentLoaded", function () {
         searchTask();
     });
 });
+
