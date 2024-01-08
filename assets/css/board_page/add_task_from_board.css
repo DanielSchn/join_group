@@ -19,7 +19,6 @@
     :root {
         --fontSizeHuge: 54px;
         --fontSizeNormal: 18px;
-        --absoluteContentWidth: calc(1116px - var(--sidePadding) * 2);
     }
 
     .addTaskFormMain {
@@ -55,6 +54,12 @@
     #toastMsg {
         left: calc(var(--menuBarWidth)/2 + 50vw - 156px);
         width: 312px;
+    }
+}
+
+@media (max-width: 1236px) {
+    :root {
+        --absoluteContentWidth: calc(100vw - (60px + var(--sidePadding)) * 2);
     }
 }
 
