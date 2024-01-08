@@ -59,7 +59,7 @@ function initCurrentTask() {
 
 
 /**
- * ersetze Default-Resize Handle durch Custom-Resize Handle (nur Webkit-Browser)
+ * Custom-Icons für Webkit-Browser
  */
 function styleWebkit() {
     if('WebkitAppearance' in document.documentElement.style) {
