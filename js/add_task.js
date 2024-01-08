@@ -74,6 +74,8 @@ async function deleteTask(id) { // Überprüfung: Stimmen nach Ausführung alle 
         task['id'] = i;
     }
     await setItem('tasks', JSON.stringify(tasks));
+    showToastMsg('Task deleted');
+    goToBoard();
 }
 
 
@@ -201,7 +203,7 @@ async function submitTask() {
     submitBtn.disabled = true;
     await setItem('tasks', JSON.stringify(tasks));
     submitBtn.disabled = false;
-    showTaskAddedMsg();
+    showToastMsg('Task added to board');
     goToBoard();
 }
 
@@ -225,9 +227,12 @@ function generateTaskJSON(id) {
 /**
  * Message "Task added to board" in Viewport bewegen
  */
-function showTaskAddedMsg() {
-    const message = document.getElementById('toastMsg');
-    message.style.transform = 'translateY(-50vh)';
+function showToastMsg(message) {
+    const container = document.getElementById('toastMsg');
+    container.innerHTML = '';
+    container.innerHTML += message;
+    container.innerHTML += '<img src="./assets/img/menu_icons/board.svg" alt="icon">';
+    container.style.bottom = '50vh';
 }
 
 
