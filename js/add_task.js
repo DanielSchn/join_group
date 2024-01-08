@@ -34,7 +34,7 @@ function isAddTaskFromBoard() {
 async function initAddTask(status) {
     initCurrentTask();
     await init();
-    styleDescriptionResizeHandle();
+    styleWebkit();
     submitBtn.disabled = true;
     renderAddTaskForm();
     document.addEventListener('keydown', submitFormOnEnter);
@@ -61,9 +61,10 @@ function initCurrentTask() {
 /**
  * ersetze Default-Resize Handle durch Custom-Resize Handle (nur Webkit-Browser)
  */
-function styleDescriptionResizeHandle() {
+function styleWebkit() {
     if('WebkitAppearance' in document.documentElement.style) {
         addTaskDescription.classList.add('customResizeHandle');
+        addTaskDue.classList.add('customDatePicker');
     }
 }
 

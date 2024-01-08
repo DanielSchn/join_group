@@ -56,7 +56,7 @@ textarea:focus,
     background-position: calc(100% - 5px) calc(100% - 4px);
 }
 
-input[type="date"]::-webkit-calendar-picker-indicator {
+.customDatePicker::-webkit-calendar-picker-indicator {
     width: 24px;
     height: 24px;
     padding: 0;
@@ -67,12 +67,12 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     transition: 75ms ease-in-out;
 }
 
-input[type="date"]::-webkit-calendar-picker-indicator:hover {
+.customDatePicker::-webkit-calendar-picker-indicator:hover {
     background-image: url(../img/calendar_icon_hover.svg);
     transition: 75ms ease-in-out;
 }
 
-input[type="date"]::-webkit-calendar-picker-indicator:active {
+.customDatePicker::-webkit-calendar-picker-indicator:active {
     background-image: url(../img/calendar_icon_active.svg);
     transition: 75ms ease-in-out;
 }
