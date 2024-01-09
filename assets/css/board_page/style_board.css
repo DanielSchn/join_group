@@ -564,6 +564,7 @@
 
 .editTask {
   display: flex;
+  width: 70px ;
   align-items: center;
 }
 
