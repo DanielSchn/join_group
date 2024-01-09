@@ -2,12 +2,19 @@ let currentDraggedElement;
 let prevent = false; // dient zur Ermittlung, ob Add Task-Karte bei Klick geschlossen werden soll
 let filteredTasks = [];
 
+
+/**
+ *  Initializes Board Page
+ */
 async function loadData() {
     await init();
     filteredTasks = tasks;
     updateHTML();
 }
 
+/**
+ * Updates the rendered HTML 
+ */
 async function updateHTML() {
     updateToDo();
     updateInProgress();
@@ -15,11 +22,17 @@ async function updateHTML() {
     updateDone();
 }
 
+/**
+ * Saves Changes of tasks-Array in remote storage
+ */
 async function saveChanges() {
     await setItem('tasks', JSON.stringify(tasks));
     filteredTasks = tasks;
 }
 
+/**
+ * Finds all tasks in "tasks"-Array with status = 'toDo' and calls functions to render these tasks
+ */
 function updateToDo() {
     let todo = filteredTasks.filter(t => t['status'] == 'toDo');
     let status = 'to do';
@@ -38,6 +51,9 @@ function updateToDo() {
         }
 }
 
+/**
+ * Finds all tasks in "tasks"-Array with status = 'inProgress' and calls functions to render these tasks
+ */
 function updateInProgress() {
     let inprogress = filteredTasks.filter(t => t['status'] == 'inProgress')
     let status = 'in progress';
@@ -56,6 +72,9 @@ function updateInProgress() {
         }
 }
 
+/**
+ * Finds all tasks in "tasks"-Array with status = 'awaitFeedback' and calls functions to render these tasks
+ */
 function updateAwaitFeedback() {
     let feedback = filteredTasks.filter(t => t['status'] == 'awaitFeedback');
     let status = 'await Feedback';
@@ -75,6 +94,9 @@ function updateAwaitFeedback() {
 
 }
 
+/**
+ * Finds all tasks in "tasks"-Array with status = 'done' and calls functions to render these tasks
+ */
 function updateDone() {
     let done = filteredTasks.filter(t => t['status'] == 'done')
     let status = 'done';
@@ -93,56 +115,21 @@ function updateDone() {
         }
 }
 
+/**
+ * Saves id of the Element that should be dragged
+ * 
+ * @param {number} id - ID of dragged Element
+ */
 function startDragging(id) {
     currentDraggedElement = id;
 }
 
-function generateTask(element) {
-    return `
-    <div draggable="true" ondragstart="startDragging(${element['id']})" onclick="showTaskCard(tasks[${element['id']}], ${element['id']})" class="todo">
-        <div class=headerTaskCard>
-        <div class="toDoCategory${element['category']}"> ${categories[element['category']]} </div>
-        <div class=changeStatusMobile> 
-            <div onclick="statusUp(${element['id']}); event.stopPropagation()"> <img  src="./assets/img/arrow-left-line.svg" class="statusUp" alt="up"> </div>
-            <div onclick="statusDown(${element['id']}); event.stopPropagation()"> <img src="./assets/img/arrow-left-line.svg" class="statusDown" alt="down"> </div>
-        </div>
-        </div>
-        <div>
-            <div class="toDoTitle"> ${element['title']} </div>
-            <div class="toDoDescription"> ${element['description']}</div>
-        </div>
-
-        <div class="toDoSubtasks" id="toDoSubtasks${element['id']}">
-            <div class="toDoSubtasksProgress">
-                <div class="toDoSubtasksProgressFiller" id= "toDoSubtasksProgressFiller${element['id']}">
-                </div>
-            </div>  closeTask();
-            <div class="toDoSubtasksCount">
-                <div id="toDoSubtasksDone${element["id"]}">  
-                </div>
-                /${element['subtasks'].length} Subtask
-            </div>
-            
-        </div>
-
-        <div class="toDoBottom">
-            <div class="toDoAssignedContainer" id="taskCardAssignedTo${element['id']}">  </div>
-            <div class="toDoPrio">
-                <img src="./assets/img/prio_icons/task_prio_${element['prio']}.svg" alt="icon">
-            </div>
-        </div>
-    </div>`
-
-}
-
-
-function generateNoTask(status) {
-    return `
-            <div class="noTaskContainer">
-                <div class="noTask">No tasks ${status}</div>
-            </div>`
-}
-
+/**
+ * Renders the Task Card
+ * 
+ * @param {object} element - one task-object in "tasks"-Array
+ * @param {number} id - ID of this task in "tasks"-Array
+ */
 function showTaskCard(element, id) {
 
     let taskCard = document.getElementById('taskCard');
@@ -158,112 +145,60 @@ function showTaskCard(element, id) {
     taskContainer.classList.add('slideIn');
 }
 
-function generateTaskCard(task, id) {
-    return `    
-    <div id="taskContainer" onclick="closeTask()">
-        <div id="taskCard2" class="taskCard showTaskCard textOverflow" onclick="preventClosing()">
-            <div class="taskCardHeader">
-                <div class="taskCardCategory${task['category']}" id="taskCardCategory${id}">
-                    ${categories[task['category']]}
-                </div>
-                <div onclick="closeTask()">
-                    <img class="closeTask" src="./assets/img/cancel.svg" alt="Close">
-                </div>
-            </div>
-            <div class="taskTitle"> ${task["title"]}</div>
-            <div class="taskDescription"> ${task["description"]}</div>
-            <div class="taskDate">
-              <div class="taskSection">Due date:</div>
-              <div id="taskDate${id}">${task["due"]}</div>
-            </div>
-            <div class="taskPrio" id="">
-                <div class="taskSection">Priority:</div>
-                <div class="taskPrioText" id="taskPrio${id}">${task["prio"]}</div>
-                <div class="taskPrioIcon" >
-                <img src="./assets/img/prio_icons/task_prio_${task['prio']}.svg" alt="icon">
-                </div>
-            </div>
 
-            <div class="taskAssignedContainer">
-                <div class="taskSection">Assigned To:</div>
-                <div class="taskAssigned" id="taskAssigned${id}"></div>
-            </div>
-
-
-            <div class="subtasksContainerBoard">
-                <div class="taskSection">Subtasks:</div>
-                <div class="subtasks" id="subtasks"></div>
-            </div>
-            <div class="taskFooter">
-
-                <div onclick="deleteTask(${id})" class="deleteTask">
-                    <img class="deleteTaskImg" src="./assets/img/delete.svg" alt="">
-                    <div>Delete</div>
-                </div>
-                <div class="taskFooterSeparator"></div>
-                <div onclick="editTask(${id})" class="editTask"> <img class="editTaskImg" src="./assets/img/edit.svg">
-                    <div>Edit</div>
-                </div>
-            </div>
-
-        </div>
-    </div>`
-}
-
-
+/**
+ * The allowDrop function is called to prevent the default browser behavior during drag-and-drop operations and enable dropping.
+ * 
+ * @param {event} ev
+ */
 function allowDrop(ev) {
     ev.preventDefault();
 }
 
+/**
+ * This function changes the status of a Task when dropped in new column
+ * 
+ * @param {string} status - Status of Task
+ */
 function moveTo(status) {
     tasks[currentDraggedElement]['status'] = status;
     saveChanges();
     updateHTML();
 }
 
+/**
+ * Highlights the column if task is dragged over
+ * 
+ * @param {string} id - Id of highlightet column
+ */
 function highlight(id) {
     document.getElementById(id).classList.add('dragAreaHighlight');
 }
 
+/**
+ * Removes the highlight when task is not longer dragged over the column
+ * 
+ * @param {string} id - Id of highlightet column
+ */
 function removeHighlight(id) {
     document.getElementById(id).classList.remove('dragAreaHighlight');
 }
 
+/**
+ * Moves task to previous column
+ *  
+ * @param {number} id - ID of current Task
+ */
 function statusUp(id){
     let newStatus 
     let status = tasks[id]['status'];
-
-    if (status === 'toDo'){
-        newStatus = 'toDo';
+    if (status === 'toDo'){newStatus = 'toDo';
     }
-    else if (status === 'inProgress'){
-        newStatus = 'toDo';
+    else if (status === 'inProgress'){newStatus = 'toDo';
     }
-    else if (status === 'awaitFeedback'){
-        newStatus = 'inProgress';
+    else if (status === 'awaitFeedback'){newStatus = 'inProgress';
     }
-    else if (status === 'done' ){
-        newStatus = 'awaitFeedback'}
-
-    tasks[id]['status'] = newStatus;
-    saveChanges();
-    updateHTML();
-}
-
-function statusDown(id){
-    let newStatus
-    let status = tasks[id]['status'];
-
-    if (status === 'done'){
-        newStatus = 'done';
-    }
-    else if (status === 'awaitFeedback'){
-        newStatus = 'done';
-    }
-    else if (status === 'inProgress'){
-        newStatus = 'awaitFeedback';
-    }
-    else if (status === 'toDo'){newStatus = 'inProgress';}
+    else if (status === 'done' ){newStatus = 'awaitFeedback'}
 
     tasks[id]['status'] = newStatus;
     saveChanges();
@@ -271,10 +206,31 @@ function statusDown(id){
 }
 
 /**
- * generate the html with the subtask of the selected task
+ * Moves task to next column
+ *  
+ * @param {number} id - ID of current Task
+ */
+function statusDown(id){
+    let newStatus
+    let status = tasks[id]['status'];
+    if (status === 'done'){newStatus = 'done';
+    }
+    else if (status === 'awaitFeedback'){newStatus = 'done';
+    }
+    else if (status === 'inProgress'){newStatus = 'awaitFeedback';
+    }
+    else if (status === 'toDo'){newStatus = 'inProgress';}
+    
+    tasks[id]['status'] = newStatus;
+    saveChanges();
+    updateHTML();
+}
+
+/**
+ * Generates the subtask section of a task
+ * 
  * @param {object} element - Selected Task Object
  */
-
 function generateSubtask(element) {
     let subtasks = element['subtasks'];
     let subtasksDiv = document.getElementById(`toDoSubtasks${element['id']}`);
@@ -288,6 +244,11 @@ function generateSubtask(element) {
     }
 }
 
+/**
+ * Renders Icons for assigned Users of a task in board view
+ * 
+ * @param {object} element - Selected Task Object
+ */
 function renderBoardAssignedIcons(element) {
     let assigned = element['assignedTo'];
     let assignedDiv = document.getElementById(`taskCardAssignedTo${element['id']}`);
@@ -301,6 +262,12 @@ function renderBoardAssignedIcons(element) {
     }
 }
 
+/**
+ * Renders assigned Users of a task in task card view
+ * 
+ * @param {object} element - Selected task object
+ * @param {number} id - ID of selected task
+ */
 function renderCardAssigned(element, id) {
     let assignedDiv = document.getElementById(`taskAssigned${id}`)
     let assigned = element['assignedTo'];
@@ -308,25 +275,17 @@ function renderCardAssigned(element, id) {
     assignedDiv.innerHTML = '';
     for (let i = 0; i < assigned.length; i++) {
         let contact = users[i];
-
         assignedDiv.innerHTML += taskCardAssignedHTML(contact, id);
-
     }
 }
 
-function taskCardAssignedHTML(contact, id) {
-
-    let html = '';
-    html += `
-    <div class="d-flex">
-        ${contactAssignedIconHTML(contact)}
-        <div class="contactDetails">
-            <div>${contact['name']}     
-    </div>`
-    return html;
-}
-
-
+/**
+ * Updates the subtask-progress in board view
+ * 
+ * @param {array} subtasks - array with all subtasks of a task
+ * @param {string} doneSubtasksDiv - ID of div 
+ * @param {string} progressbarFillerDiv - ID of div
+ */
 function updateProgressBar(subtasks, doneSubtasksDiv, progressbarFillerDiv) {
     let trueCount = 0;
     for (let i = 0; i < subtasks.length; i++) {
@@ -339,7 +298,6 @@ function updateProgressBar(subtasks, doneSubtasksDiv, progressbarFillerDiv) {
     let fillWidth = barWidth * (trueCount / subtasks.length);
     progressbarFillerDiv.style.width = `${fillWidth}px`;
 }
-
 
 /**
  * Task-Karte entfernen
@@ -354,7 +312,6 @@ function closeTask() {
     prevent = false;
 }
 
-
 /**
  * verhindern, dass Task-Karte entfernt wird
  */
@@ -363,35 +320,24 @@ function preventClosing() {
     // per Bubbling wird anschließend closeTask() aufgerufen und setzt im selben Klick wieder prevent = false
 }
 
-
+/**
+ * Renders Prio of a task after turning the first letter to a capital
+ * 
+ * @param {object} task - task object
+ * @param {number} id - id of task
+ */
 function renderCardPrio(task, id) {
     prio = task["prio"];
     result = prio.charAt(0).toUpperCase() + prio.slice(1);
     document.getElementById(`taskPrio${id}`).innerHTML = `${result}`;
 }
 
-function renderCardSubtasks(task, id) {
-    let subtasks = document.getElementById('subtasks');
-    subtasks.innerHTML = '';
-
-    if (task.subtasks.length === 0) {
-        subtasks.innerHTML = '<div class="taskCardSubtask"><span>No subtask createt</span></div>'
-    } else
-        for (let i = 0; i < task.subtasks.length; i++) {
-            subtasks.innerHTML += `
-            <div class="taskCardSubtask">
-              <input
-                id="checkboxSubtask${i}"
-                type="checkbox"
-                onclick="updateSubtask(${id}, ${i})"
-                ${task.subtasks[i]['status'] === "done" ? "checked" : ""} 
-              />
-              <p onclick="updateSubtask(${id}, ${i})">${task.subtasks[i]['title']}</p>
-            </div>`
-        }
-
-}
-
+/**
+ * updates subtasks in tasks-array after checking/unchecking box
+ * 
+ * @param {number} id - id of task
+ * @param {number} i - index of subtask
+ */
 function updateSubtask(id, i) {
     if (tasks[id].subtasks[i].status == 'toDo') {
         tasks[id].subtasks[i].status = 'done';
@@ -399,12 +345,15 @@ function updateSubtask(id, i) {
     else {
         tasks[id].subtasks[i].status = 'toDo';
     }
-
     renderCardSubtasks(tasks[id], id);
     saveChanges();
 }
 
-
+/**
+ * Opens add task view
+ * 
+ * @param {string} status - status the new task will get
+ */
 async function addTaskBtn(status) {
     if (window.innerWidth > 700) {
         await showAddTaskCard(status);
@@ -412,7 +361,6 @@ async function addTaskBtn(status) {
         window.location.href = './add_task.html';
     }
 }
-
 
 /**
  * Add Task-Overlay aufrufen
@@ -428,22 +376,11 @@ async function showAddTaskCard(status) {
     changeClearBtn(); // Clear-Button durch Cancel-Button ersetzen
 }
 
-
-function generateAddTaskTemplateAll() {
-    let html = `<div id="taskContainer" class="addTaskCardContainer" onclick="closeTask()">`;
-    html += generateAddTaskTemplateInner();
-    html += `</div>`;
-    return html
-}
-
-
-function generateAddTaskTemplateInner() {
-    return /* html */ `
-        <div class="addTaskCard" onclick="preventClosing()" style="display: none" id="addTaskCard" w3-include-html="assets/templates/add_task_template.html"></div>
-    `;
-}
-
-
+/**
+ * Renders edit task card
+ * 
+ * @param {string} status - status of task
+ */
 async function showEditTaskCard(status) {
     addTask = document.getElementById('taskCard2');
     addTask.innerHTML = '';
@@ -453,23 +390,12 @@ async function showEditTaskCard(status) {
     taskCard.classList.add('editTaskCard');
     await initAddTask(status);
     taskCard.style.display = '';
-    hideClearBtn(); // Clear-Button verstecken   
+    hideClearBtn();  
 }
 
-
-function generateEditTaskHeader() {
-    return /* html */ `
-        <div class="taskCardHeader">
-            <div></div>
-            <div onclick="closeTask()">
-                <img class="closeTask" src="./assets/img/cancel.svg" alt="Close">
-            </div>
-        </div>
-    `;
-}
-
-
-
+/**
+ * Filters all tasks live depending on user input
+ */
 function searchTask() {
     let search = document.getElementById('findTask').value.toLowerCase();
     filteredTasks = [];
@@ -482,7 +408,6 @@ function searchTask() {
     }
     updateHTML();
 }
-
 
 document.addEventListener("DOMContentLoaded", function () {
     updateHTML();
