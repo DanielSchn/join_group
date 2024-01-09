@@ -62,7 +62,7 @@ function initCurrentTask() {
  * Custom-Icons für Webkit-Browser
  */
 function styleWebkit() {
-    if('WebkitAppearance' in document.documentElement.style) {
+    if('WebkitAppearance' in document.documentElement.style && !('MozAppearance' in document.documentElement.style)) {
         addTaskDescription.classList.add('customResizeHandle');
         addTaskDue.classList.add('customDatePicker');
     }
