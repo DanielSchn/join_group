@@ -103,8 +103,8 @@ function generateTask(element) {
         <div class=headerTaskCard>
         <div class="toDoCategory${element['category']}"> ${categories[element['category']]} </div>
         <div class=changeStatusMobile> 
-            <div onclick="statusUp(${element['id']})"> <img src="./assets/img/arrow-left-line.svg" class="statusUp" alt="up"> </div>
-            <div onclick="statusDown(${element['id']})"> <img src="./assets/img/arrow-left-line.svg" class="statusDown" alt="down"> </div>
+            <div onclick="statusUp(${element['id']}); event.stopPropagation()"> <img  src="./assets/img/arrow-left-line.svg" class="statusUp" alt="up"> </div>
+            <div onclick="statusDown(${element['id']}); event.stopPropagation()"> <img src="./assets/img/arrow-left-line.svg" class="statusDown" alt="down"> </div>
         </div>
         </div>
         <div>
@@ -116,7 +116,7 @@ function generateTask(element) {
             <div class="toDoSubtasksProgress">
                 <div class="toDoSubtasksProgressFiller" id= "toDoSubtasksProgressFiller${element['id']}">
                 </div>
-            </div>
+            </div>  closeTask();
             <div class="toDoSubtasksCount">
                 <div id="toDoSubtasksDone${element["id"]}">  
                 </div>
@@ -144,6 +144,7 @@ function generateNoTask(status) {
 }
 
 function showTaskCard(element, id) {
+
     let taskCard = document.getElementById('taskCard');
 
     taskCard.innerHTML = generateTaskCard(element, id);
@@ -229,7 +230,6 @@ function removeHighlight(id) {
 }
 
 function statusUp(id){
-    closeTask();
     let newStatus 
     let status = tasks[id]['status'];
 
@@ -246,6 +246,8 @@ function statusUp(id){
         newStatus = 'awaitFeedback'}
 
     tasks[id]['status'] = newStatus;
+    saveChanges();
+    updateHTML();
 }
 
 function statusDown(id){
@@ -265,6 +267,7 @@ function statusDown(id){
 
     tasks[id]['status'] = newStatus;
     saveChanges();
+    updateHTML();
 }
 
 /**

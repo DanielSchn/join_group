@@ -630,6 +630,7 @@
 
 .headerTaskCard{
   display: flex;
+  height: 28px;
   width: 220px;
   justify-content: space-between;
   text-align: center;
