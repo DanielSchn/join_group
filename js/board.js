@@ -100,8 +100,13 @@ function startDragging(id) {
 function generateTask(element) {
     return `
     <div draggable="true" ondragstart="startDragging(${element['id']})" onclick="showTaskCard(tasks[${element['id']}], ${element['id']})" class="todo">
+        <div class=headerTaskCard>
         <div class="toDoCategory${element['category']}"> ${categories[element['category']]} </div>
-
+        <div class=changeStatusMobile> 
+            <div onclick="statusUp(${element['id']})"> <img src="./assets/img/arrow-left-line.svg" class="statusUp" alt="up"> </div>
+            <div onclick="statusDown(${element['id']})"> <img src="./assets/img/arrow-left-line.svg" class="statusDown" alt="down"> </div>
+        </div>
+        </div>
         <div>
             <div class="toDoTitle"> ${element['title']} </div>
             <div class="toDoDescription"> ${element['description']}</div>
@@ -221,6 +226,45 @@ function highlight(id) {
 
 function removeHighlight(id) {
     document.getElementById(id).classList.remove('dragAreaHighlight');
+}
+
+function statusUp(id){
+    closeTask();
+    let newStatus 
+    let status = tasks[id]['status'];
+
+    if (status === 'toDo'){
+        newStatus = 'toDo';
+    }
+    else if (status === 'inProgress'){
+        newStatus = 'toDo';
+    }
+    else if (status === 'awaitFeedback'){
+        newStatus = 'inProgress';
+    }
+    else if (status === 'done' ){
+        newStatus = 'awaitFeedback'}
+
+    tasks[id]['status'] = newStatus;
+}
+
+function statusDown(id){
+    let newStatus
+    let status = tasks[id]['status'];
+
+    if (status === 'done'){
+        newStatus = 'done';
+    }
+    else if (status === 'awaitFeedback'){
+        newStatus = 'done';
+    }
+    else if (status === 'inProgress'){
+        newStatus = 'awaitFeedback';
+    }
+    else if (status === 'toDo'){newStatus = 'inProgress';}
+
+    tasks[id]['status'] = newStatus;
+    saveChanges();
 }
 
 /**
