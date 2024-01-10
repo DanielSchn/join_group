@@ -15,6 +15,7 @@
     <script src="./js/add_task_HTML.js" defer></script>
     <script src="./js/register.js" defer></script>
     <script src="./js/add_new_contact.js" defer></script>
+    <script src="./js/edit_contact.js" defer></script>
     <script src="./js/render_contact_list.js" defer></script>
     <script src="./js/render_add_contact_card.js" defer></script>
     <script src="./js/render_contact_card.js" defer></script>
@@ -92,27 +93,6 @@
     </div>
     <div id="editCardBg" class="cardBg d-none" onclick="editCardWindow(false)"></div>
     <div id="editCardOne" class="editContactCard d-none slideOut">
-        <div class="leftBlueSection">
-            <img class="closeAddCard d-none" onclick="editCardWindow(false)" src="./assets/img/contacts/close.svg">
-            <img class="smallCardLogo" src="./assets/img/contacts/logo_card.svg">
-            <div class="cardTitle">
-                <span class="addCardHeadline">Edit Contact</span>
-                <div id="devider3"></div>
-            </div>
-        </div>
-        <div class="cardInitials_bg">
-            <span class="cardIntitials">TW</span>
-        </div>
-        <img class="closeAddContact_btn" src="./assets/img/contacts/close.svg" onclick="editCardWindow(false)">
-        <form>
-            <div class="addContactInputContainer"><input class="addContactInput" type="text" placeholder="Name"><img src="./assets/img/contacts/person.svg"></div>
-            <div class="addContactInputContainer"><input class="addContactInput" type="email" placeholder="Email"><img src="./assets/img/contacts/mail.svg"></div>
-            <div class="addContactInputContainer"><input class="addContactInput" type="tel" placeholder="Phone"><img src="./assets/img/contacts/call.svg"></div>
-            <div class="addSummit_btn">
-                <button class="addContactCancel_btn">Cancel<img src="./assets/img/contacts/iconoir_cancel.svg"></button>
-                <button class="addContactCreate_btn">Save<img src="./assets/img/contacts/check.svg"></button>
-            </div>
-        </form>
     </div>
 
      <!-- Mobile -->

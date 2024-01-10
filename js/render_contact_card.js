@@ -74,21 +74,22 @@ function closeMobileContactCardWindow() {
 }
 
 
-function editContactInformation() {
+function editContactInformation(index) {
   showContactCard();
-  editCardWindow(true);
+  editCardWindow(true, index);
 }
 
 
 /**
  * Opens and Closes the Window for editing the Conatct informations (Desktop and Mobiledevices)
  */
-function editCardWindow(isGoingToOpen) {
+function editCardWindow(isGoingToOpen, index) {
 
     if(isGoingToOpen === true) {
         openEditCard();
         openMobileEditCard();
         toggleEditCard();
+        renderEditForm(index);
     } else {
         closeEditCard();
         closeMobileEditCard();
