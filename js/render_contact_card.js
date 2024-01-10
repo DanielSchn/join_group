@@ -1,9 +1,11 @@
 /**
  * Opens the Conatct Overview Windows (Desktop and Mobiledevices)
  */
-function showContactCard() {
+function showContactCard(index) {
   openContactCardWindow();
   openMobileContactCardWindow();
+  renderContactCradInformation(index);
+  renderMobileContactCradInformation(index);
 }
 
 

@@ -12,242 +12,85 @@ function alphabetContainerHtml(letter) {
 }
 
 
-function renderContactList() {
-    let contacts = document.getElementById('myContacts');
+function renderContactCradInformation(index) {
+    const contactDetails = document.getElementById('mainContactDetails');
+    contactDetails.innerHTML = '';
 
-    contacts.innerHTML = /* html */`
-    <div id="A" class="d-none">
-        <div class="alphabetContainer">
-            <div class="alphabet">
-                <span id="letter" class="alphabetLetter">A</span>
-            </div>
-            <div class="seperator"><img src="./assets/img/seperator.svg"></div>
-        </div>
-    </div>
+    let intitial = getInitials(contacts[index]['name']);
 
-    <div id="B" class="d-none">
-        <div class="alphabetContainer">
-            <div class="alphabet">
-                <span id="letter" class="alphabetLetter">B</span>
+    contactDetails.innerHTML = /* html */`
+        <div id="mainContactContainer_1">
+            <div class="initialCircle">
+                <span id="user_initials_0" class="userNameFontSize">${intitial}</span>
             </div>
-            <div class="seperator"><img src="./assets/img/seperator.svg"></div>
+            <div id="contactSetup">
+                <div id="user_name_0" class="userNameFontSize responsiveUserNameFontSize">${contacts[index]['name']}</div>
+                <div id="settings">
+                    <div id="edit" class="settingsBtn" onclick="editCardWindow(true)">
+                        <img id="edit_img" src="./assets/img/contacts/edit_pen.svg"><span>Edit</span> <!-- Hover CSS / JS ?? -->
+                    </div>
+                    <div id="remove" class="settingsBtn">
+                        <img id="remove_img" src="./assets/img/contacts/delete_bin.svg"><span>Delete</span> <!-- Hover CSS / JS ?? -->
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
 
-    <div id="C" class="d-none">
-        <div class="alphabetContainer">
-            <div class="alphabet">
-                <span id="letter" class="alphabetLetter">C</span>
-            </div>
-            <div class="seperator"><img src="./assets/img/seperator.svg"></div>
+        <div id="mainContactContainer_2">
+            Contact Information
         </div>
-    </div>
 
-    <div id="D" class="d-none">
-        <div class="alphabetContainer">
-            <div class="alphabet">
-                <span id="letter" class="alphabetLetter">D</span>
+        <div id="mainContactContainer_3">
+            <div id="mailContainer">
+                <span class="contactDataTitle">Mail</span>
+                <span class="contactData link">${contacts[index]['mail']}</span>
             </div>
-            <div class="seperator"><img src="./assets/img/seperator.svg"></div>
+            <div id="phoneContainer">
+                <span class="contactDataTitle">Phone</span>
+                <span class="contactData">${contacts[index]['number']}</span>
+            </div>
         </div>
-    </div>
+    `;
+}
 
-    <div id="E" class="d-none">
-        <div class="alphabetContainer">
-            <div class="alphabet">
-                <span id="letter" class="alphabetLetter">E</span>
-            </div>
-            <div class="seperator"><img src="./assets/img/seperator.svg"></div>
-        </div>
-    </div>
 
-    <div id="F" class="d-none">
-        <div class="alphabetContainer">
-            <div class="alphabet">
-                <span id="letter" class="alphabetLetter">F</span>
-            </div>
-            <div class="seperator"><img src="./assets/img/seperator.svg"></div>
-        </div>
-    </div>
+function renderMobileContactCradInformation(index) {
+    const contactDetails = document.getElementById('mobileMainContactDetails');
+    contactDetails.innerHTML = '';
 
-    <div id="G" class="d-none">
-        <div class="alphabetContainer">
-            <div class="alphabet">
-                <span id="letter" class="alphabetLetter">G</span>
-            </div>
-            <div class="seperator"><img src="./assets/img/seperator.svg"></div>
-        </div>
-    </div>
+    let intitial = getInitials(contacts[index]['name']);
 
-    <div id="H" class="d-none">
-        <div class="alphabetContainer">
-            <div class="alphabet">
-                <span id="letter" class="alphabetLetter">H</span>
+    contactDetails.innerHTML = /* html */`
+        <div id="mobileMainContactContainer_1">
+                <div class="initialCircle">
+                    <span id="user_initials_0" class="userNameFontSize">${intitial}</span>
+                </div>
+                <div id="contactSetup">
+                    <div id="user_name_0" class="userNameFontSize responsiveUserNameFontSize">${contacts[index]['name']}</div>
+                    <div id="settings">
+                        <div id="edit" class="settingsBtn" onclick="editContactInformation()">
+                            <img id="edit_img" src="./assets/img/contacts/edit_pen.svg"><span>Edit</span> <!-- Hover CSS / JS ?? -->
+                        </div>
+                        <div id="remove" class="settingsBtn">
+                            <img id="remove_img" src="./assets/img/contacts/delete_bin.svg"><span>Delete</span> <!-- Hover CSS / JS ?? -->
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="seperator"><img src="./assets/img/seperator.svg"></div>
-        </div>
-    </div>
 
-    <div id="I" class="d-none">
-        <div class="alphabetContainer">
-            <div class="alphabet">
-                <span id="letter" class="alphabetLetter">I</span>
+            <div id="mainContactContainer_2">
+                Contact Information
             </div>
-            <div class="seperator"><img src="./assets/img/seperator.svg"></div>
-        </div>
-    </div>
 
-    <div id="J" class="d-none">
-        <div class="alphabetContainer">
-            <div class="alphabet">
-                <span id="letter" class="alphabetLetter">J</span>
+            <div id="mainContactContainer_3">
+                <div id="mailContainer">
+                    <span class="contactDataTitle">Mail</span>
+                    <span class="contactData link">${contacts[index]['mail']}</span>
+                </div>
+                <div id="phoneContainer">
+                    <span class="contactDataTitle">Phone</span>
+                    <span class="contactData">${contacts[index]['number']}</span>
+                </div>
             </div>
-            <div class="seperator"><img src="./assets/img/seperator.svg"></div>
-        </div>
-    </div>
-
-    <div id="K" class="d-none">
-        <div class="alphabetContainer">
-            <div class="alphabet">
-                <span id="letter" class="alphabetLetter">K</span>
-            </div>
-            <div class="seperator"><img src="./assets/img/seperator.svg"></div>
-        </div>
-    </div>
-
-    <div id="L" class="d-none">
-        <div class="alphabetContainer">
-            <div class="alphabet">
-                <span id="letter" class="alphabetLetter">L</span>
-            </div>
-            <div class="seperator"><img src="./assets/img/seperator.svg"></div>
-        </div>
-    </div>
-
-    <div id="M" class="d-none">
-        <div class="alphabetContainer">
-            <div class="alphabet">
-                <span id="letter" class="alphabetLetter">M</span>
-            </div>
-            <div class="seperator"><img src="./assets/img/seperator.svg"></div>
-        </div>
-    </div>
-
-    <div id="N" class="d-none">
-        <div class="alphabetContainer">
-            <div class="alphabet">
-                <span id="letter" class="alphabetLetter">N</span>
-            </div>
-            <div class="seperator"><img src="./assets/img/seperator.svg"></div>
-        </div>
-    </div>
-
-    <div id="O" class="d-none">
-        <div class="alphabetContainer">
-            <div class="alphabet">
-                <span id="letter" class="alphabetLetter">O</span>
-            </div>
-            <div class="seperator"><img src="./assets/img/seperator.svg"></div>
-        </div>
-    </div>
-
-    <div id="P" class="d-none">
-        <div class="alphabetContainer">
-            <div class="alphabet">
-                <span id="letter" class="alphabetLetter">P</span>
-            </div>
-            <div class="seperator"><img src="./assets/img/seperator.svg"></div>
-        </div>
-    </div>
-
-    <div id="Q" class="d-none">
-        <div class="alphabetContainer">
-            <div class="alphabet">
-                <span id="letter" class="alphabetLetter">Q</span>
-            </div>
-            <div class="seperator"><img src="./assets/img/seperator.svg"></div>
-        </div>
-    </div>
-
-    <div id="R" class="d-none">
-        <div class="alphabetContainer">
-            <div class="alphabet">
-                <span id="letter" class="alphabetLetter">R</span>
-            </div>
-            <div class="seperator"><img src="./assets/img/seperator.svg"></div>
-        </div>
-    </div>
-    
-    <div id="S" class="d-none">
-        <div class="alphabetContainer">
-            <div class="alphabet">
-                <span id="letter" class="alphabetLetter">S</span>
-            </div>
-            <div class="seperator"><img src="./assets/img/seperator.svg"></div>
-        </div>
-    </div>
-
-    <div id="T" class="d-none">
-        <div class="alphabetContainer">
-            <div class="alphabet">
-                <span id="letter" class="alphabetLetter">T</span>
-            </div>
-            <div class="seperator"><img src="./assets/img/seperator.svg"></div>
-        </div>
-    </div>
-
-    <div id="U" class="d-none">
-        <div class="alphabetContainer">
-            <div class="alphabet">
-                <span id="letter" class="alphabetLetter">U</span>
-            </div>
-            <div class="seperator"><img src="./assets/img/seperator.svg"></div>
-        </div>
-    </div>
-
-    <div id="V" class="d-none">
-        <div class="alphabetContainer">
-            <div class="alphabet">
-                <span id="letter" class="alphabetLetter">V</span>
-            </div>
-            <div class="seperator"><img src="./assets/img/seperator.svg"></div>
-        </div>
-    </div>
-
-    <div id="W" class="d-none">
-        <div class="alphabetContainer">
-            <div class="alphabet">
-                <span id="letter" class="alphabetLetter">W</span>
-            </div>
-            <div class="seperator"><img src="./assets/img/seperator.svg"></div>
-        </div>
-    </div>
-
-    <div id="X" class="d-none">
-        <div class="alphabetContainer">
-            <div class="alphabet">
-                <span id="letter" class="alphabetLetter">X</span>
-            </div>
-            <div class="seperator"><img src="./assets/img/seperator.svg"></div>
-        </div>
-    </div>
-
-    <div id="Y" class="d-none">
-        <div class="alphabetContainer">
-            <div class="alphabet">
-                <span id="letter" class="alphabetLetter">Y</span>
-            </div>
-            <div class="seperator"><img src="./assets/img/seperator.svg"></div>
-        </div>
-    </div>
-
-    <div id="Z" class="d-none">
-        <div class="alphabetContainer">
-            <div class="alphabet">
-                <span id="letter" class="alphabetLetter">Z</span>
-            </div>
-            <div class="seperator"><img src="./assets/img/seperator.svg"></div>
-        </div>
-    </div>
     `;
 }
