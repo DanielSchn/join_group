@@ -1,5 +1,12 @@
 let contacts = [];
 
+async function initContacts() {
+    await init();
+    await loadContacts();
+    renderContacts();
+}
+
+
 function saveNewContact() {
     addNewContact();
     loadContacts();

@@ -35,9 +35,7 @@ async function init() {
   hideSideMenuBox();
   await loadUsers();
   await loadTasks();
-  await loadContacts();
   renderLogo();
-  renderContacts();
   showActiveSite();
 }
 
