@@ -8,7 +8,7 @@ function alphabetContainerHtml(letter) {
     <div id="${letter}">
         <div class="alphabetContainer">
             <div class="alphabet">
-                <span id="letter" class="alphabetLetter">${letter}</span>
+                <span class="alphabetLetter">${letter}</span>
             </div>
             <div class="seperator"><img src="./assets/img/seperator.svg"></div>
         </div>

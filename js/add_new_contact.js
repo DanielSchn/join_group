@@ -67,7 +67,7 @@ function renderContacts() {
     let contactContainer = document.getElementById('myContactsContainer');
     contactContainer.innerHTML = '';
     for (let i = 0; i < contacts.length; i++) {
-        const contact = contacts[i];
+        let contact = contacts[i];
         if (!document.getElementById(contact['letter'])) {
             contactContainer.innerHTML += alphabetContainerHtml(contact['letter']);
         }
