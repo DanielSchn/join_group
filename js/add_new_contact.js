@@ -27,6 +27,7 @@ async function addNewContact() {
         'mail': contactEmail.value,
         'number': contactNumber.value,
         'letter': firstLetter,
+        'color': getRandomUserIconColor()
     }
 
     contacts.push(newContact);
@@ -63,32 +64,14 @@ function sortContacts() {
 
 
 function renderContacts() {
-
     let contactContainer = document.getElementById('myContactsContainer');
     contactContainer.innerHTML = '';
-
     for (let i = 0; i < contacts.length; i++) {
         const contact = contacts[i];
-
         if (!document.getElementById(contact['letter'])) {
             contactContainer.innerHTML += alphabetContainerHtml(contact['letter']);
         }
-
-        let intitial = getInitials(contact['name']);
-
         let letterContainer = document.getElementById(contact['letter']);
-        letterContainer.innerHTML += /* html */`
-            <div class="myContacts">
-                <div class="contactCard" onclick="showContactCard(${i})">
-                    <div class="contactInitials">
-                        <span id="user_name">${intitial}</span>
-                    </div>
-                    <div class="contactDetails">
-                        <div><span id="name" class="contactName">${contact['name']}</span></div>
-                        <div><span id="mail" class="mailColor">${contact['mail']}</span></div>
-                    </div>
-                </div>
-            </div>
-        `;
+        letterContainer.innerHTML += contactCardHTML(contact, i);
     }
 }
