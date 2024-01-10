@@ -111,6 +111,13 @@
     }
   }
 
+  @media (min-width: 595px){
+    .changeStatusMobile{
+      display: none;
+    }
+
+  }
+
   @media (max-width: 400px){
     #findTask {
       width: 150px;

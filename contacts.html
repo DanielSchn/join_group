@@ -14,8 +14,9 @@
     <script src="./js/add_task_fields.js" defer></script>
     <script src="./js/add_task_HTML.js" defer></script>
     <script src="./js/register.js" defer></script>
-    <script src="./js/add_contact_card.js" defer></script>
     <script src="./js/add_new_contact.js" defer></script>
+    <script src="./js/render_contact_list.js" defer></script>
+    <script src="./js/render_add_contact_card.js" defer></script>
     <script src="./js/render_contact_card.js" defer></script>
     <script src="./js/render_summary.js" defer></script>
     <script src="./js/storage.js" defer></script>
@@ -29,97 +30,17 @@
         <div id="addContactBtnContainer"><button id="addContactBtn" onclick="openAddCardOne()">Add new contact<img src="./assets/img/menu_icons/person_add.svg"></button></div>
 
         <div id="myContactsContainer">
-            <div class="alphabetContainer">
-            <div class="alphabet">
-                <span id="letter" class="alphabetLetter">A</span>
-            </div>
-            <div class="seperator"><img src="./assets/img/seperator.svg"></div>
-            </div>
-            <div class="myContacts">
-            <div id="myContacts_A">
-                <div class="contactCard" onclick="showContactCard()">
-                    <div class="contactInitials">
-                        <span id="user_name">AM</span>
+            <div id="chapter_A">
+
+                <div class="alphabetContainer">
+                    <div class="alphabet">
+                        <span id="letter" class="alphabetLetter">A</span>
                     </div>
-                    <div class="contactDetails">
-                        <div><span id="name" class="contactName">Anton</span><span id="lastname"> Mayer</span></div>
-                        <div><span id="mail" class="mailColor">Antom@gmail.de</span></div>
-                    </div>
+                    <div class="seperator"><img src="./assets/img/seperator.svg"></div>
                 </div>
 
-                <div class="contactCard">
-                    <div class="contactInitials">
-                        <span id="user_name">AM</span>
-                    </div>
-                    <div class="contactDetails">
-                        <div><span id="name" class="contactName">Anton</span><span id="lastname"> Mayer</span></div>
-                        <div><span id="mail" class="mailColor">Antom@gmail.de</span></div>
-                    </div>
-                </div>
-
-                <div class="contactCard">
-                    <div class="contactInitials">
-                        <span id="user_name">AM</span>
-                    </div>
-                    <div class="contactDetails">
-                        <div><span id="name" class="contactName">Anton</span><span id="lastname"> Mayer</span></div>
-                        <div><span id="mail" class="mailColor">Antom@gmail.de</span></div>
-                    </div>
-                </div>
-            </div>
-            </div>
-
-            <div class="alphabetContainer">
-            <div class="alphabet">
-                <span id="letter" class="alphabetLetter">B</span>
-            </div>
-            <div class="seperator"><img src="./assets/img/seperator.svg"></div>
-            </div>
-
-            <div class="myContacts">
-                <div id="myContacts_A">
-                    <div class="contactCard">
-                        <div class="contactInitials">
-                            <span id="user_name">AM</span>
-                        </div>
-                        <div class="contactDetails">
-                            <div><span id="name" class="contactName">Anton</span><span id="lastname"> Mayer</span></div>
-                            <div><span id="mail" class="mailColor">Antom@gmail.de</span></div>
-                        </div>
-                    </div>
-    
-                    <div class="contactCard">
-                        <div class="contactInitials">
-                            <span id="user_name">AM</span>
-                        </div>
-                        <div class="contactDetails">
-                            <div><span id="name" class="contactName">Anton</span><span id="lastname"> Mayer</span></div>
-                            <div><span id="mail" class="mailColor">Antom@gmail.de</span></div>
-                        </div>
-                    </div>
-    
-                    <div class="contactCard">
-                        <div class="contactInitials">
-                            <span id="user_name">AM</span>
-                        </div>
-                        <div class="contactDetails">
-                            <div><span id="name" class="contactName">Anton</span><span id="lastname"> Mayer</span></div>
-                            <div><span id="mail" class="mailColor">Antom@gmail.de</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="alphabetContainer">
-                <div class="alphabet">
-                    <span id="letter" class="alphabetLetter">C</span>
-                </div>
-                <div class="seperator"><img src="./assets/img/seperator.svg"></div>
-                </div>
-    
                 <div class="myContacts">
-                    <div id="myContacts_A">
-                        <div class="contactCard">
+                        <div class="contactCard" onclick="showContactCard()">
                             <div class="contactInitials">
                                 <span id="user_name">AM</span>
                             </div>
@@ -128,29 +49,9 @@
                                 <div><span id="mail" class="mailColor">Antom@gmail.de</span></div>
                             </div>
                         </div>
-        
-                        <div class="contactCard">
-                            <div class="contactInitials">
-                                <span id="user_name">AM</span>
-                            </div>
-                            <div class="contactDetails">
-                                <div><span id="name" class="contactName">Anton</span><span id="lastname"> Mayer</span></div>
-                                <div><span id="mail" class="mailColor">Antom@gmail.de</span></div>
-                            </div>
-                        </div>
-        
-                        <div class="contactCard">
-                            <div class="contactInitials">
-                                <span id="user_name">AM</span>
-                            </div>
-                            <div class="contactDetails">
-                                <div><span id="name" class="contactName">Anton</span><span id="lastname"> Mayer</span></div>
-                                <div><span id="mail" class="mailColor">Antom@gmail.de</span></div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
 
+            </div>
         </div>
     </section>
 
@@ -172,7 +73,7 @@
             <span class="cardIntitials">TW</span>
         </div>
         <img class="closeAddContact_btn" src="./assets/img/contacts/close.svg" onclick="closeAddCardOne()">
-        <form onsubmit="addNewContact(); return false">
+        <form onsubmit="saveNewContact(); return false">
             <div class="addContactInputContainer"><input id="contactName" class="addContactInput" type="text" placeholder="Name"><img src="./assets/img/contacts/person.svg"></div>
             <div class="addContactInputContainer"><input id="contactEmail" class="addContactInput" type="email" placeholder="Email"><img src="./assets/img/contacts/mail.svg"></div>
             <div class="addContactInputContainer"><input id="contactNumber" class="addContactInput" type="tel" placeholder="Phone"><img src="./assets/img/contacts/call.svg"></div>

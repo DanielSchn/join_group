@@ -24,8 +24,10 @@
     <script src="./js/render_summary.js" defer></script>
     <script src="./js/storage.js" defer></script>
     <script src="./js/board.js" defer></script>
+    <script src="./js/board_HTML.js" defer></script>
+    <script id="DragDropTouch" src="./js/drag_drop_touch.js"></script>
 </head>
-  
+
 <body onload="loadData()">
     <header w3-include-html="assets/templates/header_template.html"></header>
 
@@ -58,8 +60,6 @@
                         <img src="assets/img/menu_icons/add.svg" alt="" />
                     </button>
                 </div>
-
-
             </div>
         </div>
     </section>
@@ -99,7 +99,6 @@
                 ondragover="allowDrop(event); highlight('awaitFeedback')">
             </div>
         </div>
-
 
         <div class="sectionDragArea">
             <div class="headerDragArea">

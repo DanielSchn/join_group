@@ -190,10 +190,6 @@
 }
 
 
-
-
-/* still checking */
-
 .todo {
   width: 212px;
   padding: 16px;
@@ -568,6 +564,7 @@
 
 .editTask {
   display: flex;
+  width: 70px ;
   align-items: center;
 }
 
@@ -631,3 +628,24 @@
     white-space: normal;
 }
 
+.headerTaskCard{
+  display: flex;
+  height: 28px;
+  width: 220px;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.changeStatusMobile{
+  display: flex;
+  flex-direction: row;
+}
+
+.statusUp{
+  transform: scale(0.7) rotate(90deg);
+  
+}
+
+.statusDown{
+  transform: rotate(270deg) scale(0.7);
+}

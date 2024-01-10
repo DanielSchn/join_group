@@ -1,3 +1,6 @@
+/**
+ * Opens the add contact window
+ */
 function openAddCardOne() {
     const addNewContactBg = document.getElementById('addContactBg');
     const addNewContactBtn = document.getElementById('addCardOne');
@@ -9,6 +12,9 @@ function openAddCardOne() {
 }
 
 
+/**
+ * Closes the add contact window
+ */
 function closeAddCardOne() {
     const addNewContactBg = document.getElementById('addContactBg');
     const addNewContactBtn = document.getElementById('addCardOne');
@@ -21,6 +27,9 @@ function closeAddCardOne() {
 }
 
 
+/**
+ * Prevents to start the slide-out animation
+ */
 function stopAnimation() {
     const animation = document.getElementById('addCardOne');
     function onAnimationEnd() {
@@ -31,6 +40,9 @@ function stopAnimation() {
   }
 
 
+/**
+ * Closes the add contact window on desktop
+ */
   function hideAddContactCardOne() {
     const addNewContactBg = document.getElementById('addContactBg');
     const addNewContactBtn = document.getElementById('addCardOne');
@@ -42,8 +54,11 @@ function stopAnimation() {
   }
   
 
-  /* Mobile Add Contact Card */
+/* Mobile Add Contact Card */
 
+/**
+ * Opens the add contact window on mobiledevices
+ */
   function openMobileAddContactCardOne() {
     const mobileAddCardBg = document.getElementById('mobileAddCardBg');
     const mobileAddCardOne = document.getElementById('mobileAddCardOne');
@@ -55,6 +70,9 @@ function stopAnimation() {
 }
 
 
+/**
+ * Closes the add contact window on mobiledevices
+ */
 function closeMobileAddContactCardOne() {
     const mobileAddCardBg = document.getElementById('mobileAddCardBg');
     const mobileAddCardOne = document.getElementById('mobileAddCardOne');
@@ -67,6 +85,9 @@ function closeMobileAddContactCardOne() {
 }
 
 
+/**
+ * Prevents to start the slide-out animation on mobiledevices
+ */
 function stopMobileAnimation() {
     const animation = document.getElementById('mobileAddCardOne');
     function onMobileAnimationEnd() {
@@ -77,6 +98,9 @@ function stopMobileAnimation() {
   }
 
 
+/**
+ * Closes the add contact window on mobiledevices
+ */
   function hideMobileAddContactCardOne() {
     const mobileAddCardBg = document.getElementById('mobileAddCardBg');
     const mobileAddCardOne = document.getElementById('mobileAddCardOne');

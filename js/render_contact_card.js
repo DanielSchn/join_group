@@ -1,5 +1,5 @@
 /**
- * Render quantity for Deadline on summary
+ * Opens the Conatct Overview Windows (Desktop and Mobiledevices)
  */
 function showContactCard() {
   openContactCardWindow();
@@ -7,6 +7,9 @@ function showContactCard() {
 }
 
 
+/**
+ * Opens just the Conatct Overview Windows for Desktop
+ */
 function openContactCardWindow() {
     const contactContainer = document.getElementById('mainContactDetails');
     const responsiveBackgroundSetup = document.getElementById('responsivContactCardBg');
@@ -20,6 +23,9 @@ function openContactCardWindow() {
 }
 
 
+/**
+ * Opens just the Conatct Overview Windows for Mobiledevices
+ */
 function openMobileContactCardWindow() {
     const mainContactContainer = document.getElementById('mobileMainContactContainer');
     const setting_btn = document.getElementById('contactOptions');
@@ -29,12 +35,18 @@ function openMobileContactCardWindow() {
 }
 
 
+/**
+ * Closes the Conatct Overview Windows (Desktop and Mobiledevices)
+ */
 function hideContactCard() {
   closeContactCardWindow();
   closeMobileContactCardWindow();
 }
 
 
+/**
+ * Closess just the Conatct Overview Windows for Desktop
+ */
 function closeContactCardWindow() {
   const contactContainer = document.getElementById('mainContactDetails');
   const responsiveBackgroundSetup = document.getElementById('responsivContactCardBg');
@@ -48,6 +60,9 @@ function closeContactCardWindow() {
 }
 
 
+/**
+ * Closes just the Conatct Overview Windows for Mobiledevices
+ */
 function closeMobileContactCardWindow() {
   const mainContactContainer = document.getElementById('mobileMainContactContainer');
   const setting_btn = document.getElementById('contactOptions');
@@ -63,6 +78,9 @@ function editContactInformation() {
 }
 
 
+/**
+ * Opens and Closes the Window for editing the Conatct informations (Desktop and Mobiledevices)
+ */
 function editCardWindow(isGoingToOpen) {
 
     if(isGoingToOpen === true) {
@@ -78,6 +96,9 @@ function editCardWindow(isGoingToOpen) {
 }
 
 
+/**
+ * Opens and handels the responsive behavior of the Contact Card and Backround
+ */
 function showResponsiveEditCardWindow() {
   const contact = document.getElementById('mainContactDetails');
   const responsiveBackgroundSetup = document.getElementById('responsivContactCardBg');
@@ -87,6 +108,9 @@ function showResponsiveEditCardWindow() {
 }
 
 
+/**
+ * Opens a Popup on the lower right creen (on mobiledivices) when clicking the edit-button
+ */
 function showSettings() {
   const setting_btn = document.getElementById('contactOptions');
   const setting_bg_layer = document.getElementById('contactOptionBgLayer');
@@ -98,6 +122,9 @@ function showSettings() {
 }
 
 
+/**
+ * Closes the Popup when clicking outside of the edit-button
+ */
 function hideSettings() {
   const setting_btn = document.getElementById('contactOptions');
   const setting_bg_layer = document.getElementById('contactOptionBgLayer');
@@ -108,6 +135,9 @@ function hideSettings() {
 }
 
 
+/**
+ * Opens and closes the main elements of the edit contact card window
+ */
 function toggleEditCard() {
   const closeEditCardWindow = document.getElementById('closeEditCardWindow');
   const addContactCard = document.getElementById('editCardOne');
@@ -123,12 +153,19 @@ function toggleEditCard() {
   closeWindowLayer.classList.toggle('d-none');
 }
 
+
+/**
+ * Just opens the edit card window
+ */
 function openEditCard() {
     const editCard = document.getElementById('editCardOne');
     editCard.classList.remove('d-none');
 }
 
 
+/**
+ * Removes the slide-in animation of the contact card 
+ */
 function closeEditCard() {
     const mainContactCard = document.getElementById('mainContactContainer');
     const contactContainer = document.getElementById('mainContactDetails');
@@ -139,6 +176,10 @@ function closeEditCard() {
 }
 
 
+/**
+ * Stops the slide-out animation of the edit contact card window (stays outside of the screen)
+ * Hides the edit contact card window on mobiledevices
+ */
 function stopEditCardAnimation() {
   const animation = document.getElementById('editCardOne');
   function onAnimationEnd() {
@@ -150,6 +191,9 @@ function stopEditCardAnimation() {
 }
 
 
+/**
+ * Hides the edit contact card window on sreccns bigger than mobiledevices
+ */
 function hideEditContactCardOne() {
   const addContact_bg = document.getElementById('editCardBg');
   const addContactCard = document.getElementById('editCardOne');
@@ -159,7 +203,7 @@ function hideEditContactCardOne() {
   addContact_bg.classList.add('d-none');
   addContactCard.classList.remove('slideIn');
   addContactCard.classList.add('slideOut');
-  mainContactCard.classList.remove('mobile-d-none');
+  mainContactCard.classList.add('mobile-d-none');
   mainContactCard.classList.remove('responsiveSlideIn');
   contactContainer.classList.remove('slideIn');
 }
@@ -167,6 +211,9 @@ function hideEditContactCardOne() {
 
 /* Mobile Edit Contact Card */
 
+/**
+ * Just opens the edit card window on mobiledivices
+ */
 function openMobileEditCard() {
   const mobileAddCardBg = document.getElementById('mobileEditCardBg');
   const mobileAddCardOne = document.getElementById('mobileEditCardOne');
@@ -178,6 +225,9 @@ function openMobileEditCard() {
 }
 
 
+/**
+ * Removes the slide-in animation of the contact card and removes the background blure of it
+ */
 function closeMobileEditCard() {
   const mobileAddCardBg = document.getElementById('mobileEditCardBg');
   const mobileAddCardOne = document.getElementById('mobileEditCardOne');
@@ -189,6 +239,10 @@ function closeMobileEditCard() {
 }
 
 
+/**
+ * Stops the slide-out animation of the edit contact card window (stays outside of the screen)
+ * Hides the edit contact card window on Desktop
+ */
 function stopMobileEditCardAnimation() {
   const animation = document.getElementById('mobileEditCardOne');
   function onAnimationEnd() {
@@ -200,6 +254,9 @@ function stopMobileEditCardAnimation() {
 }
 
 
+/**
+ * Hides the edit contact card window on mobiledevices
+ */
 function hideMobileEditContactCardOne() {
   const mobileAddCardBg = document.getElementById('mobileEditCardBg');
   const mobileAddCardOne = document.getElementById('mobileEditCardOne');

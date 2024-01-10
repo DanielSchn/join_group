@@ -38,7 +38,12 @@ async function loadUsers() {
  */
 function setInitialsAtRegistration() {
     let loadedUserName = signUpName.value;
-    const nameParts = loadedUserName.split(' ');
+    return getInitials(loadedUserName);
+  }
+
+
+  function getInitials(name) {
+    const nameParts = name.split(' ');
     const capitalized = nameParts.map(part => part.charAt(0).toUpperCase()).join('');
     return capitalized;
   }
