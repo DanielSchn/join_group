@@ -16,17 +16,17 @@ function renderContactCradInformation(index) {
     const contactDetails = document.getElementById('mainContactDetails');
     contactDetails.innerHTML = '';
 
-    let intitial = getInitials(contacts[index]['name']);
+    let initial = getInitials(contacts[index]['name']);
 
     contactDetails.innerHTML = /* html */`
         <div id="mainContactContainer_1">
             <div class="initialCircle">
-                <span id="user_initials_0" class="userNameFontSize">${intitial}</span>
+                <span id="user_initials_0" class="userNameFontSize">${initial}</span>
             </div>
             <div id="contactSetup">
                 <div id="user_name_0" class="userNameFontSize responsiveUserNameFontSize">${contacts[index]['name']}</div>
                 <div id="settings">
-                    <div id="edit" class="settingsBtn" onclick="editCardWindow(true)">
+                    <div id="edit" class="settingsBtn" onclick="editCardWindow(true, ${index})">
                         <img id="edit_img" src="./assets/img/contacts/edit_pen.svg"><span>Edit</span> <!-- Hover CSS / JS ?? -->
                     </div>
                     <div id="remove" class="settingsBtn">
@@ -68,7 +68,7 @@ function renderMobileContactCradInformation(index) {
                 <div id="contactSetup">
                     <div id="user_name_0" class="userNameFontSize responsiveUserNameFontSize">${contacts[index]['name']}</div>
                     <div id="settings">
-                        <div id="edit" class="settingsBtn" onclick="editContactInformation()">
+                        <div id="edit" class="settingsBtn" onclick="editContactInformation(${index})">
                             <img id="edit_img" src="./assets/img/contacts/edit_pen.svg"><span>Edit</span> <!-- Hover CSS / JS ?? -->
                         </div>
                         <div id="remove" class="settingsBtn">
