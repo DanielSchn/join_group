@@ -1,9 +1,14 @@
+/**
+ * This function generates the container for all contact cards with the same starting letter 
+ * @param {string} letter - One-char-string designating the alphabetical letter 
+ * @returns HTML string containing the letter container
+ */
 function alphabetContainerHtml(letter) {
     return /* html */`
     <div id="${letter}">
         <div class="alphabetContainer">
             <div class="alphabet">
-                <span id="letter" class="alphabetLetter">${letter}</span>
+                <span class="alphabetLetter">${letter}</span>
             </div>
             <div class="seperator"><img src="./assets/img/seperator.svg"></div>
         </div>
@@ -16,17 +21,17 @@ function renderContactCradInformation(index) {
     const contactDetails = document.getElementById('mainContactDetails');
     contactDetails.innerHTML = '';
 
-    let initial = getInitials(contacts[index]['name']);
+    let intitial = getInitials(contacts[index]['name']);
 
     contactDetails.innerHTML = /* html */`
         <div id="mainContactContainer_1">
             <div class="initialCircle">
-                <span id="user_initials_0" class="userNameFontSize">${initial}</span>
+                <span id="user_initials_0" class="userNameFontSize">${intitial}</span>
             </div>
             <div id="contactSetup">
                 <div id="user_name_0" class="userNameFontSize responsiveUserNameFontSize">${contacts[index]['name']}</div>
                 <div id="settings">
-                    <div id="edit" class="settingsBtn" onclick="editCardWindow(true, ${index})">
+                    <div id="edit" class="settingsBtn" onclick="editCardWindow(true)">
                         <img id="edit_img" src="./assets/img/contacts/edit_pen.svg"><span>Edit</span> <!-- Hover CSS / JS ?? -->
                     </div>
                     <div id="remove" class="settingsBtn">
@@ -68,7 +73,7 @@ function renderMobileContactCradInformation(index) {
                 <div id="contactSetup">
                     <div id="user_name_0" class="userNameFontSize responsiveUserNameFontSize">${contacts[index]['name']}</div>
                     <div id="settings">
-                        <div id="edit" class="settingsBtn" onclick="editContactInformation(${index})">
+                        <div id="edit" class="settingsBtn" onclick="editContactInformation()">
                             <img id="edit_img" src="./assets/img/contacts/edit_pen.svg"><span>Edit</span> <!-- Hover CSS / JS ?? -->
                         </div>
                         <div id="remove" class="settingsBtn">
@@ -77,20 +82,5 @@ function renderMobileContactCradInformation(index) {
                     </div>
                 </div>
             </div>
-
-            <div id="mainContactContainer_2">
-                Contact Information
-            </div>
-
-            <div id="mainContactContainer_3">
-                <div id="mailContainer">
-                    <span class="contactDataTitle">Mail</span>
-                    <span class="contactData link">${contacts[index]['mail']}</span>
-                </div>
-                <div id="phoneContainer">
-                    <span class="contactDataTitle">Phone</span>
-                    <span class="contactData">${contacts[index]['number']}</span>
-                </div>
-            </div>
-    `;
+        </div>`;
 }

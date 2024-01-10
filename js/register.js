@@ -77,8 +77,13 @@ function collectDataForRegistration() {
         email: signUpEmail.value,
         password: signUpPassword.value,
         initials: setInitialsAtRegistration(),
-        color: userIconColor[Math.floor(Math.random() * userIconColor.length)],
+        color: getRandomUserIconColor() 
     });
+}
+
+
+function getRandomUserIconColor() {
+    return userIconColor[Math.floor(Math.random() * userIconColor.length)];
 }
 
 
