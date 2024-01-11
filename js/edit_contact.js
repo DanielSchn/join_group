@@ -30,6 +30,16 @@ function renderEditForm(index) {
             </div>
         </form>
     `;
+
+    prefillEditForm(index);
+}
+
+
+function prefillEditForm(index) {
+    const contact = contacts[index];
+    editName.value = contact['name'];
+    editMail.value = contact['mail'];
+    editNumber.value = contact['number'];
 }
 
 
