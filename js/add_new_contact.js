@@ -1,5 +1,6 @@
 let contacts = [];
 
+
 async function initContacts() {
     await init();
     await loadContacts();
