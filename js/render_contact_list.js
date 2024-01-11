@@ -54,10 +54,10 @@ function renderContactCradInformation(index) {
             <div id="contactSetup">
                 <div id="user_name_0" class="userNameFontSize responsiveUserNameFontSize">${contacts[index]['name']}</div>
                 <div id="settings">
-                    <div id="edit" class="settingsBtn" onclick="editCardWindow(true)">
+                    <div id="edit" class="settingsBtn" onclick="editCardWindow(true, ${index})">
                         <img id="edit_img" src="./assets/img/contacts/edit_pen.svg"><span>Edit</span> <!-- Hover CSS / JS ?? -->
                     </div>
-                    <div id="remove" class="settingsBtn">
+                    <div id="remove" class="settingsBtn" onclick="deleteContact(${index})">
                         <img id="remove_img" src="./assets/img/contacts/delete_bin.svg"><span>Delete</span> <!-- Hover CSS / JS ?? -->
                     </div>
                 </div>
@@ -89,19 +89,60 @@ function renderMobileContactCradInformation(index) {
     let intitial = getInitials(contacts[index]['name']);
 
     contactDetails.innerHTML = /* html */`
-        <div id="mobileMainContactContainer_1">
+        <div id="backArrowContainer" onclick="hideContactCard()">
+            <img id="backArrow" src="./assets/img/contacts/arrow-left-line.svg">
+        </div>
+
+        <div id="mobileContactTitleBar">
+            <div id="closeWindowBtn" onclick="hideContactCard()">
+                <img src="./assets/img/contacts/close.svg">
+            </div>
+            <div id="contactsTitle">Contacts</div>
+            <div id="devider"></div>
+            <div id="contactsSlogan">Better with a Team</div>
+            <div id="devider2" class="d-none"></div>
+        </div>
+
+        <div id="mobileMainContactDetails">
+            <div id="mobileMainContactContainer_1">
                 <div class="initialCircle">
                     <span id="user_initials_0" class="userNameFontSize">${intitial}</span>
                 </div>
                 <div id="contactSetup">
                     <div id="user_name_0" class="userNameFontSize responsiveUserNameFontSize">${contacts[index]['name']}</div>
-                    <div id="settings">
-                        <div id="edit" class="settingsBtn" onclick="editContactInformation()">
-                            <img id="edit_img" src="./assets/img/contacts/edit_pen.svg"><span>Edit</span> <!-- Hover CSS / JS ?? -->
-                        </div>
-                        <div id="remove" class="settingsBtn">
-                            <img id="remove_img" src="./assets/img/contacts/delete_bin.svg"><span>Delete</span> <!-- Hover CSS / JS ?? -->
-                        </div>
-                    </div>
+                </div>
+            </div>
+
+        <div id="mainContactContainer_2">
+            Contact Information
+        </div>
+
+        <div id="mainContactContainer_3">
+            <div id="mailContainer">
+                <span class="contactDataTitle">Mail</span>
+                <span class="contactData link">${contacts[index]['mail']}</span>
+            </div>
+            <div id="phoneContainer">
+                <span class="contactDataTitle">Phone</span>
+                <span class="contactData">${contacts[index]['number']}</span>
+            </div>
+        </div>
+        </div>
+
+        <div id="mobileSettingBtnContainer" onclick="showSettings(${index})">
+            <button id="mobileSettingBtn"><img src="./assets/img/contacts/more_vert.svg"></button>
+        </div>
+
+        <div id="contactOptions" class="d-none">
+            <div id="mobileEdit" class="settingsBtn" onclick="editCardWindow(true)">
+                <img id="edit_img" src="./assets/img/contacts/edit_pen.svg"><span>Edit</span>
+            </div>
+            <div id="mobileRemove" class="settingsBtn">
+                <img id="remove_img" src="./assets/img/contacts/delete_bin.svg"><span>Delete</span>
+            </div>
+        </div>
+
+        <div id="contactOptionBgLayer" class="d-none" onclick="hideSettings()">
+        </div>
     `;
 }

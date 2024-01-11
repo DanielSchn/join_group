@@ -115,6 +115,26 @@
         </div>
 
         <div id="mobileMainContactDetails">
+            <div id="mobileMainContactContainer_1">
+                <div class="initialCircle">
+                    <span id="user_initials_0" class="userNameFontSize">${intitial}</span>
+                </div>
+        </div>
+
+        <div id="mainContactContainer_2">
+            Contact Information
+        </div>
+
+        <div id="mainContactContainer_3">
+            <div id="mailContainer">
+                <span class="contactDataTitle">Mail</span>
+                <span class="contactData link">${contacts[index]['mail']}</span>
+            </div>
+            <div id="phoneContainer">
+                <span class="contactDataTitle">Phone</span>
+                <span class="contactData">${contacts[index]['number']}</span>
+            </div>
+        </div>
         </div>
 
         <div id="mobileSettingBtnContainer" onclick="showSettings()">
@@ -123,10 +143,10 @@
 
         <div id="contactOptions" class="d-none">
             <div id="mobileEdit" class="settingsBtn" onclick="editCardWindow(true)">
-                <img id="edit_img" src="./assets/img/contacts/edit_pen.svg"><span>Edit</span> <!-- Hover CSS / JS ?? -->
+                <img id="edit_img" src="./assets/img/contacts/edit_pen.svg"><span>Edit</span>
             </div>
             <div id="mobileRemove" class="settingsBtn">
-                <img id="remove_img" src="./assets/img/contacts/delete_bin.svg"><span>Delete</span> <!-- Hover CSS / JS ?? -->
+                <img id="remove_img" src="./assets/img/contacts/delete_bin.svg"><span>Delete</span>
             </div>
         </div>
 

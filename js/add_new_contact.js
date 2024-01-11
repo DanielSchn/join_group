@@ -7,9 +7,10 @@ async function initContacts() {
 }
 
 
-function saveNewContact() {
-    addNewContact();
-    loadContacts();
+async function saveNewContact() {
+    await addNewContact();
+    await loadContacts();
+    closeAddCardOne();
     renderContacts();
 }
 
@@ -32,7 +33,7 @@ async function addNewContact() {
 
     contacts.push(newContact);
     sortContacts();
-    setItem('contacts', JSON.stringify(contacts));
+    await setItem('contacts', JSON.stringify(contacts));
 }
 
 

@@ -44,15 +44,38 @@ function editCurrentContact(index) {
     let newMail = mail.value;
     let newNumber = number.value;
 
-    contacts[index] = {
+    getNewContactInformation(index, newName, newMail, newNumber, firstLetter);
+    refreshContactList();
+}
+
+function getNewContactInformation(index, newName, newMail, newNumber, firstLetter) {
+
+    let editContact = {
         'name': newName,
         'mail': newMail,
         'number': newNumber,
         'letter': firstLetter,
     };
 
+    contacts.splice(index, 1, editContact);
+}
+
+
+function deleteContact(index) {
+    contacts.splice(index, 1);
+    refreshContactList();
+
+    let contactDetails = document.getElementById('mainContactDetails');
+    contactDetails.innerHTML = '';
+
+    let mobileContactDetails = document.getElementById('mobileMainContactDetails');
+    mobileContactDetails.innerHTML = '';
+}
+
+
+async function refreshContactList() {
     sortContacts();
-    setItem();
-    loadContacts();
+    await setItem('contacts', JSON.stringify(contacts));
+    await loadContacts();
     renderContacts();
 }
