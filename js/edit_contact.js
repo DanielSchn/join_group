@@ -14,7 +14,7 @@ function renderEditForm(index) {
             </div>
         </div>
 
-        <div class="cardInitials_bg">
+        <div class="cardInitials_bg" style="background-color: ${contacts[index]['color']}">
             <span class="cardIntitials">${initial}</span>
         </div>
 
@@ -55,6 +55,7 @@ function getNewContactInformation(index, newName, newMail, newNumber, firstLette
         'mail': newMail,
         'number': newNumber,
         'letter': firstLetter,
+        'color': contacts[index]['color']
     };
 
     contacts.splice(index, 1, editContact);

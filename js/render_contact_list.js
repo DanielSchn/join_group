@@ -48,7 +48,7 @@ function renderContactCradInformation(index) {
 
     contactDetails.innerHTML = /* html */`
         <div id="mainContactContainer_1">
-            <div class="initialCircle">
+            <div class="initialCircle" style="background: ${contacts[index]['color']}">
                 <span id="user_initials_0" class="userNameFontSize">${intitial}</span>
             </div>
             <div id="contactSetup">
@@ -105,7 +105,7 @@ function renderMobileContactCradInformation(index) {
 
         <div id="mobileMainContactDetails">
             <div id="mobileMainContactContainer_1">
-                <div class="initialCircle">
+                <div class="initialCircle" style="background: ${contacts[index]['color']}">
                     <span id="user_initials_0" class="userNameFontSize">${intitial}</span>
                 </div>
                 <div id="contactSetup">
