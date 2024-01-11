@@ -13,19 +13,23 @@
     margin-bottom: 24px;
 }
 
-a{
+a {
     color: rgb(0, 0, 192);
 }
 
-p{
+p {
     margin-bottom: 24px;
 }
 
-.jblue{
-    color:rgb(0, 0, 192)
+#sideMenu p {
+    margin-bottom: 0;
 }
 
-li::marker{
+.jblue {
+    color: rgb(0, 0, 192)
+}
+
+li::marker {
     font-weight: bold;
     font-size: 24px;
 }
@@ -33,7 +37,7 @@ li::marker{
 @media (max-width: 725px) {
     .mainPrivacy {
         left: 290px;
-        padding-right: 16px;     
+        padding-right: 16px;
     }
 }
 
@@ -43,7 +47,10 @@ li::marker{
         margin-left: 16px;
     }
 
-    li, span, p, body {
+    li,
+    span,
+    p,
+    body {
         font-size: 16px;
     }
 
@@ -70,7 +77,10 @@ li::marker{
         gap: 16px;
     }
 
-    li, span, p, body {
+    li,
+    span,
+    p,
+    body {
         font-size: 14px;
     }
 }
