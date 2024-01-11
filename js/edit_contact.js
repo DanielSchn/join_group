@@ -20,7 +20,7 @@ function renderEditForm(index) {
 
         <img class="closeAddContact_btn" src="./assets/img/contacts/close.svg" onclick="editCardWindow(false)">
 
-        <form id="editForm" onsubmit="editCurrentContact(${index})">
+        <form id="editForm" onsubmit="editCurrentContact(${index}); return false">
             <div class="addContactInputContainer"><input id="editName" class="addContactInput" type="text" placeholder="Name"><img src="./assets/img/contacts/person.svg"></div>
             <div class="addContactInputContainer"><input id="editMail" class="addContactInput" type="email" placeholder="Email"><img src="./assets/img/contacts/mail.svg"></div>
             <div class="addContactInputContainer"><input id="editNumber" class="addContactInput" type="tel" placeholder="Phone"><img src="./assets/img/contacts/call.svg"></div>
