@@ -34,7 +34,7 @@
 #addContactBtn:hover {
     cursor: pointer;
     background-color: #29ABE2;
-    box-shadow: 0px 4px 4px 0 rgba(0, 0, 0, 0.25); 
+    box-shadow: 0px 4px 4px 0 rgba(0, 0, 0, 0.25);
 }
 
 #myContactsContainer {
@@ -73,7 +73,7 @@
     gap: 35px;
 }
 
-.contactCard:hover{
+.contactCard:hover {
     cursor: pointer;
     background: linear-gradient(180deg, #F9F9F9 0%, #F0F0F0 100%);
 }
@@ -287,20 +287,23 @@
     flex-direction: column;
     gap: 15px;
 }
- #phoneContainer {
+
+#phoneContainer {
     display: flex;
     flex-direction: column;
     gap: 15px;
- }
+}
 
- /* Add Contact Cards */
+/* Add Contact Cards */
 
- @keyframes swipeInFromRight {
+@keyframes swipeInFromRight {
     from {
         transform: translateX(100%);
         opacity: 0;
     }
-    to {transform: translateX(0);
+
+    to {
+        transform: translateX(0);
         opacity: 1;
     }
 }
@@ -310,7 +313,9 @@
         transform: translateX(0);
         opacity: 1;
     }
-    to {transform: translateX(300%);
+
+    to {
+        transform: translateX(300%);
         opacity: 0;
     }
 }
@@ -323,7 +328,7 @@
     animation: swipeOutToRight 100ms ease-in-out forwards;
 }
 
- .cardBg {
+.cardBg {
     z-index: 2000;
     position: fixed;
     top: 0;
@@ -331,9 +336,9 @@
     bottom: 0;
     left: 0;
     background-color: rgba(0, 0, 0, 0.25);
- }
+}
 
- .editContactCard {
+.editContactCard {
     z-index: 2500;
     width: 1212px;
     height: 592px;
@@ -347,9 +352,9 @@
     left: 0;
     display: flex;
     align-items: center;
- }
+}
 
- .leftBlueSection {
+.leftBlueSection {
     box-sizing: border-box;
     width: max-content;
     height: 594px;
@@ -359,50 +364,50 @@
     display: flex;
     justify-content: center;
     align-items: center;
- }
+}
 
- .smallCardLogo {
+.smallCardLogo {
     width: 53.933px;
     height: 66.483px;
     position: absolute;
     top: 154px;
     left: 45.5px;
- }
+}
 
- .cardTitle {
+.cardTitle {
     display: flex;
     flex-direction: column;
     gap: 8px;
- }
+}
 
- .addCardHeadingContainer {
+.addCardHeadingContainer {
     display: flex;
     flex-direction: column;
     gap: 8px;
- }
+}
 
- .addCardHeadline {
+.addCardHeadline {
     font-size: 61px;
     font-weight: 700;
     color: white;
- }
+}
 
- .addCardSubHeadline {
+.addCardSubHeadline {
     font-size: 27px;
     font-weight: 400;
     color: white;
- }
+}
 
- .devider3 {
+.devider3 {
     display: block !important;
     margin-top: 8px;
     height: 3px;
     width: 90px;
     background-color: #29ABE2;
     border-radius: 30px;
- }
+}
 
- .cardInitials_bg {
+.cardInitials_bg {
     width: 120px;
     height: 120px;
     background-color: #FFC700;
@@ -413,38 +418,43 @@
     position: absolute;
     top: 204px;
     left: 550px;
- }
+}
 
- .cardIntitials {
+.cardIntitials {
     color: white;
     font-size: 47px;
     font-weight: 500;
- }
+}
 
- .closeAddContact_btn {
+.newContactSilhouette {
+    filter: brightness(2);
+    width: 64px;
+}
+
+.closeAddContact_btn {
     filter: invert(1);
     cursor: pointer;
     position: absolute;
     top: 48px;
     left: 1132px;
- }
+}
 
- .editContactCard form {
+.editContactCard form {
     display: flex;
     flex-direction: column;
     gap: 32px;
     position: absolute;
     top: 137px;
     right: 48px;
- }
+}
 
- form button {
+form button {
     display: flex;
     align-items: center;
     gap: 4px;
- }
+}
 
- .addContactInputContainer {
+.addContactInputContainer {
     width: 380px;
     height: 24px;
     padding: 13px 21px;
@@ -452,19 +462,19 @@
     border-radius: 10px;
     display: flex;
     align-items: center;
- }
+}
 
- .addContactInput {
+.addContactInput {
     flex: 1;
     font-size: 20px;
     padding: 0;
     border: none;
     border-radius: 0;
- }
+}
 
- .addContactInput:focus {
+.addContactInput:focus {
     outline: none;
- }
+}
 
 .addContactInput::placeholder {
     color: #D1D1D1;
