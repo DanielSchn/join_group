@@ -74,7 +74,7 @@ function renderMobileEditForm(index) {
             <span class="mobileCardIntitials">${initial}</span>
         </div>
         <img class="mobileCloseAddContact_btn" src="./assets/img/contacts/close.svg" onclick="editCardWindow(false)">
-        <form id="editMobileForm" onsubmit="editCurrentContact(${index}); return false">
+        <form id="editMobileForm" onsubmit="mobileEditCurrentContact(${index}); return false">
             <div class="addContactInputContainer"><input id="editMobileName" class="addContactInput" type="text" placeholder="Name"><img src="./assets/img/contacts/person.svg"></div>
             <div class="addContactInputContainer"><input id="editMobileMail" class="addContactInput" type="email" placeholder="Email"><img src="./assets/img/contacts/mail.svg"></div>
             <div class="addContactInputContainer"><input id="editMobileNumber" class="addContactInput" type="tel" placeholder="Phone"><img src="./assets/img/contacts/call.svg"></div>
@@ -123,6 +123,35 @@ function editCurrentContact(index) {
 
     getNewContactInformation(index, newName, newMail, newNumber, firstLetter);
     refreshContactList();
+    editCardWindow(false);
+    showContactCard(index);
+}
+
+
+/**
+ * this function pulls all informations out of the edit form (mobile)
+ * @param {*} index - place of the current contact within the contacts array
+ * @param {string} newName - returns the current name
+ * @param {string} newMail - returns the current mail
+ * @param {string} newNumber - returns the current number
+ * @param {string} firstLetter - returns the firstletter of the name
+ */
+function mobileEditCurrentContact(index) {
+    let name = document.getElementById('editMobileName');
+    let mail = document.getElementById('editMobileMail');
+    let number = document.getElementById('editMobileNumber');
+
+    let getName = name.value;
+    let firstLetter = getName.charAt(0).toUpperCase();
+
+    let newName = name.value;
+    let newMail = mail.value;
+    let newNumber = number.value;
+
+    getNewContactInformation(index, newName, newMail, newNumber, firstLetter);
+    refreshContactList();
+    editCardWindow(false);
+    showContactCard(index);
 }
 
 
