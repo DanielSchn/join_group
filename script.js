@@ -404,3 +404,8 @@ function hideSideMenuBox() {
     document.getElementById('mobileMenuBox').style.display = 'none';
   }
 }
+
+
+function closeWindow() {
+    close();
+}
