@@ -72,7 +72,7 @@
         box-sizing: border-box;
         margin: auto;
         padding: 46px;
-        width: max-content;
+        width: 600px;
         height: fit-content;
         display: flex;
         justify-content: center;

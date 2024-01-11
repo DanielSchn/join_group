@@ -90,6 +90,7 @@ function editCardWindow(isGoingToOpen, index) {
         openMobileEditCard();
         toggleEditCard();
         renderEditForm(index);
+        renderMobileEditForm(index);
     } else {
         closeEditCard();
         closeMobileEditCard();
