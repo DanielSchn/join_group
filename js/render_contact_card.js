@@ -118,11 +118,13 @@ function showResponsiveEditCardWindow() {
 function showSettings() {
   const setting_btn = document.getElementById('contactOptions');
   const setting_bg_layer = document.getElementById('contactOptionBgLayer');
+  const mobileSettingsBtnContainer = document.getElementById('mobileSettingBtnContainer');
 
   setting_btn.classList.remove('d-none');
   setting_btn.classList.remove('mobileSlideOutToRight');
   setting_btn.classList.add('mobileSlideInFromRight');
   setting_bg_layer.classList.remove('d-none');
+  mobileSettingsBtnContainer.classList.add('mobile-d-none');
 }
 
 

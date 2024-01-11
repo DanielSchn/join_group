@@ -43,6 +43,46 @@ function prefillEditForm(index) {
 }
 
 
+function renderMobileEditForm(index) {
+    let mobileEditCard = document.getElementById('mobileEditCardOne');
+    mobileEditCard.innerHTML = '';
+
+    let initial = getInitials(contacts[index]['name']);
+    mobileEditCard.innerHTML = /* html */`
+    <div class="mobileLeftBlueSection">
+            <img class="mobileCloseAddCard d-none" onclick="editCardWindow(false)" src="./assets/img/contacts/close.svg">
+            <div class="mobileAddCardTitle">
+                <span class="addCardHeadline">Edit Contact</span>
+                <div class="mobileDevider3"></div>
+            </div>
+        </div>
+        <div class="mobileCardInitials_bg" style="background-color: ${contacts[index]['color']}">
+            <span class="mobileCardIntitials">${initial}</span>
+        </div>
+        <img class="mobileCloseAddContact_btn" src="./assets/img/contacts/close.svg" onclick="editCardWindow(false)">
+        <form onsubmit="editCurrentContact(${index}); return false">
+            <div class="addContactInputContainer"><input id="editMobileName" class="addContactInput" type="text" placeholder="Name"><img src="./assets/img/contacts/person.svg"></div>
+            <div class="addContactInputContainer"><input id="editMobileMail" class="addContactInput" type="email" placeholder="Email"><img src="./assets/img/contacts/mail.svg"></div>
+            <div class="addContactInputContainer"><input id="editMobileNumber" class="addContactInput" type="tel" placeholder="Phone"><img src="./assets/img/contacts/call.svg"></div>
+            <div class="mobileAddSummit_btn">
+                <button class="mobileAddContactCancel_btn">Cancel<img src="./assets/img/contacts/iconoir_cancel.svg"></button>
+                <button class="mobileAddContactCreate_btn">Save<img src="./assets/img/contacts/check.svg"></button>
+            </div>
+        </form>
+    `;
+
+    prefillMobileEditForm(index);
+}
+
+
+function prefillMobileEditForm(index) {
+    const contact = contacts[index];
+    editMobileName.value = contact['name'];
+    editMobileMail.value = contact['mail'];
+    editMobileNumber.value = contact['number'];
+}
+
+
 function editCurrentContact(index) {
     let name = document.getElementById('editName');
     let mail = document.getElementById('editMail');

@@ -134,7 +134,7 @@ function renderMobileContactCradInformation(index) {
         </div>
 
         <div id="contactOptions" class="d-none">
-            <div id="mobileEdit" class="settingsBtn" onclick="editCardWindow(true)">
+            <div id="mobileEdit" class="settingsBtn" onclick="editCardWindow(true, ${index})">
                 <img id="edit_img" src="./assets/img/contacts/edit_pen.svg"><span>Edit</span>
             </div>
             <div id="mobileRemove" class="settingsBtn">
