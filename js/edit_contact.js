@@ -32,6 +32,7 @@ function renderEditForm(index) {
     `;
 }
 
+
 function editCurrentContact(index) {
     let name = document.getElementById('editName');
     let mail = document.getElementById('editMail');
@@ -47,6 +48,7 @@ function editCurrentContact(index) {
     getNewContactInformation(index, newName, newMail, newNumber, firstLetter);
     refreshContactList();
 }
+
 
 function getNewContactInformation(index, newName, newMail, newNumber, firstLetter) {
 
