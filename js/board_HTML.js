@@ -5,7 +5,7 @@
  * @returns - HTML code
  */
 function generateTask(element) {
-    return `
+    return /* html */ `
     <div draggable="true" ondragstart="startDragging(${element['id']})" onclick="showTaskCard(tasks[${element['id']}], ${element['id']})" class="todo">
         <div class=headerTaskCard>
             <div class="toDoCategory${element['category']}"> ${categories[element['category']]} </div>
@@ -45,7 +45,7 @@ function generateTask(element) {
  * @returns - HTML code
  */
 function generateNoTask(status) {
-    return `
+    return /* html */`
             <div class="noTaskContainer">
                 <div class="noTask">No tasks ${status}</div>
             </div>`
@@ -59,7 +59,7 @@ function generateNoTask(status) {
  * @returns 
  */
 function generateTaskCard(task, id) {
-    return `    
+    return /* html */`    
     <div id="taskContainer" onclick="closeTask()">
         <div id="taskCard2" class="taskCard showTaskCard textOverflow" onclick="preventClosing()">
             <div class="taskCardHeader">

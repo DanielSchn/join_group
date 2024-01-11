@@ -189,16 +189,19 @@ function removeHighlight(id) {
  *  
  * @param {number} id - ID of current Task
  */
-function statusUp(id){
-    let newStatus 
+function statusUp(id) {
+    let newStatus
     let status = tasks[id]['status'];
-    if (status === 'toDo'){newStatus = 'toDo';
+    if (status === 'toDo') {
+        newStatus = 'toDo';
     }
-    else if (status === 'inProgress'){newStatus = 'toDo';
+    else if (status === 'inProgress') {
+        newStatus = 'toDo';
     }
-    else if (status === 'awaitFeedback'){newStatus = 'inProgress';
+    else if (status === 'awaitFeedback') {
+        newStatus = 'inProgress';
     }
-    else if (status === 'done' ){newStatus = 'awaitFeedback'}
+    else if (status === 'done') { newStatus = 'awaitFeedback' }
 
     tasks[id]['status'] = newStatus;
     saveChanges();
@@ -210,17 +213,20 @@ function statusUp(id){
  *  
  * @param {number} id - ID of current Task
  */
-function statusDown(id){
+function statusDown(id) {
     let newStatus
     let status = tasks[id]['status'];
-    if (status === 'done'){newStatus = 'done';
+    if (status === 'done') {
+        newStatus = 'done';
     }
-    else if (status === 'awaitFeedback'){newStatus = 'done';
+    else if (status === 'awaitFeedback') {
+        newStatus = 'done';
     }
-    else if (status === 'inProgress'){newStatus = 'awaitFeedback';
+    else if (status === 'inProgress') {
+        newStatus = 'awaitFeedback';
     }
-    else if (status === 'toDo'){newStatus = 'inProgress';}
-    
+    else if (status === 'toDo') { newStatus = 'inProgress'; }
+
     tasks[id]['status'] = newStatus;
     saveChanges();
     updateHTML();
@@ -273,9 +279,11 @@ function renderCardAssigned(element, id) {
     let assigned = element['assignedTo'];
 
     assignedDiv.innerHTML = '';
-    for (let i = 0; i < assigned.length; i++) {
+    for (let i = 0; i < users.length; i++) {
         let contact = users[i];
-        assignedDiv.innerHTML += taskCardAssignedHTML(contact, id);
+        if (assigned.includes(i)) {
+            assignedDiv.innerHTML += taskCardAssignedHTML(contact, id);
+        }
     }
 }
 
@@ -390,7 +398,7 @@ async function showEditTaskCard(status) {
     taskCard.classList.add('editTaskCard');
     await initAddTask(status);
     taskCard.style.display = '';
-    hideClearBtn();  
+    hideClearBtn();
 }
 
 /**
