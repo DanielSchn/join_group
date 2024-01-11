@@ -39,7 +39,10 @@ function contactCardHTML(contact, i) {
         </div>`;
 }
 
-
+/**
+ * This function generates the container the intire information window for a single contact 
+ * @param {*} index - place of the current contact within the contacts array
+ */
 function renderContactCradInformation(index) {
     const contactDetails = document.getElementById('mainContactDetails');
     contactDetails.innerHTML = '';
@@ -55,10 +58,10 @@ function renderContactCradInformation(index) {
                 <div id="user_name_0" class="userNameFontSize responsiveUserNameFontSize">${contacts[index]['name']}</div>
                 <div id="settings">
                     <div id="edit" class="settingsBtn" onclick="editCardWindow(true, ${index})">
-                        <img id="edit_img" src="./assets/img/contacts/edit_pen.svg"><span>Edit</span> <!-- Hover CSS / JS ?? -->
+                        <img id="edit_img" src="./assets/img/contacts/edit_pen.svg"><span>Edit</span>
                     </div>
                     <div id="remove" class="settingsBtn" onclick="deleteContact(${index})">
-                        <img id="remove_img" src="./assets/img/contacts/delete_bin.svg"><span>Delete</span> <!-- Hover CSS / JS ?? -->
+                        <img id="remove_img" src="./assets/img/contacts/delete_bin.svg"><span>Delete</span>
                     </div>
                 </div>
             </div>
@@ -82,6 +85,10 @@ function renderContactCradInformation(index) {
 }
 
 
+/**
+ * This function generates the container the intire information window (mobile) for a single contact 
+ * @param {*} index - place of the current contact within the contacts array
+ */
 function renderMobileContactCradInformation(index) {
     const contactDetails = document.getElementById('mobileMainContactDetails');
     contactDetails.innerHTML = '';
@@ -137,7 +144,7 @@ function renderMobileContactCradInformation(index) {
             <div id="mobileEdit" class="settingsBtn" onclick="editCardWindow(true, ${index})">
                 <img id="edit_img" src="./assets/img/contacts/edit_pen.svg"><span>Edit</span>
             </div>
-            <div id="mobileRemove" class="settingsBtn">
+            <div id="mobileRemove" class="settingsBtn" onclick="deleteContact(${index})">
                 <img id="remove_img" src="./assets/img/contacts/delete_bin.svg"><span>Delete</span>
             </div>
         </div>

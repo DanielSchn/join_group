@@ -1,3 +1,8 @@
+/**
+ * This function creates the etit form
+ * It shows the current contact informations
+ * @param {*} index - place of the current contact within the contacts array
+ */
 function renderEditForm(index) {
     let editCard = document.getElementById('editCardOne');
     editCard.innerHTML = '';
@@ -35,6 +40,10 @@ function renderEditForm(index) {
 }
 
 
+/**
+ * Loads the current contact informations
+ * @param {*} index - place of the current contact within the contacts array
+ */
 function prefillEditForm(index) {
     const contact = contacts[index];
     editName.value = contact['name'];
@@ -43,6 +52,11 @@ function prefillEditForm(index) {
 }
 
 
+/**
+ * This function creates the etit form (mobile)
+ * It shows the current contact informations
+ * @param {*} index - place of the current contact within the contacts array
+ */
 function renderMobileEditForm(index) {
     let mobileEditCard = document.getElementById('mobileEditCardOne');
     mobileEditCard.innerHTML = '';
@@ -60,7 +74,7 @@ function renderMobileEditForm(index) {
             <span class="mobileCardIntitials">${initial}</span>
         </div>
         <img class="mobileCloseAddContact_btn" src="./assets/img/contacts/close.svg" onclick="editCardWindow(false)">
-        <form onsubmit="editCurrentContact(${index}); return false">
+        <form id="editMobileForm" onsubmit="editCurrentContact(${index}); return false">
             <div class="addContactInputContainer"><input id="editMobileName" class="addContactInput" type="text" placeholder="Name"><img src="./assets/img/contacts/person.svg"></div>
             <div class="addContactInputContainer"><input id="editMobileMail" class="addContactInput" type="email" placeholder="Email"><img src="./assets/img/contacts/mail.svg"></div>
             <div class="addContactInputContainer"><input id="editMobileNumber" class="addContactInput" type="tel" placeholder="Phone"><img src="./assets/img/contacts/call.svg"></div>
@@ -69,12 +83,16 @@ function renderMobileEditForm(index) {
                 <button class="mobileAddContactCreate_btn">Save<img src="./assets/img/contacts/check.svg"></button>
             </div>
         </form>
-    `;
+        `;
 
     prefillMobileEditForm(index);
 }
 
 
+/**
+ * Loads the current contact informations (mobile)
+ * @param {*} index - place of the current contact within the contacts array
+ */
 function prefillMobileEditForm(index) {
     const contact = contacts[index];
     editMobileName.value = contact['name'];
@@ -83,6 +101,14 @@ function prefillMobileEditForm(index) {
 }
 
 
+/**
+ * this function pulls all informations out of the edit form
+ * @param {*} index - place of the current contact within the contacts array
+ * @param {string} newName - returns the current name
+ * @param {string} newMail - returns the current mail
+ * @param {string} newNumber - returns the current number
+ * @param {string} firstLetter - returns the firstletter of the name
+ */
 function editCurrentContact(index) {
     let name = document.getElementById('editName');
     let mail = document.getElementById('editMail');
@@ -100,6 +126,14 @@ function editCurrentContact(index) {
 }
 
 
+/**
+ * this function is pushing all informations to the contacts array
+ * @param {*} index - place of the current contact within the contacts array
+ * @param {string} newName - new/ current name
+ * @param {string} newMail - new/ current mail
+ * @param {string} newNumber - new/ current number
+ * @param {string} firstLetter - returns the firstletter of the current name
+ */
 function getNewContactInformation(index, newName, newMail, newNumber, firstLetter) {
 
     let editContact = {
@@ -114,6 +148,10 @@ function getNewContactInformation(index, newName, newMail, newNumber, firstLette
 }
 
 
+/**
+ * this function removes the current contact out of the contact array
+ * @param {*} index - place of the current contact within the contacts array
+ */
 function deleteContact(index) {
     contacts.splice(index, 1);
     refreshContactList();
@@ -123,9 +161,14 @@ function deleteContact(index) {
 
     let mobileContactDetails = document.getElementById('mobileMainContactDetails');
     mobileContactDetails.innerHTML = '';
+
+    hideContactCard();
 }
 
 
+/**
+ * This function refreshes the contact list
+ */
 async function refreshContactList() {
     sortContacts();
     await setItem('contacts', JSON.stringify(contacts));

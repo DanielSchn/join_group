@@ -483,6 +483,7 @@
     }
 
     #mobileSettingBtnContainer {
+        z-index: -1;
         box-sizing: border-box;
         display: flex;
         justify-content: center;

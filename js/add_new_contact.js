@@ -1,6 +1,9 @@
 let contacts = [];
 
 
+/**
+ * This function initiate and loads the contact list
+ */
 async function initContacts() {
     await init();
     await loadContacts();
@@ -8,17 +11,31 @@ async function initContacts() {
 }
 
 
-async function saveNewContact() {
-    await addNewContact();
+/**
+ * This function saves a new created contact and loads the contact into the remot storage
+ */
+async function saveNewContact(isDesktopForm) {
+
+    if(isDesktopForm === true) {
+        await addNewContact();
+    } else {
+        await mobileAddNewContact();
+    }
+
     await loadContacts();
     closeAddCardOne();
     renderContacts();
 }
 
 
+/**
+ * This function is pulling all informations out of the "add new contact" form
+ * It pushes the information into the contact array
+ * Loads the new contact array into the remote storage
+ */
 async function addNewContact() {
     const contactName = document.getElementById('contactName');
-    const contactEmail = document.getElementById('contactEmail');
+    const contactEmail = document.getElementById('contactMail');
     const contactNumber = document.getElementById('contactNumber');
 
     let getName = contactName.value;
@@ -38,6 +55,36 @@ async function addNewContact() {
 }
 
 
+/**
+ * This function is pulling all informations out of the "add new contact" form (mobile)
+ * It pushes the information into the contact array
+ * Loads the new contact array into the remote storage
+ */
+async function mobileAddNewContact() {
+    const contactName = document.getElementById('contactMobileName');
+    const contactEmail = document.getElementById('contactMobileMail');
+    const contactNumber = document.getElementById('contactMobileNumber');
+
+    let getName = contactName.value;
+    let firstLetter = getName.charAt(0).toUpperCase();
+
+    let newContact = {
+        'name': contactName.value,
+        'mail': contactEmail.value,
+        'number': contactNumber.value,
+        'letter': firstLetter,
+        'color': getRandomUserIconColor()
+    }
+
+    contacts.push(newContact);
+    sortContacts();
+    await setItem('contacts', JSON.stringify(contacts));
+}
+
+
+/**
+ * Loads the contact array out of the remote storage
+ */
 async function loadContacts() {
     try {
         contacts = JSON.parse(await getItem('contacts'));
@@ -47,6 +94,9 @@ async function loadContacts() {
 }
 
 
+/**
+ * This function is putting all contacts in a alphabetic order
+ */
 function sortContacts() {
     contacts.sort((a, b) => {
         let nameA = a.name.toLowerCase();
@@ -65,6 +115,9 @@ function sortContacts() {
 }
 
 
+/**
+ * This function creates the alphabet group container
+ */
 function renderContacts() {
     let contactContainer = document.getElementById('myContactsContainer');
     contactContainer.innerHTML = '';

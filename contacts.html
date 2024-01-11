@@ -53,7 +53,7 @@
             <img class="newContactSilhouette" src="./assets/img/contacts/person.svg" alt="new contact">
         </div>
         <img class="closeAddContact_btn" src="./assets/img/contacts/close.svg" onclick="closeAddCardOne()">
-        <form onsubmit="saveNewContact(); return false">
+        <form onsubmit="saveNewContact(true); return false">
             <div class="addContactInputContainer"><input required id="contactName" class="addContactInput" type="text" placeholder="Name"><img src="./assets/img/contacts/person.svg"></div>
             <div class="addContactInputContainer"><input id="contactEmail" class="addContactInput" type="email" placeholder="Email"><img src="./assets/img/contacts/mail.svg"></div>
             <div class="addContactInputContainer"><input id="contactNumber" class="addContactInput" type="tel" placeholder="Phone"><img src="./assets/img/contacts/call.svg"></div>
@@ -154,10 +154,10 @@
             <img class="newContactSilhouette" src="./assets/img/contacts/person.svg" alt="new contact">
         </div>
         <img class="mobileCloseAddContact_btn" src="./assets/img/contacts/close.svg" onclick="closeMobileAddContactCard()">
-        <form>
-            <div class="addContactInputContainer"><input required class="addContactInput" type="text" placeholder="Name"><img src="./assets/img/contacts/person.svg"></div>
-            <div class="addContactInputContainer"><input class="addContactInput" type="email" placeholder="Email"><img src="./assets/img/contacts/mail.svg"></div>
-            <div class="addContactInputContainer"><input class="addContactInput" type="tel" placeholder="Phone"><img src="./assets/img/contacts/call.svg"></div>
+        <form onsubmit="saveNewContact(false); return false">
+            <div class="addContactInputContainer"><input id="contactMobileName" required class="addContactInput" type="text" placeholder="Name"><img src="./assets/img/contacts/person.svg"></div>
+            <div class="addContactInputContainer"><input id="contactMobileMail" class="addContactInput" type="email" placeholder="Email"><img src="./assets/img/contacts/mail.svg"></div>
+            <div class="addContactInputContainer"><input id="contactMobileNumber" class="addContactInput" type="tel" placeholder="Phone"><img src="./assets/img/contacts/call.svg"></div>
             <div class="mobileAddSummit_btn">
                 <button class="mobileAddContactCancel_btn">Cancel<img src="./assets/img/contacts/iconoir_cancel.svg"></button>
                 <button class="mobileAddContactCreate_btn">Save<img src="./assets/img/contacts/check.svg"></button>
